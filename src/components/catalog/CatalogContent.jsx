@@ -143,12 +143,11 @@ const CatalogContent = ({categories}) => {
         }))
         setIsFiltersOpen(false)
 
-        const url = new URL(process.env.BASE_URL + '/catalog')
-        categoriesFilter.forEach(p => url.searchParams.append('sub', p))
-        url.searchParams.set('search', searchLine)
-        url.searchParams.set('price_min', priceFilter.min)
-        url.searchParams.set('price_max', priceFilter.max)
-        router.replace(url.href, scroll=false)
+        let url = '/catalog?'
+        const params = []
+        categoriesFilter.forEach(p => params.push('sub='+p))
+        url = url.concat(params.join('&'), '&search='+searchLine, '&price_min=' + priceFilter.min, '&price_max=' + priceFilter.max)
+        router.replace(url, scroll=false)
     }
 
     const handleSearch = (e) => {
@@ -158,12 +157,11 @@ const CatalogContent = ({categories}) => {
             searchLine
         }))
 
-        const url = new URL(process.env.BASE_URL + '/catalog')
-        categoriesFilter.forEach(p => url.searchParams.append('sub', p))
-        url.searchParams.set('search', searchLine)
-        url.searchParams.set('price_min', priceFilter.min)
-        url.searchParams.set('price_max', priceFilter.max)
-        router.replace(url.href, scroll=false)
+        let url = '/catalog?'
+        const params = []
+        categoriesFilter.forEach(p => params.push('sub='+p))
+        url = url.concat(params.join('&'), '&search='+searchLine, '&price_min=' + priceFilter.min, '&price_max=' + priceFilter.max)
+        router.replace(url, scroll=false)
     }
 
     return (
@@ -210,14 +208,13 @@ const CatalogContent = ({categories}) => {
                                 <Link href={`/catalog/${p.slug}`} >
                                     <span className={styles['card__presence']}>{p.is_present ? 'В наличии' : 'Под заказ'}</span>
                                     <div className={styles['card__image']}>
-                                        {console.log(p.img_urls[0].img_url)}
                                         <img src={p.img_urls[0].img_url} height={214} width={200} alt='фото товара' />
                                     </div>
                                 </Link>
                             </div>
                             <div className={styles['card__body']}>
                                 <div className={styles['card__name']}>
-                                    <Link href={`/catalogs/${p.id}`}>
+                                    <Link href={`/catalog/${p.slug}`}>
                                         {p.name}
                                     </Link>
                                 </div>

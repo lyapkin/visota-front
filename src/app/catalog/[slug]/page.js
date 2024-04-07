@@ -33,12 +33,9 @@ const Product = ({params}) => {
     const handleSearch = (e) => {
         e.preventDefault()
 
-        const url = new URL(process.env.BASE_URL + '/catalog')
-        // categoriesFilter.forEach(p => url.searchParams.append('sub', p))
-        url.searchParams.set('search', searchLine)
-        // url.searchParams.set('price_min', priceFilter.min)
-        // url.searchParams.set('price_max', priceFilter.max)
-        router.push(url.href)
+        const url = '/catalog?' + 'search=' + searchLine
+        
+        router.push(url)
     }
 
     useEffect(() => {
