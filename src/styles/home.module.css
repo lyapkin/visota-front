@@ -1,0 +1,720 @@
+.home-sections-header {
+    font-family: 'Gilroy-200';
+    font-size: 45px;
+    line-height: 60px;
+    text-transform: uppercase;
+    color: rgba(59, 64, 70, 1);
+    max-width: 789px;
+    padding-bottom: 30px;
+}
+.home-sections-header span {
+    font-family: 'Gilroy-700'
+}
+
+.home-main {
+    /* padding-top: 250px; */
+    background-color: #EFF0F3;
+    background-image: 
+                      url('/images/bg/home-main-bg.jpg');
+    background-position: 0 bottom;
+    background-repeat: no-repeat;
+    background-size: auto 86%;
+}
+
+.home-main__header {
+    font-family: "Gilroy-200";
+    text-transform: uppercase;
+    color: rgba(59, 64, 70, 1);
+    font-size: 55px;
+    line-height: 74px;
+    max-width: 638px;
+    z-index: 2;
+}
+.home-main__header span {
+    display: block;
+    font-family: "Gilroy-700";
+}
+
+.home-main__promise {
+    font-family: "Gilroy-400";
+    padding-top: 10px;
+    color: rgba(80, 89, 94, 1);
+    font-size: 20px;
+    line-height: 30px;
+    max-width: 524px;
+    z-index: 2;
+}
+.home-main__promise span {
+    font-family: "Gilroy-700";
+}
+
+.home-main__bottom {
+    position: relative;
+    padding-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-main__info {
+    display: flex;
+    column-gap: 16px;
+    z-index: 2;
+}
+
+.info__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 296px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 
+        0 20px 48px 0 rgba(0, 0, 0, 0.06),
+        0 12px 32px 0 rgba(208, 220, 220, 0.12);
+    position: relative;
+}
+
+.info__item p {
+    font-family: "Gilroy-300";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 26px;
+    color: rgba(59, 64, 70, 1);
+    padding: 36px 44px;
+}
+.info__item span {
+    font-family: "Gilroy-700";
+}
+
+.info__img {
+    display: flex;
+    width: 100%;
+}
+.info__img img {
+    width: 100%;
+}
+
+
+
+.home-advantages {
+    padding-top: 100px;
+    padding-bottom: 180px;
+    background-color: rgba(251, 251, 251, 1);
+}
+
+.home-advantages-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 59px 16px;
+    padding-top: 15px;
+}
+
+.home-advantages-form {
+    padding-top: 59px;
+    width: 100%;
+}
+
+.home-advantages-block {
+    display: flex;
+    background-color: #fff;
+    border-radius: 40px;
+    padding: 48px 0 50px 45px;
+    flex-basis: 40%;
+    position: relative;
+    min-width: 320px;
+}
+.home-advantages-block img {
+    width: 100%;
+    object-fit: contain;
+}
+.home-advantages-block-1 {
+    flex-grow: 1;
+}
+.home-advantages-block-1 .home-advantages-block-img {
+    bottom: 20px;
+}
+
+.home-advantages-block-2 {
+    flex-grow: 12.2;
+}
+.home-advantages-block-2 .home-advantages-block-img {
+    bottom: 0;
+}
+
+.home-advantages-block-3 {
+    flex-grow: 12.2;
+}
+.home-advantages-block-3 .home-advantages-block-text {
+    max-width: 45%;
+}
+.home-advantages-block-3 .home-advantages-block-img {
+    bottom: 0;
+}
+
+.home-advantages-block-4 {
+    flex-grow: 1;
+}
+.home-advantages-block-4 .home-advantages-block-img {
+    bottom: 28px;
+    right: -80px;
+}
+.home-advantages-block-4 img {
+    height: 280px;
+}
+
+.home-advantages-block-text {
+    max-width: 60%
+}
+
+.home-advantages-block-text h5 {
+    font-family: 'Gilroy-300';
+    font-size: 24px;
+    line-height: 32px;
+    color: rgba(48, 48, 52, 1);
+    padding-bottom: 5px;
+}
+.home-advantages-block-text h5 span {
+    font-family: 'Gilroy-700';
+}
+
+.home-advantages-block-text p {
+    font-family: 'Gilroy-400';
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(123, 137, 144, 1);
+}
+
+.home-advantages-block-img {
+    position: absolute;
+    right: 0;
+}
+
+
+
+
+
+
+.home-catalog {
+    padding-top: 96px;
+    padding-bottom: 50px;
+}
+
+.home-catalog .home-sections-header {
+    padding-bottom: 30px;
+}
+
+.home-catalog .home-sections-header span {
+    display: block;
+}
+
+
+
+
+
+
+
+.home-projects {
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+
+
+.home-delivery {
+    position: relative;
+    padding-top: 94px;
+    padding-bottom: 100px;
+    background-image: url('/images/bg/delivery-truck-bg.png'),
+                      url('/images/bg/delivery-cloud-bg.png'),
+                      linear-gradient(0deg, #D9E5E9 0%, #F2F8FB 100%);
+    background-repeat: no-repeat;
+    background-position: right top 30%, center top;
+    background-size: 47%, auto, 100%;
+    box-shadow: 0px 16px 24px 0px rgba(143, 164, 162, 0.12) inset;
+}
+
+.home-delivery p {
+    font-family: 'Gilroy-500';
+    font-size: 20px;
+    line-height: 33px;
+    color: rgba(123, 137, 144, 1);
+    max-width: 568px;
+}
+
+.home-delivery__map-contact-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-delivery__delivery-map {
+    padding-bottom: 60px;
+}
+.home-delivery__delivery-map img {
+    width: 100%;
+}
+
+.home-delivery__contact {
+    padding: 24px 138px 24px 24px;
+    background-color: #fff;
+    border: 1px solid rgba(247, 247, 247, 1);
+    border-radius: var(--main-radius);
+    height: fit-content;
+    width: fit-content;
+    z-index: 1;
+}
+
+.home-delivery__contact h4 {
+    font-family: 'Gilroy-500';
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(46, 50, 55, 1);
+    padding-bottom: 12px;
+}
+
+.home-delivery__contact p {
+    font-family: 'Gilroy-500';
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba(46, 50, 55, 1);
+    padding-bottom: 8px;
+}
+
+.home-delivery__contact span {
+    display: block;
+    font-family: 'Gilroy-500';
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(123, 137, 144, 1);
+}
+
+.home-delivery__contact p:last-child {
+    font-family: 'Gilroy-700';
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(39, 169, 220, 1);
+    padding-top: 12px;
+}
+
+.home-reputation > p {
+    font-family: 'Gilroy-500';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    color: rgba(123, 137, 144, 1);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding-bottom: 32px;
+}
+
+.home-reputation__blocks {
+    display: flex;
+    column-gap: 4px; 
+    row-gap: 20px;
+}
+
+.home-reputation__blocks > div {
+    padding: 43px 32px;
+    background-color: rgba(241, 248, 254, 1);
+    border-radius: var(--main-radius);
+    min-width: 320px;
+}
+
+.home-reputation__icon {
+    width: 57px;
+    height: 57px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.home-reputation__blocks h4 {
+    font-family: 'Gilroy-700';
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(27, 30, 33, 1);
+    text-transform: uppercase;
+    padding-top: 10px;
+    padding-bottom: 16px;
+}
+
+.home-reputation__blocks p {
+    font-family: 'Gilroy-400';
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(123, 137, 144, 1);
+}
+
+
+
+
+.home-clients {
+    padding-top: 108px;
+    padding-bottom: 108px;
+}
+
+.home-clients__gov-clients {
+    position: relative;
+    padding-bottom: 95px;
+}
+
+.home-clients__thanks-letters h2 {
+    font-family: 'Gilroy-700';
+    font-size: 32px;
+    line-height: 56px;
+    color: rgba(27, 30, 33, 1);
+    padding-bottom: 30px;
+    text-transform: uppercase;
+}
+
+
+
+
+.home-about {
+    padding-top: 114px;
+    padding-bottom: 60px;
+    background-image:
+        linear-gradient(180deg, rgba(222, 234, 238, 0.9) 0%, rgba(222, 234, 238, 0.9) 0.01%, rgba(222, 234, 238, 0.9) 100%),
+        url('/images/bg/home-about-bg.jpg');
+}
+
+.home-about__video {
+    position: relative;
+    display: inline-flex;
+    width: 48.5%;
+}
+
+.home-about__video h6 {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: 'Gilroy-700';
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.12em;
+    color: rgba(123, 137, 144, 1);
+    text-transform: uppercase;
+    z-index: 1;
+}
+
+.home-about__video video {
+    object-fit: cover;
+    width: 100%;
+    border-radius: var(--main-radius);
+    aspect-ratio: 10 / 7;
+    margin: auto;
+}
+
+.home-about__description {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    padding-left: 62px;
+    padding-right: 21px;
+}
+span.home-about__header-bold {
+    font-family: 'Gilroy-700'
+}
+span.home-about__header-blue {
+    display: block;
+    font-family: 'Gilroy-200';
+    font-size: 32px;
+    line-height: 48px;
+    color: rgba(39, 169, 220, 1);
+    padding-top: 10px;
+}
+.home-about .home-sections-header {
+    padding-bottom: 0;
+}
+
+.home-about__description p {
+    font-family: 'Gilroy-500';
+    font-size: 18px;
+    line-height: 29px;
+    color: rgba(27, 30, 33, 1);
+    padding-top: 36px;
+}
+
+.home-about__achivements {
+    display: flex;
+    column-gap: 3%;
+    padding-top: 51px;
+}
+
+.home-achivement {
+    background: linear-gradient(180deg, #FDFEFF 0%, #EDF7FB 100%);
+    padding: 37px 32px 31px 40px;
+    border-radius: var(--main-radius);
+}
+
+.home-achivement span {
+    display: block;
+}
+
+.home-achivement__count {
+    font-family: 'Gilroy-700';
+    font-size: 64px;
+    line-height: 64px;
+    color: rgba(39, 169, 220, 1);
+}
+
+.home-achivement__type {
+    font-family: 'Gilroy-700';
+    font-size: 18px;
+    line-height: 26px;
+    color: rgba(27, 30, 33, 1);
+    text-transform: uppercase;
+    padding-top: 16px;
+    padding-bottom: 12px;
+}
+
+.home-achivement__text {
+    font-family: 'Gilroy-500';
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(27, 30, 33, 1);
+}
+
+
+
+
+.home-special-offer {
+    padding-top: 26px;
+    background-color: rgba(220, 232, 236, 1);
+}
+
+
+
+
+@media only screen and (max-width: 1450px) {
+    .home-delivery__delivery-map {
+        width: 50%;
+    }
+    .home-reputation__blocks {
+        flex-wrap: wrap;
+        column-gap: 2%;
+    }
+    .home-reputation__blocks > div {
+        width: 32%;
+    }
+
+    .home-delivery {
+        background-position: right top 16%, center top;
+    }
+
+    .home-about__description {
+        width: 100%;
+        padding: 32px 0 0 0;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .home-sections-header {
+        font-size: 40px;
+        line-height: 135%;
+    }
+    .home-main__header {
+        font-size: 45px;
+    }
+    .info__item {
+        max-width: 210px;
+    }
+    .info__item p {
+        font-size: 14px;
+        padding: 24px;
+    }
+    .home-main__promise {
+        max-width: 40%;
+    }
+    .home-main__bottom {
+        flex-direction: column;
+        gap: 23px
+    }
+
+    .info__item {
+        max-width: 250px;
+    }
+    .info__item p {
+        padding: 30px;
+    }
+
+    
+    .home-advantages-block-text h5 {
+        font-size: 20px;
+    }
+    .home-advantages-block-text p {
+        font-size: 16px;
+    }
+    .home-advantages-block-1 .home-advantages-block-img {
+        top: -30px;
+        width: 50%;
+    }
+    .home-advantages-block-2 .home-advantages-block-img {
+        top: 10%;
+        width: 45%;
+    }
+    .home-advantages-block-3 .home-advantages-block-img {
+        width: 70%;
+        right: -10%;
+    }
+    .home-advantages-block-4 .home-advantages-block-img {
+        top: 0;
+        right: -15%;
+        width: 70%;
+    }
+    .home-advantages {
+        padding-top: 66px;
+        padding-bottom: 90px;
+    }
+
+    .home-delivery {
+        background-position: right top 19%, center top;
+        background-size: 47%, auto, 100%;
+    }
+
+    .home-reputation__blocks {
+        column-gap: 2%;
+    }
+    .home-reputation__blocks > div {
+        width: 49%;
+    }
+
+    .home-achivement {
+        padding: 30px 32px 30px 20px;
+    }
+    .home-achivement__count {
+        font-size: 44px;
+    }
+    .home-special-offer {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .home-advantages-block-text p {
+        width: 270px;
+    }
+    .home-advantages-block-3 .home-advantages-block-img {
+        top: 10%;
+    }
+    .home-advantages-block-4 .home-advantages-block-img {
+        top: -15%;
+        right: -11%;
+    }
+
+    .home-delivery__contact {
+        display: none;
+    }
+
+    .home-delivery {
+        background-position: right top 20%, center top;
+        background-size: 40%, auto, 100%;
+    }
+
+    .home-about__achivements {
+        flex-wrap: wrap;
+        gap: 10px 2%;
+    }
+    .home-achivement {
+        width: 49%;
+    }
+
+    .home-about__video {
+        width: 100%;
+    }
+    .home-clients__gov-clients .home-sections-header {
+        padding-bottom: 80px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .home-main__header {
+        font-size: 36px;
+        line-height: 50px;
+    }
+    .home-main__promise {
+        font-size: 18px;
+        min-width: 50%;
+    }
+    .home-main__bottom {
+        width: 100%;
+    }
+    .home-main__info {
+        column-gap: 4%;
+        width: 100%;
+    }
+    .info__item {
+        max-width: 48%;
+        width: 48%;
+    }
+    .home-projects .home-sections-header {
+        padding-bottom: 80px;
+    }
+    .home-delivery__delivery-map {
+        height: 500px;
+    }
+    .home-delivery__delivery-map img {
+        display: none;
+    }
+    .home-delivery {
+        background-position: right top 19%, center top;
+        background-size: 90%, auto, 100%;
+    }
+    
+    .home-reputation__blocks > div {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .home-main__header {
+        font-size: 26px;
+        line-height: 135%;
+    }
+
+    .home-main__promise {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .info__item p {
+        font-size: 12px;
+        line-height: 18px;
+        padding: 10px 18px;
+    }
+
+    .home-sections-header {
+        font-size: 22px;
+        line-height: 135%;
+        text-align: center;
+    }
+
+    .home-catalog .home-sections-header {
+        padding-bottom: 120px;
+    }
+    .home-delivery__delivery-map {
+        height: 80vw;
+    }
+
+    .home-delivery {
+        background-position: right top 16%, center top;
+    }
+
+    .home-achivement {
+        padding: 20px 13px;
+    }
+    .home-achivement__count {
+        font-size: 30px;
+    }
+    .home-achivement__type {
+        font-size: 14px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+    .home-achivement__text {
+        font-size: 12px;
+    }    
+}

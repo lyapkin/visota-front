@@ -1,0 +1,151 @@
+.title {
+    font-family: "Gilroy-700";
+    font-size: 40px;
+    line-height: 56px;
+    text-transform: uppercase;
+    color: #273039;
+    max-width: 800px;
+    margin-bottom: 36px;
+}
+
+.info {
+    max-width: 446px;
+    font-family: "Gilroy-500";
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 120px;
+}
+
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    gap: 12px;
+    margin-bottom: 120px;
+}
+
+.item {
+    width: 32%;
+    max-width: 470px;
+    background-color: #f5f5f5;
+    position: relative;
+}
+
+.item__img {
+    width: 100%;
+    max-height: 224px;
+}
+
+.item__date {
+    position: absolute;
+    top: 22px;
+    left: 0;
+    background-color: #ffffff;
+    font-family: "Gilroy-600";
+    color: #818f9b;
+    padding: 6px 16px;
+    border-radius: 0 16px 16px 0;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.item__content {
+    padding-left: 38px;
+    padding-right: 40px;
+}
+
+.item__title {
+    font-family: "Gilroy-700";
+    text-transform: uppercase;
+    color: #273039;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.item__text {
+    font-family: "Gilroy-300";
+    font-size: 16px;
+    line-height: 24px;
+    max-width: 380px;
+    color: #818f9b;
+}
+
+.item__btn {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 43px;
+    padding-right: 22px;
+    align-items: center;
+    max-width: 320px;
+    width: 100%;
+    height: 65px;
+    background-color: #fff;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.item__btn_text {
+    font-family: "Gilroy-500";
+    font-size: 16px;
+    line-height: 24px;
+    color: #53cfff;
+}
+
+.item__btn_arrow {
+    display: flex;
+    justify-content: center;
+    border-radius: 4px;
+    align-items: center;
+    background: linear-gradient(180deg, #53cfff 0%, #32b2e4 100%);
+    width: 36px;
+    height: 36px;
+}
+
+@media (max-width: 1000px) {
+    .item {
+        width: 49%;
+    }
+}
+
+
+@media (max-width: 900px) {
+    .title {
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .info {
+        text-align: center;
+        margin: 0 auto 120px auto;
+    }
+
+}
+
+@media (max-width: 770px) {
+    .items {
+        justify-content: center;
+    }
+
+    .item {
+        width: 100%;
+    }
+
+    .item__btn {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .title {
+        font-size: 22px;
+    }
+
+    .info {
+        font-size: 18px;
+    }
+}
