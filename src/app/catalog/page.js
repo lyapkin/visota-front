@@ -5,7 +5,7 @@ import CatalogContent from '@/components/catalog/CatalogContent'
 
 
 const getData = async () => {
-    const response = await fetch(process.env.API_URL + '/products/categories')
+    const response = await fetch(process.env.API_URL + '/products/categories', { cache: 'no-store' })
 
     if (!response.ok) {
         throw new Error(response.status + ' запрос не удался')
