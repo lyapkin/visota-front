@@ -70,7 +70,7 @@ const CatalogContent = ({categories}) => {
         url.searchParams.set('search', currentFilter.searchLine)
         url.searchParams.set('price_min', currentFilter.priceFilter.min)
         url.searchParams.set('price_max', currentFilter.priceFilter.max)
-        console.log(url)
+        
         const response = await fetch(url)
 
         if (!response.ok) {
