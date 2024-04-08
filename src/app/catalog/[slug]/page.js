@@ -121,7 +121,7 @@ const Product = ({params}) => {
                         </div>
                         <div className={styles['about__cart']}>
                             <div className={styles['about__price']}>
-                                <div className={styles['price__current']}>{product.current_price + ' ₽'}</div>
+                                <div className={styles['price__current']}>{product.current_price && (product.current_price + ' ₽')}</div>
                                 <div className={styles['price__actual']}
                                      hidden={product.actual_price === product.current_price}>
                                     {product.actual_price + ' ₽'}

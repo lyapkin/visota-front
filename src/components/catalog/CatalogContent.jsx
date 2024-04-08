@@ -233,10 +233,10 @@ const CatalogContent = ({categories}) => {
                                 <div className={styles['card__order']}>
                                     <div className={styles['order__price']}>
                                         <div className={styles['price__key']}>
-                                            <span>Стоимость</span>
+                                            <span>{p.current_price && 'Стоимость'}</span>
                                         </div>
                                         <div className={styles['price__val']}>
-                                            <span>{p.current_price + ' ₽'}</span>
+                                            <span>{p.current_price && (p.current_price + ' ₽')}</span>
                                         </div>
                                     </div>
                                     <div className={styles['order__cart-button']}>

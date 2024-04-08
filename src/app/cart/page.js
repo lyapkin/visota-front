@@ -128,7 +128,7 @@ const Cart = () => {
                                                     }
                                                 </ul>
                                                 <div className={styles['product-info__price']}>
-                                                    <span className={styles['product-info__price-current']}>{p.current_price + ' ₽'}</span>
+                                                    <span className={styles['product-info__price-current']}>{p.current_price && (p.current_price + ' ₽')}</span>
                                                     <span className={styles['product-info__price-actual']}
                                                         hidden={p.current_price === p.actual_price}>
                                                         {p.actual_price + ' ₽'}
