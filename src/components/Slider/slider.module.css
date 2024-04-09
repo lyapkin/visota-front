@@ -386,7 +386,11 @@
 .catalog-slider__slide {
     position: relative;
     border-radius: 10px;
-    background: rgba(246, 248, 247, 1);
+    background: url('/images/catalog/slider-bg-circles.png'),
+              rgba(246, 248, 247, 1);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: auto 90%;
     padding: 32px 0 32px 32px;
     min-width: 32%;
     transition: translate 500ms ease-in-out;
@@ -434,6 +438,14 @@
     font-size: 15px;
     line-height: 26px;
     color: rgba(39, 169, 220, 1);
+}
+.catalog-slider__link:hover {
+    background: var(--main-gradient);
+    color: #fff;
+}
+.catalog-slider__link:hover .catalog-slider__link-arrow {
+    border-top: solid 2px #fff;
+    border-right: solid 2px #fff;
 }
 
 .catalog-slider__link-arrow {
@@ -905,6 +917,9 @@ div.product-slider__cover-wrapper-single {
     }
     .gov-clients-slide__wrapper {
         min-width: 49%;
+    }
+    .gov-clients-slider__buttons {
+        top: 274px;
     }
 
     .thanks-letters-slider-block {

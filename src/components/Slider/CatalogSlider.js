@@ -7,11 +7,12 @@ import RightButton from '../UI/Buttons/RightButton'
 
 const CatalogSlider = () => {
     const [catalogIndex, setCatalogIndex] = useState(0)
+    const [width, setWidth] = useState(null)
 
-    let width = null; 
 
     useEffect(() => {
-        width = document.documentElement.clientWidth
+        const width = document.documentElement.clientWidth
+        setWidth(width)
     }, [])
     const slidesCount = width <= 768 ? 1 : width <= 992 ? 2 : 3
 

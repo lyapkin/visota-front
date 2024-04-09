@@ -229,7 +229,7 @@
                       url('/images/bg/delivery-cloud-bg.png'),
                       linear-gradient(0deg, #D9E5E9 0%, #F2F8FB 100%);
     background-repeat: no-repeat;
-    background-position: right top 30%, center top;
+    background-position: right top 22%, center top;
     background-size: 47%, auto, 100%;
     box-shadow: 0px 16px 24px 0px rgba(143, 164, 162, 0.12) inset;
 }

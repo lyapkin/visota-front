@@ -3,55 +3,35 @@ import React from "react";
 import CartTab from "./CartTab";
 
 import styles from "./Header.module.css";
+import MobileNav from "./MobileNav";
+import NavLinks from "./NavLinks";
 
-const HeaderMain = () => {
+const HeaderMain = ({mobileOpen, setMobileOpen}) => {
     return (
         <div className={styles["header-main-wrapper"]}>
             <div className="container">
                 <div className={styles["header-main"]}>
-                    <div className={styles["header-main__logo"]}>
-                        <a href="/">
-                            <img src="/svgs/logo.svg" alt="логотип" />
-                        </a>
+                    <div className={styles['header-main__left']}>
+                    <button onClick={() => setMobileOpen(prev => !prev)} className={styles['mobile-nav__burger']}>
+                        {!mobileOpen ? <img src='/svgs/burger-icon.svg' alt='иконка меню' /> :
+                                    <img className={styles['mobile-nav__close']} src='/svgs/close-icon.svg' alt='иконка меню' />}
+
+                    </button>
+                        <div className={styles["header-main__logo"]}>
+                            <a href="/">
+                                <img src="/svgs/logo.svg" alt="логотип" />
+                            </a>
+                        </div>
                     </div>
                     <nav className={styles["header-main__nav"]}>
                         <div className={styles["header-nav-container"]}>
-                            <ul className={styles["header-main__nav-list"]}>
-                                <li
-                                    className={
-                                        styles["header-main__out-projects"]
-                                    }
-                                >
-                                    <Link href="/blog">Блог</Link>
-                                </li>
-                                <li className={styles["header-main__about"]}>
-                                    <Link href="/about">О компании</Link>
-                                </li>
-                                <li className={styles["header-main__faq"]}>
-                                    <Link href="/faq">FAQ</Link>
-                                </li>
-                                <li className={styles["header-main__partners"]}>
-                                    <Link href="/partners">Партнерам</Link>
-                                </li>
-                                <li className={styles["header-main__delivery"]}>
-                                    <Link href="/delivery">
-                                        Доставка и оплата
-                                    </Link>
-                                </li>
-                                <li
-                                    className={styles["header-main__vacancies"]}
-                                >
-                                    <Link href="/vacancies">Вакансии</Link>
-                                </li>
-                                <li className={styles["header-main__contacts"]}>
-                                    <Link href="/contacts">Контакты</Link>
-                                </li>
-                                <li className={styles["header-main__catalog"]}>
-                                    <Link href="/catalog">Каталог товаров</Link>
-                                </li>
-                            </ul>
+                            <NavLinks />
+                            <div className={styles["header-main__catalog"]}>
+                                <Link href="/catalog">Каталог товаров</Link>
+                            </div>
                         </div>
                     </nav>
+                    
                     <div className={styles["header-main__tel"]}>
                         <a href="tel:+78007005413">
                             <img src="/svgs/phone-pic.svg" alt="иконка" />

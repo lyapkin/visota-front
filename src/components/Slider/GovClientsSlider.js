@@ -7,11 +7,12 @@ import RightButton from "../UI/Buttons/RightButton";
 
 const GovClientsSlider = () => {
     const [picIndex, setPicIndex] = useState(0);
+    const [width, setWidth] = useState(null)
 
-    let width = null;
 
     useEffect(() => {
-        width = document.documentElement.clientWidth;
+        const width = document.documentElement.clientWidth;
+        setWidth(width)
     }, []);
 
     const slidesCount =
@@ -121,11 +122,27 @@ const logos = [
     },
     {
         id: 7,
-        img: "/images/gov-clients/sibur-logo.png",
+        img: "/images/gov-clients/tco-logo.png",
     },
     {
         id: 8,
-        img: "/images/gov-clients/yamata-logo.png",
+        img: "/images/gov-clients/cncec.png",
+    },
+    {
+        id: 9,
+        img: "/images/gov-clients/esta-logo.png",
+    },
+    {
+        id: 10,
+        img: "/images/gov-clients/ict-logo.png",
+    },
+    {
+        id: 11,
+        img: "/images/gov-clients/velstroy-logo.png",
+    },
+    {
+        id: 12,
+        img: "/images/gov-clients/innova-logo.png",
     },
 ];
 

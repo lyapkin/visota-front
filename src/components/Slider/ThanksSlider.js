@@ -8,10 +8,11 @@ import LeftButton from '../UI/Buttons/LeftButton'
 
 const ThanksSlider = () => {
     const [picIndex, setPicIndex] = useState(0)
-    let width = null;
+    const [width, setWidth] = useState(null)
 
     useEffect(() => {
-        width = document.documentElement.clientWidth;
+        const width = document.documentElement.clientWidth;
+        setWidth(width)
     }, []);
     const slidesCount = width <= 768 ? 1 : width <= 992 ? 2 : width <= 1450 ? 3 : 4
     const percent = width <= 768 ? 100 : width <= 992 ? 104.1 : width <= 1450 ? 106.3 : 108.5
