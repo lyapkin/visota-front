@@ -56,16 +56,19 @@
 }
 
 .header-main__catalog {
+    display: flex;
+}
+.header-main__catalog a {
     font-family: 'Gilroy-700';
     font-size: 14px;
     line-height: 24px;
     text-transform: uppercase;
     color: #1B1E21;
-    padding: 6px 15px;
-    background-color: #F5F5F5;
     border-radius: 3px;
+    padding: 10px 15px;
+    background-color: #F5F5F5;
 }
-.header-main__catalog:hover {
+.header-main__catalog a:hover {
     background: var(--main-gradient);
     color: #fff;
 }
@@ -217,6 +220,9 @@
 .header-mode__location img {
     padding: 8px;
 }
+.breadcrumbs-end {
+    color: #a8a8a8;
+}
 
 .header-mode__languages {
     background-color: #f5f5f5;
@@ -229,6 +235,7 @@
     border-radius: 3px;
     cursor: pointer;
 }
+
 
 .lang-current {
     background: linear-gradient(#53cfff, #32b2e4);
@@ -260,7 +267,7 @@
     .header-main__nav-list li {
         font-size: 10px;
     }
-    .header-main__catalog {
+    .header-main__catalog a {
         font-size: 10px;
     }
     .header-main__tel {
@@ -315,7 +322,7 @@
         background-color: #fff;
         z-index: 4;
         overflow: auto;
-        padding-top: 170px;
+        padding-top: 85px;
     }
     .header__mobile-nav.open .header-main__nav-list {
         display: flex;
@@ -327,15 +334,14 @@
     .header__mobile-nav.open li {
         font-size: 24px;
     }
-    .header.open .header-main-wrapper,
-    .header.open .header-tabs {
+    .header.open .header-main-wrapper {
         position: relative;
         z-index: 5;
-    }
-    .header.open .header-tabs {
         box-shadow: 0px 16px 40px rgba(27, 30, 33, 0.08);
     }
-    .header.open .header-mode {
+
+    .header.open .header-mode,
+    .header.open .header-tabs {
         display: none;
     }
 
@@ -373,7 +379,7 @@
         position: absolute;
         left: 0;
         right: 0;
-        top: 65px;
+        top: 62px;
     }
     .header-nav-container {
         width: 526px;
@@ -393,7 +399,7 @@
 
     .header-nav-container,
     .header-main__nav-list {
-        column-gap: 12px;
+        column-gap: 20px;
     }
     .header-nav-container {
         justify-content: center;
@@ -411,9 +417,7 @@
         padding-top: 0;
         padding-bottom: 14px;
     }
-    .header-main__out-projects {
-        display: none;
-    }
+    
     .header-main__tel {
         display: flex;
         column-gap: 14px;
@@ -429,7 +433,7 @@
         border: none;
     }
 
-    .header-main__catalog {
+    .header-main__catalog a {
         padding: 0 0px;
         background-color: transparent;
         line-height: 18px;
@@ -443,6 +447,11 @@
 }
 
 @media only screen and (max-width: 576px) {
+    .header-nav-container,
+    .header-main__nav-list {
+        column-gap: 25px;
+        justify-content: space-between;
+    }
     .header-main__vacancies {
         display: none;
     }

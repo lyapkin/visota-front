@@ -43,7 +43,8 @@ const ProjectsSlider = () => {
                                 <p className={styles['project-slide__location']}>{item.location}</p>
                                 <p className={styles['project-slide__description']}>{item.description}</p>
                                 {/* <span className={styles['project-slide__date']}>{item.date}</span> */}
-                                <img className={styles['project-slide__logo']} src={item.logo} />
+                                {item.logo ? <img className={styles['project-slide__logo']} src={item.logo} /> :
+                                             <span className={styles['project-slide__company-name']}>{item.company}</span>}
                                 <div className={styles['project-slide__button']}>
                                     <Button text='Подробнее об объекте' smallFont={true} />
                                 </div>
@@ -193,7 +194,7 @@ const projects = [
         description: 'Поставка строительных лесов и комплектующих, 2018-2022г.',
         // date: '15.08.2023',
         company: 'CNCEC7',
-        logo: '/images/gov-clients/cncec-logo.png',
+        logo: '/images/gov-clients/cncec.png',
         link: '#'
     },
 ]

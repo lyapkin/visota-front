@@ -39,12 +39,6 @@ const FooterCatalog = () => {
                     <Link href={"#"}>Комплектующие для опалубки</Link>
                 </li>
                 <li>
-                    <Link href={"#"}>Лесоматериал и пиломатериал</Link>
-                </li>
-                <li>
-                    <Link href={"#"}>Шпунт ларсена</Link>
-                </li>
-                <li>
                     <Link href={"#"}>Алюминиевые лестницы</Link>
                 </li>
                 <li>

@@ -1,7 +1,7 @@
 import s from "@/styles/delivery.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import MapImage from "@/../public/images/delivery/map.png";
+import MapImage from "@/../public/images/delivery-map.svg";
 import CarImage from "@/../public/images/delivery/car.png";
 
 import i1 from "@/../public/images/delivery/i1.png";

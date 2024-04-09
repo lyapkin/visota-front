@@ -30,22 +30,22 @@ const FooterAbout = () => {
                     <Link href={"#"}>Наши проекты</Link>
                 </li>
                 <li>
-                    <Link href={"#"}>Вопрос-ответ</Link>
+                    <Link href={"/faq"}>Вопрос-ответ</Link>
                 </li>
                 <li>
                     <Link href={"#"}>О нас</Link>
                 </li>
                 <li>
-                    <Link href={"#"}>Блог</Link>
+                    <Link href={"/blog"}>Блог</Link>
                 </li>
                 <li>
-                    <Link href={"#"}>Контакты</Link>
+                    <Link href={"/contacts"}>Контакты</Link>
                 </li>
                 <li>
-                    <Link href={"#"}>Партнёрам</Link>
+                    <Link href={"/partners"}>Партнёрам</Link>
                 </li>
                 <li>
-                    <Link href={"#"}>Вакансии</Link>
+                    <Link href={"/vacancies"}>Вакансии</Link>
                 </li>
             </ul>
         </div>

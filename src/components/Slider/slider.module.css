@@ -1,12 +1,15 @@
 .projects-slider-window {
     position: relative;
     width: 100%;
+    border-radius: 4px;
+    background: #f5f5f5;
 }
 
 .projects-slider-block {
     display: flex;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
+    aspect-ratio: 11/5;
     overflow: hidden;
     border-radius: var(--main-radius);
 }
@@ -21,11 +24,13 @@
     transition: translate 1000ms ease-in-out;
 }
 .project-slide__img {
+    display: flex;
     aspect-ratio: 11/5;
 }
 .project-slide__img > img {
     width: 100%;
     object-fit: cover;
+    aspect-ratio: 11/5;
 }
 
 .project-slide__info {
@@ -34,17 +39,25 @@
     left: 15px;
     background-color: #fff;
     border-radius: var(--main-radius);
-    padding: 28px 0 28px 30px;
+    padding: 28px 30px;
     max-width: 587px;
+    display: grid;
+    grid-template-columns: 60% 35%;
+    column-gap: 5%;
+    grid-template-rows: 50px 40px auto;
+    grid-template-areas: 'title company'
+                         'city company'
+                         'description button';
 }
 
 .project-slide__title {
     font-family: 'Gilroy-700';
     font-size: 18px;
     line-height: 22px;
-    max-width: 60%;
+    /* max-width: 60%; */
     padding-bottom: 6px;
     color: rgba(27, 30, 33, 1);
+    grid-area: title;
 }
 
 .project-slide__location {
@@ -53,6 +66,7 @@
     line-height: 24px;
     color: rgba(123, 137, 144, 1);
     padding-bottom: 32px;
+    grid-area: city;
 }
 
 .project-slide__description {
@@ -60,7 +74,8 @@
     font-size: 14px;
     line-height: 22px;
     color: rgba(27, 30, 33, 1);
-    max-width: 60%;
+    /* max-width: 60%; */
+    grid-area: description;
 }
 
 /* .project-slide__date {
@@ -78,15 +93,37 @@
 } */
 
 .project-slide__logo {
-    position: absolute;
+    /* position: absolute;
     top: 44px;
-    right: 79px;
+    right: 79px; */
+    grid-area: company;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+}
+.project-slide__company-name {
+    /* position: absolute;
+    top: 44px;
+    right: 79px; */
+    grid-area: company;
+    display: block;
+    margin: 20px auto;
+    font-family: 'Gilroy-700';
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #53CFFF 0%, #32B2E4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
 }
 
 .project-slide__button {
-    position: absolute;
+    /* position: absolute;
     right: 34px;
-    bottom: 41px;
+    bottom: 41px; */
+    grid-area: button;
 }
 
 .project-slider__buttons {
@@ -184,6 +221,7 @@
     width: 100%;
     object-fit: cover;
     aspect-ratio: 0.8;
+    cursor: pointer;
 }
 
 .thanks-letters-slider__buttons {
@@ -202,6 +240,20 @@
     position: absolute;
     right: 0;
     transform: translate(50%, -50%);
+}
+
+.popup-letter {
+    display: flex;
+}
+.thanks-letters__img-popup {
+    display: block;
+    height: 90vh;
+    width: auto;
+}
+.popup-letter__close {
+    align-self: flex-start;
+    position: relative;
+    left: -20px;
 }
 
 
@@ -811,6 +863,13 @@ div.product-slider__cover-wrapper-single {
         min-width: 48.5%;
     }
 
+
+    .projects-slider-window {
+        height: 520px;
+    }
+    .projects-slider-block {
+        height: 100%;
+    }
     .project-slide {
         flex-direction: column;
     }
@@ -820,17 +879,17 @@ div.product-slider__cover-wrapper-single {
         width: 100%;
         min-width: 100%;
         display: grid;
-        grid-template-areas: 'logo location location location'
+        /* grid-template-areas: 'logo location location location'
                              'logo title title title'
-                             'text text button button';
-        align-items: start;
+                             'text text button button'; */
+        /* align-items: start; */
         background-color: #F6F8F7;
         border-radius: 8px;
-        gap: 20px 10px;
-        padding: 28px 30px;
+        /* gap: 20px 10px; */
+        /* padding: 28px 30px; */
     }
     .project-slide__logo {
-        grid-area: logo;
+        /* grid-area: logo; */
         position: relative;
         top: 0; right: 0;
         padding: 16px 30px;
@@ -838,7 +897,7 @@ div.product-slider__cover-wrapper-single {
         border-radius: 8px;
     }
     .project-slide__location {
-        grid-area: location;
+        /* grid-area: location; */
         font-family: 'Gilroy-400';
         font-size: 16px;
         line-height: 29px;
@@ -846,7 +905,7 @@ div.product-slider__cover-wrapper-single {
         padding: 0;
     }
     .project-slide__title {
-        grid-area: title;
+        /* grid-area: title; */
         font-family: 'Gilroy-400';
         font-size: 16px;
         line-height: 18px;
@@ -854,7 +913,7 @@ div.product-slider__cover-wrapper-single {
         max-width: 100%;
     }
     .project-slide__description {
-        grid-area: text;
+        /* grid-area: text; */
         font-family: 'Gilroy-300';
         font-size: 16px;
         line-height: 130%;
@@ -862,9 +921,10 @@ div.product-slider__cover-wrapper-single {
         max-width: 100%;
     }
     .project-slide__button {
-        grid-area: button;
+        /* grid-area: button; */
         position: relative;
         right: 0; bottom: 0;
+        margin: auto;
     }
     .project-slider__buttons {
         top: 30%;
@@ -904,6 +964,10 @@ div.product-slider__cover-wrapper-single {
     }
     .catalog-slider__slide {
         min-width: 100%;
+    }
+
+    .projects-slider-window {
+        height: 450px;
     }
     .project-slider__buttons {
         top: -75px;
@@ -949,9 +1013,12 @@ div.product-slider__cover-wrapper-single {
         right: 38%;
     }
 
+    .projects-slider-window {
+        height: 310px;
+    }
     .project-slide__info {
         padding: 10px;
-        gap: 0 10px;
+        /* gap: 0 10px; */
     }
     .project-slide__location {
         font-size: 10px;
@@ -961,11 +1028,11 @@ div.product-slider__cover-wrapper-single {
     }
     .project-slide__description {
         font-size: 10px;
-        padding-top: 10px;
+        /* padding-top: 10px; */
     }
     .project-slide__logo {
-        width: 130px;
-        padding: 6px 17px;
+        width: 100px;
+        /* padding: 6px 17px; */
     }
     .project-slide__button {
         display: none;
