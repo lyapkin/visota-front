@@ -1,5 +1,5 @@
 import Form from '@/components/Form/Form';
-import AboutAchievements from '@/components/Home/AboutAchievements';
+import AboutAchievements from '@/components/Home/about/AboutAchievements';
 import SpecialOfferSlider from '@/components/Slider/SpecialOfferSlider';
 import GovClientsSlider from '@/components/Slider/GovClientsSlider';
 import ProjectsSlider from '@/components/Slider/ProjectsSlider';
@@ -9,6 +9,7 @@ import styles from '@/styles/home.module.css'
 import Image from 'next/image';
 import CatalogSlider from '@/components/Slider/CatalogSlider';
 import HomeFrontSlider from '@/components/Slider/HomeFrontSlider';
+import ReputationBlocks from '@/components/Home/reputation/ReputationBlocks';
 
 export default function Home() {
 	return (
@@ -129,36 +130,7 @@ export default function Home() {
 					<div className={styles['home-reputation']}>
 						<h3 className={styles['home-sections-header']}>Надежная <span>репутация</span>, проверенная временем</h3>
 						<p>Без предоплат и ожиданий</p>
-						<div className={styles['home-reputation__blocks']}>
-							<div>
-								<div className={styles['home-reputation__icon']}>
-									<img src='/images/reputation/pen-paper-icon.svg' alt='иконка'/>
-								</div>
-								<h4>Участник реестра добросовестных поставщиков с 2010 года. </h4>
-								<p>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев более менее осмысленного текста рыбы на русском языке</p>
-							</div>
-							<div>
-								<div className={styles['home-reputation__icon']}>
-									<img src='/images/reputation/bricks-icon.svg' alt='иконка'/>
-								</div>
-								<h4>Поставляли комплектующие на ведущие стройки страны</h4>
-								<p>Нам доверяют комплектацию своих строительных объектов такие компании как Газпром, Tekfen Construction, ИНТЕР РАО, Yamata, СИБУР, Renaissance construction, Велесстрой и многие другие.</p>
-							</div>
-							<div>
-								<div className={styles['home-reputation__icon']}>
-									<img src='/images/reputation/gear-icon.svg' alt='иконка'/>
-								</div>
-								<h4>Широкий ассортимент продукции и система контроля качества</h4>
-								<p>Поставляем хомуты и комплектующие для строительных лесов и опалубки на ведущие стройки страны, в их числе Амурский ГПЗ, Ямал СПГ, Тобольск Полимер, Газопровод в ЯМАО, Комплекс Арктик СПГ-2, Харампурское месторождение.</p>
-							</div>
-							<div>
-								<div className={styles['home-reputation__icon']}>
-									<img src='/images/reputation/box-icon.svg' alt='иконка'/>
-								</div>
-								<h4>3 Склада на территории РФ</h4>
-								<p>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев более менее осмысленного текста рыбы на русском языке</p>
-							</div>
-						</div>
+						<ReputationBlocks />
 					</div>
 				</div>
 			</section>

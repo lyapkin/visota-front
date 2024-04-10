@@ -1,16 +1,14 @@
+'use client'
 import React from 'react'
 
 import styles from '@/styles/home.module.css'
+import Achivement from './Achivement'
 
 const AboutAchievements = () => {
     return (
         <div className={styles['home-about__achivements']}>
             {data.map(item => (
-                <div className={styles['home-achivement']} key={item.id}>
-                    <span className={styles['home-achivement__count']}>{item.count}</span>
-                    <span className={styles['home-achivement__type']}>{item.type}</span>
-                    <span className={styles['home-achivement__text']}>{item.text}</span>
-                </div>
+                <Achivement data={item} key={item.id} />
             ))}
         </div>
     )

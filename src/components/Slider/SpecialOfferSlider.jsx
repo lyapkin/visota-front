@@ -45,49 +45,50 @@ const SpecialOfferSlider = () => {
     }
 
     return (
-        <div className={`${styles['special-offer-slider']}`}>
-            <div className={styles['special-offer-slider-window']}>
-                {promos.map(item => (
-                    <div key={item.id} className={styles['special-offer__slide']} style={{translate: `${-100 * offerIndex}%`}}>
-                        <div className={styles['special-offer__about']}>
-                            <div className={styles['special-offer-about__date']}>
-                                <img src='/svgs/calendar-icon.svg' />Действует до {(new Date(item.last_day)).toLocaleDateString('ru-RU')}
+        promos.length !== 0 && 
+            <div className={`${styles['special-offer-slider']}`}>
+                <div className={styles['special-offer-slider-window']}>
+                    {promos.map(item => (
+                        <div key={item.id} className={styles['special-offer__slide']} style={{translate: `${-100 * offerIndex}%`}}>
+                            <div className={styles['special-offer__about']}>
+                                <div className={styles['special-offer-about__date']}>
+                                    <img src='/svgs/calendar-icon.svg' />Действует до {(new Date(item.last_day)).toLocaleDateString('ru-RU')}
+                                </div>
+                                <h2 className={styles['special-offer-about__title']}>{item.title}</h2>
+                                <div className={styles['special-offer-about__text']}>{item.additional_text}</div>
                             </div>
-                            <h2 className={styles['special-offer-about__title']}>{item.title}</h2>
-                            <div className={styles['special-offer-about__text']}>{item.additional_text}</div>
+                            <div className={styles['special-offer__img']}>
+                                <img src={item.img} />
+                            </div>
+                            <div className={styles['special-offer__plus']}>
+                                {/* <p><span>Забронируйте позицию через</span> <span>наш сайт и получите:</span></p> */}
+                                <p>{item.bonus.condition}</p>
+                                <ul>
+                                    <li>{item.bonus.bonus1}</li>
+                                    {item.bonus.bonus2 && <li>{item.bonus.bonus2}</li>}
+                                    {item.bonus.bonus2 && <li>{item.bonus.bonus3}</li>}
+                                </ul>
+                            </div>
                         </div>
-                        <div className={styles['special-offer__img']}>
-                            <img src={item.img} />
-                        </div>
-                        <div className={styles['special-offer__plus']}>
-                            {/* <p><span>Забронируйте позицию через</span> <span>наш сайт и получите:</span></p> */}
-                            <p>{item.bonus.condition}</p>
-                            <ul>
-                                <li>{item.bonus.bonus1}</li>
-                                {item.bonus.bonus2 && <li>{item.bonus.bonus2}</li>}
-                                {item.bonus.bonus2 && <li>{item.bonus.bonus3}</li>}
-                            </ul>
-                        </div>
+                    ))}
+                </div>
+                <div className={styles['special-offer-about__actions']}>
+                    <Button text={'Заказать деталь'} />
+                    <div className={styles['special-offer__buttons']}>
+                        <LeftButton action={handleSlideSwitch} disabled={offerIndex <= 0}/>
+                        <RightButton action={handleSlideSwitch} disabled={offerIndex >= promos.length-1}/>
                     </div>
-                ))}
-            </div>
-            <div className={styles['special-offer-about__actions']}>
-                <Button text={'Заказать деталь'} />
-                <div className={styles['special-offer__buttons']}>
-                    <LeftButton action={handleSlideSwitch} disabled={offerIndex <= 0}/>
-                    <RightButton action={handleSlideSwitch} disabled={offerIndex >= promos.length-1}/>
+                </div>
+                <div className={styles['special-offer-slider__dots-controll-bg']}></div>
+                <div className={styles['special-offer-slider__dots-controll']}>
+                    {promos.map((item, index) => (
+                        <button key={item.id} className={`${styles['special-offer-slider__dot']} ${index == offerIndex && styles['current']}`}
+                                data-type='dot' 
+                                data-index={index}
+                                onClick={handleSlideSwitch}><span></span></button>
+                    ))}
                 </div>
             </div>
-            <div className={styles['special-offer-slider__dots-controll-bg']}></div>
-            <div className={styles['special-offer-slider__dots-controll']}>
-                {promos.map((item, index) => (
-                    <button key={item.id} className={`${styles['special-offer-slider__dot']} ${index == offerIndex && styles['current']}`}
-                            data-type='dot' 
-                            data-index={index}
-                            onClick={handleSlideSwitch}><span></span></button>
-                ))}
-            </div>
-        </div>
     )
 }
 

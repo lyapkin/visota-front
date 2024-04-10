@@ -45,9 +45,9 @@ const ProjectsSlider = () => {
                                 {/* <span className={styles['project-slide__date']}>{item.date}</span> */}
                                 {item.logo ? <img className={styles['project-slide__logo']} src={item.logo} /> :
                                              <span className={styles['project-slide__company-name']}>{item.company}</span>}
-                                <div className={styles['project-slide__button']}>
+                                {/* <div className={styles['project-slide__button']}>
                                     <Button text='Подробнее об объекте' smallFont={true} />
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     ))}

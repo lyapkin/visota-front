@@ -1038,5 +1038,7 @@ div.product-slider__cover-wrapper-single {
         display: none;
     }
 
-    
+    .gov-clients-slider__buttons {
+        top: 155px;
+    }
 }
