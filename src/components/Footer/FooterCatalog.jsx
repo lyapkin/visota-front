@@ -30,22 +30,22 @@ const FooterCatalog = () => {
             </h6>
             <ul>
                 <li>
-                    <Link href={"#"}>Комплектующие для строительных лесов</Link>
+                    <Link href={"/catalog?sub=komplektuyushie-k-stroitelnym-lesam&search=&price_min=&price_max="}>Комплектующие для строительных лесов</Link>
                 </li>
                 <li>
-                    <Link href={"#"}>Хомуты для строительных лесов</Link>
+                    <Link href={"/catalog?sub=nepovorotnyj&sub=povorotnyj&sub=homut-stykovochnyj&sub=homut-fiksiruyushij&sub=homut-balochnyj&sub=homut-k-doske&sub=bolt-t-obraznyj&sub=homut-k-lestnice"}>Хомуты</Link>
                 </li>
                 <li>
-                    <Link href={"#"}>Комплектующие для опалубки</Link>
+                    <Link href={"/catalog?sub=gajka-vaterstop&sub=zamok-klinovoj&sub=zamok-bfd-ocinkovannyj&sub=gajka-dlya-vintovoj-opory&sub=gajka-styazhnaya-trehrozhkovaya-ocinkovannaya&sub=gajka-styazhnaya-dvuhrozhkovaya-ocinkovannaya-90mm&sub=gajka-sharnirnaya&sub=vint-styazhnoj-1-m-08-m-15-m-2m&sub=gajka-malaya-barashkovayakrylchataya&sub=fiksatory-armatury"}>Комплектующие для опалубки</Link>
                 </li>
                 <li>
-                    <Link href={"#"}>Алюминиевые лестницы</Link>
+                    <Link href={"/catalog?sub=lestnicy"}>Лестницы</Link>
                 </li>
                 <li>
-                    <Link href={"#"}>Алюминиевые вышки-туры</Link>
+                    <Link href={"/catalog?sub=klinovye-lesa&sub=chashechnye-lesa&sub=homutovye-lesa"}>Строительные леса</Link>
                 </li>
                 <li>
-                    <Link href={"#"}>Гайки для опалубки</Link>
+                    <Link href={"/catalog?sub=truby-vgp"}>Трубы ВГП</Link>
                 </li>
             </ul>
         </div>

@@ -28,7 +28,7 @@ const HeaderTabs = () => {
             </div>
             {data.map(c => (
                 activeTab === c.id &&
-                    <TabsContentBlock data={c.subs} closeTab={() => setActiveTab(null)} />
+                    <TabsContentBlock data={c.subs} closeTab={() => setActiveTab(null)} key={c.id} />
             ))}
             {/* {activeTab && <TabsContentBlock tabId={activeTab} />} */}
         </div>
@@ -131,14 +131,14 @@ const data = [
             },
             {
                 id: 2,
-                slug: 'zamok-klinovoj-ocinkovannyj-27-kg',
-                name: 'Замок клиновой оцинкованный 2,7 кг',
+                slug: 'zamok-klinovoj',
+                name: 'Замок клиновой оцинкованный',
                 img: '/images/categories/zamok-klin-ocink.jpg'
             },
             {
                 id: 3,
-                slug: 'zamok-bfd-ocinkovannyj-39-kg',
-                name: 'Замок BFD оцинкованный 3,9 кг',
+                slug: 'zamok-bfd-ocinkovannyj',
+                name: 'Замок BFD оцинкованный',
                 img: '/images/categories/zamok-bfd.jpg'
             },
             {
@@ -149,8 +149,8 @@ const data = [
             },
             {
                 id: 5,
-                slug: 'gajka-styazhnaya-trehrozhkovaya-ocinkovannaya-100-mm',
-                name: 'Гайка стяжная трехрожковая оцинкованная 100 мм',
+                slug: 'gajka-styazhnaya-trehrozhkovaya-ocinkovannaya',
+                name: 'Гайка стяжная трехрожковая оцинкованная',
                 img: '/images/categories/gaika-styazh.jpg'
             },
             {

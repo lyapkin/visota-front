@@ -15,8 +15,6 @@ const CatalogContent = ({categories}) => {
     const router = useRouter()
     const searchParams = useSearchParams()
 
-    const [isFiltersOpen, setIsFiltersOpen] = useState(false)
-
     const [cart, addToCart, deleteFromCart] = useContext(CartContext)
     
 
@@ -36,6 +34,9 @@ const CatalogContent = ({categories}) => {
     })
 
     const [products, setProducts] = useState([])
+
+    
+    const [isFiltersOpen, setIsFiltersOpen] = useState(categoriesFilter.size > 0 ? false : true)
 
     const appendProducts = async () => {
         const url = new URL(process.env.API_URL + '/products/')
@@ -81,8 +82,11 @@ const CatalogContent = ({categories}) => {
 
         const data = await response.json()
         
+        console.log(data.next)
         if (data.next) {
             setIsNextPage(true)
+        } else {
+            setIsNextPage(false)
         }
         setProducts(data.results)
     }
@@ -97,7 +101,7 @@ const CatalogContent = ({categories}) => {
     }, [currentFilter])
     
     const handleCategoriesChange = (e) => {
-        if (categoriesFilter.has(e.target.value)) return
+        // if (categoriesFilter.has(e.target.value)) return
 
         setCategoriesFilter((prev) => {
             const newState = new Set()
