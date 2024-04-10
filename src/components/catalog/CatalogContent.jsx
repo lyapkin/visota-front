@@ -9,6 +9,7 @@ import Search from '@/components/Search/Search'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { CartContext } from '@/providers/CartProvider'
 import { SearchLineContext } from '@/providers/SearchLineProvider'
+import { MAX_PRICE, MIN_PRICE } from './constant'
 
 const CatalogContent = ({categories}) => {
     const router = useRouter()
@@ -17,12 +18,13 @@ const CatalogContent = ({categories}) => {
     const [isFiltersOpen, setIsFiltersOpen] = useState(false)
 
     const [cart, addToCart, deleteFromCart] = useContext(CartContext)
+    
 
     const [searchLine, setSearchLine] = useContext(SearchLineContext)
     const [categoriesFilter, setCategoriesFilter] = useState(new Set(searchParams.getAll('sub')))
     const [priceFilter, setPriceFilter] = useState({
-        min: searchParams.getAll('price_min') || '',
-        max: searchParams.getAll('price_max') || ''
+        min: searchParams.get('price_min') || '',
+        max: searchParams.get('price_max') || ''
     })
     const [page, setPage] = useState(1)
     const [isNextPage, setIsNextPage] = useState(false)
@@ -86,35 +88,51 @@ const CatalogContent = ({categories}) => {
     }
 
     useEffect(() => {
+        let url = '/catalog?'
+        const params = []
+        categoriesFilter.forEach(p => params.push('sub='+p))
+        url = url.concat(params.join('&'), '&search='+searchLine, '&price_min=' + priceFilter.min, '&price_max=' + priceFilter.max)
+        router.replace(url, {scroll: false})
         getProducts()
     }, [currentFilter])
     
     const handleCategoriesChange = (e) => {
+        if (categoriesFilter.has(e.target.value)) return
+
         setCategoriesFilter((prev) => {
-            const newState = new Set(prev)
-            if (prev.has(e.target.value)) {
-                newState.delete(e.target.value)
-            } else {
-                newState.add(e.target.value)
-            }
+            const newState = new Set()
+            newState.add(e.target.value)
+            // if (prev.has(e.target.value)) {
+            //     newState.delete(e.target.value)
+            // } else {
+            //     newState.add(e.target.value)
+            // }
             
             return newState
         })
+
+        const newSet = new Set()
+        setCurrentFilter((prev) => ({
+            ...prev,
+            categoriesFilter: newSet.add(e.target.value)
+        }))
     }
 
-    const handlePriceChange = (e) => {
-        if (e.target.value < 0) return
+    const handlePriceChange = (val, type) => {
+        if (val < 0 || val > MAX_PRICE) return
+        
         setPriceFilter(prev => {
             const newState = {...prev}
-            if (e.target.id === 'filter-price-min') {
-                newState.min = e.target.value
+            if (type === 'filter-price-min') {
+                newState.min = val
             }
-            if (e.target.id === 'filter-price-max') {
-                newState.max = e.target.value
+            if (type === 'filter-price-max') {
+                newState.max = val
             }
 
             return newState
         })
+        
     }
 
     const handleReset = () => {
@@ -131,11 +149,12 @@ const CatalogContent = ({categories}) => {
                 max: ''
             }
         })
-        router.replace(process.env.BASE_URL + '/catalog')
+        router.replace('/catalog', {scroll: false})
     }
 
     const handleApply = (e) => {
-        e.preventDefault()
+        if (e) e.preventDefault()
+        
         setCurrentFilter((prev) => ({
             ...prev,
             categoriesFilter,
@@ -147,7 +166,7 @@ const CatalogContent = ({categories}) => {
         const params = []
         categoriesFilter.forEach(p => params.push('sub='+p))
         url = url.concat(params.join('&'), '&search='+searchLine, '&price_min=' + priceFilter.min, '&price_max=' + priceFilter.max)
-        router.replace(url, scroll=false)
+        router.replace(url, {scroll: false})
     }
 
     const handleSearch = (e) => {
@@ -161,7 +180,7 @@ const CatalogContent = ({categories}) => {
         const params = []
         categoriesFilter.forEach(p => params.push('sub='+p))
         url = url.concat(params.join('&'), '&search='+searchLine, '&price_min=' + priceFilter.min, '&price_max=' + priceFilter.max)
-        router.replace(url, scroll=false)
+        router.replace(url, {scroll: false})
     }
 
     return (
@@ -252,7 +271,8 @@ const CatalogContent = ({categories}) => {
                     ))
                     }
                 </main>
-                {isNextPage && <button className={styles['catalog__show-more']} onClick={appendProducts} >Показать еще</button>}
+                {isNextPage && products.length > 0 &&
+                    <button className={styles['catalog__show-more']} onClick={appendProducts} >Показать еще</button>}
             </div>
             
         </div>

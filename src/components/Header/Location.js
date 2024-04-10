@@ -19,17 +19,17 @@ const Location = () => {
                               (i !== 0 && sections[i-1] === 'blog') ? 'Статья' : paths[s]
                 if (i === sections.length-1) {
                     return (
-                        <>
+                        <div key={s}>
                             <span>/</span>
                             <span className={styles['breadcrumbs-end']}>{value}</span>
-                        </>
+                        </div>
                     )
                 }
                 return(
-                    <>
+                    <div key={s}>
                         <span>/</span>
                         <Link href={`/${s}`}>{value}</Link>
-                    </>
+                    </div>
                 )
             })}
         </div>

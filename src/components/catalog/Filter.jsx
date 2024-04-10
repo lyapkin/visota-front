@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 
 import styles from '@/styles/catalog.module.css'
+import { MAX_PRICE, MIN_PRICE } from './constant'
 
 const Filter = ({categories, catFilter, priceFilter, reset, apply, open}) => {
     const [isCategoriesClosed, setIsCategoriesClosed] = useState(false)
@@ -16,6 +17,29 @@ const Filter = ({categories, catFilter, priceFilter, reset, apply, open}) => {
         }, {})
     )
 
+    const slideLeftPosition = `${((priceFilter.get.min || 1) / MAX_PRICE) * 100}%`
+    const slideRightPosition = `${100 - (((priceFilter.get.max || MAX_PRICE) / MAX_PRICE) * 100)}%`
+
+    const handlePriceSlide = (e) => {
+        const target = e.target
+        
+        if (target.id === 'price-range-min' && (!priceFilter.get.max || parseInt(target.value) < parseInt(priceFilter.get.max))) {
+            priceFilter.onChange(target.value, 'filter-price-min')
+        } else if (target.id === 'price-range-max' && (!priceFilter.get.min || parseInt(target.value) > parseInt(priceFilter.get.min))) {
+            priceFilter.onChange(target.value, 'filter-price-max')
+        }
+
+    }
+
+    const handlePriceInput = (e) => {
+        const target = e.target
+
+        // if (target.id === 'filter-price-min' && parseInt(target.value) >= parseInt(priceFilter.get.max)) return
+        // if (target.id === 'filter-price-max' && parseInt(target.value) <= parseInt(priceFilter.get.min)) return
+        priceFilter.onChange(target.value, target.id)
+    }
+
+    
     
 
     return (
@@ -66,20 +90,55 @@ const Filter = ({categories, catFilter, priceFilter, reset, apply, open}) => {
                 <div className={`${styles['price__content']} ${isPriceClosed && styles['closed']}`}>
                     <div className={styles['price__range']}>
                         <div className={styles['price__input']}>
-                            <input type='number' id='filter-price-min' value={priceFilter.get.min} onChange={priceFilter.onChange}/>
-                            <input type='number' id='filter-price-max' value={priceFilter.get.max} onChange={priceFilter.onChange}/>
+                            <input type='number'
+                                   id='filter-price-min'
+                                   value={priceFilter.get.min}
+                                   onChange={handlePriceInput}
+                                   onBlur={apply}/>
+                            <input type='number'
+                                   id='filter-price-max'
+                                   value={priceFilter.get.max}
+                                   onChange={handlePriceInput}
+                                   onBlur={apply} />
                         </div>
+                        <div className={styles["price__range-slider"]}>
+                            <span className={styles["price__range-selected"]}
+                                  style={{left: slideLeftPosition, right: slideRightPosition}}></span>
+                        </div>
+                        <div className={styles["price__range-input"]}>
+                            <input type="range"
+                                   id='price-range-min'
+                                   className={styles["range-input__min"]}
+                                   min={`${MIN_PRICE}`} max={`${MAX_PRICE}`}
+                                   value={priceFilter.get.min || `${MIN_PRICE}`}
+                                   step="1"
+                                   onChange={handlePriceSlide}
+                                   onMouseUp={apply}
+                                   onTouchEnd={apply} />
+                            <input type="range"
+                                   id='price-range-max'
+                                   className={styles["range-input__max"]}
+                                   min={`${MIN_PRICE}`} max={`${MAX_PRICE}`}
+                                   value={priceFilter.get.max || `${MAX_PRICE}`}
+                                   step="1"
+                                   onChange={handlePriceSlide}
+                                   onMouseUp={apply}
+                                   onTouchEnd={apply} />
+                        </div>
+                        
                     </div>
                 </div>
             </div>
-            <div className={styles['filters__apply']}>
+            {/* <div className={styles['filters__apply']}>
                 <button onClick={apply}>Применить</button>
-            </div>
+            </div> */}
             <div className={styles['filters__reset']}>
                 <button onClick={reset}>Сбросить фильтры<img src='/svgs/trash-icon.svg' alt='иконка' /></button>
             </div>
         </aside>
     )
 }
+
+
 
 export default Filter

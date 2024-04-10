@@ -205,7 +205,8 @@
     align-items: center;
 }
 
-.header-mode__location {
+.header-mode__location,
+.header-mode__location > div {
     font-family: "Gilroy-500";
     display: flex;
     align-items: center;
@@ -483,5 +484,25 @@
     }
     .header-main__partners {
         display: none;
+    }
+    .header-mode__location {
+        width: 46%;
+        column-gap: 6px;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
+    .header-mode__location > div {
+        /* display: none; */
+        column-gap: 6px;
+        /* overflow-x: hidden;
+        text-overflow: ellipsis; */
+    }
+    .header-mode__location > div > span {
+        /* overflow-x: hidden;
+        text-overflow: ellipsis; */
+    }
+    .header-mode__location > div > a {
+        /* overflow-x: hidden;
+        text-overflow: ellipsis; */
     }
 }

@@ -11,7 +11,6 @@ const ThanksSlider = () => {
     const [picIndex, setPicIndex] = useState(0)
     const [width, setWidth] = useState(null)
     const [showLetter, setShowLetter] = useState('')
-    console.log(showLetter)
 
     useEffect(() => {
         const width = document.documentElement.clientWidth;
@@ -41,7 +40,6 @@ const ThanksSlider = () => {
     }
 
     const handleShowUp = e => {
-        console.log(e.target.getAttribute('src'))
         setShowLetter(e.target.getAttribute('src'))
         document.body.classList.add('fixed')
     }
