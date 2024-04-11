@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import React from 'react'
 
 import styles from './Header.module.css'
@@ -11,7 +12,7 @@ const Location = () => {
     
     return (
         <div className={styles['header-mode__location']}>
-            <Link href='/'><img src='/svgs/home-icon.svg' /></Link>
+            <Link href='/'><Image src='/svgs/home-icon1.svg' width={32} height={32} /></Link>
             <span>/</span>
             <Link href='/'>Главная</Link>
             {sections.map((s, i) => {
