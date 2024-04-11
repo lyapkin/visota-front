@@ -164,7 +164,7 @@
 
     
     .map-section {
-        height: 758px;
+        height: auto;
     }
     .map-card {
         position: initial;
