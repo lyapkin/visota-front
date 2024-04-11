@@ -5,10 +5,11 @@ import styles from "./footer.module.css";
 import Link from "next/link";
 
 const FooterCatalog = () => {
-    let activateToggle = null;
+    const [activateToggle, setActivateToggle] = useState(null)
 
     useEffect(() => {
-        activateToggle = document.documentElement.clientWidth <= 576;
+        const activateToggle = document.documentElement.clientWidth <= 576;
+        setActivateToggle(activateToggle)
     }, []);
 
     const [isOpen, setIsOpen] = useState(activateToggle ? false : true);

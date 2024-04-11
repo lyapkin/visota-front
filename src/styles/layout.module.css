@@ -162,6 +162,10 @@
         padding-bottom: 40px;
     }
 
+    
+    .map-section {
+        height: 758px;
+    }
     .map-card {
         position: initial;
         transform: none;
