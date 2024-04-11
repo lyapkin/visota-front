@@ -120,6 +120,7 @@ const CatalogContent = ({categories}) => {
             ...prev,
             categoriesFilter: newSet.add(e.target.value)
         }))
+        setIsFiltersOpen(false)
     }
 
     const handlePriceChange = (val, type) => {
@@ -153,6 +154,7 @@ const CatalogContent = ({categories}) => {
                 max: ''
             }
         })
+        setIsFiltersOpen(false)
         router.replace('/catalog', {scroll: false})
     }
 
