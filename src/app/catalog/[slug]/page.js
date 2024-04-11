@@ -150,13 +150,13 @@ const Product = ({params}) => {
                             </div>
                             <div>
                                 <div>
-                                    Пожизненный срок службы <span>на все Комплектующие</span>
+                                    Возникли вопросы? <span>проконсультируем</span>
                                 </div>
                                 <img src={'/images/product/woman.png'} width={100} height={100} style={{objectFit: 'cover', width: '100%'}} alt='девушка'/>
                             </div>
                             <div>
                                 <div>
-                                    Пожизненный срок службы <span>на все Комплектующие</span>
+                                    Купите комплектующие <span>в офисе продаж</span>
                                 </div>
                                 <img src={'/images/product/map.png'} width={100} height={100} style={{objectFit: 'cover', width: '100%'}} alt='карта'/>
                             </div>
