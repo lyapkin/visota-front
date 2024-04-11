@@ -37,7 +37,8 @@ export default async function Blog() {
                                         <p className={s.item__text}>
                                             {content_concise}
                                         </p>
-                                        <Link href={"blog/" + slug}>
+                                        <Link href={"blog/" + slug}
+                                              className={s.item__btnWrapper}>
                                             <button className={s.item__btn}>
                                                 <p className={s.item__btn_text}>
                                                     Читать подробнее
