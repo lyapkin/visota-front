@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import styles from './Header.module.css'
 import TabsContentBlock from './TabsContentBlock'
@@ -8,6 +8,22 @@ import CartTab from './CartTab'
 
 const HeaderTabs = () => {
     const [activeTab, setActiveTab] = useState(null)
+
+    const ref = useRef(null)
+
+    useEffect(() => {
+        const handler = (e) => {
+            if (!ref.current.contains(e.target)) {
+                setActiveTab(null)
+            }
+        }
+
+        document.addEventListener('click', handler)
+
+        return () => {
+            document.removeEventListener('click', handler)
+        }
+    })
 
     const displayList = data.map(item => (
         <li key={item.id} className={activeTab === item.id ? styles['header-tabs__tab_active'] : null}>
@@ -18,9 +34,9 @@ const HeaderTabs = () => {
     ))
 
     return (
-        <div className={styles['header-tabs']}>
-            <div className={`${styles['header-tabs-flex']} container`}>
-                <ul className={styles['header-tabs__list']}>
+        <div className={styles['header-tabs']} >
+            <div className={`${styles['header-tabs-flex']} container`} >
+                <ul className={styles['header-tabs__list']} ref={ref}>
                     {displayList}
                 </ul>
                 

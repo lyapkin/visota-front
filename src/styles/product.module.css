@@ -28,7 +28,7 @@
 .product__content {
     display: grid;
     grid-template-columns: 54% 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto 1fr 1fr;
     gap: 10px 72px;
     padding-top: 29px;
 }
@@ -97,7 +97,7 @@
 }
 
 .about__prod-info {
-    padding-bottom: 60px;
+    padding-bottom: 30px;
 }
 
 .characteristics__list {
@@ -136,11 +136,102 @@
     border-bottom: 2px dotted #D4E2E7;
 }
 
+
+
 .prod-info__description {
     font-family: 'Gilroy-500';
     font-size: 14px;
     line-height: 22px;
     color: #7B8990;
+}
+
+.blog-inside {
+    padding-bottom: 90px;
+}
+
+.prod-info__description h1,
+.prod-info__description h2,
+.prod-info__description h3 {
+    font-family: 'Gilroy-700';
+    line-height: 22px;
+    text-transform: uppercase;
+    color: #1B1E21;
+    padding-top: 10px;
+}
+
+.prod-info__description h1 {
+    font-size: 18px;
+    padding-bottom: 17px;
+}
+
+.prod-info__description h2 {
+    font-size: 16px;
+    padding-bottom: 17px;
+}
+
+.prod-info__description h3 {
+    font-size: 14px;
+    padding-bottom: 17px;
+}
+
+.prod-info__description p,
+.prod-info__description li {
+    font-family: 'Gilroy-500';
+    font-size: 14px;
+    line-height: 22px;
+    color: #7B8990;
+    padding-bottom: 10px;
+}
+
+.prod-info__description ul li:before {
+    content: '-';
+    padding-right: 5px;
+    color: #7B8990;
+}
+.prod-info__description ol li {
+    list-style: decimal inside;
+}
+
+.prod-info__description img {
+    height: auto;
+    max-height: 90vh;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.prod-info__description iframe {
+    max-height: 90vh;
+
+    width: auto;
+    aspect-ratio: 8/5;
+    /* object-fit: contain; */
+}
+
+
+.prod-info__documentation-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.prod-info__documentation-list li {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+.prod-info__documentation-list li:before {
+    content: url('/svgs/doc-icon.svg');
+    display: inline-block;
+    width: 20px;
+    transform: translateY(2px);
+}
+
+.prod-info__documentation-list a {
+    font-family: 'Gilroy-600';
+    font-size: 16px;
+    line-height: 24px;
+    color: #32B2E4;
+    text-decoration: underline;
 }
 
 .about__action-order {

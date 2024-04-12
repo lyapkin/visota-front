@@ -24,10 +24,10 @@ const CatalogContent = ({categories}) => {
         min: searchParams.get('price_min') || '',
         max: searchParams.get('price_max') || ''
     })
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(parseInt(searchParams.get('page')) || 1)
     const [isNextPage, setIsNextPage] = useState(false)
 
-    const [currentFilter, setCurrentFilter] = useState({
+    const [requestFilter, setRequestFilter] = useState({
         searchLine,
         categoriesFilter,
         priceFilter
@@ -41,10 +41,10 @@ const CatalogContent = ({categories}) => {
     const appendProducts = async () => {
         const url = new URL(process.env.API_URL + '/products/')
 
-        currentFilter.categoriesFilter.forEach(p => url.searchParams.append('sub', p))
-        url.searchParams.set('search', currentFilter.searchLine)
-        url.searchParams.set('price_min', currentFilter.priceFilter.min)
-        url.searchParams.set('price_max', currentFilter.priceFilter.max)
+        requestFilter.categoriesFilter.forEach(p => url.searchParams.append('sub', p))
+        url.searchParams.set('search', requestFilter.searchLine)
+        url.searchParams.set('price_min', requestFilter.priceFilter.min)
+        url.searchParams.set('price_max', requestFilter.priceFilter.max)
         url.searchParams.set('page', page+1)
 
         const response = await fetch(url)
@@ -69,10 +69,10 @@ const CatalogContent = ({categories}) => {
     const getProducts = async () => {
         const url = new URL(process.env.API_URL + '/products/')
 
-        currentFilter.categoriesFilter.forEach(p => url.searchParams.append('sub', p))
-        url.searchParams.set('search', currentFilter.searchLine)
-        url.searchParams.set('price_min', currentFilter.priceFilter.min)
-        url.searchParams.set('price_max', currentFilter.priceFilter.max)
+        requestFilter.categoriesFilter.forEach(p => url.searchParams.append('sub', p))
+        url.searchParams.set('search', requestFilter.searchLine)
+        url.searchParams.set('price_min', requestFilter.priceFilter.min)
+        url.searchParams.set('price_max', requestFilter.priceFilter.max)
         
         const response = await fetch(url)
 
@@ -82,7 +82,6 @@ const CatalogContent = ({categories}) => {
 
         const data = await response.json()
         
-        console.log(data.next)
         if (data.next) {
             setIsNextPage(true)
         } else {
@@ -91,6 +90,11 @@ const CatalogContent = ({categories}) => {
         setProducts(data.results)
     }
 
+
+    useEffect(() => {
+        handleApply()
+    },[categoriesFilter])
+
     useEffect(() => {
         let url = '/catalog?'
         const params = []
@@ -98,29 +102,27 @@ const CatalogContent = ({categories}) => {
         url = url.concat(params.join('&'), '&search='+searchLine, '&price_min=' + priceFilter.min, '&price_max=' + priceFilter.max)
         router.replace(url, {scroll: false})
         getProducts()
-    }, [currentFilter])
+    }, [requestFilter])
+
+    useEffect(() => {
+        setCategoriesFilter(new Set(searchParams.getAll('sub') || []))
+        setSearchLine(searchParams.get('search') || '')
+        setPriceFilter({
+            min: searchParams.get('price_min') || '',
+            max: searchParams.get('price_max') || ''
+        })
+    }, [searchParams])
+
+    
     
     const handleCategoriesChange = (e) => {
-        // if (categoriesFilter.has(e.target.value)) return
-
         setCategoriesFilter((prev) => {
             const newState = new Set()
             newState.add(e.target.value)
-            // if (prev.has(e.target.value)) {
-            //     newState.delete(e.target.value)
-            // } else {
-            //     newState.add(e.target.value)
-            // }
             
             return newState
         })
-
-        const newSet = new Set()
-        setCurrentFilter((prev) => ({
-            ...prev,
-            categoriesFilter: newSet.add(e.target.value)
-        }))
-        setIsFiltersOpen(false)
+        setSearchLine('')
     }
 
     const handlePriceChange = (val, type) => {
@@ -146,7 +148,7 @@ const CatalogContent = ({categories}) => {
             min: '',
             max: ''
         })
-        setCurrentFilter({
+        setRequestFilter({
             searchLine: '',
             categoriesFilter: new Set(),
             priceFilter: {
@@ -155,38 +157,29 @@ const CatalogContent = ({categories}) => {
             }
         })
         setIsFiltersOpen(false)
+        setPage(1)
         router.replace('/catalog', {scroll: false})
     }
 
-    const handleApply = (e) => {
-        if (e) e.preventDefault()
-        
-        setCurrentFilter((prev) => ({
+    const handleApply = () => {
+        setRequestFilter((prev) => ({
             ...prev,
             categoriesFilter,
-            priceFilter
+            priceFilter,
+            searchLine
         }))
         setIsFiltersOpen(false)
-
-        let url = '/catalog?'
-        const params = []
-        categoriesFilter.forEach(p => params.push('sub='+p))
-        url = url.concat(params.join('&'), '&search='+searchLine, '&price_min=' + priceFilter.min, '&price_max=' + priceFilter.max)
-        router.replace(url, {scroll: false})
+        setPage(1)
     }
 
     const handleSearch = (e) => {
         e.preventDefault()
-        setCurrentFilter((prev) => ({
-            ...prev,
-            searchLine
-        }))
 
-        let url = '/catalog?'
-        const params = []
-        categoriesFilter.forEach(p => params.push('sub='+p))
-        url = url.concat(params.join('&'), '&search='+searchLine, '&price_min=' + priceFilter.min, '&price_max=' + priceFilter.max)
-        router.replace(url, {scroll: false})
+        setCategoriesFilter(new Set())
+        setPriceFilter({
+            min: '',
+            max: ''
+        })
     }
 
     return (

@@ -27,6 +27,7 @@ const Product = ({params}) => {
             throw new Error(response.status + ' запрос отдельного продукта не удался')
         }
         const data = await response.json()
+        console.log(data)
         setProduct(data)
     }
 
@@ -41,7 +42,7 @@ const Product = ({params}) => {
     useEffect(() => {
         getProduct()
     }, [])
-
+    
     return (
         <div className={`${styles['product']} first-screen`}>
             <div className='container'>
@@ -102,10 +103,23 @@ const Product = ({params}) => {
                                     
                                 </ul>
                             </div>
-                            <div className={styles['prod-info__description']} hidden={aboutBlock !== 'desc'}>
-                                <p>{product.description}</p>
+                            <div className={styles['prod-info__description']} hidden={aboutBlock !== 'desc'}
+                                 dangerouslySetInnerHTML={{__html: product.description}}>
+                                {/* {console.log(product.description)} */}
+                                {/* <p>{product.description}</p> */}
                             </div>
-                            <div className={styles['prod-info__documentation']} hidden={aboutBlock !== 'doc'}></div>
+                            <div className={styles['prod-info__documentation']} hidden={aboutBlock !== 'doc'}>
+                                {console.log(product.doc_urls.length > 0)}
+                                {product?.doc_urls.length > 0 &&
+                                    <ul className={styles['prod-info__documentation-list']}>
+                                       {product.doc_urls.map(d => (
+                                            <li key={d.id}>
+                                                <a href={d.doc_url} target="_blank">{d.file_name}</a>
+                                            </li>
+                                       ))}
+                                    </ul>
+                                }
+                            </div>
                         </div>
                         <div className={styles['about__action-order']}>
                             <div className={styles['action-order__form']}>

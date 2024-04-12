@@ -46,6 +46,8 @@ const paths = {
     faq: 'FAQ',
     partners: 'Партнерам',
     vacancies: 'Вакансии',
+    about: "О компании",
+    contacts: "Контакты",
 }
 
 export default Location

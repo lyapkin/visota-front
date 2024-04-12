@@ -18,9 +18,9 @@ const HeaderMain = ({mobileOpen, setMobileOpen}) => {
 
                     </button>
                         <div className={styles["header-main__logo"]}>
-                            <a href="/">
+                            <Link href="/">
                                 <img src="/svgs/logo.svg" alt="логотип" />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <nav className={styles["header-main__nav"]}>

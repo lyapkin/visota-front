@@ -12,7 +12,7 @@ const Filter = ({categories, catFilter, priceFilter, reset, apply, open}) => {
             const obj = {
                 ...state
             }
-            obj[cat.id] = false
+            obj[cat.id] = cat.subcategories.find(s => catFilter.get.has(s.slug)) ? false : true
             return obj
         }, {})
     )
