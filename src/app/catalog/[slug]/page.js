@@ -17,7 +17,7 @@ const Product = ({params}) => {
     const [searchLine, setSearchLine] = useContext(SearchLineContext)
     const [aboutBlock, setAboutBlock] = useState('char')
 
-    const [cart, addToCart, deleteFromCart] = useContext(CartContext)
+    const [cart, addToCart] = useContext(CartContext)
 
     const [product, setProduct] = useState(null)
 

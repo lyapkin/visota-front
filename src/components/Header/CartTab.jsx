@@ -1,30 +1,16 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import styles from './Header.module.css'
 import Link from 'next/link'
+import { CartContext } from '@/providers/CartProvider'
 
 const CartTab = () => {
-    const [goodsCount, setGoodsCount] = useState('')
-    
-
-    useEffect(() => {
-        const changeGoodsCountState = () => {
-            const goods = JSON.parse(localStorage.getItem('cart'))
-            const goodsCount = goods !== null ? Object.keys(goods).length : ''
-            setGoodsCount(goodsCount)
-        }
-        
-        changeGoodsCountState()
-
-        window.addEventListener('cartChange', changeGoodsCountState)
-
-        return () => window.removeEventListener('cartChange', changeGoodsCountState)
-    }, [])
+    const [storageCart] = useContext(CartContext)
 
     return (
         <div className={styles['header-tabs__cart']}>
-            <Link href='/cart' value={goodsCount || ''}><img src='/svgs/cart.svg' alt='иконка'/></Link>
+            <Link href='/cart' value={Object.keys(storageCart).length || ''}><img src='/svgs/cart.svg' alt='иконка'/></Link>
         </div>
     )
 }

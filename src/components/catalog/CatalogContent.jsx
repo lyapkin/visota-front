@@ -15,7 +15,7 @@ const CatalogContent = ({categories}) => {
     const router = useRouter()
     const searchParams = useSearchParams()
 
-    const [cart, addToCart, deleteFromCart] = useContext(CartContext)
+    const [cart, addToCart] = useContext(CartContext)
     
 
     const [searchLine, setSearchLine] = useContext(SearchLineContext)

@@ -15,17 +15,11 @@ import { CartContext } from '@/providers/CartProvider'
 const Cart = () => {
     const [order, dispatch] = useReducer(cartReducer, cartInitState)
     const [cart, setCart] = useState([])
-    const [count, setCount] = useState({})
-    const [storageCart, _, deleteFromStorageCart] = useContext(CartContext)
+    const [storageCart, _, deleteFromStorageCart, changeCountStorageCart] = useContext(CartContext)
+    const [count, setCount] = useState(storageCart)
+    
 
-    const [discount, total] = cart.reduce((res, p) => {
-        const arr = [...res]
-        arr[0] += (p.actual_price * count[p.id]) - (p.current_price * count[p.id])
-        arr[1] += (p.current_price * count[p.id])
-        return arr
-    }, [0, 0])
-
-    const getCart = async (ids, goods) => {
+    const getCart = async (ids) => {
         const url = new URL(`${process.env.API_URL}/products/cart`)
     
         ids.keys().forEach(id => url.searchParams.append('pk', id))
@@ -34,10 +28,10 @@ const Cart = () => {
             throw new Error(response.status + ' запрос товаров из корзины не удался')
         }
         const data = await response.json()
-        console.log(data)
-        let cart = data.map(p => ({...p, count: ids.get(p.id+'')}))
+        
+        let cart = data.map(p => ({...p, storageCart: ids.get(p.id+'')}))
+        
         setCart(cart)
-        setCount(goods)
     }
 
     useEffect(() => {
@@ -45,56 +39,46 @@ const Cart = () => {
 
         if (goodsCart.size < 1) return
 
-        getCart(goodsCart, storageCart)
+        getCart(goodsCart)
     }, [])
 
-    const deleteFromCart = id => {
-        deleteFromStorageCart(id)
-
-        const newCount = {...count}
-        delete newCount[id]
-        const newCart = cart.filter(p => p.id !== id)
-
-        setCount(newCount)
-        setCart(newCart)
-    }
+    useEffect(() => {
+        setCount(storageCart)
+        setCart(cart.filter(p => p.id in storageCart))
+    }, [storageCart])
 
     const handleInputChange = (e, id) => {
-        setCount(prev => ({...prev, [id]: e.target.value}))
+        setCount(prev => ({...prev, [id]: parseInt(e.target.value)}))
     }
 
     const handleInputBlur = (e, id) => {
-        const newVal = Number(e.target.value < 1 ? 1 : e.target.value)
-        let goods = JSON.parse(localStorage.getItem('cart'))
-        localStorage.removeItem('cart')
-        if (goods === null) {
-            goods = {}
+        if (count[id] < 1) {
+            setCount(storageCart)
+        } else {
+            changeCountStorageCart(count)
         }
-        goods[id] = newVal
-        localStorage.setItem('cart', JSON.stringify(goods))
-        setCount(prev => ({...prev, [id]: newVal}))
     }
 
     const handleInputChangeByClick = (type, id) => {
-        let newVal
+        let newCart = {...storageCart}
         if (type === 'less') {
-            newVal = count[id] <= 1 ? count[id] : count[id]-1
+            newCart[id] = storageCart[id] <= 1 ? storageCart[id] : storageCart[id]-1
         } else if (type === 'more') {
-            newVal = count[id]+1
+            newCart[id] = storageCart[id]+1
         } else {
-            newVal = count[id]
+            return
         }
 
-        setCount(prev => ({...prev, [id]: newVal}))
-
-        let goods = JSON.parse(localStorage.getItem('cart'))
-        localStorage.removeItem('cart')
-        if (goods === null) {
-            goods = {}
-        }
-        goods[id] = newVal
-        localStorage.setItem('cart', JSON.stringify(goods))
+        changeCountStorageCart(newCart)
     }
+
+
+    const [discount, total] = cart.reduce((res, p) => {
+        const arr = [...res]
+        arr[0] += (p.actual_price * storageCart[p.id]) - (p.current_price * storageCart[p.id])
+        arr[1] += (p.current_price * storageCart[p.id])
+        return arr
+    }, [0, 0])
 
     return (
         <div className={`${styles['cart']} first-screen`}>
@@ -143,7 +127,8 @@ const Cart = () => {
                                                     <button onClick={() => handleInputChangeByClick('less', p.id)}>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="8" height="2" fill="none"><path fill="black" d="M7.5 1.61h-7v-1h7v1Z"/></svg>
                                                     </button>
-                                                    <input type='number' className={styles['controls__count-input']} value={count[p.id]}
+                                                    <input type='number' className={styles['controls__count-input']}
+                                                        value={count[p.id]}
                                                         onChange={(e) => handleInputChange(e, p.id)}
                                                         onBlur={(e) => handleInputBlur(e, p.id)}/>
                                                     <button onClick={() => handleInputChangeByClick('more', p.id)}>
@@ -151,7 +136,7 @@ const Cart = () => {
                                                     </button>
                                                 </div>
                                                 <div className={styles['controls__delete']}>
-                                                    <button onClick={() => deleteFromCart(p.id)}>Очистить <Image src='/svgs/trash-icon.svg' width={36} height={36} alt='иконка'/></button>
+                                                    <button onClick={() => deleteFromStorageCart(p.id)}>Очистить <Image src='/svgs/trash-icon.svg' width={36} height={36} alt='иконка'/></button>
                                                 </div>
                                             </div>
                                         </div>
