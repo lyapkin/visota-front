@@ -44,7 +44,7 @@
     display: grid;
     grid-template-columns: 60% 35%;
     column-gap: 5%;
-    grid-template-rows: 50px 40px auto;
+    grid-template-rows: auto 40px auto;
     grid-template-areas: 'title company'
                          'city company'
                          'description button';
@@ -723,8 +723,8 @@ div.product-slider__cover-wrapper-single {
 
 .home-front-slider__window {
     position: absolute;
-    width: 500px;
-    height: 500px;
+    width: 45%;
+    /* height: 500px; */
     top: 0;
     right: 100px;
     z-index: 1;
@@ -773,8 +773,8 @@ div.product-slider__cover-wrapper-single {
 
 @media only screen and (max-width: 1450px) {
     .home-front-slider__window {
-        width: 400px;
-        height: 400px;
+        /* width: 400px;
+        height: 400px; */
         right: 0; top: 60px;
     }
 
@@ -852,8 +852,11 @@ div.product-slider__cover-wrapper-single {
         display: none;
     }
     .home-front-slider__window {
-        width: 300px;
-        height: 300px;
+        /* width: 300px;
+        height: 300px; */
+        background-image: url('/images/bg/home-homut-cloud-bg.png');
+        background-repeat: no-repeat;
+        background-size: contain;
         right: -10%; top: 20%;
     }
     .catalog-slider__window {
@@ -955,8 +958,8 @@ div.product-slider__cover-wrapper-single {
 
 @media only screen and (max-width: 768px) {
     .home-front-slider__window {
-        width: 200px;
-        height: 200px;
+        /* width: 200px;
+        height: 200px; */
         right: -10%; top: 15%;
     }
     .catalog-slider__window {

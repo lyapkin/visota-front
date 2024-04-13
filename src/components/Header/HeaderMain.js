@@ -29,17 +29,21 @@ const HeaderMain = ({mobileOpen, setMobileOpen}) => {
                             <div className={styles["header-main__catalog"]}>
                                 <Link href="/catalog">Каталог товаров</Link>
                             </div>
+                            <div className={styles["header-main__cart"]}>
+                                <CartTab />
+                            </div>
                         </div>
                     </nav>
                     
                     <div className={styles["header-main__tel"]}>
+                        <a href='email:visota1300@mail.ru'>
+                            <img src='/svgs/email-icon.svg' alt="иконка" />
+                            visota1300@mail.ru
+                        </a>
                         <a href="tel:+78007005413">
                             <img src="/svgs/phone-pic.svg" alt="иконка" />
                             8(800)700-54-13
                         </a>
-                        <div className={styles["header-main__cart"]}>
-                            <CartTab />
-                        </div>
                     </div>
                 </div>
             </div>

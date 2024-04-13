@@ -18,22 +18,20 @@ export default function Home() {
 				<div className='container' style={{position: 'relative'}}>
 						<h1 className={styles['home-main__header']}><span>Поставка комлектующих</span> для строительных объектов</h1>
 						<p className={styles['home-main__promise']}>Обеспечим поставку наших товаров в кратчайшие сроки <span>со склада в Москве</span>, или <span>привезем из Китая</span></p>
-						<div className={styles['home-main__bottom']}>
-							<div className={styles['home-main__actions']}>
-								<Button text={'Получить коммерческое предложение'} />
-							</div>
-							<div className={`${styles['home-main__info']} ${styles['info']}`}>
-								<div className={styles['info__item']}>
-									<p>Более <span>500 тыс единиц тваров</span> на складе</p>
-									<div className={styles['info__img']}>
-										<img src="/images/home-main-info1.png" alt=""/>
-									</div>
+						<div className={styles['home-main__actions']}>
+							<Button text={'Получить коммерческое предложение'} />
+						</div>
+						<div className={`${styles['home-main__info']} ${styles['info']}`}>
+							<div className={styles['info__item']}>
+								<p>Более <span>500 тыс единиц тваров</span> на складе</p>
+								<div className={styles['info__img']}>
+									<img src="/images/home-main-info1.png" alt=""/>
 								</div>
-								<div className={styles['info__item']}>
-									<p>Собственное <span>производство в Китае</span></p>
-									<div className={styles['info__img']}>
-										<img src="/images/home-main-info2.png" alt="city"/>
-									</div>
+							</div>
+							<div className={styles['info__item']}>
+								<p>Собственное <span>производство в Китае</span></p>
+								<div className={styles['info__img']}>
+									<img src="/images/home-main-info2.png" alt="city"/>
 								</div>
 							</div>
 						</div>
@@ -74,7 +72,7 @@ export default function Home() {
 							<div className={styles['home-advantages-block-text']}>
 								<h5><span>Широкий ассортимент</span> продукции и система контроля качества</h5>
 								<p>
-									Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев более менее осмысленного текста рыбы на русском языке, а начинающему
+								Благодаря тесным контактам с другими производителями оборудования на территории России предлагаем клиентам наилучшие решения их задач при минимальных затратах.
 								</p>
 							</div>
 							<div className={styles['home-advantages-block-img']}>
@@ -129,7 +127,6 @@ export default function Home() {
 					</div>
 					<div className={styles['home-reputation']}>
 						<h3 className={styles['home-sections-header']}>Надежная <span>репутация</span>, проверенная временем</h3>
-						<p>Без предоплат и ожиданий</p>
 						<ReputationBlocks />
 					</div>
 				</div>

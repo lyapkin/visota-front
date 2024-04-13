@@ -48,6 +48,11 @@
     font-family: "Gilroy-700";
 }
 
+.home-main__actions {
+    padding-top: 30px;
+    padding-bottom: 222px;
+}
+
 .home-main__bottom {
     position: relative;
     padding-top: 30px;
@@ -57,6 +62,9 @@
 }
 
 .home-main__info {
+    position: absolute;
+    right: 0;
+    bottom: 0;
     display: flex;
     column-gap: 16px;
     z-index: 2;
@@ -157,7 +165,7 @@
 }
 .home-advantages-block-4 .home-advantages-block-img {
     bottom: 28px;
-    right: -80px;
+    right: 10px;
 }
 .home-advantages-block-4 img {
     height: 280px;
@@ -331,13 +339,13 @@
 }
 
 .home-reputation__blocks h4 {
+    height: 98px;
     font-family: 'Gilroy-700';
     font-size: 16px;
     line-height: 26px;
     color: rgba(27, 30, 33, 1);
     text-transform: uppercase;
     padding-top: 10px;
-    padding-bottom: 16px;
 }
 
 .home-reputation__blocks p {
@@ -448,7 +456,7 @@ span.home-about__header-blue {
 
 .home-about__achivements {
     display: flex;
-    column-gap: 3%;
+    column-gap: 2%;
     padding-top: 51px;
 }
 
@@ -456,6 +464,7 @@ span.home-about__header-blue {
     background: linear-gradient(180deg, #FDFEFF 0%, #EDF7FB 100%);
     padding: 37px 32px 31px 40px;
     border-radius: var(--main-radius);
+    width: 32%;
 }
 
 .home-achivement span {
@@ -464,7 +473,7 @@ span.home-about__header-blue {
 
 .home-achivement__count {
     font-family: 'Gilroy-700';
-    font-size: 64px;
+    font-size: 46px;
     line-height: 64px;
     color: rgba(39, 169, 220, 1);
 }
@@ -498,6 +507,10 @@ span.home-about__header-blue {
 
 
 @media only screen and (max-width: 1450px) {
+    .home-advantages-block-4 img {
+        width: 180px;
+    }
+
     .home-delivery__delivery-map {
         width: 50%;
     }
@@ -505,8 +518,11 @@ span.home-about__header-blue {
         flex-wrap: wrap;
         column-gap: 2%;
     }
+    .home-reputation__blocks h4 {
+        height: 70px;
+    }
     .home-reputation__blocks > div {
-        width: 32%;
+        width: 44%;
     }
 
     .home-delivery {
@@ -516,6 +532,12 @@ span.home-about__header-blue {
     .home-about {
         background-position: left top 70%, center, center;
         background-size: 90%, cover, cover;
+    }
+    .home-achivement__count {
+        font-size: 42px;
+    }
+    .home-achivement__type {
+        font-size: 14px;
     }
 
     .home-about__description {
@@ -542,9 +564,12 @@ span.home-about__header-blue {
     .home-main__promise {
         max-width: 40%;
     }
-    .home-main__bottom {
-        flex-direction: column;
-        gap: 23px
+    
+    .home-main__actions {
+        width: 47%;
+    }
+    .home-main__actions button {
+        font-size: 14px;
     }
 
     .info__item {
@@ -574,9 +599,12 @@ span.home-about__header-blue {
         right: -10%;
     }
     .home-advantages-block-4 .home-advantages-block-img {
-        top: 0;
-        right: -15%;
-        width: 70%;
+        top: 20%;
+        /* right: -15%; */
+        /* width: 70%; */
+    }
+    .home-advantages-block-4 img {
+        width: 150px;
     }
     .home-advantages {
         padding-top: 66px;
@@ -599,7 +627,10 @@ span.home-about__header-blue {
         padding: 30px 32px 30px 20px;
     }
     .home-achivement__count {
-        font-size: 44px;
+        font-size: 36px;
+    }
+    .home-achivement__type {
+        font-size: 12px;
     }
     .home-special-offer {
         display: none;
@@ -607,6 +638,17 @@ span.home-about__header-blue {
 }
 
 @media only screen and (max-width: 992px) {
+    .home-main__info {
+        position: initial;
+    }
+    .home-main__actions {
+        width: 60%;
+        padding-bottom: 60px;
+    }
+    .home-main__actions button {
+        font-size: 16px;
+    }
+
     .home-advantages-block-text p {
         width: 270px;
     }
@@ -614,8 +656,11 @@ span.home-about__header-blue {
         top: 10%;
     }
     .home-advantages-block-4 .home-advantages-block-img {
-        top: -15%;
-        right: -11%;
+        top: -10%;
+        right: 10px;
+    }
+    .home-advantages-block-4 img {
+        width: 110px;
     }
 
     .home-delivery__contact {
@@ -625,6 +670,10 @@ span.home-about__header-blue {
     .home-delivery {
         background-position: right top 20%, center top;
         background-size: 40%, auto, 100%;
+    }
+
+    .home-reputation__blocks h4 {
+        height: 90px;
     }
 
     .home-about {
@@ -638,6 +687,12 @@ span.home-about__header-blue {
     }
     .home-achivement {
         width: 49%;
+    }
+    .home-achivement__count {
+        font-size: 42px;
+    }
+    .home-achivement__type {
+        font-size: 16px;
     }
 
     .home-about__video {
@@ -657,7 +712,7 @@ span.home-about__header-blue {
         font-size: 18px;
         min-width: 50%;
     }
-    .home-main__bottom {
+    .home-main__actions {
         width: 100%;
     }
     .home-main__info {
@@ -667,6 +722,14 @@ span.home-about__header-blue {
     .info__item {
         max-width: 48%;
         width: 48%;
+    }
+
+    .home-advantages-block-4 .home-advantages-block-img {
+        top: 0;
+        right: 10px;
+    }
+    .home-advantages-block-4 img {
+        width: 180px;
     }
     .home-projects .home-sections-header {
         padding-bottom: 80px;
@@ -681,7 +744,10 @@ span.home-about__header-blue {
         background-position: right top 19%, center top;
         background-size: 90%, auto, 100%;
     }
-    
+    .home-reputation__blocks h4 {
+        height: fit-content;
+        padding-bottom: 6px;
+    }
     .home-reputation__blocks > div {
         width: 100%;
     }
@@ -689,6 +755,12 @@ span.home-about__header-blue {
     .home-about {
         background-position: left top 570px, center, center;
         background-size: 90%, cover, cover;
+    }
+    .home-achivement__count {
+        font-size: 42px;
+    }
+    .home-achivement__type {
+        font-size: 14px;
     }
 }
 
@@ -698,14 +770,26 @@ span.home-about__header-blue {
         line-height: 135%;
     }
 
+    
     .home-main__promise {
         font-size: 16px;
         line-height: 24px;
+    }
+    .home-main__actions button {
+        font-size: 12px;
     }
     .info__item p {
         font-size: 12px;
         line-height: 18px;
         padding: 10px 18px;
+    }
+
+    .home-advantages-block-4 .home-advantages-block-img {
+        top: -50px;
+        right: 20px;
+    }
+    .home-advantages-block-4 img {
+        width: 100px;
     }
 
     .home-sections-header {
@@ -729,10 +813,10 @@ span.home-about__header-blue {
         padding: 20px 13px;
     }
     .home-achivement__count {
-        font-size: 30px;
+        font-size: 28px;
     }
     .home-achivement__type {
-        font-size: 14px;
+        font-size: 9px;
         padding-top: 4px;
         padding-bottom: 4px;
     }
