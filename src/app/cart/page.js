@@ -109,7 +109,7 @@ const Cart = () => {
                                     cart.map(p => (
                                         <div key={p.id} className={styles['cart__card']}>
                                             <Link href={`/catalog/${p.slug}`} className={styles['card__cover']}>
-                                                <img src={process.env.BACK_URL + p.img_urls[0].img_url} />
+                                                <img src={p.img_urls[0].img_url} />
                                             </Link>
                                             <div className={styles['card__product-info']}>
                                                 <h3 className={styles['product-info__name']}>{p.name}</h3>
