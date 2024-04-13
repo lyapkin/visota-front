@@ -35,8 +35,9 @@ const CatalogContent = ({categories}) => {
 
     const [products, setProducts] = useState([])
 
+
+    const [isFiltersOpen, setIsFiltersOpen] = useState(searchParams.getAll('sub').length > 0 ? false : true)
     
-    const [isFiltersOpen, setIsFiltersOpen] = useState(categoriesFilter.size > 0 ? false : true)
 
     const appendProducts = async () => {
         const url = new URL(process.env.API_URL + '/products/')
@@ -92,10 +93,12 @@ const CatalogContent = ({categories}) => {
 
 
     useEffect(() => {
+        console.log('1')
         handleApply()
     },[categoriesFilter])
 
     useEffect(() => {
+        console.log('2')
         let url = '/catalog?'
         const params = []
         categoriesFilter.forEach(p => params.push('sub='+p))
@@ -105,6 +108,7 @@ const CatalogContent = ({categories}) => {
     }, [requestFilter])
 
     useEffect(() => {
+        console.log('3')
         setCategoriesFilter(new Set(searchParams.getAll('sub') || []))
         setSearchLine(searchParams.get('search') || '')
         setPriceFilter({

@@ -33,9 +33,6 @@ const Filter = ({categories, catFilter, priceFilter, reset, apply, open}) => {
 
     const handlePriceInput = (e) => {
         const target = e.target
-
-        // if (target.id === 'filter-price-min' && parseInt(target.value) >= parseInt(priceFilter.get.max)) return
-        // if (target.id === 'filter-price-max' && parseInt(target.value) <= parseInt(priceFilter.get.min)) return
         priceFilter.onChange(target.value, target.id)
     }
 

@@ -121,7 +121,7 @@ const Product = ({params}) => {
                                 }
                             </div>
                         </div>
-                        <div className={styles['about__action-order']}>
+                        {/* <div className={styles['about__action-order']}>
                             <div className={styles['action-order__form']}>
                                 <div className={styles['action-order__input']}>
                                     <label>
@@ -132,7 +132,7 @@ const Product = ({params}) => {
                                     <button>Оформить заказ</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         <div className={styles['about__cart']}>
                             <div className={styles['about__price']}>
                                 <div className={styles['price__current']}>{product.current_price && (product.current_price + ' ₽')}</div>

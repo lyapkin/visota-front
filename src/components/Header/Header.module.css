@@ -491,7 +491,11 @@
     .header-main__cart img {
         width: 25px;
         height: 25px;
-        
+    }
+    .header-tabs__cart a:after {
+        line-height: 15px;
+        padding: 0px 4px;
+        transform: translate(15px, -8px);
     }
 
     .header-main__catalog a {
