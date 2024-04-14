@@ -7,11 +7,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import ProductSlider from '@/components/Slider/ProductSlider'
 import { CartContext } from '@/providers/CartProvider'
+import { LocationNameContext } from '@/providers/LocationNameProvider'
 
 const Product = ({params}) => {
     const [aboutBlock, setAboutBlock] = useState('char')
 
     const [cart, addToCart] = useContext(CartContext)
+    const [_, setLocationName] = useContext(LocationNameContext)
 
     const [product, setProduct] = useState(null)
 
@@ -21,12 +23,20 @@ const Product = ({params}) => {
             throw new Error(response.status + ' запрос отдельного продукта не удался')
         }
         const data = await response.json()
-        console.log(data)
+        setLocationName(prev => ({...prev, product: data.name}))
         setProduct(data)
     }
 
     useEffect(() => {
         getProduct()
+
+        return () => {
+            setLocationName(prev => {
+                const newState = {...prev}
+                delete newState.product
+                return newState
+            })
+        }
     }, [])
     
     return (
@@ -93,7 +103,6 @@ const Product = ({params}) => {
                                 {/* <p>{product.description}</p> */}
                             </div>
                             <div className={styles['prod-info__documentation']} hidden={aboutBlock !== 'doc'}>
-                                {console.log(product.doc_urls.length > 0)}
                                 {product?.doc_urls.length > 0 &&
                                     <ul className={styles['prod-info__documentation-list']}>
                                        {product.doc_urls.map(d => (

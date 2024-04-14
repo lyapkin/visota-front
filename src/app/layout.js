@@ -6,6 +6,7 @@ import Footer from "@/components/Footer/Footer";
 import styles from '@/styles/layout.module.css'
 import Form from "@/components/Form/Form";
 import CartProvider from "@/providers/CartProvider";
+import LocationNameProvider from "@/providers/LocationNameProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="ru">
 			<body className={inter.className}>
+				<LocationNameProvider>
 				<CartProvider >
 					<Header />
 					{children}
@@ -87,6 +89,7 @@ export default function RootLayout({ children }) {
 					</section>
 					<Footer />
 				</CartProvider>
+				</LocationNameProvider>
 			</body>
 		</html>
 	);

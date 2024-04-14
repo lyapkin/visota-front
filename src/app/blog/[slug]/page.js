@@ -1,6 +1,8 @@
+import PassBreadcrumbs from "@/components/Blog/PassBreadcrumbs";
 import BlogService from "@/services/BlogService";
 
 import styles from '@/styles/blog.module.css'
+import { Suspense } from "react";
 
 export default async function BlogPost({ params }) {
     const content = await BlogService.getArticleContent(params.slug);
@@ -21,6 +23,9 @@ export default async function BlogPost({ params }) {
                     </>
                 )}
             </div>
+            <Suspense fallback={<></>}>
+                <PassBreadcrumbs title={content.title} />
+            </Suspense>
         </div>
     );
 }
