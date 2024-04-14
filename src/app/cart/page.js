@@ -6,7 +6,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Button from '@/components/UI/Buttons/Button'
 import cartReducer, { cartActions, cartInitState } from '@/reducers/cartReducer'
-// import deleteFromStorageCart from '@/utils/deleteFromStorageCart'
 import EmptyCart from '@/components/cart/EmptyCart'
 import { CartContext } from '@/providers/CartProvider'
 

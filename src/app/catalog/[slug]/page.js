@@ -6,15 +6,9 @@ import styles from '@/styles/product.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import ProductSlider from '@/components/Slider/ProductSlider'
-import addToCart from '@/utils/addToStorageCart'
 import { CartContext } from '@/providers/CartProvider'
-import { SearchLineContext } from '@/providers/SearchLineProvider'
-import { useRouter } from 'next/navigation'
 
 const Product = ({params}) => {
-    const router = useRouter()
-
-    const [searchLine, setSearchLine] = useContext(SearchLineContext)
     const [aboutBlock, setAboutBlock] = useState('char')
 
     const [cart, addToCart] = useContext(CartContext)
@@ -31,14 +25,6 @@ const Product = ({params}) => {
         setProduct(data)
     }
 
-    const handleSearch = (e) => {
-        e.preventDefault()
-
-        const url = '/catalog?' + 'search=' + searchLine
-        
-        router.push(url)
-    }
-
     useEffect(() => {
         getProduct()
     }, [])
@@ -47,9 +33,7 @@ const Product = ({params}) => {
         <div className={`${styles['product']} first-screen`}>
             <div className='container'>
                 <aside className={styles['product__head']}>
-                    <Search searchLine={{get: searchLine,
-                                        onChange: setSearchLine}}
-                            submit={handleSearch}/>
+                    <Search />
                     <Link href='/catalog' className={styles['product__catalog-button']}>
                         <Image src={'/svgs/horizontal-bars-icon.svg'} width={18} height={16}/>
                         Каталог комплектующих

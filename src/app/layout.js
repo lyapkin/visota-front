@@ -6,7 +6,6 @@ import Footer from "@/components/Footer/Footer";
 import styles from '@/styles/layout.module.css'
 import Form from "@/components/Form/Form";
 import CartProvider from "@/providers/CartProvider";
-import SearchLineProvider from "@/providers/SearchLineProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +20,7 @@ export default function RootLayout({ children }) {
 			<body className={inter.className}>
 				<CartProvider >
 					<Header />
-					<SearchLineProvider>
 					{children}
-					</SearchLineProvider>
 					<section className={styles['form-section']}>
 						<div className='container'>
 							<Form main={true} />

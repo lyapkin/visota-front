@@ -1,37 +1,30 @@
 'use client'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 
 import styles from '@/styles/catalog.module.css'
 import Filter from '@/components/catalog/Filter'
 import Search from '@/components/Search/Search'
-// import addToCart from '@/utils/addToStorageCart'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { CartContext } from '@/providers/CartProvider'
-import { SearchLineContext } from '@/providers/SearchLineProvider'
-import { MAX_PRICE, MIN_PRICE } from './constant'
+import { MAX_PRICE } from './constant'
 
 const CatalogContent = ({categories}) => {
     const router = useRouter()
     const searchParams = useSearchParams()
 
+    const filterWindowRef = useRef(null)
+    const filterButtonRef = useRef(null)
+
     const [cart, addToCart] = useContext(CartContext)
     
-
-    const [searchLine, setSearchLine] = useContext(SearchLineContext)
-    const [categoriesFilter, setCategoriesFilter] = useState(new Set(searchParams.getAll('sub')))
     const [priceFilter, setPriceFilter] = useState({
         min: searchParams.get('price_min') || '',
         max: searchParams.get('price_max') || ''
     })
-    const [page, setPage] = useState(parseInt(searchParams.get('page')) || 1)
-    const [isNextPage, setIsNextPage] = useState(false)
 
-    const [requestFilter, setRequestFilter] = useState({
-        searchLine,
-        categoriesFilter,
-        priceFilter
-    })
+    const page = parseInt(searchParams.get('page')) || 1
+    const [isNextPage, setIsNextPage] = useState(false)
 
     const [products, setProducts] = useState([])
 
@@ -40,42 +33,16 @@ const CatalogContent = ({categories}) => {
     
 
     const appendProducts = async () => {
-        const url = new URL(process.env.API_URL + '/products/')
+        const urlSearchParams = new URLSearchParams(searchParams.toString())
+        urlSearchParams.set('page', page+1)
 
-        requestFilter.categoriesFilter.forEach(p => url.searchParams.append('sub', p))
-        url.searchParams.set('search', requestFilter.searchLine)
-        url.searchParams.set('price_min', requestFilter.priceFilter.min)
-        url.searchParams.set('price_max', requestFilter.priceFilter.max)
-        url.searchParams.set('page', page+1)
-
-        const response = await fetch(url)
-
-        if (!response.ok) {
-            throw new Error(response.status + ' запрос товаров не удался')
-        }
-
-        const data = await response.json()
-        
-        
-        if (data.next) {
-            setIsNextPage(true)
-            setPage(prev => prev+1)
-        } else {
-            setIsNextPage(false)
-        }
-        setIsNextPage((data.next && true) || false)
-        setProducts(prev => prev.concat(data.results))
+        router.replace(`/catalog?${urlSearchParams.toString()}`, {scroll: false})
     }
     
-    const getProducts = async () => {
-        const url = new URL(process.env.API_URL + '/products/')
-
-        requestFilter.categoriesFilter.forEach(p => url.searchParams.append('sub', p))
-        url.searchParams.set('search', requestFilter.searchLine)
-        url.searchParams.set('price_min', requestFilter.priceFilter.min)
-        url.searchParams.set('price_max', requestFilter.priceFilter.max)
+    const getProducts = async (abortController) => {
+        const url = new URL(process.env.API_URL + '/products/?' + searchParams.toString())
         
-        const response = await fetch(url)
+        const response = await fetch(url, {signal: abortController.signal})
 
         if (!response.ok) {
             throw new Error(response.status + ' запрос товаров не удался')
@@ -88,46 +55,38 @@ const CatalogContent = ({categories}) => {
         } else {
             setIsNextPage(false)
         }
-        setProducts(data.results)
+        setProducts(prev => {
+            return page === 1 ? data.results : prev.concat(data.results)
+        })
     }
 
-
     useEffect(() => {
-        console.log('1')
-        handleApply()
-    },[categoriesFilter])
-
-    useEffect(() => {
-        console.log('2')
-        let url = '/catalog?'
-        const params = []
-        categoriesFilter.forEach(p => params.push('sub='+p))
-        url = url.concat(params.join('&'), '&search='+searchLine, '&price_min=' + priceFilter.min, '&price_max=' + priceFilter.max)
-        router.replace(url, {scroll: false})
-        getProducts()
-    }, [requestFilter])
-
-    useEffect(() => {
-        console.log('3')
-        setCategoriesFilter(new Set(searchParams.getAll('sub') || []))
-        setSearchLine(searchParams.get('search') || '')
+        const abortController = new AbortController()
+        
+        getProducts(abortController)
         setPriceFilter({
             min: searchParams.get('price_min') || '',
             max: searchParams.get('price_max') || ''
         })
+
+        return () => {
+            abortController.abort()
+        }
     }, [searchParams])
 
-    
-    
-    const handleCategoriesChange = (e) => {
-        setCategoriesFilter((prev) => {
-            const newState = new Set()
-            newState.add(e.target.value)
-            
-            return newState
-        })
-        setSearchLine('')
-    }
+    useEffect(() => {
+        const handler = e => {
+            if (!filterWindowRef.current.contains(e.target) && !filterButtonRef.current.contains(e.target)) {
+                setIsFiltersOpen(false)
+            }
+        }
+
+        document.addEventListener('click', handler)
+
+        return () => {
+            document.removeEventListener('click', handler)
+        }
+    }, [])
 
     const handlePriceChange = (val, type) => {
         if (val < 0 || val > MAX_PRICE) return
@@ -147,76 +106,48 @@ const CatalogContent = ({categories}) => {
     }
 
     const handleReset = () => {
-        setCategoriesFilter(new Set())
         setPriceFilter({
             min: '',
             max: ''
         })
-        setRequestFilter({
-            searchLine: '',
-            categoriesFilter: new Set(),
-            priceFilter: {
-                min: '',
-                max: ''
-            }
-        })
-        setIsFiltersOpen(false)
-        setPage(1)
         router.replace('/catalog', {scroll: false})
     }
 
-    const handleApply = () => {
-        setRequestFilter((prev) => ({
-            ...prev,
-            categoriesFilter,
-            priceFilter,
-            searchLine
-        }))
+    const handleCatChange = slug => {
         setIsFiltersOpen(false)
-        setPage(1)
-    }
-
-    const handleSearch = (e) => {
-        e.preventDefault()
-
-        setCategoriesFilter(new Set())
-        setPriceFilter({
-            min: '',
-            max: ''
-        })
+        router.replace(`/catalog?sub=${slug}`, {scroll: false})
     }
 
     return (
         <div className={styles['catalog__content']}>
-            <div className={`${styles['catalog__filters-popup']} ${isFiltersOpen && styles['open']}`}>
+            <div className={`${styles['catalog__filters-popup']} ${isFiltersOpen && styles['open']}`} ref={filterWindowRef}>
                 <button className={styles['catalog__filters-popup-close']}
                         onClick={() => setIsFiltersOpen(false)}>
                     Фильтры
                     <img src='/svgs/close-icon.svg' alt='закрыть' />
                 </button>
                 <Filter categories={categories}
-                    catFilter={{get: categoriesFilter,
-                                onChange: handleCategoriesChange}}
+                    searchParams={searchParams}
                     priceFilter={{get: priceFilter,
                                 onChange: handlePriceChange}}
+                    handleCatChange={handleCatChange}
                     reset={handleReset}
-                    apply={handleApply} />
+                />
             </div>
             <Filter categories={categories}
-                    catFilter={{get: categoriesFilter,
-                                onChange: handleCategoriesChange}}
+                    searchParams={searchParams}
                     priceFilter={{get: priceFilter,
                                 onChange: handlePriceChange}}
+                    handleCatChange={handleCatChange}
                     reset={handleReset}
-                    apply={handleApply} />
+            />
             <aside className={styles['catalog__serach']}>
-                <Search searchLine={{get: searchLine,
-                                    onChange: setSearchLine}}
-                        submit={handleSearch} />
+                <Search />
             </aside>
-            <div className={styles['catalog__filters-sort-buttons']}>
+            <div className={styles['catalog__filters-sort-buttons']} ref={filterButtonRef}>
                 <button className={styles['catalog__filters-toggle']}
-                        onClick={() => setIsFiltersOpen(prev => !prev)}>
+                        onClick={() => setIsFiltersOpen(prev => !prev)}
+                        >
                     <img src='/svgs/filters-toggle-icon.svg' />
                     Фильтры
                 </button>
