@@ -126,26 +126,34 @@ const Product = ({params}) => {
                                 </div>
                             </div>
                         </div> */}
-                        <div className={styles['about__cart']}>
-                            <div className={styles['about__price']}>
-                                <div className={styles['price__current']}>{product.current_price && (product.current_price + ' ₽')}</div>
-                                <div className={styles['price__actual']}
-                                     hidden={product.actual_price === product.current_price}>
-                                    {product.actual_price + ' ₽'}
+                        {product.current_price ?
+                            <div className={styles['about__cart']}>
+                                <div className={styles['about__price']}>
+                                    <div className={styles['price__current']}>{product.current_price && (product.current_price + ' ₽')}</div>
+                                    <div className={styles['price__actual']}
+                                        hidden={product.actual_price === product.current_price}>
+                                        {product.actual_price + ' ₽'}
+                                    </div>
+                                    <div className={styles['price__discount_text']}
+                                        hidden={product.actual_price === product.current_price}>
+                                        Стоимость со скидкой
+                                    </div>
                                 </div>
-                                <div className={styles['price__discount_text']}
-                                     hidden={product.actual_price === product.current_price}>
-                                    Стоимость со скидкой
+                                <div className={`${styles['about__cart-button']} ${product.id in cart  && styles['delete']}`}>
+                                    {
+                                        !(product.id in cart) ?
+                                            <button onClick={() => addToCart(product.id)}>В корзину <Image src='/svgs/catalog-cart-icon.svg' width={36} height={36} alt='иконка' /></button> :
+                                            <button>В корзине <img src='/svgs/cart-check-icon.svg' alt='иконка'/></button>
+                                    }
                                 </div>
                             </div>
-                            <div className={`${styles['about__cart-button']} ${product.id in cart  && styles['delete']}`}>
-                                {
-                                    !(product.id in cart) ?
-                                        <button onClick={() => addToCart(product.id)}>В корзину <Image src='/svgs/catalog-cart-icon.svg' width={36} height={36} alt='иконка' /></button> :
-                                        <button>В корзине <img src='/svgs/cart-check-icon.svg' alt='иконка'/></button>
-                                }
+                        :
+                            <div className={styles['about__cart']}>
+                                <div className={styles['about__cart-get-price-button']}>
+                                    <button onClick={() => {}}>Узнать цену</button>
+                                </div>
                             </div>
-                        </div>
+                        }
                     </div>
                     <div className={styles['product__extra-info']}>
                         <div className={styles['extra-info']}>

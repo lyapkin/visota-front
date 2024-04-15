@@ -38,11 +38,11 @@ const HeaderMain = ({mobileOpen, setMobileOpen}) => {
                     <div className={styles["header-main__tel"]}>
                         <a href='email:visota1300@mail.ru'>
                             <img src='/svgs/email-icon.svg' alt="иконка" />
-                            visota1300@mail.ru
+                            <span>visota1300@mail.ru</span>
                         </a>
                         <a href="tel:+78007005413">
                             <img src="/svgs/phone-pic.svg" alt="иконка" />
-                            8(800)700-54-13
+                            <span>8(800)700-54-13</span>
                         </a>
                     </div>
                 </div>

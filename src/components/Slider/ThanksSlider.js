@@ -41,11 +41,11 @@ const ThanksSlider = () => {
 
     const handleShowUp = e => {
         setShowLetter(e.target.getAttribute('src'))
-        document.body.classList.add('fixed')
+        // document.body.classList.add('fixed')
     }
     const handleClose = () => {
         setShowLetter('')
-        document.body.classList.remove('fixed')
+        // document.body.classList.remove('fixed')
     }
 
     return (
@@ -73,8 +73,8 @@ const ThanksSlider = () => {
                 <Popup close={handleClose}>
                     <div className={styles['popup-letter']}>
                         <img className={styles['thanks-letters__img-popup']} src={showLetter} />
-                        <button className={styles['popup-letter__close']}
-                                onClick={handleClose}><img src='/svgs/close-icon.svg' alt='закрыть иконка'/></button>
+                        {/* <button className={styles['popup-letter__close']}
+                                onClick={handleClose}><img src='/svgs/close-icon.svg' alt='закрыть иконка'/></button> */}
                     </div>
                 </Popup>
             }

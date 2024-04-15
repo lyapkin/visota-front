@@ -6,13 +6,15 @@ import styles from './form.module.css'
 import Button from '../UI/Buttons/Button'
 import formReducer, { formActions, formInitState } from '@/reducers/formReducer'
 
-const Form = ({main}) => {
+const Form = ({main, popup, buttonText}) => {
     const [form, dispatch] = useReducer(formReducer, formInitState)
 
     return (
-        <div className={`${styles['form-block']} ${main && styles['form-main']}`}>
-            <h2>Вам нужен <span>надежный поставщик комплектующих</span> для вашего объекта ?</h2>
-            <p>Оставьте заявку и мы сформируем для вас лучшее предложение в течение 20 минут</p>
+        <div className={`${styles['form-block']} ${main || popup && styles['form-main']} ${popup && styles['form-popup']}`}>
+            {!popup && <>
+                <h2>Вам нужен <span>надежный поставщик комплектующих</span> для вашего объекта ?</h2>
+                <p>Оставьте заявку и мы сформируем для вас лучшее предложение в течение 20 минут</p>
+            </>}
         
             <form className={styles['form']}>
                 <label className={styles['form__input']}>
@@ -50,7 +52,7 @@ const Form = ({main}) => {
                 <textarea className={styles['form__textarea']} placeholder='Напишите комментарий к заказу'
                           onChange={e => dispatch({type: formActions.COMMENT, payload: e.target.value})}
                           value={form.comment}/>
-                <Button text={'Заказать консультацию'}/>
+                <Button text={buttonText || 'Заказать консультацию'}/>
                 {main && (<p className={styles['agreement']}>Нажимая кнопку вы соглашаетесь <span>с условиями обработки данных</span></p>)}
             </form>
         </div>

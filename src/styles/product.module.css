@@ -117,6 +117,7 @@
     font-size: 14px;
     line-height: 22px;
     color: #7B8990;
+    white-space: nowrap;
 }
 
 .characteristics__list-val {
@@ -125,6 +126,7 @@
     line-height: 24px;
     color: #1B1E21;
     /* margin-left: auto; */
+    white-space: nowrap;
 }
 .characteristics__list-val.present {
     color: #40AC65;
@@ -132,7 +134,7 @@
 
 .characteristics__list-dots {
     flex-grow: 1;
-    margin: 0 40px;
+    margin: 0 20px;
     border-bottom: 2px dotted #D4E2E7;
 }
 
@@ -332,6 +334,17 @@
     width: 275.3px;
     justify-content: center;
     padding: 0;
+}
+
+.about__cart-get-price-button button {
+    background: var(--main-gradient);
+    font-family: 'Gilroy-600';
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    padding: 24px 70px;
+    border-radius: 3px;
 }
 
 

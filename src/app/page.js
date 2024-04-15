@@ -1,3 +1,4 @@
+'use client'
 import Form from '@/components/Form/Form';
 import AboutAchievements from '@/components/Home/about/AboutAchievements';
 import SpecialOfferSlider from '@/components/Slider/SpecialOfferSlider';
@@ -10,6 +11,7 @@ import Image from 'next/image';
 import CatalogSlider from '@/components/Slider/CatalogSlider';
 import HomeFrontSlider from '@/components/Slider/HomeFrontSlider';
 import ReputationBlocks from '@/components/Home/reputation/ReputationBlocks';
+import PopupForm from '@/components/Form/PopupForm';
 
 export default function Home() {
 	return (
@@ -19,7 +21,7 @@ export default function Home() {
 						<h1 className={styles['home-main__header']}><span>Поставка комлектующих</span> для строительных объектов</h1>
 						<p className={styles['home-main__promise']}>Обеспечим поставку наших товаров в кратчайшие сроки <span>со склада в Москве</span>, или <span>привезем из Китая</span></p>
 						<div className={styles['home-main__actions']}>
-							<Button text={'Получить коммерческое предложение'} />
+							<PopupForm text={'Получить коммерческое предложение'} />
 						</div>
 						<div className={`${styles['home-main__info']} ${styles['info']}`}>
 							<div className={styles['info__item']}>

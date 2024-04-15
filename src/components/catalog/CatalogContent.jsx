@@ -174,7 +174,7 @@ const CatalogContent = ({categories}) => {
                                 <div className={styles['card__caracteristics']}>
                                     <ul>
                                         {
-                                            p.charachteristics.map(c => (
+                                            p.charachteristics.slice(0,3).map(c => (
                                                 <li key={c.id}>
                                                     <span className={styles['caracteristics__key']}>{c.char}</span>
                                                     <span className={styles['caracteristics__val']}>{c.value}</span>
@@ -183,23 +183,31 @@ const CatalogContent = ({categories}) => {
                                         }
                                     </ul>
                                 </div>
-                                <div className={styles['card__order']}>
-                                    <div className={styles['order__price']}>
-                                        <div className={styles['price__key']}>
-                                            <span>{p.current_price && 'Стоимость'}</span>
+                                {p.current_price ?
+                                    <div className={styles['card__order']}>
+                                        <div className={styles['order__price']}>
+                                            <div className={styles['price__key']}>
+                                                <span>{p.current_price && 'Стоимость'}</span>
+                                            </div>
+                                            <div className={styles['price__val']}>
+                                                <span>{p.current_price && (p.current_price + ' ₽')}</span>
+                                            </div>
                                         </div>
-                                        <div className={styles['price__val']}>
-                                            <span>{p.current_price && (p.current_price + ' ₽')}</span>
+                                        <div className={styles['order__cart-button']}>
+                                            {
+                                                !(p.id in cart) ? 
+                                                    <button onClick={() => addToCart(p.id)}>В корзину<img src='/svgs/catalog-cart-icon.svg' alt='иконка'/></button> :
+                                                    <button>В корзине <img src='/svgs/cart-check-icon.svg' alt='иконка'/></button>
+                                            }
                                         </div>
                                     </div>
-                                    <div className={styles['order__cart-button']}>
-                                        {
-                                            !(p.id in cart) ? 
-                                                <button onClick={() => addToCart(p.id)}>В корзину<img src='/svgs/catalog-cart-icon.svg' alt='иконка'/></button> :
-                                                <button>В корзине <img src='/svgs/cart-check-icon.svg' alt='иконка'/></button>
-                                        }
+                                :
+                                    <div className={styles['card__order']}>
+                                        <div className={styles['order__get-price-button']}>
+                                            <button onClick={() => {}}>Узнать цену</button>
+                                        </div>
                                     </div>
-                                </div>
+                                }
                             </div>
                         </div>
                     ))

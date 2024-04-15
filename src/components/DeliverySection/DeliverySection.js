@@ -28,7 +28,7 @@ export default function DeliverySection() {
                     <h3 className={styles["home-sections-header"]}>
                         Надежная <span>репутация</span>, проверенная временем
                     </h3>
-                    <p>Без предоплат и ожиданий</p>
+                    {/* <p>Без предоплат и ожиданий</p> */}
                     <ReputationBlocks />
                 </div>
             </div>
