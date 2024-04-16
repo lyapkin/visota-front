@@ -8,6 +8,8 @@ import Image from 'next/image'
 import ProductSlider from '@/components/Slider/ProductSlider'
 import { CartContext } from '@/providers/CartProvider'
 import { LocationNameContext } from '@/providers/LocationNameProvider'
+import GetPriceForm from '@/components/Form/GetPriceForm'
+import Popup from '@/components/popup/Popup'
 
 const Product = ({params}) => {
     const [aboutBlock, setAboutBlock] = useState('char')
@@ -16,6 +18,8 @@ const Product = ({params}) => {
     const [_, setLocationName] = useContext(LocationNameContext)
 
     const [product, setProduct] = useState(null)
+
+    const [isGetPriceFormShown, setIsGetPriceFormShown] = useState(false)
 
     const getProduct = async () => {
         const response = await fetch(`${process.env.API_URL}/products/${params.slug}`)
@@ -150,7 +154,7 @@ const Product = ({params}) => {
                         :
                             <div className={styles['about__cart']}>
                                 <div className={styles['about__cart-get-price-button']}>
-                                    <button onClick={() => {}}>Узнать цену</button>
+                                    <button onClick={() => setIsGetPriceFormShown(true)}>Узнать цену</button>
                                 </div>
                             </div>
                         }
@@ -216,6 +220,11 @@ const Product = ({params}) => {
                     </div>
                 </div>
             </div>
+            {isGetPriceFormShown && 
+                <Popup close={() => setIsGetPriceFormShown(false)} >
+                    <GetPriceForm product={product} />
+                </Popup>
+            }
         </div>
     )
 }

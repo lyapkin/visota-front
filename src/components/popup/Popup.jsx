@@ -24,11 +24,11 @@ const Popup = ({children, close}) => {
         <div 
              className={styles['overlay']}
              ref={ref}>
-            {/* <div className={styles['overlay__content']}> */}
+            <div className={styles['overlay__content']}>
             {children}
             <button className={styles['popup__close']}
                                 onClick={close}><img src='/svgs/close-white-icon.svg' alt='закрыть иконка'/></button>
-            {/* </div> */}
+            </div>
         </div>
     )
 }

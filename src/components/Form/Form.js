@@ -9,14 +9,18 @@ import formReducer, { formActions, formInitState } from '@/reducers/formReducer'
 const Form = ({main, popup, buttonText}) => {
     const [form, dispatch] = useReducer(formReducer, formInitState)
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+    }
+
     return (
-        <div className={`${styles['form-block']} ${main || popup && styles['form-main']} ${popup && styles['form-popup']}`}>
+        <div className={`${styles['form-block']} ${(main || popup) && styles['form-main']} ${popup && styles['form-popup']}`}>
             {!popup && <>
                 <h2>Вам нужен <span>надежный поставщик комплектующих</span> для вашего объекта ?</h2>
                 <p>Оставьте заявку и мы сформируем для вас лучшее предложение в течение 20 минут</p>
             </>}
         
-            <form className={styles['form']}>
+            <form className={styles['form']} onSubmit={handleSubmit}>
                 <label className={styles['form__input']}>
                     <div className={styles['form__icon']}>
                         <Image src='/svgs/user-icon.svg' width={27} height={27}/>

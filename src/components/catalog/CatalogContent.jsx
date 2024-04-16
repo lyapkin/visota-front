@@ -8,6 +8,8 @@ import Search from '@/components/Search/Search'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { CartContext } from '@/providers/CartProvider'
 import { MAX_PRICE } from './constant'
+import GetPriceForm from '../Form/GetPriceForm'
+import Popup from '../popup/Popup'
 
 const CatalogContent = ({categories}) => {
     const router = useRouter()
@@ -30,6 +32,8 @@ const CatalogContent = ({categories}) => {
 
 
     const [isFiltersOpen, setIsFiltersOpen] = useState(searchParams.getAll('sub').length > 0 ? false : true)
+
+    const [getPriceFormProduct, setGetPriceFormProduct] = useState(null)
     
 
     const appendProducts = async () => {
@@ -204,7 +208,7 @@ const CatalogContent = ({categories}) => {
                                 :
                                     <div className={styles['card__order']}>
                                         <div className={styles['order__get-price-button']}>
-                                            <button onClick={() => {}}>Узнать цену</button>
+                                            <button onClick={() => setGetPriceFormProduct(p)}>Узнать цену</button>
                                         </div>
                                     </div>
                                 }
@@ -216,7 +220,11 @@ const CatalogContent = ({categories}) => {
                 {isNextPage && products.length > 0 &&
                     <button className={styles['catalog__show-more']} onClick={appendProducts} >Показать еще</button>}
             </div>
-            
+            {getPriceFormProduct !== null && 
+                <Popup close={() => setGetPriceFormProduct(null)} >
+                    <GetPriceForm product={getPriceFormProduct} />
+                </Popup>
+            }
         </div>
     )
 }

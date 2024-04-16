@@ -517,6 +517,13 @@
         width: 53px;
         height: 53px;
     }
+    .product__delivery-block:nth-of-type(2) .delivery-block__header {
+        width: 50%;
+    }
+    .delivery-block__header,
+    .delivery-block__text {
+        line-height: 16px;
+    }
 }
 
 @media only screen and (max-width: 992px) {

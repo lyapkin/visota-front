@@ -12,7 +12,7 @@
 }
 
 .overlay__content {
-    max-height: 90%;
+    height: 100%;
     max-width: 90%;
     display: flex;
     justify-content: center;
