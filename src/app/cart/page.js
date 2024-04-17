@@ -205,7 +205,7 @@ const Cart = () => {
                                 <fieldset className={styles['form__payment-method']}>
                                     <legend>Выберите способ оплаты</legend>
                                     <label className={styles['form__radio']} >
-                                        <input type='radio' name='payment-method'
+                                        <input type='radio' name='payment_method'
                                             value={'cash'} onChange={(e) => dispatch({type: cartActions.PAY_METHOD, payload: e.target.value})}/>
                                         <span className={`${styles['radio__circle']} ${order.payMethod === 'cash' && styles['checked']}`}>
                                             <img src='/svgs/radio-checked-icon.svg' alt='иконка' />
@@ -213,7 +213,7 @@ const Cart = () => {
                                         <span className={styles['radio__text']}>Наличный расчет</span>
                                     </label>
                                     <label className={styles['form__radio']}>
-                                        <input type='radio' name='payment-method'
+                                        <input type='radio' name='payment_method'
                                             value={'non-cash'} onChange={(e) => dispatch({type: cartActions.PAY_METHOD, payload: e.target.value})}/>
                                         <span className={`${styles['radio__circle']} ${order.payMethod === 'non-cash' && styles['checked']}`}>
                                             <img src='/svgs/radio-checked-icon.svg' alt='иконка' />

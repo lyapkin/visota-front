@@ -184,7 +184,7 @@ const data = [
             {
                 id: 8,
                 slug: 'vint-styazhnoj-1-m-08-m-15-m-2m',
-                name: 'Винт стяжной 1 м, 0,8 м, 1,5 м, 2м',
+                name: 'Винт стяжной',
                 img: '/images/categories/styazhnoj-vint.png'
             },
             {

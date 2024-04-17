@@ -53,7 +53,7 @@ const Form = ({main, popup, buttonText}) => {
                            onChange={e => dispatch({type: formActions.COMPANY_NAME, payload: e.target.value})}
                            value={form.companyName}/>
                 </label>)}
-                <textarea className={styles['form__textarea']} placeholder='Напишите комментарий к заказу'
+                <textarea className={styles['form__textarea']} placeholder='Напишите комментарий к заявке'
                           onChange={e => dispatch({type: formActions.COMMENT, payload: e.target.value})}
                           value={form.comment}/>
                 <Button text={buttonText || 'Заказать консультацию'}/>
