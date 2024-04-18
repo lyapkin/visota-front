@@ -1,0 +1,15 @@
+{
+  "title": "Tesisiniz için <span>güvenilir bir bileşen tedarikçisine</span> mi ihtiyacınız var?",
+  "text": "Bir talep bırakın, 20 dakika içinde sizin için en iyi teklifi oluşturalım",
+  "placeholder_name": "İrtibat kurulacak kişi (tam ad)",
+  "placeholder_number": "Telefon numarası",
+  "placeholder_activity": "Etkinlik türü",
+  "placeholder_comment": "Uygulamaya yorum yazın",
+  "placeholder_email": "E-posta",
+  "placeholder_company_name": "İş adı",
+  "consult_button": "Danışmanlık siparişi verin",
+  "offer_button": "Ticari bir teklif alın",
+  "get_price": "Fiyatı kontrol et",
+  "order_button": "Çıkış yapmak",
+  "confidential": "Düğmeyi tıklayarak <span>veri işleme şartlarını</span> kabul etmiş olursunuz"
+}

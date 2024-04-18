@@ -1,6 +1,6 @@
 import Image from "next/image";
-import flag from "../../../public/images/conctacts/flag.png";
-import call from "../../../public/images/conctacts/call.svg";
+import flag from "@/../public/images/conctacts/flag.png";
+import call from "@/../public/images/conctacts/call.svg";
 import s from "@/styles/contacts.module.css";
 
 export default function Contacts() {
@@ -10,15 +10,15 @@ export default function Contacts() {
                 <h1 className={s.title}>Контакты</h1>
                 <div className={s.items}>
                     <div className={s.item}>
-                        <h5 className={s.item__title}>Офис в городе УФА</h5>
+                        <h5 className={s.item__title}>Офис продаж и выставочный зал</h5>
                         <div className={s.flag}>
                             <div className={s.flag__img}>
                                 <Image src={flag} />
                             </div>
                             <div>
-                                <p className={s.flag__title}>
+                                {/* <p className={s.flag__title}>
                                     Торговая точка и офис
-                                </p>
+                                </p> */}
                                 <p className={s.flag__text}>
                                     г. Уфа ул. Зорге 19/1
                                 </p>

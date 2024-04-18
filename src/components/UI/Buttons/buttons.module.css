@@ -3,6 +3,7 @@
     background: var(--main-gradient);
     text-transform: uppercase;
     font-family: "Gilroy-600";
+    font-weight: 600;
     font-size: 16px;
     color: rgba(255, 255, 255, 1);
     border-radius: 3px;

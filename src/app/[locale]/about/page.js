@@ -1,29 +1,38 @@
 import Image from "next/image";
-import i1 from "../../../public/images/about/i1.png";
-import i2 from "../../../public/images/about/i2.png";
-import c1 from "../../../public/images/about/case1.svg";
-import c2 from "../../../public/images/about/case2.svg";
-import c3 from "../../../public/images/about/case3.svg";
-import c4 from "../../../public/images/about/case4.svg";
-import groupImg from "../../../public/images/about/group.png";
-import meImg from "../../../public/images/about/main.png";
-import v from "../../../public/images/about/v.svg";
-import aboutImg from "../../../public/images/about/about.png";
-import check1 from "../../../public/images/about/check1.png";
-import check2 from "../../../public/images/about/check2.png";
-import check3 from "../../../public/images/about/check3.png";
+import i1 from "@/../public/images/about/i1.png";
+import i2 from "@/../public/images/about/i2.png";
+import c1 from "@/../public/images/about/case1.svg";
+import c2 from "@/../public/images/about/case2.svg";
+import c3 from "@/../public/images/about/case3.svg";
+import c4 from "@/../public/images/about/case4.svg";
+import groupImg from "@/../public/images/about/group.png";
+import meImg from "@/../public/images/about/main.png";
+import v from "@/../public/images/about/v.svg";
+import aboutImg from "@/../public/images/about/about.png";
+import check1 from "@/../public/images/about/check1.png";
+import check2 from "@/../public/images/about/check2.png";
+import check3 from "@/../public/images/about/check3.png";
 import s from "@/styles/about.module.css";
 import Button from "@/components/UI/Buttons/Button";
 import DeliverySection from "@/components/DeliverySection/DeliverySection";
 import AboutSection from "@/components/AboutSection/AboutSection";
 import Supplies from "@/components/Supplies/Supplies";
+import initTranslations from "@/locales/i18n";
+import ShowMore from "@/components/showMore/ShowMore";
 
-export default function About() {
+export default async function About({ params: { locale } }) {
+    const { t } = await initTranslations(locale, ['home'])
     return (
         <>
             <div className={`${s.about} first-screen`}>
                 <div className="container">
-                    <Image className={s.img} src={groupImg} />
+                    {/* <Image className={s.img} src={groupImg} /> */}
+                    <div className={s['about__video']}>
+                        <h6>{t('home:about.video')}</h6>
+                        <video controls="controls" poster='/images/home-about-video-preview.jpg'>
+                            <source src="/videos/visota.mp4" type="video/mp4" codecs="avc1.42E01E, mp4a.40.2" />
+                        </video>
+                    </div>
                     <h1 className={s.title}>О компании - высота</h1>
                     <p className={s.text}>
                         Ваш надежный поставщик комплектующих для строительных
@@ -175,7 +184,7 @@ export default function About() {
                         <div className={s.me__item_bottom}>
                             <h5>
                                 Крупный, надежный поставщик строительного
-                                оборудования 
+                                оборудования
                             </h5>
                             <p>
                                 Сайт рыбатекст поможет дизайнеру, верстальщику,
@@ -187,7 +196,7 @@ export default function About() {
                         <div className={s.me__item_bottom}>
                             <h5>
                                 Крупный, надежный поставщик строительного
-                                оборудования 
+                                оборудования
                             </h5>
                             <p>
                                 Сайт рыбатекст поможет дизайнеру, верстальщику,
@@ -199,7 +208,7 @@ export default function About() {
                         <div className={s.me__item_bottom}>
                             <h5>
                                 Крупный, надежный поставщик строительного
-                                оборудования 
+                                оборудования
                             </h5>
                             <p>
                                 Сайт рыбатекст поможет дизайнеру, верстальщику,
@@ -242,20 +251,49 @@ export default function About() {
                                 является производителем строительных лесов в
                                 Китае на заводах TYT CO. LTD
                             </h4>
-                            <p className={s.prod__text}>
-                                TYT CO. LTD разрабатывает и предлагает решения
-                                для ваших проектов. Полный ассортимент
-                                строительных лесов, опалубки и средств
-                                безопасности для строительной и промышленной
-                                отрасли. Как профессиональный производитель
-                                строительных лесов, особенно поставщик проектных
-                                решений, TYT CO. LTD может поставлять клиентам
-                                ряд систем строительных лесов, которые могут
-                                соответствовать Вашим отраслям и применениям.
-                                Неважно, трубчатые, модульные или опалубочные
-                                системы, все они могут быть интегрированы с
-                                системами строительных лесов TYT CO. LTD.
-                            </p>
+                            <div className={s.prod__text}>
+                                <ShowMore height={'290px'}>
+                                    <p>
+                                        TYT CO. LTD разрабатывает и предлагает решения для ваших проектов. Полный
+                                        ассортимент строительных лесов, опалубки и средств безопасности для строительной и промышленной
+                                        отрасли.
+                                    </p>
+                                    <p>
+                                        Как профессиональный производитель строительных лесов, особенно поставщик проектных
+                                        решений, TYT CO. LTD может поставлять клиентам ряд систем строительных лесов, которые
+                                        могут соответствовать Вашим отраслям и применениям. Неважно, трубчатые, модульные или
+                                        опалубочные системы, все они могут быть интегрированы с системами строительных лесов
+                                        TYT CO. LTD.
+                                    </p>
+                                    <p>
+                                        Более 90% нашей продукции экспортируется в Европу, Северную Америку, Южную
+                                        Америку, Австралию и Средний Восток, с местными сертификатами качества в соответствии
+                                        с требованиями клиентов. Так же, как протокол испытаний хомутов EN74, сертификат систем
+                                        SGS, и протколы испытаний строительных лесов AS / NZS 1576.
+                                    </p>
+                                    <p>
+                                        Tianjin TianYingTai Steel Pipe Co., Ltd., основанная в 2007 году, является профессиональным
+                                        предприятием, занимающимся производством стальных труб.
+                                    </p>
+                                    <p>
+                                        Компания располагает 14 линиями по производству различных типов оцинкованных
+                                        стальных труб, 10 линиями по производству стальных труб глубокой переработки и 2
+                                        линиями по производству горячего цинкования для защиты окружающей среды с годовым
+                                        объемом производства более 600000 тонн оцинкованных стальных труб различных типов.
+                                    </p>
+                                    <p>
+                                        Наша продукция включает в себя полные наборы систем лесов: Модульные,
+                                        системы Чашечные, системы Рамные, системы лесов Штыревые, различных видов хомутов и
+                                        аксессуаров для лесов, опор для крепления и опалубки и многоедругое.
+
+                                    </p>
+                                    <p>
+                                        У нас есть собственные физико-химические лаборатории для проверки химического состава
+                                        сырья для строительных лесов, физических свойств продуктов. Для обеспечения того, чтобы
+                                        строительные леса соответствовали стандарту качества 100% от производства до доставки.
+                                    </p>
+                                </ShowMore>
+                            </div>
                         </div>
                     </div>
                 </div>

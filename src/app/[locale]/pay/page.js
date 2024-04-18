@@ -11,7 +11,7 @@ export default function Pay() {
                 <div className={s.wrap}>
                     <div>
                         <h1 className={s2.title}>
-                            Обеспечиваем доставку <br /> авто и ж/д способом
+                            Принимаем любые способы оплаты
                         </h1>
 
                         <div className={s2.btns}>
@@ -33,12 +33,7 @@ export default function Pay() {
                         </h4>
                         <ul className={s.list}>
                             <li className={s.list__item}>
-                                Наличный и безналичный расчет
-                            </li>
-                            <li className={s.list__item}>Рассрочка</li>
-                            <li className={s.list__item}>Расчет на месте</li>
-                            <li className={s.list__item}>
-                                Товарный аккредитив
+                                Безналичный расчет с юр. лицами
                             </li>
                             <li className={s.list__item}>
                                 Работаем по 223-ФЗ и 44-ФЗ
@@ -49,7 +44,8 @@ export default function Pay() {
                             <li className={s.list__item}>
                                 Отгружаем под банковские гарантии
                             </li>
-                            <li className={s.list__item}>Отсрочки платежа</li>
+                            <li className={s.list__item}>Отсрочки платежа и скидки постоянным клиентам</li>
+                            <li className={s.list__item}>Особые условия для строительных и производственных компаний</li>
                         </ul>
                     </div>
                     <div>

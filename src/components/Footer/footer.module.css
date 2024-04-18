@@ -1,5 +1,6 @@
 .footer h6 {
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 14px;
     line-height: 22px;
     color: rgba(123, 137, 144, 1);
@@ -8,6 +9,7 @@
 
 .footer li {
     font-family: 'Gilroy-400';
+    font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     color: rgba(27, 30, 33, 1);
@@ -43,6 +45,7 @@
 .footer__company span {
     width: 240px;
     font-family: 'Gilroy-400';
+    font-weight: 400;
     font-size: 14px;
     line-height: 18px;
     color: rgba(123, 137, 144, 1);
@@ -60,6 +63,7 @@
 
 .footer__social span {
     font-family: 'Gilroy-400';
+    font-weight: 400;
     font-size: 14px;
     line-height: 24px;
     color: rgba(123, 137, 144, 1);
@@ -104,6 +108,7 @@
 
 .footer__city {
     font-family: 'Gilroy-700';
+    font-weight: 700;
     font-size: 14px;
     line-height: 20px;
     color: rgba(27, 30, 33, 1);
@@ -126,6 +131,7 @@
 
 .footer__work-schedule {
     font-family: 'Gilroy-400';
+    font-weight: 400;
     font-size: 14px;
     line-height: 22px;
     color: rgba(123, 137, 144, 1);
@@ -143,6 +149,7 @@
 .mail__main a {
     display: inline-block;
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 24px;
     line-height: 24px;
     color: rgba(27, 30, 33, 1);
@@ -151,6 +158,7 @@
 
 .mail__main span {
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 12px;
     line-height: 18px;
     color: rgba(123, 137, 144, 1);
@@ -162,6 +170,7 @@
 
 .mail__commercial span {
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 16px;
     line-height: 24px;
     color: rgba(27, 30, 33, 1);
@@ -169,6 +178,7 @@
 
 .mail__commercial a {
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 14px;
     line-height: 22px;
     color: #32B2E4;
@@ -177,6 +187,7 @@
 .mail__head {
     display: inline-block;
     font-family: 'Gilroy-700';
+    font-weight: 700;
     font-size: 14px;
     line-height: 22px;
     color: rgba(39, 169, 220, 1);
@@ -189,6 +200,7 @@
     background-color: rgba(245, 245, 245, 1);
     padding: 16px 0;
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 12px;
     line-height: 20px;
     color: rgba(123, 137, 144, 1)
@@ -234,6 +246,7 @@
     }
     .footer__contacts-small > a {
         font-family: 'Gilroy-400';
+        font-weight: 400;
         font-size: 22px;
         line-height: 26px;
         color: #1B1E21;
@@ -243,6 +256,7 @@
     }
     .footer__contacts-small .mail__main > a:first-child {
         font-family: 'Gilroy-500';
+        font-weight: 500;
         font-size: 18px;
         line-height: 24px;
         background: linear-gradient(180deg, #53CFFF 0%, #32B2E4 100%);
@@ -255,6 +269,7 @@
         display: block;
         width: fit-content;
         font-family: 'Gilroy-700';
+        font-weight: 700;
         font-size: 14px;
         line-height: 22px;
         color: rgba(39, 169, 220, 1);
@@ -295,6 +310,7 @@
 @media only screen and (max-width: 768px) {
     .footer li {
         font-family: 'Gilroy-400';
+        font-weight: 400;
         font-size: 12px;
         line-height: 24px;
         color: rgba(27, 30, 33, 1);
@@ -308,6 +324,7 @@
     
     .footer__contacts-small > h6 {
         font-family: 'Gilroy-300';
+        font-weight: 300;
         font-size: 11px;
         line-height: 22px;
         text-transform: uppercase;
@@ -327,6 +344,7 @@
     .footer__catalog > h6,
     .footer__about > h6 {
         font-family: 'Gilroy-500';
+        font-weight: 500;
         font-size: 11px;
         line-height: 22px;
         letter-spacing: 2px;

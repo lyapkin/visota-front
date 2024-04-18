@@ -5,9 +5,12 @@ import Button from '../UI/Buttons/Button'
 import styles from './slider.module.css'
 import LeftButton from '../UI/Buttons/LeftButton'
 import RightButton from '../UI/Buttons/RightButton'
+import useProjectsData from '@/hooks/useProjectsData'
 
 const ProjectsSlider = () => {
     const [picIndex, setPicIndex] = useState(0)
+
+    const projects = useProjectsData()
 
     const handleSlideSwitch = (e) => {
         const target = e.currentTarget
@@ -64,139 +67,139 @@ const ProjectsSlider = () => {
     )
 }
 
-const projects = [
-    {
-        id: 1,
-        img: '/images/home-projects-slider/gazprom-amur.jpg',
-        title: 'Строительство Амурского Газоперерабатывающий завода',
-        location: 'г. Свободный',
-        description: 'Поставка строительных лесов, опалубки и комплектующих, 2021-2027г. Поставка строительных лесов, опалубки',
-        // date: '15.08.2023',
-        company: 'ГАЗПРОМ',
-        logo: '/images/gazprom-logo.png',
-        link: '#'
-    },
-    {
-        id: 2,
-        img: '/images/home-projects-slider/sibur-tobolsk.jpg',
-        title: 'Строительство промышленного комплекса "Тобольск Полимер"',
-        location: 'г. Тобольск',
-        description: 'Поставка хомутов и комплектующих к строительным лесам 20ХХ г.',
-        // date: '15.08.2023',
-        company: 'СИБУР',
-        logo: '/images/gov-clients/sibur-logo.png',
-        link: '#'
-    },
-    {
-        id: 3,
-        img: '/images/home-projects-slider/novatek-yamal.jpg',
-        title: 'Строительство промышленного комплекса "Ямал СПГ"',
-        location: 'полуостров Ямал',
-        description: 'Поставка хомутов и комплектующих к строительным лесам 2018 г.',
-        // date: '15.08.2023',
-        company: 'НОВАТЭК',
-        logo: null,
-        link: '#'
-    },
-    {
-        id: 4,
-        img: '/images/home-projects-slider/novatek-murmansk.jpg',
-        title: 'Строительство комплекса "Арктитк СПГ-2"',
-        location: 'г. Мурманск',
-        description: 'Поставка хомутов и комплектующих к строительным лесам 2019-2021 г.',
-        // date: '15.08.2023',
-        company: 'НОВАТЭК',
-        logo: null,
-        link: '#'
-    },
-    {
-        id: 5,
-        img: '/images/home-projects-slider/gazprom-yamal-euro-2.jpg',
-        title: 'Строительство Газопровода "Ямал-Европа-2"',
-        location: null,
-        description: 'Поставка хомутов и комплектующих к строительным лесам 2019 г.',
-        // date: '15.08.2023',
-        company:'ГАЗПРОМ',
-        logo: '/images/gazprom-logo.png',
-        link: '#'
-    },
-    {
-        id: 6,
-        img: '/images/home-projects-slider/rusfen-yanao.jpg',
-        title: 'Освоение Харампурского месторождения',
-        location: 'ЯНАО',
-        description: 'Поставка Шпунта Ларсена и лесоматериала 2020-2021 г.',
-        // date: '15.08.2023',
-        company: 'РУСФЕН',
-        logo: null,
-        link: '#'
-    },
-    {
-        id: 7,
-        img: '/images/home-projects-slider/velstroy-omsk.jpg',
-        title: 'Строительство Омского НПЗ',
-        location: 'г. Омск',
-        description: 'Поставка строительных лесов и комплектующих. 2018-2021г.',
-        // date: '15.08.2023',
-        company: 'ВЕЛЕССТРОЙ',
-        logo: null,
-        link: '#'
-    },
-    {
-        id: 8,
-        img: '/images/home-projects-slider/velstroy-nizh-nov.jpg',
-        title: 'Строительство НПЗ в Нижнем Новгороде',
-        location: 'г. Нижний Новгород',
-        description: 'Поставка строительных лесов и комплектующих, 2018-2022г.',
-        // date: '15.08.2023',
-        company: 'ВЕЛЕССТРОЙ',
-        logo: null,
-        link: '#'
-    },
-    {
-        id: 9,
-        img: '/images/home-projects-slider/velstroy-shalin.jpg',
-        title: 'Строительство дожимной компрессорной станции на о.Сахалин',
-        location: 'о. Сахалин',
-        description: 'Поставка строительных лесов и комплектующих, 2019г.',
-        // date: '15.08.2023',
-        company: 'ВЕЛЕССТРОЙ',
-        logo: null,
-        link: '#'
-    },
-    {
-        id: 10,
-        img: '/images/home-projects-slider/esta-svobodniy.jpg',
-        title: 'Строительство Амурского газохимического комплекса',
-        location: 'г. Свободный',
-        description: 'Поставка строительных лесов, труб, опалубки и комплектующих, 2021-2024г.',
-        // date: '15.08.2023',
-        company: 'ЭСТА КОНСТРАКШЕН',
-        logo: '/images/gov-clients/esta-logo.png',
-        link: '#'
-    },
-    {
-        id: 11,
-        img: '/images/home-projects-slider/innova-irkutsk.jpg',
-        title: 'Строительство Иркутского завода полимеров',
-        location: 'г. Иркутск',
-        description: 'Поставка строительных лесов, труб, опалубки и комплектующих, 2023г.',
-        // date: '15.08.2023',
-        company: 'ИННОВА КОНСТРАКШЕН',
-        logo: '/images/gov-clients/innova-logo.png',
-        link: '#'
-    },
-    {
-        id: 12,
-        img: '/images/home-projects-slider/cncec-kingisep.jpg',
-        title: 'Строительство Балтийского газохимического комплекса',
-        location: 'г. Кингисепп',
-        description: 'Поставка строительных лесов и комплектующих, 2018-2022г.',
-        // date: '15.08.2023',
-        company: 'CNCEC7',
-        logo: '/images/gov-clients/cncec.png',
-        link: '#'
-    },
-]
+// const projects = [
+//     {
+//         id: 1,
+//         img: '/images/home-projects-slider/gazprom-amur.jpg',
+//         title: 'Строительство Амурского Газоперерабатывающий завода',
+//         location: 'г. Свободный',
+//         description: 'Поставка строительных лесов, опалубки и комплектующих, 2021-2027г. Поставка строительных лесов, опалубки',
+//         // date: '15.08.2023',
+//         company: 'ГАЗПРОМ',
+//         logo: '/images/gazprom-logo.png',
+//         link: '#'
+//     },
+//     {
+//         id: 2,
+//         img: '/images/home-projects-slider/sibur-tobolsk.jpg',
+//         title: 'Строительство промышленного комплекса "Тобольск Полимер"',
+//         location: 'г. Тобольск',
+//         description: 'Поставка хомутов и комплектующих к строительным лесам 20ХХ г.',
+//         // date: '15.08.2023',
+//         company: 'СИБУР',
+//         logo: '/images/gov-clients/sibur-logo.png',
+//         link: '#'
+//     },
+//     {
+//         id: 3,
+//         img: '/images/home-projects-slider/novatek-yamal.jpg',
+//         title: 'Строительство промышленного комплекса "Ямал СПГ"',
+//         location: 'полуостров Ямал',
+//         description: 'Поставка хомутов и комплектующих к строительным лесам 2018 г.',
+//         // date: '15.08.2023',
+//         company: 'НОВАТЭК',
+//         logo: null,
+//         link: '#'
+//     },
+//     {
+//         id: 4,
+//         img: '/images/home-projects-slider/novatek-murmansk.jpg',
+//         title: 'Строительство комплекса "Арктитк СПГ-2"',
+//         location: 'г. Мурманск',
+//         description: 'Поставка хомутов и комплектующих к строительным лесам 2019-2021 г.',
+//         // date: '15.08.2023',
+//         company: 'НОВАТЭК',
+//         logo: null,
+//         link: '#'
+//     },
+//     {
+//         id: 5,
+//         img: '/images/home-projects-slider/gazprom-yamal-euro-2.jpg',
+//         title: 'Строительство Газопровода "Ямал-Европа-2"',
+//         location: null,
+//         description: 'Поставка хомутов и комплектующих к строительным лесам 2019 г.',
+//         // date: '15.08.2023',
+//         company:'ГАЗПРОМ',
+//         logo: '/images/gazprom-logo.png',
+//         link: '#'
+//     },
+//     {
+//         id: 6,
+//         img: '/images/home-projects-slider/rusfen-yanao.jpg',
+//         title: 'Освоение Харампурского месторождения',
+//         location: 'ЯНАО',
+//         description: 'Поставка Шпунта Ларсена и лесоматериала 2020-2021 г.',
+//         // date: '15.08.2023',
+//         company: 'РУСФЕН',
+//         logo: null,
+//         link: '#'
+//     },
+//     {
+//         id: 7,
+//         img: '/images/home-projects-slider/velstroy-omsk.jpg',
+//         title: 'Строительство Омского НПЗ',
+//         location: 'г. Омск',
+//         description: 'Поставка строительных лесов и комплектующих. 2018-2021г.',
+//         // date: '15.08.2023',
+//         company: 'ВЕЛЕССТРОЙ',
+//         logo: null,
+//         link: '#'
+//     },
+//     {
+//         id: 8,
+//         img: '/images/home-projects-slider/velstroy-nizh-nov.jpg',
+//         title: 'Строительство НПЗ в Нижнем Новгороде',
+//         location: 'г. Нижний Новгород',
+//         description: 'Поставка строительных лесов и комплектующих, 2018-2022г.',
+//         // date: '15.08.2023',
+//         company: 'ВЕЛЕССТРОЙ',
+//         logo: null,
+//         link: '#'
+//     },
+//     {
+//         id: 9,
+//         img: '/images/home-projects-slider/velstroy-shalin.jpg',
+//         title: 'Строительство дожимной компрессорной станции на о.Сахалин',
+//         location: 'о. Сахалин',
+//         description: 'Поставка строительных лесов и комплектующих, 2019г.',
+//         // date: '15.08.2023',
+//         company: 'ВЕЛЕССТРОЙ',
+//         logo: null,
+//         link: '#'
+//     },
+//     {
+//         id: 10,
+//         img: '/images/home-projects-slider/esta-svobodniy.jpg',
+//         title: 'Строительство Амурского газохимического комплекса',
+//         location: 'г. Свободный',
+//         description: 'Поставка строительных лесов, труб, опалубки и комплектующих, 2021-2024г.',
+//         // date: '15.08.2023',
+//         company: 'ЭСТА КОНСТРАКШЕН',
+//         logo: '/images/gov-clients/esta-logo.png',
+//         link: '#'
+//     },
+//     {
+//         id: 11,
+//         img: '/images/home-projects-slider/innova-irkutsk.jpg',
+//         title: 'Строительство Иркутского завода полимеров',
+//         location: 'г. Иркутск',
+//         description: 'Поставка строительных лесов, труб, опалубки и комплектующих, 2023г.',
+//         // date: '15.08.2023',
+//         company: 'ИННОВА КОНСТРАКШЕН',
+//         logo: '/images/gov-clients/innova-logo.png',
+//         link: '#'
+//     },
+//     {
+//         id: 12,
+//         img: '/images/home-projects-slider/cncec-kingisep.jpg',
+//         title: 'Строительство Балтийского газохимического комплекса',
+//         location: 'г. Кингисепп',
+//         description: 'Поставка строительных лесов и комплектующих, 2018-2022г.',
+//         // date: '15.08.2023',
+//         company: 'CNCEC7',
+//         logo: '/images/gov-clients/cncec.png',
+//         link: '#'
+//     },
+// ]
 
 export default ProjectsSlider

@@ -59,16 +59,19 @@
 .form-block h2 {
     grid-area: header;
     font-family: 'Gilroy-300';
+    font-weight: 300;
     font-size: 34px;
     line-height: 46px;
 }
 .form-block h2 span {
     font-family: 'Gilroy-700';
+    font-weight: 700;
 }
 
 .form-block p {
     grid-area: text;
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 16px;
     line-height: 24px;
     color: rgba(123, 137, 144, 1);
@@ -96,6 +99,7 @@
 }
 .form-main h2 {
     font-family: 'Gilroy-200';
+    font-weight: 200;
     font-size: 45px;
     line-height: 60px;
     text-transform: uppercase;
@@ -105,9 +109,11 @@
 }
 .form-main h2 span {
     font-family: 'Gilroy-700';
+    font-weight: 700;
 }
 .form-main p {
     font-family: 'Gilroy-400';
+    font-weight: 400;
     font-size: 18px;
     color: rgba(0, 0, 0, 1);
     line-height: 24px;
@@ -144,6 +150,7 @@
 
 .form-main .agreement {
     font-family: "Gilroy-500";
+    font-weight: 500;
     font-size: 14px;
     color: rgba(123, 137, 144, 1);
     line-height: 22px;
@@ -175,6 +182,7 @@
 }
 .get-price-form-wrapper > .head {
     font-family: 'Gilroy-600';
+    font-weight: 600;
     text-transform: uppercase;
 }
 .get-price-form > .form__input:first-of-type {

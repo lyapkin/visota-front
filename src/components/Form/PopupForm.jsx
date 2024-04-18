@@ -1,3 +1,4 @@
+'use client'
 import React, { useContext } from 'react'
 import Popup from '../popup/Popup'
 import Form from './Form'

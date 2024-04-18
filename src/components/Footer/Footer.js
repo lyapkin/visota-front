@@ -1,11 +1,16 @@
+// 'use client'
 import Link from 'next/link'
 import React from 'react'
 
 import styles from './footer.module.css'
 import FooterCatalog from './FooterCatalog'
 import FooterAbout from './FooterAbout'
+import initTranslations from '@/locales/i18n'
+// import { useTranslation } from 'react-i18next'
 
-const Footer = () => {
+const Footer = async ({locale}) => {
+	const {t} = await initTranslations(locale, ['footer', 'common'])
+	// const {t} = useTranslation()
 	return (
 		<footer className={styles['footer']}>
 			<div className={`${styles['footer__grid']} container`}>
@@ -14,10 +19,10 @@ const Footer = () => {
 						<div className={styles['footer__logo']}>
 							<a href='/'><img src='/images/visota-logo.png' alt='logo' /></a>
 						</div>
-						<span>Поставка комплектующих для строительных объектов</span>
+						<span>{t('footer:logo_text')}</span>
 					</div>
 					<div className={styles['footer__social']}>
-						<span>Пишите нам в мессенджеры:</span>
+						<span>{t('footer:text_us')}:</span>
 						<figure className={styles['footer__youtube']}>
 							<a href='#'>
 								<img src='/svgs/youtube-icon.svg' alt='иконка'/>
@@ -33,8 +38,8 @@ const Footer = () => {
 				<FooterCatalog />
 				<FooterAbout />
 				<div className={styles['footer__contacts']}>
-					<h6>Контакты</h6>
-					<span className={styles['footer__city']}>г. Уфа</span>
+					<h6>{t('common:contacts')}</h6>
+					<span className={styles['footer__city']}>{t('common:city')}</span>
 					<ul className={styles['footer__numbers']}>
 						<li><a href='tel:+78007005413'>
 								<img src='/svgs/phone-pic.svg' alt='phone picture' />
@@ -48,44 +53,43 @@ const Footer = () => {
 						</li>
 					</ul>
 					<p className={styles['footer__work-schedule']}>
-						<span>Пн-Пт, с 09:00 до 18:00,</span>
-						<span>Сб-Вс, выходной</span>
+						<span>{t('common:schedule_workweek')},</span>
+						<span>{t('common:schedule_weekend')}</span>
 					</p>
 				</div>
 				<div className={styles['footer__contacts-small']} >
-					<h6>Телефон</h6>
+					<h6>{t('common:contacts')}</h6>
 					<a href='tel:+78007005413'>+7 800 700 54 13</a>
 					<p className={styles['footer__work-schedule']}>
-						<span>Пн-Пт, с 09:00 до 18:00,</span>
-						<span>Сб-Вс, выходной</span>
+						<span>{t('common:schedule_workweek')},</span>
+						<span>{t('common:schedule_weekend')}</span>
 					</p>
 					<div className={styles['mail__main']}>
 						<a href='mailto:visota1300@mail.ru'>visota1300@mail.ru</a>
-						<a href='mailto:visota1300@mail.ru'>Отправить письмо</a>
+						<a href='mailto:visota1300@mail.ru'>{t('footer:send_mail')}</a>
 					</div>
 				</div>
 				<div className={styles['footer__mail']}>
-					<h6>Почта</h6>
+					<h6>{t('footer:mail')}</h6>
 					<div className={styles['mail__main']}>
 						<a href='mailto:visota1300@mail.ru'>visota1300@mail.ru</a>
-						<span>Пишите письма, скидывайте свои проекты</span>
-						<span>рады будем ответить Вам</span>
+						<span>{t('footer:mail_us')}</span>
 					</div>
 					<div className={styles['mail__commercial']}>
-						<span>Для коммерческих предложений</span>
+						<span>{t('footer:mail_commercial')}</span>
 						<a href='mailto:visota1300@mail.ru'>visota1300@mail.ru</a>
 					</div>
 					<div className={styles['mail__head']}>
-						<a href='mailto:visota1300@mail.ru'>Написать руководителю</a>
+						<a href='mailto:visota1300@mail.ru'>{t('footer:mail_director')}</a>
 					</div>
 				</div>
 			</div>
 			<div className={styles['footer__bottom']}>
 				<div className={`${styles['footer__bottom-flex']} container`}>
-					<span>Все права защищены © {new Date().getFullYear()}. При копировании обязательна ссылка на сайт <a href='https://visota13.ru/'>visota13.ru</a></span>
-					<a href='#'>Политика конфиденциальности</a>
-					<a href='#'>Пользовательское соглашение</a>
-					<span>Сайт разработан командой <a href='#'>Axis-Marketing.ru</a></span>
+					<span>{t('footer:copyright1')} © {new Date().getFullYear()}. {t('footer:copyright2')} <a href='https://visota13.ru/'>visota13.ru</a></span>
+					<a href='#'>{t('footer:confid')}</a>
+					<a href='#'>{t('footer:user_agreement')}</a>
+					<span>{t('footer:site_maker')} <a href='#'>Axis-Marketing.ru</a></span>
 				</div>
 			</div>
 		</footer>

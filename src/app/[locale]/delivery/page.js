@@ -26,7 +26,7 @@ export default function Delivery() {
                             </Link>
                         </div>
                         <p className={s.text}>
-                            Доставим товар в любую точку России и страну снг.
+                            Доставим товар в любую точку России и страны СНГ.
                             Отработанная годами логистика позволяет
                             оптимизировать расходы.
                         </p>
@@ -45,14 +45,14 @@ export default function Delivery() {
                         </h4>
                         <Image className={s.item__img} src={i1} alt="" />
                         <div className={s.item__line}></div>
-                        <p className={s.item__text}>
+                        {/* <p className={s.item__text}>
                             Сайт рыбатекст поможет дизайнеру, верстальщику,
                             вебмастеру сгенерировать несколько абзацев более
                             менее осмысленного текста рыбы на русском языке, а
                             начинающему оратору отточить навык публичных
                             выступлений в домашних условиях. При создании
                             генератора мы использовали
-                        </p>
+                        </p> */}
                     </div>
                     <div className={s.item}>
                         <div className={s.item__number}>02</div>
@@ -62,14 +62,14 @@ export default function Delivery() {
                         </h4>
                         <Image className={s.item__img} src={i2} alt="" />
                         <div className={s.item__line}></div>
-                        <p className={s.item__text}>
+                        {/* <p className={s.item__text}>
                             Сайт рыбатекст поможет дизайнеру, верстальщику,
                             вебмастеру сгенерировать несколько абзацев более
                             менее осмысленного текста рыбы на русском языке, а
                             начинающему оратору отточить навык публичных
                             выступлений в домашних условиях. При создании
                             генератора мы использовали
-                        </p>
+                        </p> */}
                     </div>
                     <div className={s.item}>
                         <div className={s.item__number}>03</div>
@@ -79,14 +79,14 @@ export default function Delivery() {
                         </h4>
                         <Image className={s.item__img} src={i3} alt="" />
                         <div className={s.item__line}></div>
-                        <p className={s.item__text}>
+                        {/* <p className={s.item__text}>
                             Сайт рыбатекст поможет дизайнеру, верстальщику,
                             вебмастеру сгенерировать несколько абзацев более
                             менее осмысленного текста рыбы на русском языке, а
                             начинающему оратору отточить навык публичных
                             выступлений в домашних условиях. При создании
                             генератора мы использовали
-                        </p>
+                        </p> */}
                     </div>
                 </div>
             </div>

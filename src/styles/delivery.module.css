@@ -63,7 +63,7 @@
     background: #e8f5fa;
     border-radius: 4px;
     position: relative;
-    padding-bottom: 50px;
+    /* padding-bottom: 50px; */
 }
 
 .item__number {

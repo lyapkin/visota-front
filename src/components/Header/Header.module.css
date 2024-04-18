@@ -60,6 +60,7 @@
 }
 .header-main__catalog a {
     font-family: 'Gilroy-700';
+    font-weight: 700;
     font-size: 14px;
     line-height: 24px;
     text-transform: uppercase;
@@ -130,6 +131,7 @@
 .header-tabs__list button {
     /* width: 100%; */
     font-family: "Gilroy-500";
+    font-weight: 500;
     padding: 26px;
     text-transform: uppercase;
     color: rgba(65, 65, 65, 1);
@@ -174,6 +176,7 @@
 
 .header-tabs__tabs-content {
     font-family: "Gilroy-500";
+    font-weight: 500;
     position: absolute;
     width: 100%;
     background-color: #fff;
@@ -224,6 +227,7 @@
 .header-mode__location,
 .header-mode__location > div {
     font-family: "Gilroy-500";
+    font-weight: 500;
     display: flex;
     align-items: center;
     column-gap: 16px;
@@ -439,10 +443,10 @@
         justify-content: space-between;
     }
 
-    .header-main__about {
+    .header-main__blog {
         display: none;
     }
-    .header__mobile-nav .header-main__about {
+    .header__mobile-nav .header-main__blog {
         display: initial;
     }
 
@@ -505,6 +509,9 @@
         transform: translate(15px, -8px);
     }
 
+    .header-main__catalog {
+        grid-area: 1 / 1 / -1 / 2;
+    }
     .header-main__catalog a {
         padding: 0 0px;
         background-color: transparent;

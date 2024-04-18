@@ -52,6 +52,7 @@
 
 .project-slide__title {
     font-family: 'Gilroy-700';
+    font-weight: 700;
     font-size: 18px;
     line-height: 22px;
     /* max-width: 60%; */
@@ -62,6 +63,7 @@
 
 .project-slide__location {
     font-family: 'Gilroy-600';
+    font-weight: 600;
     font-size: 14px;
     line-height: 24px;
     color: rgba(123, 137, 144, 1);
@@ -71,6 +73,7 @@
 
 .project-slide__description {
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 14px;
     line-height: 22px;
     color: rgba(27, 30, 33, 1);
@@ -83,6 +86,7 @@
     right: 0;
     top: 26px;
     font-family: 'Gilroy-400';
+    font-weight: ;
     font-size: 10px;
     line-height: 20px;
     color: rgba(129, 143, 155, 1);
@@ -109,6 +113,7 @@
     display: block;
     margin: 20px auto;
     font-family: 'Gilroy-700';
+    font-weight: 700;
     font-size: 16px;
     line-height: 24px;
     text-transform: uppercase;
@@ -289,6 +294,7 @@
     align-items: center;
     column-gap: 37px;
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 0.12em;
@@ -304,6 +310,7 @@
 
 .special-offer-about__title {
     font-family: 'Gilroy-700';
+    font-weight: 700;
     font-size: 32px;
     line-height: 48px;
     text-transform: uppercase;
@@ -313,6 +320,7 @@
 
 .special-offer-about__text {
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 16px;
     line-height: 24px;
     color: rgba(123, 137, 144, 1);
@@ -352,6 +360,7 @@
 
 .special-offer__plus p{
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 0.12em;
@@ -362,6 +371,7 @@
 .special-offer__plus li {
     padding-top: 25px;
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 16px;
     line-height: 24px;
     text-transform: uppercase;
@@ -459,6 +469,7 @@
 
 .catalog-slider__slide h4 {
     font-family: 'Gilroy-700';
+    font-weight: 700;
     font-size: 16px;
     line-height: 26px;
     color: rgba(27, 30, 33, 1);
@@ -472,6 +483,7 @@
 
 .catalog-slider__slide li {
     font-family: 'Gilroy-400';
+    font-weight: 400;
     font-size: 15px;
     line-height: 20.25px;
     color: rgba(123, 137, 144, 1);
@@ -488,6 +500,7 @@
     background: #fff;
     border-radius: var(--main-radius);
     font-family: 'Gilroy-700';
+    font-weight: 700;
     font-size: 15px;
     line-height: 26px;
     color: rgba(39, 169, 220, 1);
@@ -729,9 +742,8 @@ div.product-slider__cover-wrapper-single {
 
 
 .home-front-slider__window {
-    position: absolute;
-    width: 45%;
-    /* height: 500px; */
+    transform: translateY(-20%);
+    width: 100%;
     top: 0;
     right: 100px;
     z-index: 1;
@@ -757,6 +769,7 @@ div.product-slider__cover-wrapper-single {
 
 .home-front-slider__btn {
     font-family: 'Gilroy-300';
+    font-weight: 300;
     font-size: 14px;
     line-height: 25px;
     letter-spacing: 0.125em;
@@ -780,9 +793,7 @@ div.product-slider__cover-wrapper-single {
 
 @media only screen and (max-width: 1450px) {
     .home-front-slider__window {
-        /* width: 400px;
-        height: 400px; */
-        right: 0; top: 60px;
+        transform: translateY(-15%);
     }
 
     .home-front-slider__slide img {
@@ -855,6 +866,9 @@ div.product-slider__cover-wrapper-single {
 }
 
 @media only screen and (max-width: 992px) {
+    .home-front-slider__window {
+        transform: none;
+    }
     .home-front-slider__btn {
         display: none;
     }
@@ -909,6 +923,7 @@ div.product-slider__cover-wrapper-single {
     .project-slide__location {
         /* grid-area: location; */
         font-family: 'Gilroy-400';
+        font-weight: 400;
         font-size: 16px;
         line-height: 29px;
         color: #989898;
@@ -917,6 +932,7 @@ div.product-slider__cover-wrapper-single {
     .project-slide__title {
         /* grid-area: title; */
         font-family: 'Gilroy-400';
+        font-weight: 400;
         font-size: 16px;
         line-height: 18px;
         padding: 0;
@@ -925,6 +941,7 @@ div.product-slider__cover-wrapper-single {
     .project-slide__description {
         /* grid-area: text; */
         font-family: 'Gilroy-300';
+        font-weight: 300;
         font-size: 16px;
         line-height: 130%;
         color: #1B1E21;

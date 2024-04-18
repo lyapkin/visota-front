@@ -1,5 +1,6 @@
 .home-sections-header {
     font-family: 'Gilroy-200';
+    font-weight: 200;
     font-size: 45px;
     line-height: 60px;
     text-transform: uppercase;
@@ -8,11 +9,11 @@
     padding-bottom: 30px;
 }
 .home-sections-header span {
-    font-family: 'Gilroy-700'
+    font-family: 'Gilroy-700';
+    font-weight: 700;
 }
 
 .home-main {
-    /* padding-top: 250px; */
     background-color: #EFF0F3;
     background-image: 
                       url('/images/bg/home-main-bg.jpg');
@@ -21,36 +22,47 @@
     background-size: auto 86%;
 }
 
+.home-main > div:first-child {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto auto auto auto auto;
+    row-gap: 30px;
+}
+
 .home-main__header {
     font-family: "Gilroy-200";
+    font-weight: 200;
     text-transform: uppercase;
     color: rgba(59, 64, 70, 1);
     font-size: 55px;
     line-height: 74px;
     max-width: 638px;
     z-index: 2;
+    grid-area: 1 / 1 / 2 /2;
 }
 .home-main__header span {
     display: block;
     font-family: "Gilroy-700";
+    font-weight: 700;
 }
 
 .home-main__promise {
     font-family: "Gilroy-400";
-    padding-top: 10px;
+    font-weight: 400;
     color: rgba(80, 89, 94, 1);
     font-size: 20px;
     line-height: 30px;
     max-width: 524px;
     z-index: 2;
+    grid-area: 2 / 1 / 3 /2;
 }
 .home-main__promise span {
     font-family: "Gilroy-700";
+    font-weight: 700;
 }
 
 .home-main__actions {
-    padding-top: 30px;
-    padding-bottom: 222px;
+    grid-area: 3 / 1 / -1 /2;
 }
 
 .home-main__bottom {
@@ -62,12 +74,16 @@
 }
 
 .home-main__info {
-    position: absolute;
-    right: 0;
-    bottom: 0;
     display: flex;
     column-gap: 16px;
     z-index: 2;
+    grid-area: -4 / 2 / -1 / 3;
+    justify-self: end;
+}
+
+.home-main__slider {
+    grid-area: 1 / 2 / 5 / 3;
+    width: 80%;
 }
 
 .info__item {
@@ -85,6 +101,7 @@
 
 .info__item p {
     font-family: "Gilroy-300";
+    font-weight: 300;
     font-size: 16px;
     font-weight: 600;
     line-height: 26px;
@@ -93,6 +110,7 @@
 }
 .info__item span {
     font-family: "Gilroy-700";
+    font-weight: 700;
 }
 
 .info__img {
@@ -124,79 +142,62 @@
 }
 
 .home-advantages-block {
-    display: flex;
     background-color: #fff;
     border-radius: 40px;
     padding: 48px 0 50px 45px;
     flex-basis: 40%;
     position: relative;
     min-width: 320px;
+    min-height: max-content;
 }
 .home-advantages-block img {
-    width: 100%;
-    object-fit: contain;
-}
-.home-advantages-block-1 {
-    flex-grow: 1;
-}
-.home-advantages-block-1 .home-advantages-block-img {
-    bottom: 20px;
+    width: 40%;
+    float: right;
+    position: relative;
 }
 
-.home-advantages-block-2 {
-    flex-grow: 12.2;
-}
-.home-advantages-block-2 .home-advantages-block-img {
-    bottom: 0;
-}
-
-.home-advantages-block-3 {
-    flex-grow: 12.2;
-}
-.home-advantages-block-3 .home-advantages-block-text {
-    max-width: 45%;
-}
-.home-advantages-block-3 .home-advantages-block-img {
-    bottom: 0;
-}
-
-.home-advantages-block-4 {
-    flex-grow: 1;
-}
-.home-advantages-block-4 .home-advantages-block-img {
-    bottom: 28px;
-    right: 10px;
-}
-.home-advantages-block-4 img {
-    height: 280px;
-}
-
-.home-advantages-block-text {
-    max-width: 60%
-}
-
-.home-advantages-block-text h5 {
+.home-advantages-block h5 {
     font-family: 'Gilroy-300';
+    font-weight: 300;
     font-size: 24px;
     line-height: 32px;
     color: rgba(48, 48, 52, 1);
     padding-bottom: 5px;
 }
-.home-advantages-block-text h5 span {
+.home-advantages-block h5 span {
     font-family: 'Gilroy-700';
+    font-weight: 700;
 }
 
-.home-advantages-block-text p {
+.home-advantages-block p {
     font-family: 'Gilroy-400';
+    font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     color: rgba(123, 137, 144, 1);
+    max-width: 90%;
 }
 
-.home-advantages-block-img {
-    position: absolute;
-    right: 0;
+.home-advantages-block-1 {
+    flex-grow: 1;
 }
+
+.home-advantages-block-2 {
+    flex-grow: 12.2;
+}
+
+.home-advantages-block-3 {
+    flex-grow: 12.2;
+}
+.home-advantages-block-3 img {
+    width: 25%
+}
+
+.home-advantages-block-4 {
+    flex-grow: 1;
+}
+
+
 
 
 
@@ -244,6 +245,7 @@
 
 .home-delivery p {
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 20px;
     line-height: 33px;
     color: rgba(123, 137, 144, 1);
@@ -274,6 +276,7 @@
 
 .home-delivery__contact h4 {
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 16px;
     line-height: 22px;
     color: rgba(46, 50, 55, 1);
@@ -282,6 +285,7 @@
 
 .home-delivery__contact p {
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 14px;
     line-height: 24px;
     color: rgba(46, 50, 55, 1);
@@ -291,6 +295,7 @@
 .home-delivery__contact span {
     display: block;
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 14px;
     line-height: 22px;
     color: rgba(123, 137, 144, 1);
@@ -298,6 +303,7 @@
 
 .home-delivery__contact p:last-child {
     font-family: 'Gilroy-700';
+    font-weight: 700;
     font-size: 16px;
     line-height: 24px;
     color: rgba(39, 169, 220, 1);
@@ -306,6 +312,7 @@
 
 .home-reputation > p {
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 14px;
     font-weight: 500;
     line-height: 22px;
@@ -341,6 +348,7 @@
 .home-reputation__blocks h4 {
     height: 98px;
     font-family: 'Gilroy-700';
+    font-weight: 700;
     font-size: 16px;
     line-height: 26px;
     color: rgba(27, 30, 33, 1);
@@ -350,6 +358,7 @@
 
 .home-reputation__blocks p {
     font-family: 'Gilroy-400';
+    font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     color: rgba(123, 137, 144, 1);
@@ -370,6 +379,7 @@
 
 .home-clients__thanks-letters h2 {
     font-family: 'Gilroy-700';
+    font-weight: 700;
     font-size: 32px;
     line-height: 56px;
     color: rgba(27, 30, 33, 1);
@@ -406,6 +416,7 @@
     right: 0;
     text-align: center;
     font-family: 'Gilroy-700';
+    font-weight: 700;
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 0.12em;
@@ -431,23 +442,40 @@
     /* background-image: url('/images/video-text-cloud-bg.png');
     background-size: cover; */
 }
-span.home-about__header-bold {
-    font-family: 'Gilroy-700'
+
+.home-about__description h2 > span:first-of-type {
+    font-family: 'Gilroy-700';
+    font-weight: 700;
 }
-span.home-about__header-blue {
+.home-about__description h2 > span:last-of-type {
     display: block;
     font-family: 'Gilroy-200';
+    font-weight: 200;
     font-size: 32px;
     line-height: 48px;
     color: rgba(39, 169, 220, 1);
     padding-top: 10px;
 }
+/* span.home-about__header-bold {
+    font-family: 'Gilroy-700'
+
+font-weight: ;} */
+/* span.home-about__header-blue {
+    display: block;
+    font-family: 'Gilroy-200';
+    font-weight: ;
+    font-size: 32px;
+    line-height: 48px;
+    color: rgba(39, 169, 220, 1);
+    padding-top: 10px;
+} */
 .home-about .home-sections-header {
     padding-bottom: 0;
 }
 
 .home-about__description p {
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 18px;
     line-height: 29px;
     color: rgba(27, 30, 33, 1);
@@ -473,6 +501,7 @@ span.home-about__header-blue {
 
 .home-achivement__count {
     font-family: 'Gilroy-700';
+    font-weight: 700;
     font-size: 46px;
     line-height: 64px;
     color: rgba(39, 169, 220, 1);
@@ -480,6 +509,7 @@ span.home-about__header-blue {
 
 .home-achivement__type {
     font-family: 'Gilroy-700';
+    font-weight: 700;
     font-size: 18px;
     line-height: 26px;
     color: rgba(27, 30, 33, 1);
@@ -490,6 +520,7 @@ span.home-about__header-blue {
 
 .home-achivement__text {
     font-family: 'Gilroy-500';
+    font-weight: 500;
     font-size: 16px;
     line-height: 24px;
     color: rgba(27, 30, 33, 1);
@@ -507,9 +538,6 @@ span.home-about__header-blue {
 
 
 @media only screen and (max-width: 1450px) {
-    .home-advantages-block-4 img {
-        width: 180px;
-    }
 
     .home-delivery__delivery-map {
         width: 50%;
@@ -553,6 +581,10 @@ span.home-about__header-blue {
     }
     .home-main__header {
         font-size: 45px;
+        line-height: 64px;
+    }
+    .home-main__slider {
+        width: 100%;
     }
     .info__item {
         max-width: 210px;
@@ -561,13 +593,8 @@ span.home-about__header-blue {
         font-size: 14px;
         padding: 24px;
     }
-    .home-main__promise {
-        max-width: 40%;
-    }
     
-    .home-main__actions {
-        width: 47%;
-    }
+    
     .home-main__actions button {
         font-size: 14px;
     }
@@ -580,31 +607,11 @@ span.home-about__header-blue {
     }
 
     
-    .home-advantages-block-text h5 {
+    .home-advantages-block h5 {
         font-size: 20px;
     }
-    .home-advantages-block-text p {
+    .home-advantages-block p {
         font-size: 16px;
-    }
-    .home-advantages-block-1 .home-advantages-block-img {
-        top: -30px;
-        width: 50%;
-    }
-    .home-advantages-block-2 .home-advantages-block-img {
-        top: 10%;
-        width: 45%;
-    }
-    .home-advantages-block-3 .home-advantages-block-img {
-        width: 70%;
-        right: -10%;
-    }
-    .home-advantages-block-4 .home-advantages-block-img {
-        top: 20%;
-        /* right: -15%; */
-        /* width: 70%; */
-    }
-    .home-advantages-block-4 img {
-        width: 150px;
     }
     .home-advantages {
         padding-top: 66px;
@@ -638,29 +645,28 @@ span.home-about__header-blue {
 }
 
 @media only screen and (max-width: 992px) {
+    .home-main > div:first-child {
+        grid-template-columns: 70% 30%;
+    }
     .home-main__info {
-        position: initial;
+        grid-area: 4 / 1 / 5 /-1;
+        justify-self: start;
     }
     .home-main__actions {
-        width: 60%;
-        padding-bottom: 60px;
+        grid-area: 3 / 1 / 4 /-1;
+        padding: 30px 0;
     }
     .home-main__actions button {
         font-size: 16px;
     }
+    .home-main__slider {
+        grid-area: 1 / 2 / 4 / -1;
+        transform: translateY(10%);
+        width: 140%;
+    }
 
-    .home-advantages-block-text p {
-        width: 270px;
-    }
-    .home-advantages-block-3 .home-advantages-block-img {
-        top: 10%;
-    }
-    .home-advantages-block-4 .home-advantages-block-img {
-        top: -10%;
-        right: 10px;
-    }
     .home-advantages-block-4 img {
-        width: 110px;
+        width: 35%;
     }
 
     .home-delivery__contact {
@@ -704,6 +710,30 @@ span.home-about__header-blue {
 }
 
 @media only screen and (max-width: 768px) {
+    .home-main > div:first-child {
+        grid-template-columns: 70% 30%;
+    }
+    .home-main__header {
+        font-size: 36px;
+        line-height: 50px;
+        grid-area: 1 / 1 / 2 / -1;
+    }
+    .home-main__info {
+        grid-area: 4 / 1 / 5 /-1;
+        justify-self: start;
+    }
+    .home-main__actions {
+        grid-area: 3 / 1 / 4 /-1;
+        padding: 30px 0;
+    }
+    .home-main__actions button {
+        font-size: 16px;
+    }
+    .home-main__slider {
+        grid-area: 2 / 2 / 4 / -1;
+        transform: translateY(-30%);
+        width: 140%;
+    }
     .home-main__header {
         font-size: 36px;
         line-height: 50px;
@@ -724,12 +754,8 @@ span.home-about__header-blue {
         width: 48%;
     }
 
-    .home-advantages-block-4 .home-advantages-block-img {
-        top: 0;
-        right: 10px;
-    }
-    .home-advantages-block-4 img {
-        width: 180px;
+    .home-advantages-block-3 img {
+        width: 30%;
     }
     .home-projects .home-sections-header {
         padding-bottom: 80px;
@@ -769,7 +795,14 @@ span.home-about__header-blue {
         font-size: 26px;
         line-height: 135%;
     }
+    .home-main__slider {
+        position: relative;
+        left: 20px;
+    }
 
+    .home-advantages-block img {
+        width: 40%;
+    }
     
     .home-main__promise {
         font-size: 16px;
@@ -782,14 +815,6 @@ span.home-about__header-blue {
         font-size: 12px;
         line-height: 18px;
         padding: 10px 18px;
-    }
-
-    .home-advantages-block-4 .home-advantages-block-img {
-        top: -50px;
-        right: 20px;
-    }
-    .home-advantages-block-4 img {
-        width: 100px;
     }
 
     .home-sections-header {

@@ -5,8 +5,10 @@ import CartTab from "./CartTab";
 import styles from "./Header.module.css";
 import MobileNav from "./MobileNav";
 import NavLinks from "./NavLinks";
+import { useTranslation } from "react-i18next";
 
 const HeaderMain = ({mobileOpen, setMobileOpen}) => {
+    const {t} = useTranslation()
     return (
         <div className={styles["header-main-wrapper"]}>
             <div className="container">
@@ -27,7 +29,7 @@ const HeaderMain = ({mobileOpen, setMobileOpen}) => {
                         <div className={styles["header-nav-container"]}>
                             <NavLinks />
                             <div className={styles["header-main__catalog"]}>
-                                <Link href="/catalog">Каталог товаров</Link>
+                                <Link href="/catalog">{t('common:catalog')}</Link>
                             </div>
                             <div className={styles["header-main__cart"]}>
                                 <CartTab />

@@ -2,11 +2,10 @@
     background-color: rgba(245, 245, 245, 1);
     background-image: url('/images/bg/form-boxes2-bg.png'),
                       url('/images/bg/form-boxes-bg.png'),
-                      url('/images/bg/form-man-bg.png'),
                       url('/images/bg/form-container-bg.png'),
                       url('/images/bg/form-car-bg.png');
-    background-position: left 160px, left -80px, right 150px bottom, right top, right bottom;
-    background-size: auto, auto, 500px, 700px, 1100px;
+    background-position: left 160px, left -80px, right -170px top, right -100px bottom;
+    background-size: auto, auto, 900px, 1200px;
     background-repeat: no-repeat;
     padding-top: 91px;
     padding-bottom: 81px;
@@ -33,6 +32,7 @@
 
 .map-office {
     font-family: 'Gilroy-300';
+    font-weight: 300;
     font-size: 35px;
     line-height: 40.6px;
     color: rgba(36, 39, 41, 1);
@@ -68,6 +68,7 @@
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     font-family: 'Gilroy-300';
+    font-weight: 300;
     font-size: 15px;
     line-height: 17px;
     color: rgba(36, 39, 41, 0.6);
@@ -77,6 +78,7 @@
     grid-column: 2 / 3;
     grid-row: 2 / -1;
     font-family: 'Gilroy-300';
+    font-weight: 300;
     font-size: 18px;
     line-height: 21px;
     color: rgba(36, 39, 41, 1);
@@ -88,6 +90,7 @@
 .map-card__social {
     padding-top: 31px;
     font-family: 'Gilroy-300';
+    font-weight: 300;
     font-size: 19px;
     line-height: 22px;
     color: rgba(36, 39, 41, 1);
@@ -120,18 +123,17 @@
 
 @media only screen and (max-width: 1450px) {
     .form-section {
-        background-position: left 160px, left -80px, right 90px bottom, right top, right -100px bottom;
-        background-size: auto, auto, 400px, 600px, 1100px;
+        background-position: left 160px, left -80px, right -150px top, right -100px bottom;
+        background-size: auto, auto, 700px, 1000px;
     }
 }
 
 @media only screen and (max-width: 1200px) {
     .form-section {
         background-image: url('/images/bg/form-boxes2-bg.png'),
-                          url('/images/bg/form-boxes-bg.png'),
-                          url('/images/bg/form-man-bg.png');
-        background-position: left 160px, left -80px, right bottom;
-        background-size: auto, auto, 400px;
+                          url('/images/bg/form-boxes-bg.png');
+        background-position: left 160px, left -80px;
+        background-size: auto, auto;
     }
 }
 
