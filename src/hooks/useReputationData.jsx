@@ -28,8 +28,8 @@ const useReputationData = () => {
             {
                 id: 4,
                 img: '/images/reputation/box-icon.svg',
-                title: t('home:reputation.block3_title'),
-                text: t('home:reputation.block3_text')
+                title: t('home:reputation.block4_title'),
+                text: t('home:reputation.block4_text')
             },
         ]
     ))

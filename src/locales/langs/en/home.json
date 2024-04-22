@@ -5,7 +5,7 @@
     "button": "Get a commercial offer",
     "next": "Next",
     "prev": "Back",
-    "block_first": "More than <span>500 thousand units of creatures</span> in stock",
+    "block_first": "More than <span>500 thousand units of goods</span> in stock",
     "block_second": "Own <span>production in China</span>"
   },
   "advantages": {
@@ -78,7 +78,7 @@
     "block4_text": "We have 3 warehouses in the Russian Federation, which helps us ensure delivery in the shortest possible time"
   },
   "gov_clients": {
-    "title": "We carry out complete sets of facilities of the largest state-owned companies"
+    "title": "We carry out complete sets of objects of <span>the world's largest companies"
   },
   "thank_letters": {
     "title": "Thanksgiving letters"

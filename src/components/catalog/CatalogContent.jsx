@@ -5,13 +5,15 @@ import Link from 'next/link'
 import styles from '@/styles/catalog.module.css'
 import Filter from '@/components/catalog/Filter'
 import Search from '@/components/Search/Search'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import { CartContext } from '@/providers/CartProvider'
 import { MAX_PRICE } from './constant'
 import GetPriceForm from '../Form/GetPriceForm'
 import Popup from '../popup/Popup'
 
 const CatalogContent = ({categories}) => {
+    const locale = useParams().locale
+    
     const router = useRouter()
     const searchParams = useSearchParams()
 
@@ -44,7 +46,7 @@ const CatalogContent = ({categories}) => {
     }
     
     const getProducts = async (abortController) => {
-        const url = new URL(process.env.API_URL + '/products/?' + searchParams.toString())
+        const url = new URL(process.env.BACK_URL + `/${locale}/api/products/?` + searchParams.toString())
         
         const response = await fetch(url, {signal: abortController.signal})
 
@@ -165,7 +167,7 @@ const CatalogContent = ({categories}) => {
                                 <Link href={`/catalog/${p.slug}`} >
                                     <span className={styles['card__presence']}>{p.is_present ? 'В наличии' : 'Под заказ'}</span>
                                     <div className={styles['card__image']}>
-                                        <img src={p.img_urls[0].img_url} height={214} width={200} alt='фото товара' />
+                                        {p.img_urls.length > 0 && <img src={p.img_urls[0].img_url} height={214} width={200} alt='фото товара' />}
                                     </div>
                                 </Link>
                             </div>
@@ -177,13 +179,15 @@ const CatalogContent = ({categories}) => {
                                 </div>
                                 <div className={styles['card__caracteristics']}>
                                     <ul>
-                                        {
-                                            p.charachteristics.slice(0,3).map(c => (
-                                                <li key={c.id}>
-                                                    <span className={styles['caracteristics__key']}>{c.char}</span>
-                                                    <span className={styles['caracteristics__val']}>{c.value}</span>
-                                                </li>
-                                            ))
+                                        {p.charachteristics &&
+                                            p.charachteristics.map(c => (
+                                                c.translations[locale] ? 
+                                                (<li key={c.id}>
+                                                    <span className={styles['caracteristics__key']}>{c.translations[locale].key}</span>
+                                                    <span className={styles['caracteristics__val']}>{c.translations[locale].value}</span>
+                                                </li>) :
+                                                null
+                                            )).slice(0,3)
                                         }
                                     </ul>
                                 </div>

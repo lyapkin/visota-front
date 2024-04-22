@@ -112,7 +112,8 @@
 
 .tel {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
     margin-top: 12px;
     position: relative;
     padding-bottom: 18px;
@@ -130,9 +131,18 @@
 
 .tel__title {
     margin-top: 0;
+    margin-bottom: 0;
+}
+
+.tel__number {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 30px;
 }
 
 .tel__img {
+    grid-area: 1 / 1 / -1 / 2;
     width: 52px;
     height: 52px;
     background: linear-gradient(180deg, #53cfff 0%, #32b2e4 100%);
@@ -157,10 +167,12 @@
     display: block;
     line-height: 26px;
     margin-bottom: 3px;
+    grid-area: 1 / 2 / 2 / -1;
 }
 
 .tel__link__light {
     font-family: "Gilroy-400";
+    grid-area: 2 / 2 / -1 / -1;
 }
 
 .email__text {

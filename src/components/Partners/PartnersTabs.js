@@ -122,7 +122,7 @@ export default function PartnersTabs() {
                     </p>
                 </div>
             )}
-            {active === 2 && (
+            {/* {active === 2 && (
                 <div className={s.content}>
                     <h2 className={s.content__title}>
                         Выгодные предложения для наших партнёров3
@@ -171,7 +171,7 @@ export default function PartnersTabs() {
                         определения поставленных обществом задач.
                     </p>
                 </div>
-            )}
+            )} */}
         </>
     );
 }
@@ -181,5 +181,5 @@ const tabs = [
         title: "Предприятиям",
     },
     { title: "Партнёрам" },
-    { title: "Инвесторам" },
+    // { title: "Инвесторам" },
 ];

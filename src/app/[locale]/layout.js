@@ -107,7 +107,7 @@ export default async function RootLayout({ children, params: {locale} }) {
 							</div>
 						</div>
 						<div className={styles['map-iframe']}>
-							<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aa83dadbb5494c6e7a0ab513fdab6d3eaa2bef6bef0caff41ff803dddaa94beb8&amp;source=constructor" width="100%" height="100%" frameBorder="0"></iframe>
+							<iframe  src="https://yandex.ru/map-widget/v1/?um=constructor%3Aa83dadbb5494c6e7a0ab513fdab6d3eaa2bef6bef0caff41ff803dddaa94beb8&amp;source=constructor&scroll=false" width="100%" height="100%" frameBorder="0"></iframe>
 						</div>
 					</section>
 					<Footer locale={locale} />

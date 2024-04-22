@@ -10,8 +10,10 @@ import { CartContext } from '@/providers/CartProvider'
 import { LocationNameContext } from '@/providers/LocationNameProvider'
 import GetPriceForm from '@/components/Form/GetPriceForm'
 import Popup from '@/components/popup/Popup'
+import { useParams } from 'next/navigation'
 
 const Product = ({params}) => {
+    const locale = useParams().locale
     const [aboutBlock, setAboutBlock] = useState('char')
 
     const [cart, addToCart] = useContext(CartContext)
@@ -22,7 +24,7 @@ const Product = ({params}) => {
     const [isGetPriceFormShown, setIsGetPriceFormShown] = useState(false)
 
     const getProduct = async () => {
-        const response = await fetch(`${process.env.API_URL}/products/${params.slug}`)
+        const response = await fetch(`${process.env.BACK_URL}/${locale}/api/products/${params.slug}`)
         if (!response.ok) {
             throw new Error(response.status + ' запрос отдельного продукта не удался')
         }
@@ -89,12 +91,12 @@ const Product = ({params}) => {
                                         <span className={styles['characteristics__list-dots']}></span>
                                         <span className={`${styles['characteristics__list-val']} ${product.is_present && styles['present']}`}>{product.is_present ? 'В наличии' : 'Под заказ'}</span>
                                     </li>
-                                    {
+                                    {product?.charachteristics.length > 0 &&
                                         product.charachteristics.map(item => (
                                             <li key={item.id}>
-                                                <span className={styles['characteristics__list-key']}>{item.char}</span>
+                                                <span className={styles['characteristics__list-key']}>{item.translations[locale]?.key}</span>
                                                 <span className={styles['characteristics__list-dots']}></span>
-                                                <span className={styles['characteristics__list-val']}>{item.value}</span>
+                                                <span className={styles['characteristics__list-val']}>{item.translations[locale]?.value}</span>
                                             </li>
                                         ))
                                     }
@@ -107,7 +109,8 @@ const Product = ({params}) => {
                                 {/* <p>{product.description}</p> */}
                             </div>
                             <div className={styles['prod-info__documentation']} hidden={aboutBlock !== 'doc'}>
-                                {product?.doc_urls.length > 0 &&
+                                Сертификаты, паспорта продукции и протоколы испытаний по запросу
+                                {/* {product?.doc_urls.length > 0 &&
                                     <ul className={styles['prod-info__documentation-list']}>
                                        {product.doc_urls.map(d => (
                                             <li key={d.id}>
@@ -115,7 +118,7 @@ const Product = ({params}) => {
                                             </li>
                                        ))}
                                     </ul>
-                                }
+                                } */}
                             </div>
                         </div>
                         {/* <div className={styles['about__action-order']}>

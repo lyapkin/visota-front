@@ -31,7 +31,7 @@ export default async function Home({ params: { locale } }) {
 					<div className={styles['home-main__actions']}>
 						<PopupForm text={t('main.button')} />
 					</div>
-					<div className={`${styles['home-main__info']} ${styles['info']}`}>
+					{/* <div className={`${styles['home-main__info']} ${styles['info']}`}>
 						<div className={styles['info__item']}>
 							<p
 								dangerouslySetInnerHTML={{ __html: t('home:main.block_first', { interpolation: { escapeValue: false } }) }}
@@ -50,7 +50,7 @@ export default async function Home({ params: { locale } }) {
 								<img src="/images/home-main-info2.png" alt="city" />
 							</div>
 						</div>
-					</div>
+					</div> */}
 					<div className={styles['home-main__slider']}>
 						<HomeFrontSlider />
 					</div>
@@ -143,7 +143,7 @@ export default async function Home({ params: { locale } }) {
 							<p>{t('common:address')}</p>
 							<span>{t('common:schedule_workweek')},</span>
 							<span>{t('common:schedule_weekend')}</span>
-							<p>8 800 700 54 13</p>
+							<p><a href='tel:+78007005413'>8 800 700 54 13</a></p>
 						</div>
 					</div>
 					<div className={styles['home-reputation']}>
@@ -176,7 +176,7 @@ export default async function Home({ params: { locale } }) {
 				<div className='container'>
 					<div className={styles['home-about__video']}>
 						<h6>{t('home:about.video')}</h6>
-						<video controls="controls" poster='/images/home-about-video-preview.jpg'>
+						<video controls="controls" preload='none' poster='/images/home-about-video-preview.jpg'>
 							<source src="/videos/visota.mp4" type="video/mp4" codecs="avc1.42E01E, mp4a.40.2" />
 						</video>
 					</div>
@@ -193,11 +193,11 @@ export default async function Home({ params: { locale } }) {
 				</div>
 			</section>
 
-			<section className={styles['home-special-offer']}>
+			{/* <section className={styles['home-special-offer']}>
 				<div className='container'>
 					<SpecialOfferSlider />
 				</div>
-			</section>
+			</section> */}
 
 
 		</main>

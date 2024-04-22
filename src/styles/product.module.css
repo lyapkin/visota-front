@@ -193,6 +193,9 @@
     color: #7B8990;
     padding-bottom: 10px;
 }
+.prod-info__description li {
+    display: flex;
+}
 
 .prod-info__description ul li:before {
     content: '-';
@@ -218,6 +221,15 @@
     /* object-fit: contain; */
 }
 
+
+.prod-info__documentation {
+    font-family: 'Gilroy-500';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    color: #7B8990;
+    padding-bottom: 10px;
+}
 
 .prod-info__documentation-list {
     display: flex;
@@ -479,12 +491,10 @@
 }
 
 .product__delivery-block-shadow {
+    z-index: 3;
     position: absolute;
     height: 100%; width: 33.5%;
     box-shadow: 12px 2px 24px 10px rgba(0,0,0,0.03);
-}
-.product__delivery-block-shadow:first-of-type {
-    z-index: 3;
 }
 .product__delivery-block-shadow:last-of-type {
     left: 33.4%;

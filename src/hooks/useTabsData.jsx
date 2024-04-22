@@ -12,49 +12,49 @@ const useTabsData = () => {
             subs: [
                 {
                     id: 1,
-                    slug: 'nepovorotnyj',
+                    slug: 'khomut-nepovorotnyi',
                     name: t('common:nepovorot'),
                     img: '/images/categories/povorotniy.jpg'
                 },
                 {
                     id: 2,
-                    slug: 'povorotnyj',
+                    slug: 'khomut-povorotnyi',
                     name: t('common:povorot'),
                     img: '/images/categories/nepovorotniy.jpg'
                 },
                 {
                     id: 3,
-                    slug: 'homut-stykovochnyj',
+                    slug: 'khomut-stykovochnyi',
                     name: t('common:stykov'),
                     img: '/images/categories/stik.jpg'
                 },
                 {
                     id: 4,
-                    slug: 'homut-fiksiruyushij',
+                    slug: 'khomut-fiksiruiushchii',
                     name: t('common:fix'),
                     img: '/images/categories/fix.jpg'
                 },
                 {
                     id: 5,
-                    slug: 'homut-balochnyj',
+                    slug: 'khomut-balochnyi',
                     name: t('common:bal'),
                     img: '/images/categories/balochniy.jpg'
                 },
                 {
                     id: 6,
-                    slug: 'homut-k-doske',
+                    slug: 'khomut-k-doske',
                     name: t('common:dosk'),
                     img: '/images/categories/doske.png'
                 },
                 {
                     id: 7,
-                    slug: 'bolt-t-obraznyj',
+                    slug: 'bolt-t-obraznyi',
                     name: t('common:bolt'),
                     img: '/images/categories/bolt-t.png'
                 },
                 {
                     id: 8,
-                    slug: 'homut-k-lestnice',
+                    slug: 'khomut-k-lestnitse',
                     name: t('common:lestnic'),
                     img: '/images/categories/lestnice.png'
                 },
@@ -78,13 +78,13 @@ const useTabsData = () => {
                 },
                 {
                     id: 3,
-                    slug: 'homutovye-lesa',
+                    slug: 'khomutovye-lesa',
                     name: t('common:homut'),
                     img: '/images/categories/homut-les.png'
                 },
                 {
                     id: 4,
-                    slug: 'komplektuyushie-k-stroitelnym-lesam',
+                    slug: 'komplektuiushchie-k-stroitelnym-lesam',
                     name: t('common:complect'),
                     img: '/images/categories/complect-stroit-les.png'
                 }
@@ -95,55 +95,55 @@ const useTabsData = () => {
             subs: [
                 {
                     id: 1,
-                    slug: 'gajka-vaterstop',
+                    slug: 'gaika-vaterstop',
                     name: t('common:waterstop'),
                     img: '/images/categories/gajka-vaterstop.jpg'
                 },
                 {
                     id: 2,
-                    slug: 'zamok-klinovoj',
+                    slug: 'zamok-klinovoi-otsinkovannyi',
                     name: t('common:klin_zamok'),
                     img: '/images/categories/zamok-klin-ocink.jpg'
                 },
                 {
                     id: 3,
-                    slug: 'zamok-bfd-ocinkovannyj',
+                    slug: 'zamok-bfd-otsinkovannyi',
                     name: t('common:bfd_zamok'),
                     img: '/images/categories/zamok-bfd.jpg'
                 },
                 {
                     id: 4,
-                    slug: 'gajka-dlya-vintovoj-opory',
+                    slug: 'gaika-dlia-vintovoi-opory',
                     name: t('common:gaika_vint_opor'),
                     img: '/images/categories/gaik-vint-opor.jpg'
                 },
                 {
                     id: 5,
-                    slug: 'gajka-styazhnaya-trehrozhkovaya-ocinkovannaya',
+                    slug: 'gaika-stiazhnaia-trekhrozhkovaia-otsinkovannaia',
                     name: t('common:gaika_stayzh_treh'),
                     img: '/images/categories/gaika-styazh.jpg'
                 },
                 {
                     id: 6,
-                    slug: 'gajka-styazhnaya-dvuhrozhkovaya-ocinkovannaya-90mm',
+                    slug: 'gaika-stiazhnaia-dvukhrozhkovaia-otsinkovannaia',
                     name: t('common:gaika_staych_dvuh'),
                     img: '/images/categories/gaika-styazh-dvuh.jpg'
                 },
                 {
                     id: 7,
-                    slug: 'gajka-sharnirnaya',
+                    slug: 'gaika-sharnirnaia',
                     name: t('common:gaika_sharnir'),
                     img: '/images/categories/gaika-sharnir.jpeg'
                 },
                 {
                     id: 8,
-                    slug: 'vint-styazhnoj-1-m-08-m-15-m-2m',
+                    slug: 'vint-stiazhnoi',
                     name: t('common:vint_stayzh'),
                     img: '/images/categories/styazhnoj-vint.png'
                 },
                 {
                     id: 9,
-                    slug: 'gajka-malaya-barashkovayakrylchataya',
+                    slug: 'gaika-malaia-barashkovaiakrylchataia',
                     name: t('common:gaika_malaya'),
                     img: '/images/categories/gajka-barashkovaya.png'
                 },
@@ -160,8 +160,8 @@ const useTabsData = () => {
             subs: [
                 {
                     id: 1,
-                    slug: 'truby-vgp',
-                    name: t('common:trubi_vgp'),
+                    slug: 'truby-dlia-stroitelnykh-lesov',
+                    name: t('common:trubi_stroiles'),
                     img: '/images/categories/truba-vgp.jpg'
                 }
             ]
@@ -171,7 +171,7 @@ const useTabsData = () => {
             subs: [
                 {
                     id: 1,
-                    slug: 'opalubka-perekrytij',
+                    slug: 'opalubka-perekrytii',
                     name: t('common:opalubka_perkrit'),
                     img: '/images/catalog/opalub_perek.png'
                 }

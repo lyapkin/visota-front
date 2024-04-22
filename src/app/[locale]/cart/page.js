@@ -8,10 +8,12 @@ import Button from '@/components/UI/Buttons/Button'
 import cartReducer, { cartActions, cartInitState } from '@/reducers/cartReducer'
 import EmptyCart from '@/components/cart/EmptyCart'
 import { CartContext } from '@/providers/CartProvider'
+import { useParams } from 'next/navigation'
 
 
 
 const Cart = () => {
+    const locale = useParams().locale
     const [order, dispatch] = useReducer(cartReducer, cartInitState)
     const [cart, setCart] = useState([])
     const [storageCart, _, deleteFromStorageCart, changeCountStorageCart] = useContext(CartContext)
@@ -19,7 +21,7 @@ const Cart = () => {
     
 
     const getCart = async (ids) => {
-        const url = new URL(`${process.env.API_URL}/products/cart`)
+        const url = new URL(`${process.env.BACK_URL}/${locale}/api/products/cart`)
     
         ids.keys().forEach(id => url.searchParams.append('pk', id))
         const response = await fetch(url)
@@ -78,7 +80,7 @@ const Cart = () => {
         arr[1] += (p.current_price * storageCart[p.id])
         return arr
     }, [0, 0])
-
+    
     return (
         <div className={`${styles['cart']} first-screen`}>
             <div className='container'>
@@ -101,11 +103,11 @@ const Cart = () => {
                                                             <span className={styles['characteristics__key']}>Наличие</span>
                                                             <span className={`${styles['characteristics__val']} ${p.is_present && styles['present']}`}>{p.is_present ? 'В наличии' : 'Под заказ'}</span>
                                                         </li>
-                                                    {
+                                                    {p?.charachteristics.length > 0 &&
                                                         p.charachteristics.map(c => (
                                                             <li key={c.id} >
-                                                                <span className={styles['characteristics__key']}>{c.char}</span>
-                                                                <span className={styles['characteristics__val']}>{c.value}</span>
+                                                                <span className={styles['characteristics__key']}>{c.translations[locale]?.key}</span>
+                                                                <span className={styles['characteristics__val']}>{c.translations[locale]?.value}</span>
                                                             </li>
                                                         ))
                                                     }

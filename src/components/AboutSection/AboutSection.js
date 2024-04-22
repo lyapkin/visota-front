@@ -9,6 +9,7 @@ export default function AboutSection() {
                     <h6>Смотрите видео о нас</h6>
                     <video
                         controls="controls"
+                        preload="none"
                         poster="/images/home-about-video-preview.jpg"
                     >
                         <source

@@ -29,7 +29,7 @@ export default async function About({ params: { locale } }) {
                     {/* <Image className={s.img} src={groupImg} /> */}
                     <div className={s['about__video']}>
                         <h6>{t('home:about.video')}</h6>
-                        <video controls="controls" poster='/images/home-about-video-preview.jpg'>
+                        <video controls="controls" preload="none" poster='/images/home-about-video-preview.jpg'>
                             <source src="/videos/visota.mp4" type="video/mp4" codecs="avc1.42E01E, mp4a.40.2" />
                         </video>
                     </div>

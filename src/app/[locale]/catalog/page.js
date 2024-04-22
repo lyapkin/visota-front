@@ -4,8 +4,8 @@ import styles from '@/styles/catalog.module.css'
 import CatalogContent from '@/components/catalog/CatalogContent'
 
 
-const getData = async () => {
-    const response = await fetch(process.env.API_URL + '/products/categories', { cache: 'no-store' })
+const getData = async (locale) => {
+    const response = await fetch(process.env.BACK_URL + `/${locale}/api/products/categories`, { cache: 'no-store' })
 
     if (!response.ok) {
         throw new Error(response.status + ' запрос не удался')
@@ -14,8 +14,8 @@ const getData = async () => {
     return await response.json()
 }
 
-const Catalog = async () => {
-    const categories = await getData()
+const Catalog = async ({params: {locale}}) => {
+    const categories = await getData(locale)
 
     return (
         <div className={`${styles['catalog']} first-screen`}>

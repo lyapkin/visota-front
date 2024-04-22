@@ -64,6 +64,7 @@
 
 .home-main__actions {
     grid-area: 3 / 1 / -1 /2;
+    padding-bottom: 150px;
 }
 
 .home-main__bottom {
@@ -442,10 +443,12 @@
 }
 
 .home-about__video video {
-    object-fit: cover;
+    background-color: #000;
+    object-position: center;
+    object-fit: contain;
+    aspect-ratio: 10 / 7.11;
     width: 100%;
     border-radius: var(--main-radius);
-    aspect-ratio: 10 / 7;
     margin: auto;
 }
 

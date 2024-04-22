@@ -118,6 +118,9 @@
     right: 0;
     top: 25px;
 }
+.item:last-of-type .item__img {
+    top: 35px;
+}
 
 .item__text {
     font-family: "Gilroy-400";
