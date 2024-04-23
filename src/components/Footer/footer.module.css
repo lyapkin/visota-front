@@ -75,8 +75,8 @@
     display: flex;
 }
 
-.footer__youtube a {
-    padding: 15px 12px;
+.footer__telegram a {
+    padding: 10px 12px;
 }
 
 .footer__vk a {

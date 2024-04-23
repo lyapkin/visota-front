@@ -1,6 +1,6 @@
-const cartReducer = (state, action) => {
+const getPriceReducer = (state, action) => {
     switch (action.type) {
-        case cartActions.NAME:
+        case getPriceActions.NAME:
             return {
                 ...state,
                 data: {
@@ -12,7 +12,7 @@ const cartReducer = (state, action) => {
                     name: null
                 }
             }
-        case cartActions.NUMBER:
+        case getPriceActions.NUMBER:
             return {
                 ...state,
                 data: {
@@ -24,7 +24,7 @@ const cartReducer = (state, action) => {
                     number: null
                 }
             }
-        case cartActions.EMAIL:
+        case getPriceActions.EMAIL:
             return {
                 ...state,
                 data: {
@@ -36,19 +36,7 @@ const cartReducer = (state, action) => {
                     email: null
                 }
             }
-        case cartActions.ADDRESS:
-            return {
-                ...state,
-                data: {
-                    ...state.data,
-                    delivery_address: action.payload
-                },
-                error: {
-                    ...state.error,
-                    delivery_address: null
-                }
-            }
-        case cartActions.COMMENT:
+        case getPriceActions.COMMENT:
             return {
                 ...state,
                 data: {
@@ -60,60 +48,42 @@ const cartReducer = (state, action) => {
                     comment: null
                 }
             }
-        case cartActions.PAY_METHOD:
-            return {
-                ...state,
-                data: {
-                    ...state.data,
-                    payment_method: action.payload
-                },
-                error: {
-                    ...state.error,
-                    payment_method: null
-                }
-            }
-        case cartActions.ERROR:
+        case getPriceActions.ERROR:
             return {
                 ...state,
                 error: action.payload
             }
-        case cartActions.RESET:
+        case getPriceActions.RESET:
             return {
-                ...cartInitState
+                ...getPriceInitState
             }
         default:
             return state
     }
 }
 
-export default cartReducer
+export default getPriceReducer
 
-export const cartActions = {
+export const getPriceActions = {
     NAME: 'name',
     NUMBER: 'number',
     EMAIL: 'email',
-    ADDRESS: 'address',
     COMMENT: 'comment',
-    PAY_METHOD: 'payMethod',
     ERROR: 'error',
     RESET: 'reset'
 }
 
-export const cartInitState = {
+export const getPriceInitState = {
     data: {
         name: '',
         number: '',
         email: '',
-        delivery_address: '',
         comment: '',
-        payment_method: ''
     },
     error: {
         name: null,
         number: null,
         email: null,
-        delivery_address: null,
         comment: null,
-        payment_method: null
     }
 }

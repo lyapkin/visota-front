@@ -328,6 +328,7 @@
     font-size: 14px;
     line-height: 22px;
     color: #1B1E21;
+    border-radius: 3px;
 }
 
 .cart__total {

@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react'
 
 import styles from '@/styles/catalog.module.css'
 import { MAX_PRICE, MIN_PRICE } from './constant'
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 
 const Filter = ({categories, searchParams, priceFilter, handleCatChange, reset}) => {
+    const locale = useParams().locale
     const router = useRouter()
     const catFilter = new Set(searchParams.getAll('sub'))
     const [isCategoriesClosed, setIsCategoriesClosed] = useState(false)
@@ -75,6 +76,8 @@ const Filter = ({categories, searchParams, priceFilter, handleCatChange, reset})
                             <div className={`${isCategoriesItemClosed[cat.id] ? styles['cat__subcategories_closed'] : styles['cat__subcategories']}`}>
                                 {
                                 cat.subcategories.map(sub => (
+                                    (
+                                    (locale in sub.translations) &&
                                     <div key={sub.id} className={styles['subcategories__item']}>
                                         <label>
                                             <input name={cat.slug} type='checkbox'
@@ -83,9 +86,9 @@ const Filter = ({categories, searchParams, priceFilter, handleCatChange, reset})
                                             <div className={`${styles['filters__checkbox']} ${catFilter.has(sub.slug) && styles['checked']}`}>
                                                 <img src='/svgs/check-icon.svg' alt='иконка' />
                                             </div>
-                                            <span>{sub.name}</span>
+                                            <span>{sub.translations[locale].name}</span>
                                         </label>
-                                    </div>
+                                    </div>)
                                 ))
                                 }
                             </div>

@@ -23,9 +23,9 @@ const Footer = async ({locale}) => {
 					</div>
 					<div className={styles['footer__social']}>
 						<span>{t('footer:text_us')}:</span>
-						<figure className={styles['footer__youtube']}>
+						<figure className={styles['footer__telegram']}>
 							<a href='#'>
-								<img src='/svgs/youtube-icon.svg' alt='иконка'/>
+								<img src='/svgs/telegram-icon.svg' alt='иконка'/>
 							</a>
 						</figure>
 						<figure className={styles['footer__vk']}>

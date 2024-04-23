@@ -4,17 +4,15 @@ import React, { useContext, useEffect, useReducer, useState } from 'react'
 import styles from '@/styles/cart.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
-import Button from '@/components/UI/Buttons/Button'
-import cartReducer, { cartActions, cartInitState } from '@/reducers/cartReducer'
 import EmptyCart from '@/components/cart/EmptyCart'
 import { CartContext } from '@/providers/CartProvider'
 import { useParams } from 'next/navigation'
+import OrderForm from '@/components/Form/OrderForm'
 
 
 
 const Cart = () => {
     const locale = useParams().locale
-    const [order, dispatch] = useReducer(cartReducer, cartInitState)
     const [cart, setCart] = useState([])
     const [storageCart, _, deleteFromStorageCart, changeCountStorageCart] = useContext(CartContext)
     const [count, setCount] = useState(storageCart)
@@ -41,7 +39,7 @@ const Cart = () => {
         if (goodsCart.size < 1) return
 
         getCart(goodsCart)
-    }, [])
+    }, [storageCart])
 
     useEffect(() => {
         setCount(storageCart)
@@ -116,7 +114,7 @@ const Cart = () => {
                                                     <span className={styles['product-info__price-current']}>{p.current_price && (p.current_price + ' ₽')}</span>
                                                     <span className={styles['product-info__price-actual']}
                                                         hidden={p.current_price === p.actual_price}>
-                                                        {p.actual_price + ' ₽'}
+                                                        {p.actual_price && (p.actual_price + ' ₽')}
                                                     </span>
                                                 </div>
                                                 <div className={styles['product-info__code']}>
@@ -165,67 +163,7 @@ const Cart = () => {
                             </div>
                         </div>
                         <div className={styles['cart__form']}>
-                            <form>
-                                <fieldset className={styles['form__contact-data']}>
-                                    <legend>Введите контактные данные</legend>
-                                    <label className={styles['form__input']}>
-                                        <div className={styles['form__icon']}>
-                                            <Image src='/svgs/user-icon.svg' width={27} height={27} alt='иконка' />
-                                        </div>
-                                        <input placeholder='Контактное лицо (ФИО)'
-                                            onChange={(e) => dispatch({type: cartActions.NAME, payload: e.target.value})}
-                                            value={order.name}/>
-                                    </label>
-                                    <label className={styles['form__input']}>
-                                        <div className={styles['form__icon']}>
-                                            <Image src='/svgs/phone-icon.svg' width={27} height={27} alt='иконка' />
-                                        </div>
-                                        <input placeholder='Номер телефона'
-                                            onChange={(e) => dispatch({type: cartActions.NUMBER, payload: e.target.value})}
-                                            value={order.number}/>
-                                    </label>
-                                    <label className={styles['form__input']}>
-                                        <div className={styles['form__icon']}>
-                                            <Image src='/svgs/letter-icon.svg' width={27} height={27} alt='иконка' />
-                                        </div>
-                                        <input type='email' placeholder='E-mail'
-                                            onChange={(e) => dispatch({type: cartActions.EMAIL, payload: e.target.value})}
-                                            value={order.email}/>
-                                    </label>
-                                    <label className={styles['form__input']}>
-                                        <div className={styles['form__icon']}>
-                                            <Image src='/svgs/location-icon.svg' width={27} height={27} alt='иконка' />
-                                        </div>
-                                        <input placeholder='Адрес доставки'
-                                            onChange={(e) => dispatch({type: cartActions.ADDRESS, payload: e.target.value})}
-                                            value={order.address}/>
-                                    </label>
-                                    <textarea className={styles['form__textarea']} placeholder='Комментарий к заказу'
-                                            onChange={(e) => dispatch({type: cartActions.COMMENT, payload: e.target.value})}
-                                            value={order.comment}/>
-                                </fieldset>
-                                <fieldset className={styles['form__payment-method']}>
-                                    <legend>Выберите способ оплаты</legend>
-                                    <label className={styles['form__radio']} >
-                                        <input type='radio' name='payment_method'
-                                            value={'cash'} onChange={(e) => dispatch({type: cartActions.PAY_METHOD, payload: e.target.value})}/>
-                                        <span className={`${styles['radio__circle']} ${order.payMethod === 'cash' && styles['checked']}`}>
-                                            <img src='/svgs/radio-checked-icon.svg' alt='иконка' />
-                                        </span>
-                                        <span className={styles['radio__text']}>Наличный расчет</span>
-                                    </label>
-                                    <label className={styles['form__radio']}>
-                                        <input type='radio' name='payment_method'
-                                            value={'non-cash'} onChange={(e) => dispatch({type: cartActions.PAY_METHOD, payload: e.target.value})}/>
-                                        <span className={`${styles['radio__circle']} ${order.payMethod === 'non-cash' && styles['checked']}`}>
-                                            <img src='/svgs/radio-checked-icon.svg' alt='иконка' />
-                                        </span>
-                                        <span className={styles['radio__text']}>Безналичный расчет</span>
-                                    </label>
-                                </fieldset>
-
-                                <Button text={'Оформить заказ'} smallFont={false} action={() => {}} />
-                            </form>
+                            <OrderForm cart={cart} productsCount={count} />
                         </div>
                     </div>
                 }

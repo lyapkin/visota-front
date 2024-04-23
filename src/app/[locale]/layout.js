@@ -91,16 +91,13 @@ export default async function RootLayout({ children, params: {locale} }) {
 									<div>{t('subscribe')}</div>
 									<div className={styles['map-card__social-list']}>
 										<a href="#" className={styles['map-card__social-icon']}>
-											<img src="/svgs/map-social-inst-icon.svg" />
+											<img src="/svgs/map-social-telegram.svg" />
 										</a>
 										<a href="#" className={styles['map-card__social-icon']}>
 											<img src="/svgs/map-social-vk-icon.svg" />
 										</a>
 										<a href="#" className={styles['map-card__social-icon']}>
 											<img src="/svgs/map-social-yt-icon.svg" />
-										</a>
-										<a href="#" className={styles['map-card__social-icon']}>
-											<img src="/svgs/map-social-fb-icon.svg" />
 										</a>
 									</div>
 								</div>

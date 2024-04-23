@@ -6,14 +6,33 @@ import styles from './form.module.css'
 import Button from '../UI/Buttons/Button'
 import formReducer, { formActions, formInitState } from '@/reducers/formReducer'
 import { useTranslation } from 'react-i18next'
+import { useRouter } from 'next/navigation'
 
-const Form = ({main, popup, buttonText}) => {
+const Form = ({main, popup, buttonText, closePopup}) => {
+    const router = useRouter()
     const [form, dispatch] = useReducer(formReducer, formInitState)
 
     const {t} = useTranslation()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+
+        const url = new URL(process.env.BACK_URL + `/api/request/consultation/`)
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(form.data)
+        })
+        if (response.status === 400) {
+            const result = await response.json()
+            dispatch({type: formActions.ERROR, payload: result})
+        } else if (response.ok) {
+            dispatch({type: formActions.RESET})
+            router.push('/success')
+            if (popup) closePopup()
+        }
     }
 
     return (
@@ -26,43 +45,44 @@ const Form = ({main, popup, buttonText}) => {
                 </h2>
                 <p>{t('form:text')}</p>
             </>}
-        
             <form className={styles['form']} onSubmit={handleSubmit}>
-                <label className={styles['form__input']}>
+                <label className={`${styles['form__input']} ${form.error.name && 'input-form-error'}`}>
                     <div className={styles['form__icon']}>
                         <Image src='/svgs/user-icon.svg' width={27} height={27}/>
                     </div>
                     <input placeholder={t('form:placeholder_name')}
                            onChange={e => dispatch({type: formActions.NAME, payload: e.target.value})}
-                           value={form.name}/>
+                           value={form.data.name}
+                           required={true}/>
                 </label>
-                <label className={styles['form__input']}>
+                <label className={`${styles['form__input']} ${form.error.number && 'input-form-error'}`}>
                     <div className={styles['form__icon']}>
                         <Image src='/svgs/phone-icon.svg' width={27} height={27}/>
                     </div>
                     <input placeholder={t('form:placeholder_number')}
                            onChange={e => dispatch({type: formActions.NUMBER, payload: e.target.value})}
-                           value={form.number}/>
+                           value={form.data.number}
+                           required={true}/>
                 </label>
-                <label className={styles['form__input']}>
+                <label className={`${styles['form__input']} ${form.error.activity_type && 'input-form-error'}`}>
                     <div className={styles['form__icon']}>
                         <Image src='/svgs/instruments-icon.svg' width={27} height={27}/>
                     </div>
                     <input placeholder={t('form:placeholder_activity')}
                            onChange={e => dispatch({type: formActions.ACTIVITY_TYPE, payload: e.target.value})}
-                           value={form.activityType}/>
+                           value={form.data.activity_type}/>
                 </label>
-                {main && (<label className={styles['form__input']}>
+                {main && (<label className={`${styles['form__input']} ${form.error.company_name && 'input-form-error'}`}>
                     <div className={styles['form__icon']}>
                         <Image src='/svgs/building-icon.svg' width={27} height={27}/>
                     </div>
                     <input placeholder={t('form:placeholder_company_name')}
                            onChange={e => dispatch({type: formActions.COMPANY_NAME, payload: e.target.value})}
-                           value={form.companyName}/>
+                           value={form.data.company_name}/>
                 </label>)}
-                <textarea className={styles['form__textarea']} placeholder={t('form:placeholder_comment')}
+                <textarea className={`${styles['form__textarea']} ${form.error.comment && 'input-form-error'}`} placeholder={t('form:placeholder_comment')}
                           onChange={e => dispatch({type: formActions.COMMENT, payload: e.target.value})}
-                          value={form.comment}/>
+                          value={form.data.comment}/>
                 <Button text={buttonText || 'Заказать консультацию'}/>
                 {main && (<p className={styles['agreement']}
                              dangerouslySetInnerHTML={{ __html: t('form:confidential', { interpolation: { escapeValue: false } }) }}

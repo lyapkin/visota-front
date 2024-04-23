@@ -96,7 +96,7 @@ export default async function Home({ params: { locale } }) {
 							</p>
 						</div>
 						<div className={`${styles['home-advantages-block']} ${styles['home-advantages-block-4']}`}>
-							<img src='/images/advantages/receipt.png' alt='деньги' />
+							<img src='/images/advantages/money.png' alt='деньги' />
 							<h5
 								dangerouslySetInnerHTML={{ __html: t('home:advantages.forth_block_title', { interpolation: { escapeValue: false } }) }}
 							>

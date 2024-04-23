@@ -99,6 +99,10 @@ fieldset {
 	padding-top: 250px;
 }
 
+.input-form-error {
+	outline: solid red;
+}
+
 
 
 

@@ -107,6 +107,138 @@ export default function Contacts() {
                             Устава)
                         </p>
                     </div>
+                    <div className={s.item}>
+                        <h5 className={s.item__title}>Склад Санкт-Петербург</h5>
+                        <div className={s.flag}>
+                            <div className={s.flag__img}>
+                                <Image src={flag} />
+                            </div>
+                            <div>
+                                {/* <p className={s.flag__title}>
+                                    Торговая точка и офис
+                                </p> */}
+                                <p className={s.flag__text}>
+                                    г. Санкт-Петербург, пр. Обуховской обороны, д. 295, лит.АТ, логопарк «Троицкий»
+                                </p>
+                            </div>
+                        </div>
+                        {/* <div className={s.time}>
+                            <h4 className={s.subtitle}>Время работы</h4>
+                            <div className={s.time__wrap}>
+                                <p>
+                                    Пн-Пт, с 09:00 до 21:00 <br /> Сб-Вс, с
+                                    09:00 до 20:00
+                                </p>
+                                <p>Технический отдел: Круглосуточно</p>
+                            </div>
+                        </div>
+                        <div className={s.tel}>
+                                <h4 className={`${s.subtitle} ${s.tel__title}`}>
+                                    Телефон
+                                </h4>
+                                <div className={s.tel__number}>
+                                    <div className={s.tel__img}>
+                                        <Image src={call} />
+                                    </div>
+                                    <a
+                                        className={s.tel__link}
+                                        href="tel:88007005413"
+                                    >
+                                        8 800 700 54 13
+                                    </a>
+                                    <a
+                                        className={`${s.tel__link} ${s.tel__link__light}`}
+                                        href="tel:+79677828700"
+                                    >
+                                        +7 (967) 782-87-00
+                                    </a>
+                                </div>
+                                <p className={s.tel__text}>
+                                    Проектирование, монтаж и другие вопросы
+                                </p>
+                            <div className={s.tel__right}>
+                                <p className={s.tel__text}>
+                                    Проектирование, монтаж и другие вопросы
+                                </p>
+                                
+                            </div>
+                        </div>
+                        <div className={s.email}>
+                            <h4 className={`${s.subtitle}`}>Почта</h4>
+                            <p className={s.email__text}>
+                                <a href="mailto:visota1300@mail.ru">
+                                    visota1300@mail.ru
+                                </a>
+                            </p>
+                        </div> */}
+                    </div>
+                    <div className={s.item}>
+                        <h5 className={s.item__title}>Склад Московская обл.</h5>
+                        <div className={s.flag}>
+                            <div className={s.flag__img}>
+                                <Image src={flag} />
+                            </div>
+                            <div>
+                                {/* <p className={s.flag__title}>
+                                    Торговая точка и офис
+                                </p> */}
+                                <p className={s.flag__text}>
+                                    Московская обл., Ногинский р-н,
+                                    пгт. Обухово, Кудиновское ш., 4 корпус 27.
+                                    ПСК "Атлант-Парк"
+                                </p>
+                            </div>
+                        </div>
+                        {/* <div className={s.time}>
+                            <h4 className={s.subtitle}>Время работы</h4>
+                            <div className={s.time__wrap}>
+                                <p>
+                                    Пн-Пт, с 09:00 до 21:00 <br /> Сб-Вс, с
+                                    09:00 до 20:00
+                                </p>
+                                <p>Технический отдел: Круглосуточно</p>
+                            </div>
+                        </div>
+                        <div className={s.tel}>
+                                <h4 className={`${s.subtitle} ${s.tel__title}`}>
+                                    Телефон
+                                </h4>
+                                <div className={s.tel__number}>
+                                    <div className={s.tel__img}>
+                                        <Image src={call} />
+                                    </div>
+                                    <a
+                                        className={s.tel__link}
+                                        href="tel:88007005413"
+                                    >
+                                        8 800 700 54 13
+                                    </a>
+                                    <a
+                                        className={`${s.tel__link} ${s.tel__link__light}`}
+                                        href="tel:+79677828700"
+                                    >
+                                        +7 (967) 782-87-00
+                                    </a>
+                                </div>
+                                <p className={s.tel__text}>
+                                    Проектирование, монтаж и другие вопросы
+                                </p>
+                            <div className={s.tel__right}>
+                                <p className={s.tel__text}>
+                                    Проектирование, монтаж и другие вопросы
+                                </p>
+                                
+                            </div>
+                        </div>
+                        <div className={s.email}>
+                            <h4 className={`${s.subtitle}`}>Почта</h4>
+                            <p className={s.email__text}>
+                                <a href="mailto:visota1300@mail.ru">
+                                    visota1300@mail.ru
+                                </a>
+                            </p>
+                        </div> */}
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,11 +1,40 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import TextInput from '../UI/form/TextInput'
 import TextArea from '../UI/form/TextArea'
 import Button from '../UI/Buttons/Button'
 
 import styles from '@/components/Form/form.module.css'
+import { useRouter } from 'next/navigation'
+import getPriceReducer, { getPriceActions, getPriceInitState } from '@/reducers/getPriceReducer'
 
 const GetPriceForm = ({product}) => {
+    const router = useRouter()
+    const [form, dispatch] = useReducer(getPriceReducer, getPriceInitState)
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        const data = {
+            ...form.data,
+            product: product.id
+        }
+
+        const url = new URL(process.env.BACK_URL + `/api/request/price/`)
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        if (response.status === 400) {
+            const result = await response.json()
+            dispatch({type: getPriceActions.ERROR, payload: result})
+        } else if (response.ok) {
+            dispatch({type: getPriceActions.RESET})
+            router.push('/success')
+        }
+    }
 
     return (
         <>
@@ -13,34 +42,38 @@ const GetPriceForm = ({product}) => {
                 <div className={styles['head']}>
                     <h5>{product.name}</h5>
                 </div>
-                <form className={styles['get-price-form']}>
+                <form className={styles['get-price-form']} onSubmit={handleSubmit}>
                     <TextInput 
-                            value={''}
-                            onChange={() => {}} 
+                            value={form.data.name}
+                            error={form.error.name}
+                            onChange={(e) => dispatch({type: getPriceActions.NAME, payload: e.target.value})} 
                             placeholder={'Контактное лицо (ФИО)'}
                             required={true}
                             img={{url: '/svgs/user-icon.svg', width: 27, height: 27}}
                             type={'text'}
                     />
                     <TextInput 
-                            value={''}
-                            onChange={() => {}} 
+                            value={form.data.email}
+                            error={form.error.email}
+                            onChange={(e) => dispatch({type: getPriceActions.EMAIL, payload: e.target.value})} 
                             placeholder={'Email'}
                             required={true}
                             img={{url: '/svgs/email-no-bg-icon.svg', width: 27, height: 27}}
                             type={'email'}
                     />
                     <TextInput 
-                            value={''}
-                            onChange={() => {}} 
+                            value={form.data.number}
+                            error={form.error.number}
+                            onChange={(e) => dispatch({type: getPriceActions.NUMBER, payload: e.target.value})} 
                             placeholder={'Номер телефона'}
                             required={true}
                             img={{url: '/svgs/phone-icon.svg', width: 27, height: 27}}
                             type={'tel'}
                     />
                     <TextArea
-                            value={''}
-                            onChange={() => {}} 
+                            value={form.data.comment}
+                            error={form.error.comment}
+                            onChange={(e) => dispatch({type: getPriceActions.COMMENT, payload: e.target.value})} 
                             placeholder={'Напишите комментарий к заказу'}
                     />
                     <Button

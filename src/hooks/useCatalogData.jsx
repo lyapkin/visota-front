@@ -87,7 +87,7 @@ const useCatalogData = () => {
                 id: 3,
                 title: t('common:opalub_complect'),
                 img: '/images/catalog/slider-complect-opalubka.png',
-                link: '/catalog?sub=gaika-vaterstop&sub=zamok-klinovoi-otsinkovannyi&sub=zamok-bfd-otsinkovannyi&sub=gaika-dlia-vintovoi-opory&sub=gaika-stiazhnaia-trekhrozhkovaia-otsinkovannaia&sub=gaika-stiazhnaia-dvukhrozhkovaia-otsinkovannaia&sub=gaika-sharnirnaia&sub=vint-stiazhnoi&sub=gaika-malaia-barashkovaiakrylchataia&sub=fiksatory-armatury',
+                link: '/catalog?sub=gaika-vaterstop&sub=zamok-klinovoi-otsinkovannyi&sub=zamok-bfd-otsinkovannyi&sub=gaika-dlia-vintovoi-opory&sub=gaika-stiazhnaia-trekhrozhkovaia-otsinkovannaia&sub=gaika-stiazhnaia-dvukhrozhkovaia-otsinkovannaia&sub=gaika-sharnirnaia&sub=vint-stiazhnoi&sub=gaika-malaia-barashkovaiakrylchataia&sub=fiksatory-armatury&sub=komlektuiushchie-k-opalubke',
                 categories: [
                     {
                         id: 1,

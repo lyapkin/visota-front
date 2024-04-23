@@ -11,7 +11,7 @@ const PopupForm = ({text, smallFont}) => {
         <>
         {isFormShown &&
             <Popup close={() => setIsFormShown(false)}>
-                <Form popup={true} buttonText={text} />
+                <Form popup={true} buttonText={text} closePopup={() => setIsFormShown(false)} />
             </Popup>
         }
         <Button text={text} smallFont={smallFont} action={() => setIsFormShown(true)}/>
