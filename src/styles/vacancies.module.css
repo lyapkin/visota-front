@@ -1,5 +1,6 @@
 .vacancies {
     color: #1b1e21;
+    padding-bottom: 60px;
 }
 
 .title {
@@ -47,6 +48,67 @@
     position: relative;
     list-style: disc;
     margin-left: 18px;
+}
+
+.vacancy {
+    border-top: solid 1px #d3d3d3;
+    padding: 20px 0;
+}
+.description h1,
+.description h2,
+.description h3 {
+    font-family: 'Gilroy-700';
+    line-height: 52px;
+    text-transform: uppercase;
+    color: #1B1E21;
+    padding-top: 20px;
+}
+
+.description h1 {
+    font-size: 36px;
+    padding-bottom: 17px;
+}
+
+.description h2 {
+    font-size: 30px;
+    padding-bottom: 17px;
+}
+
+.description h3 {
+    font-size: 24px;
+    padding-bottom: 17px;
+}
+
+.description p,
+.description li {
+    font-family: 'Gilroy-400';
+    font-size: 18px;
+    line-height: 30px;
+    color: #1B1E21;
+    padding-bottom: 10px;
+}
+
+.description ul li:before {
+    content: '-';
+    padding-right: 5px;
+}
+.description ol li {
+    list-style: decimal inside;
+}
+
+.description img {
+    height: auto;
+    max-height: 90vh;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.description iframe {
+    max-height: 90vh;
+
+    width: auto;
+    aspect-ratio: 8/5;
+    /* object-fit: contain; */
 }
 
 @media (max-width: 500px) {

@@ -11,5 +11,8 @@
   "offer_button": "获得商业报价",
   "get_price": "查看价格",
   "order_button": "查看",
-  "confidential": "单击按钮即表示您同意<span>数据处理条款</span>"
+  "confidential": "单击按钮即表示您同意<span>数据处理条款</span>",
+  "placeholder_entity": "法人实体",
+  "placeholder_card": "合作伙伴卡",
+  "get_example": "获取样品"
 }

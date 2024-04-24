@@ -46,7 +46,7 @@ export default function Contacts() {
                                         className={s.tel__link}
                                         href="tel:88007005413"
                                     >
-                                        8 800 700 54 13
+                                        8 800 700 54 13 <span>- звонок бесплатный, отдел продаж</span>
                                     </a>
                                     <a
                                         className={`${s.tel__link} ${s.tel__link__light}`}
@@ -189,17 +189,16 @@ export default function Contacts() {
                                 </p>
                             </div>
                         </div>
-                        {/* <div className={s.time}>
+                        <div className={s.time}>
                             <h4 className={s.subtitle}>Время работы</h4>
                             <div className={s.time__wrap}>
                                 <p>
-                                    Пн-Пт, с 09:00 до 21:00 <br /> Сб-Вс, с
-                                    09:00 до 20:00
+                                    Круглосуточно
                                 </p>
-                                <p>Технический отдел: Круглосуточно</p>
+                                {/* <p>Технический отдел: Круглосуточно</p> */}
                             </div>
                         </div>
-                        <div className={s.tel}>
+                        {/* <div className={s.tel}>
                                 <h4 className={`${s.subtitle} ${s.tel__title}`}>
                                     Телефон
                                 </h4>

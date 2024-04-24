@@ -11,5 +11,8 @@
   "offer_button": "Get a commercial offer",
   "get_price": "Check price",
   "order_button": "Checkout",
-  "confidential": "By clicking the button you agree <span>to the terms of data processing</span>"
+  "confidential": "By clicking the button you agree <span>to the terms of data processing</span>",
+  "placeholder_entity": "Legal entity",
+  "placeholder_card": "Partner card",
+  "get_example": "Get a sample"
 }

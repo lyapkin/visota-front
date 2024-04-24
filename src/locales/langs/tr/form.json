@@ -11,5 +11,8 @@
   "offer_button": "Ticari bir teklif alın",
   "get_price": "Fiyatı kontrol et",
   "order_button": "Çıkış yapmak",
-  "confidential": "Düğmeyi tıklayarak <span>veri işleme şartlarını</span> kabul etmiş olursunuz"
+  "confidential": "Düğmeyi tıklayarak <span>veri işleme şartlarını</span> kabul etmiş olursunuz",
+  "placeholder_entity": "Tüzel kişilik",
+  "placeholder_card": "Ortak kartı",
+  "get_example": "Bir örnek alın"
 }

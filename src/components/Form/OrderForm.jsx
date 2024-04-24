@@ -7,7 +7,7 @@ import Button from '../UI/Buttons/Button'
 import { useRouter } from 'next/navigation'
 import getCookie from '@/utils/getCookie'
 
-const OrderForm = ({cart, productsCount}) => {
+const OrderForm = ({cart, productsCount, resetCart}) => {
     const router = useRouter()
     const [order, dispatch] = useReducer(cartReducer, cartInitState)
 
@@ -35,7 +35,9 @@ const OrderForm = ({cart, productsCount}) => {
             const result = await response.json()
             dispatch({type: cartActions.ERROR, payload: result})
         } else if (response.ok) {
+            await response.json()
             dispatch({type: cartActions.RESET})
+            resetCart()
             router.push('/success')
         }
     }

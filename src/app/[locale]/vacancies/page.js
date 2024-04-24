@@ -1,6 +1,8 @@
 import s from "@/styles/vacancies.module.css";
 
-export default function Vacancies() {
+export default async function Vacancies() {
+    const data = await getData()
+    
     return (
         <div className={`first-screen ${s.vacancies}`}>
             <div className="container">
@@ -20,7 +22,15 @@ export default function Vacancies() {
                     международным стандартам качества, имеет неограниченный срок
                     службы.
                 </p>
-                <h2 className={s.subtitle}>Менеджер по закупкам и логистике</h2>
+                {data.map(v => (
+                    <div key={v.id}
+                         className={s.vacancy}>
+                        <h2 className={s.subtitle}>{v.name}</h2>
+                        <div className={s.description}
+                             dangerouslySetInnerHTML={{ __html: v.description }}></div>
+                    </div>
+                ))}
+                {/* <h2 className={s.subtitle}>Менеджер по закупкам и логистике</h2>
                 <p className={s.text}>
                     Требуемый опыт работы: 1–3 года <br /> Полная занятость,
                     полный день
@@ -207,8 +217,21 @@ export default function Vacancies() {
                     <li className={s.list__item}>
                         Бонусы и подарочки за результат.
                     </li>
-                </ul>
+                </ul> */}
             </div>
         </div>
     );
+}
+
+
+const getData = async () => {
+    try {
+        const response = await fetch(`${process.env.API_URL}/vacancies/`, {
+            next: { revalidate: 60 },
+        });
+        const data = await response.json();
+        return data;
+    } catch (e) {
+        console.log(e);
+    }
 }

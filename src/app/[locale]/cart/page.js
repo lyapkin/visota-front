@@ -14,7 +14,7 @@ import OrderForm from '@/components/Form/OrderForm'
 const Cart = () => {
     const locale = useParams().locale
     const [cart, setCart] = useState([])
-    const [storageCart, _, deleteFromStorageCart, changeCountStorageCart] = useContext(CartContext)
+    const [storageCart, _, deleteFromStorageCart, changeCountStorageCart, resetCart] = useContext(CartContext)
     const [count, setCount] = useState(storageCart)
     
 
@@ -163,7 +163,7 @@ const Cart = () => {
                             </div>
                         </div>
                         <div className={styles['cart__form']}>
-                            <OrderForm cart={cart} productsCount={count} />
+                            <OrderForm cart={cart} productsCount={count} resetCart={resetCart} />
                         </div>
                     </div>
                 }

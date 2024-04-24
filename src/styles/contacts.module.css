@@ -171,6 +171,13 @@
     margin-bottom: 3px;
     grid-area: 1 / 2 / 2 / -1;
 }
+.tel__link > span {
+    font-family: "Gilroy-400";
+    font-size: 14px;
+    line-height: 22px;
+    color: #7b8990;
+    vertical-align: text-bottom;
+}
 
 .tel__link__light {
     font-family: "Gilroy-400";
