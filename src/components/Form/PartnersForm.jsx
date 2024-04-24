@@ -37,8 +37,8 @@ const PartnersForm = () => {
             const result = await response.json()
             dispatch({type: partnersActions.ERROR, payload: result})
         } else if (response.ok) {
-            dispatch({type: partnersActions.RESET})
             router.push('/success')
+            dispatch({type: partnersActions.RESET})
         }
     }
 

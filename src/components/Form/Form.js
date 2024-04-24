@@ -34,8 +34,8 @@ const Form = ({main, popup, buttonText, closePopup}) => {
             const result = await response.json()
             dispatch({type: formActions.ERROR, payload: result})
         } else if (response.ok) {
-            dispatch({type: formActions.RESET})
             router.push('/success')
+            dispatch({type: formActions.RESET})
             if (popup) closePopup()
         }
     }

@@ -36,9 +36,9 @@ const OrderForm = ({cart, productsCount, resetCart}) => {
             dispatch({type: cartActions.ERROR, payload: result})
         } else if (response.ok) {
             await response.json()
-            dispatch({type: cartActions.RESET})
             resetCart()
             router.push('/success')
+            dispatch({type: cartActions.RESET})
         }
     }
 

@@ -36,8 +36,8 @@ const GetPriceForm = ({product}) => {
             const result = await response.json()
             dispatch({type: getPriceActions.ERROR, payload: result})
         } else if (response.ok) {
-            dispatch({type: getPriceActions.RESET})
             router.push('/success')
+            dispatch({type: getPriceActions.RESET})
         }
     }
 

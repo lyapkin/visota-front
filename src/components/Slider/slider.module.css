@@ -948,7 +948,8 @@ div.product-slider__cover-wrapper-single {
         min-width: 32%;
     }
     .gov-clients-slider__buttons {
-        top: 165px;
+        top: initial;
+        bottom: 10px;
         right: 50%;
         transform: translateX(50%);
     }
@@ -994,7 +995,7 @@ div.product-slider__cover-wrapper-single {
         min-width: 49%;
     }
     .gov-clients-slider__buttons {
-        top: 274px;
+        /* top: 274px; */
     }
 
     .thanks-letters-slider-block {
@@ -1046,6 +1047,6 @@ div.product-slider__cover-wrapper-single {
     }
 
     .gov-clients-slider__buttons {
-        top: 155px;
+        /* top: 155px; */
     }
 }
