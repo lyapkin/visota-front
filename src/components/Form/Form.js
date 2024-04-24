@@ -7,6 +7,7 @@ import Button from '../UI/Buttons/Button'
 import formReducer, { formActions, formInitState } from '@/reducers/formReducer'
 import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/navigation'
+import getCookie from '@/utils/getCookie'
 
 const Form = ({main, popup, buttonText, closePopup}) => {
     const router = useRouter()
@@ -17,12 +18,16 @@ const Form = ({main, popup, buttonText, closePopup}) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        const csrf = getCookie('csrftoken')
+
         const url = new URL(process.env.BACK_URL + `/api/request/consultation/`)
         const response = await fetch(url, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrf
             },
+            mode: 'same-origin',
             body: JSON.stringify(form.data)
         })
         if (response.status === 400) {

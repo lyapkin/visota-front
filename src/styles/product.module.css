@@ -467,7 +467,7 @@
 .delivery-block__text {
     flex-grow: 1;
     
-    font-size: 16px;
+    font-size: 18px;
     line-height: 24px;
 }
 
@@ -535,7 +535,7 @@
         line-height: 18px;
     }
     .delivery-block__text {
-        font-size: 10px;
+        font-size: 18px;
     }
     .delivery-block__img > img {
         width: 100px;
@@ -545,13 +545,15 @@
         top: 35px;
         width: 53px;
         height: 53px;
+        right: -30px;
     }
+    
     .product__delivery-block:nth-of-type(2) .delivery-block__header {
         width: 50%;
     }
     .delivery-block__header,
     .delivery-block__text {
-        line-height: 16px;
+        /* line-height: 16px; */
     }
 }
 

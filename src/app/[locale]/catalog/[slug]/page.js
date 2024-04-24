@@ -194,7 +194,7 @@ const Product = ({params}) => {
                             </div>
                             <div className={styles['delivery-block__text']}>
                                 <span className={styles['delivery-block__header']}>Сотрудничаем со всеми службами доставки</span>
-                                <span className={styles['delivery-block__description']}>Полученные заказы до 16:00, будут отправлены в тот же день</span>
+                                {/* <span className={styles['delivery-block__description']}>Полученные заказы до 16:00, будут отправлены в тот же день</span> */}
                             </div>
                         </div>
                         <div className={styles['product__delivery-block']}>
@@ -203,7 +203,7 @@ const Product = ({params}) => {
                             </div>
                             <div className={styles['delivery-block__text']}>
                                 <span className={styles['delivery-block__header']}>Доставка товара без задержек</span>
-                                <span className={styles['delivery-block__description']}>Полученные заказы до 16:00, будут отправлены в тот же день</span>
+                                {/* <span className={styles['delivery-block__description']}>Полученные заказы до 16:00, будут отправлены в тот же день</span> */}
                             </div>
                         </div>
                         <div className={styles['product__delivery-block']}>
@@ -212,8 +212,8 @@ const Product = ({params}) => {
                             </div>
                             <div className={styles['delivery-block__text']}>
                                 <span className={styles['delivery-block__header']}>И кратчайшие сроки доставки</span>
-                                <span className={styles['delivery-block__description']}>Пн-Пт, с 08:00 до 18:00,</span>
-                                <span className={styles['delivery-block__description']}>Сб, с 10:00 до 15:00, вс выходной</span>
+                                {/* <span className={styles['delivery-block__description']}>Пн-Пт, с 08:00 до 18:00,</span>
+                                <span className={styles['delivery-block__description']}>Сб, с 10:00 до 15:00, вс выходной</span> */}
                             </div>
                         </div>
 

@@ -2,7 +2,7 @@ import s from "@/styles/delivery.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import MapImage from "@/../public/images/delivery-map.svg";
-import CarImage from "@/../public/images/delivery/car.png";
+import CarImage from "@/../public/images/bg/delivery-truck-bg-big.png";
 
 import i1 from "@/../public/images/delivery/i1.png";
 import i2 from "@/../public/images/delivery/i2.png";

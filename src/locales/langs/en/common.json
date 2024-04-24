@@ -26,7 +26,7 @@
   "klin_zamok": "Galvanized wedge lock",
   "bfd_zamok": "Lock BFD galvanized",
   "gaika_vint_opor": "Nut for screw support",
-  "gaika_stayzh_treh": "Three-arm galvanized coupling nut",
+  "gaika_stayzh_treh": "Galvanized three-arm coupling nut",
   "gaika_staych_dvuh": "Double-arm galvanized coupling nut 90mm",
   "gaika_sharnir": "Swivel nut",
   "vint_stayzh": "Pinch screw",
@@ -42,5 +42,6 @@
   "office_ufa": "Ufa office",
   "schedule_workweek": "Mon-Fri, from 09:00 to 18:00",
   "schedule_weekend": "Sat-Sun, Closed",
-  "tel": "Telephone"
+  "tel": "Telephone",
+  "show_more": "Read more"
 }

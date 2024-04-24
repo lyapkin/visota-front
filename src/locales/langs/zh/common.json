@@ -25,8 +25,8 @@
   "waterstop": "止水螺母",
   "klin_zamok": "镀锌楔锁",
   "bfd_zamok": "BFD 镀锌锁",
-  "gaika_vint_opor": "螺杆支撑螺母",
-  "gaika_stayzh_treh": "三臂镀锌连接螺母",
+  "gaika_vint_opor": "螺杆支撑用螺母",
+  "gaika_stayzh_treh": "镀锌三臂连接螺母",
   "gaika_staych_dvuh": "双臂镀锌连接螺母90mm",
   "gaika_sharnir": "旋转螺母",
   "vint_stayzh": "夹紧螺丝",
@@ -42,5 +42,6 @@
   "office_ufa": "乌法办事处",
   "schedule_workweek": "周一至周五，09:00 至 18:00",
   "schedule_weekend": "周六至周日，休息",
-  "tel": "电话"
+  "tel": "电话",
+  "show_more": "阅读更多"
 }

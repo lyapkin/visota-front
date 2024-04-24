@@ -12,10 +12,9 @@ export default async function Blog() {
                     Читайте интересные статьи в нашем блоге и следите за
                     новостями
                 </h1>
-                <p className={s.info}>
-                    Публикуем обзоры, авто, лайф хаки, актуальные новости в
-                    сфере пригона авто
-                </p>
+                {/* <p className={s.info}>
+                    
+                </p> */}
 
                 <div className={s.items}>
                     {articles.map(

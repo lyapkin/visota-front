@@ -11,6 +11,7 @@ import ShowFormProvider from "@/providers/ShowFormProvider";
 import initTranslations from "../../locales/i18n";
 import TranslationsProvider from "@/providers/TranslationsProvider";
 import i18nConfig from "../../../i18nConfig";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,11 +26,12 @@ export function generateStaticParams() {
   }
 
 export default async function RootLayout({ children, params: {locale} }) {
-	const {t, resources} = await initTranslations(locale, ['map', 'breadcrumbs', 'home', 'form', 'common'])
+	const {t, resources} = await initTranslations(locale, ['map', 'breadcrumbs', 'home', 'form', 'common', 'about_section', 'partners'])
 
 	return (
 		<html lang={locale}>
 			<body className={inter.className}>
+				<Script src="//code.jivo.ru/widget/b6tVDylH8Y" />
 				
 				<LocationNameProvider>
 				<ShowFormProvider>
@@ -90,13 +92,13 @@ export default async function RootLayout({ children, params: {locale} }) {
 								<div className={styles['map-card__social']}>
 									<div>{t('subscribe')}</div>
 									<div className={styles['map-card__social-list']}>
-										<a href="#" className={styles['map-card__social-icon']}>
+										<a href="https://web.telegram.org/k/#@visotaUSR13" className={styles['map-card__social-icon']}>
 											<img src="/svgs/map-social-telegram.svg" />
 										</a>
-										<a href="#" className={styles['map-card__social-icon']}>
+										<a href="https://vk.com/id827831209" className={styles['map-card__social-icon']}>
 											<img src="/svgs/map-social-vk-icon.svg" />
 										</a>
-										<a href="#" className={styles['map-card__social-icon']}>
+										<a href="https://www.youtube.com/@Uralsnabresurs" className={styles['map-card__social-icon']}>
 											<img src="/svgs/map-social-yt-icon.svg" />
 										</a>
 									</div>

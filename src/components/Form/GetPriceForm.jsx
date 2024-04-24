@@ -6,6 +6,7 @@ import Button from '../UI/Buttons/Button'
 import styles from '@/components/Form/form.module.css'
 import { useRouter } from 'next/navigation'
 import getPriceReducer, { getPriceActions, getPriceInitState } from '@/reducers/getPriceReducer'
+import getCookie from '@/utils/getCookie'
 
 const GetPriceForm = ({product}) => {
     const router = useRouter()
@@ -13,6 +14,8 @@ const GetPriceForm = ({product}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        const csrf = getCookie('csrftoken')
 
         const data = {
             ...form.data,
@@ -23,8 +26,10 @@ const GetPriceForm = ({product}) => {
         const response = await fetch(url, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrf
             },
+            mode: 'same-origin',
             body: JSON.stringify(data)
         })
         if (response.status === 400) {

@@ -28,10 +28,10 @@ export default function Contacts() {
                             <h4 className={s.subtitle}>Время работы</h4>
                             <div className={s.time__wrap}>
                                 <p>
-                                    Пн-Пт, с 09:00 до 21:00 <br /> Сб-Вс, с
-                                    09:00 до 20:00
+                                    Пн-Пт, с 09:00 до 18:00 <br />
+                                    Сб-Вс, Выходной
                                 </p>
-                                <p>Технический отдел: Круглосуточно</p>
+                                <p>Склад МСК: Круглосуточно</p>
                             </div>
                         </div>
                         <div className={s.tel}>
@@ -55,9 +55,9 @@ export default function Contacts() {
                                         +7 (967) 782-87-00
                                     </a>
                                 </div>
-                                <p className={s.tel__text}>
+                                {/* <p className={s.tel__text}>
                                     Проектирование, монтаж и другие вопросы
-                                </p>
+                                </p> */}
                             {/* <div className={s.tel__right}>
                                 <p className={s.tel__text}>
                                     Проектирование, монтаж и другие вопросы

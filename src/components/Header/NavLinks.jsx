@@ -19,9 +19,9 @@ const NavLinks = () => {
                     {t('common:delivery_payment')}
                 </Link>
             </li>
-            <li className={styles["header-main__faq"]}>
+            {/* <li className={styles["header-main__faq"]}>
                 <Link href="/faq">{t('common:faq')}</Link>
-            </li>
+            </li> */}
             <li
                 className={styles["header-main__vacancies"]}
             >

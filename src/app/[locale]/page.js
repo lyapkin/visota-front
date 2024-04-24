@@ -13,6 +13,9 @@ import HomeFrontSlider from '@/components/Slider/HomeFrontSlider';
 import ReputationBlocks from '@/components/Home/reputation/ReputationBlocks';
 import PopupForm from '@/components/Form/PopupForm';
 import initTranslations from '@/locales/i18n';
+import AboutSection from '@/components/AboutSection/AboutSection';
+import ClientsSection from '@/components/ClientsSection/ClientsSection';
+import DeliverySection from '@/components/DeliverySection/DeliverySection';
 
 export default async function Home({ params: { locale } }) {
 	const { t, resources } = await initTranslations(locale, ['home', 'common'])
@@ -128,70 +131,11 @@ export default async function Home({ params: { locale } }) {
 					<ProjectsSlider />
 				</div>
 			</section>
-			<section className={styles['home-delivery']}>
-				<div className='container' >
-					<h2 className={styles['home-sections-header']}
-						dangerouslySetInnerHTML={{ __html: t('home:delivery.title', { interpolation: { escapeValue: false } }) }}
-					></h2>
-					<p>{t('home:delivery.text')}</p>
-					<div className={styles['home-delivery__map-contact-block']}>
-						<div className={styles['home-delivery__delivery-map']}>
-							<img src='/images/delivery-map.svg' alt='фон' />
-						</div>
-						<div className={styles['home-delivery__contact']}>
-							<h4>{t('common:office_ufa')}</h4>
-							<p>{t('common:address')}</p>
-							<span>{t('common:schedule_workweek')},</span>
-							<span>{t('common:schedule_weekend')}</span>
-							<p><a href='tel:+78007005413'>8 800 700 54 13</a></p>
-						</div>
-					</div>
-					<div className={styles['home-reputation']}>
-						<h3 className={styles['home-sections-header']}
-							dangerouslySetInnerHTML={{ __html: t('home:reputation.title', { interpolation: { escapeValue: false } }) }}
-						></h3>
-						<ReputationBlocks />
-					</div>
-				</div>
-			</section>
+			<DeliverySection locale={locale} />
 
-			<section className={styles['home-clients']}>
-				<div className='container'>
-					<div className={styles['home-clients__gov-clients']}>
-						<h2 className={styles['home-sections-header']}
-							dangerouslySetInnerHTML={{ __html: t('home:gov_clients.title', { interpolation: { escapeValue: false } }) }}
-						></h2>
-						<GovClientsSlider />
-					</div>
-					<div className={styles['home-clients__thanks-letters']}>
-						<h2
-							dangerouslySetInnerHTML={{ __html: t('home:thank_letters.title', { interpolation: { escapeValue: false } }) }}
-						></h2>
-						<ThanksSlider />
-					</div>
-				</div>
-			</section>
+			<ClientsSection locale={locale} />
 
-			<section className={styles['home-about']}>
-				<div className='container'>
-					<div className={styles['home-about__video']}>
-						<h6>{t('home:about.video')}</h6>
-						<video controls="controls" preload='none' poster='/images/home-about-video-preview.jpg'>
-							<source src="/videos/visota.mp4" type="video/mp4" codecs="avc1.42E01E, mp4a.40.2" />
-						</video>
-					</div>
-					<div className={styles['home-about__description']}>
-						<h2 className={styles['home-sections-header']}
-							dangerouslySetInnerHTML={{ __html: t('home:about.title', { interpolation: { escapeValue: false } }) }}
-						></h2>
-						<div>
-							<p>{t('home:about.text')}</p>
-							<p>{t('home:about.text')}</p>
-						</div>
-					</div>
-					<AboutAchievements />
-				</div>
-			</section>
+			<AboutSection locale={locale} />
 
 			{/* <section className={styles['home-special-offer']}>
 				<div className='container'>

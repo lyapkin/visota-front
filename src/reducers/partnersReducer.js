@@ -1,6 +1,6 @@
-const cartReducer = (state, action) => {
+const partnersReducer = (state, action) => {
     switch (action.type) {
-        case cartActions.NAME:
+        case partnersActions.NAME:
             return {
                 ...state,
                 data: {
@@ -12,7 +12,7 @@ const cartReducer = (state, action) => {
                     name: null
                 }
             }
-        case cartActions.NUMBER:
+        case partnersActions.NUMBER:
             return {
                 ...state,
                 data: {
@@ -24,7 +24,7 @@ const cartReducer = (state, action) => {
                     number: null
                 }
             }
-        case cartActions.EMAIL:
+        case partnersActions.EMAIL:
             return {
                 ...state,
                 data: {
@@ -36,84 +36,69 @@ const cartReducer = (state, action) => {
                     email: null
                 }
             }
-        case cartActions.ADDRESS:
+        case partnersActions.ENTITY:
             return {
                 ...state,
                 data: {
                     ...state.data,
-                    delivery_address: action.payload
+                    entity: action.payload
                 },
                 error: {
                     ...state.error,
-                    delivery_address: null
+                    entity: null
                 }
             }
-        case cartActions.COMMENT:
+        case partnersActions.CARD:
             return {
                 ...state,
                 data: {
                     ...state.data,
-                    comment: action.payload
+                    card: action.payload
                 },
                 error: {
                     ...state.error,
-                    comment: null
+                    card: null
                 }
             }
-        // case cartActions.PAY_METHOD:
-        //     return {
-        //         ...state,
-        //         data: {
-        //             ...state.data,
-        //             payment_method: action.payload
-        //         },
-        //         error: {
-        //             ...state.error,
-        //             payment_method: null
-        //         }
-        //     }
-        case cartActions.ERROR:
+        case partnersActions.ERROR:
             return {
                 ...state,
                 error: action.payload
             }
-        case cartActions.RESET:
+        case partnersActions.RESET:
             return {
-                ...cartInitState
+                ...partnersInitState
             }
         default:
             return state
     }
 }
 
-export default cartReducer
+export default partnersReducer
 
-export const cartActions = {
+export const partnersActions = {
     NAME: 'name',
     NUMBER: 'number',
     EMAIL: 'email',
-    ADDRESS: 'address',
-    COMMENT: 'comment',
-    // PAY_METHOD: 'payMethod',
+    ENTITY: 'entity',
+    CARD: 'card',
     ERROR: 'error',
     RESET: 'reset'
 }
 
-export const cartInitState = {
+export const partnersInitState = {
     data: {
         name: '',
         number: '',
         email: '',
-        delivery_address: '',
-        comment: '',
-        // payment_method: '',
+        entity: '',
+        card: '',
     },
     error: {
         name: null,
         number: null,
         email: null,
-        delivery_address: null,
-        comment: null,
-        // payment_method: null,
+        entity: null,
+        card: null,
     }
 }

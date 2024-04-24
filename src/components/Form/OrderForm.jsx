@@ -5,6 +5,7 @@ import styles from '@/styles/cart.module.css'
 import cartReducer, { cartActions, cartInitState } from '@/reducers/cartReducer'
 import Button from '../UI/Buttons/Button'
 import { useRouter } from 'next/navigation'
+import getCookie from '@/utils/getCookie'
 
 const OrderForm = ({cart, productsCount}) => {
     const router = useRouter()
@@ -12,6 +13,8 @@ const OrderForm = ({cart, productsCount}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        const csrf = getCookie('csrftoken')
 
         const data = {
             ...order.data,
@@ -22,8 +25,10 @@ const OrderForm = ({cart, productsCount}) => {
         const response = await fetch(url, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrf
             },
+            mode: 'same-origin',
             body: JSON.stringify(data)
         })
         if (response.status === 400) {
@@ -75,7 +80,7 @@ const OrderForm = ({cart, productsCount}) => {
                     onChange={(e) => dispatch({ type: cartActions.COMMENT, payload: e.target.value })}
                     value={order.data.comment} />
             </fieldset>
-            <fieldset className={`${styles['form__payment-method']}`}>
+            {/* <fieldset className={`${styles['form__payment-method']}`}>
                 <legend>Выберите способ оплаты</legend>
                 <label className={styles['form__radio']} >
                     <input type='radio' name='payment_method'
@@ -93,7 +98,7 @@ const OrderForm = ({cart, productsCount}) => {
                     </span>
                     <span className={`${styles['radio__text']} ${order.error.payment_method && 'input-form-error'}`}>Безналичный расчет</span>
                 </label>
-            </fieldset>
+            </fieldset> */}
 
             <Button text={'Оформить заказ'} smallFont={false} action={() => { }} />
         </form>
