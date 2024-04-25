@@ -19,7 +19,7 @@ export default async function AboutSection({locale}) {
                     ></h2>
                     <div>
                         <p>{t('about_section:text')}</p>
-                        <p>{t('about_section:text')}</p>
+                        {/* <p>{t('about_section:text')}</p> */}
                     </div>
                 </div>
                 <AboutAchievements />
