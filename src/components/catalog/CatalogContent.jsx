@@ -61,11 +61,12 @@ const CatalogContent = ({categories}) => {
         } else {
             setIsNextPage(false)
         }
+        
         setProducts(prev => {
             return page === 1 ? data.results : prev.concat(data.results)
         })
     }
-
+    
     useEffect(() => {
         const abortController = new AbortController()
         
@@ -162,7 +163,7 @@ const CatalogContent = ({categories}) => {
                 <main>
                     {
                     products.map(p => (
-                        <div key={p.id} className={styles['products__card']}>
+                        <div className={styles['products__card']}>
                             <div className={styles['card__cover']}>
                                 <Link href={`/catalog/${p.slug}`} >
                                     <span className={styles['card__presence']}>{p.is_present ? 'В наличии' : 'Под заказ'}</span>
