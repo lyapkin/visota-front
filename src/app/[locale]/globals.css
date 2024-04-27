@@ -103,6 +103,25 @@ fieldset {
 	outline: solid red;
 }
 
+.swiper-wrapper .swiper-slide {
+	height: auto;
+}
+
+
+.home-catalog-slider-slick .slick-track {
+	display: flex !important;
+	flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
+.home-catalog-slider-slick .slick-slide {
+	height: auto !important;
+}
+.home-catalog-slider-slick .slick-slide > div {
+	margin: 0 5px;
+	height: 100%;
+}
+
 
 
 
@@ -133,6 +152,10 @@ fieldset {
 
 	.first-screen {
 		padding-top: 200px;
+	}
+
+	.home-catalog-slider-slick .slick-slide > div {
+		margin: 0 2px;
 	}
 }
 

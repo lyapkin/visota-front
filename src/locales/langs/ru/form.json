@@ -14,5 +14,13 @@
   "confidential": "Нажимая кнопку вы соглашаетесь <span>с условиями обработки данных</span>",
   "placeholder_entity": "Юр. лицо",
   "placeholder_card": "Карта партнера",
-  "get_example": "Получить образец"
+  "get_example": "Получить образец",
+  "input_contacts": "Введите контактные данные",
+  "placeholder_delivery_address": "Адрес доставки",
+  "palceholder_order_comment": "Комментарий к заказу",
+  "success": {
+    "title": "Спасибо за заявку",
+    "text_1": "Вы успешно отправили заявку.",
+    "text_2": "В ближайшее время мы свяжемся с Вами."
+  }
 }

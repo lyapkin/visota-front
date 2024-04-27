@@ -6,10 +6,12 @@ import cartReducer, { cartActions, cartInitState } from '@/reducers/cartReducer'
 import Button from '../UI/Buttons/Button'
 import { useRouter } from 'next/navigation'
 import getCookie from '@/utils/getCookie'
+import { useTranslation } from 'react-i18next'
 
 const OrderForm = ({cart, productsCount, resetCart}) => {
     const router = useRouter()
     const [order, dispatch] = useReducer(cartReducer, cartInitState)
+    const {t} = useTranslation()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -45,12 +47,12 @@ const OrderForm = ({cart, productsCount, resetCart}) => {
     return (
         <form onSubmit={handleSubmit}>
             <fieldset className={styles['form__contact-data']}>
-                <legend>Введите контактные данные</legend>
+                <legend>{t('form:input_contacts')}</legend>
                 <label className={`${styles['form__input']} ${order.error.name && 'input-form-error'}`}>
                     <div className={styles['form__icon']}>
                         <Image src='/svgs/user-icon.svg' width={27} height={27} alt='иконка' />
                     </div>
-                    <input placeholder='Контактное лицо (ФИО)'
+                    <input placeholder={t('form:placeholder_name')}
                         onChange={(e) => dispatch({ type: cartActions.NAME, payload: e.target.value })}
                         value={order.data.name} />
                 </label>
@@ -58,7 +60,7 @@ const OrderForm = ({cart, productsCount, resetCart}) => {
                     <div className={styles['form__icon']}>
                         <Image src='/svgs/phone-icon.svg' width={27} height={27} alt='иконка' />
                     </div>
-                    <input placeholder='Номер телефона'
+                    <input placeholder={t('form:placeholder_number')}
                         onChange={(e) => dispatch({ type: cartActions.NUMBER, payload: e.target.value })}
                         value={order.data.number} />
                 </label>
@@ -66,7 +68,7 @@ const OrderForm = ({cart, productsCount, resetCart}) => {
                     <div className={styles['form__icon']}>
                         <Image src='/svgs/letter-icon.svg' width={27} height={27} alt='иконка' />
                     </div>
-                    <input type='email' placeholder='E-mail'
+                    <input type='email' placeholder={t('form:placeholder_email')}
                         onChange={(e) => dispatch({ type: cartActions.EMAIL, payload: e.target.value })}
                         value={order.data.email} />
                 </label>
@@ -74,11 +76,11 @@ const OrderForm = ({cart, productsCount, resetCart}) => {
                     <div className={styles['form__icon']}>
                         <Image src='/svgs/location-icon.svg' width={27} height={27} alt='иконка' />
                     </div>
-                    <input placeholder='Адрес доставки'
+                    <input placeholder={t('form:placeholder_delivery_address')}
                         onChange={(e) => dispatch({ type: cartActions.ADDRESS, payload: e.target.value })}
                         value={order.data.delivery_address} />
                 </label>
-                <textarea className={`${styles['form__textarea']} ${order.error.comment && 'input-form-error'}`} placeholder='Комментарий к заказу'
+                <textarea className={`${styles['form__textarea']} ${order.error.comment && 'input-form-error'}`} placeholder={t('form:palceholder_order_comment')}
                     onChange={(e) => dispatch({ type: cartActions.COMMENT, payload: e.target.value })}
                     value={order.data.comment} />
             </fieldset>
@@ -102,7 +104,7 @@ const OrderForm = ({cart, productsCount, resetCart}) => {
                 </label>
             </fieldset> */}
 
-            <Button text={'Оформить заказ'} smallFont={false} action={() => { }} />
+            <Button text={t('form:order_button')} smallFont={false} action={() => { }} />
         </form>
     )
 }

@@ -75,10 +75,10 @@ const imgs = [
         id: 1,
         img: '/images/front-slider/homut1.png'
     },
-    {
-        id: 2,
-        img: '/images/front-slider/homut1.png'
-    }
+    // {
+    //     id: 2,
+    //     img: '/images/front-slider/homut1.png'
+    // }
 ]
 
 export default HomeFrontSlider

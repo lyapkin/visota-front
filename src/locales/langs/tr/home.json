@@ -5,7 +5,7 @@
     "button": "Ticari bir teklif alın",
     "next": "Sonraki",
     "prev": "Geri",
-    "block_first": "<span>500 binden fazla ürün</span> stokta",
+    "block_first": "<span>500 binden fazla yaratık</span> stokta",
     "block_second": "<span>Çin'de</span> kendi üretimimiz"
   },
   "advantages": {
@@ -33,7 +33,7 @@
     "project2_text": "20XX'te iskele için kelepçe ve bileşenlerin temini.",
     "project3_title": "Yamal LNG sanayi kompleksinin inşaatı",
     "project3_city": "Yamal Yarımadası",
-    "project3_text": "2018 yılında iskele kelepçeleri ve bileşenlerinin temini.",
+    "project3_text": "2018 yılında iskele için kelepçe ve bileşen tedariği.",
     "project4_title": "Arktik LNG-2 kompleksinin inşaatı",
     "project4_city": "Murmansk",
     "project4_text": "İskele için kelepçe ve bileşen temini 2019-2021.",

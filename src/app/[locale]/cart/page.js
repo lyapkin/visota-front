@@ -8,6 +8,7 @@ import EmptyCart from '@/components/cart/EmptyCart'
 import { CartContext } from '@/providers/CartProvider'
 import { useParams } from 'next/navigation'
 import OrderForm from '@/components/Form/OrderForm'
+import { useTranslation } from 'react-i18next'
 
 
 
@@ -16,6 +17,7 @@ const Cart = () => {
     const [cart, setCart] = useState([])
     const [storageCart, _, deleteFromStorageCart, changeCountStorageCart, resetCart] = useContext(CartContext)
     const [count, setCount] = useState(storageCart)
+    const {t} = useTranslation()
     
 
     const getCart = async (ids) => {
@@ -82,7 +84,7 @@ const Cart = () => {
     return (
         <div className={`${styles['cart']} first-screen`}>
             <div className='container'>
-                <h2 className={styles['cart__title']}>Корзина</h2>
+                <h2 className={styles['cart__title']}>{t('common:cart')}</h2>
                 {
                 Object.keys(storageCart).length === 0 ? <EmptyCart /> :
                     <div className={styles['cart__content']}>
@@ -98,8 +100,8 @@ const Cart = () => {
                                                 <h3 className={styles['product-info__name']}>{p.name}</h3>
                                                 <ul className={styles['product-info__charachteristics']}>
                                                         <li>
-                                                            <span className={styles['characteristics__key']}>Наличие</span>
-                                                            <span className={`${styles['characteristics__val']} ${p.is_present && styles['present']}`}>{p.is_present ? 'В наличии' : 'Под заказ'}</span>
+                                                            <span className={styles['characteristics__key']}>{t('catalog:presence.title')}</span>
+                                                            <span className={`${styles['characteristics__val']} ${p.is_present && styles['present']}`}>{p.is_present ? t('catalog:presence.on') : t('catalog:presence.off')}</span>
                                                         </li>
                                                     {p?.charachteristics.length > 0 &&
                                                         p.charachteristics.map(c => (
@@ -118,7 +120,7 @@ const Cart = () => {
                                                     </span>
                                                 </div>
                                                 <div className={styles['product-info__code']}>
-                                                    <span>Код товара: {p.code}</span>
+                                                    <span>{t('catalog:part_number')}: {p.code}</span>
                                                 </div>
                                             </div>
                                             <div className={styles['card__controls']}>
@@ -135,7 +137,7 @@ const Cart = () => {
                                                     </button>
                                                 </div>
                                                 <div className={styles['controls__delete']}>
-                                                    <button onClick={() => deleteFromStorageCart(p.id)}>Очистить <Image src='/svgs/trash-icon.svg' width={36} height={36} alt='иконка'/></button>
+                                                    <button onClick={() => deleteFromStorageCart(p.id)}>{t('cart:delete')} <Image src='/svgs/trash-icon.svg' width={36} height={36} alt='иконка'/></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,7 +149,7 @@ const Cart = () => {
                                 <div className={`${styles['total-discount']} ${discount <= 0 && styles['hidden']}`} >
                                     <span className={styles['total-discount__key']}>
                                         <Image src='/svgs/graph-icon.svg' width={24} height={24} alt='иконка' />
-                                        Сумма скидки
+                                        {t('cart:discount_sum')}
                                     </span>
                                     <span className={styles['total__dots']}></span>
                                     <span className={styles['total-discount__val']}>{discount + ' ₽'}</span>
@@ -155,7 +157,7 @@ const Cart = () => {
                                 <div className={styles['total-price']}>
                                     <span className={styles['total-price__key']}>
                                         <Image src='/svgs/wallet-icon.svg' width={24} height={24} alt='иконка' />
-                                        Итого
+                                        {t('cart:sum')}
                                     </span>
                                     <span className={styles['total__dots']}></span>
                                     <span className={styles['total-price__val']}>{total + ' ₽'}</span>

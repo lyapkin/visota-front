@@ -2,9 +2,9 @@ import React from 'react'
 
 import styles from './buttons.module.css'
 
-const LeftButton = ({action, disabled}) => {
+const LeftButton = ({action, disabled, className}) => {
     return (
-        <button className={styles['slider-left-button']}
+        <button className={`${styles['slider-left-button']} ${className}`}
                 data-type='left-button'
                 onClick={action}
                 disabled={disabled}

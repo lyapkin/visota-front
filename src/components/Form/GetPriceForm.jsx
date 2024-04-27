@@ -7,10 +7,12 @@ import styles from '@/components/Form/form.module.css'
 import { useRouter } from 'next/navigation'
 import getPriceReducer, { getPriceActions, getPriceInitState } from '@/reducers/getPriceReducer'
 import getCookie from '@/utils/getCookie'
+import { useTranslation } from 'react-i18next'
 
 const GetPriceForm = ({product}) => {
     const router = useRouter()
     const [form, dispatch] = useReducer(getPriceReducer, getPriceInitState)
+    const {t} = useTranslation()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -52,7 +54,7 @@ const GetPriceForm = ({product}) => {
                             value={form.data.name}
                             error={form.error.name}
                             onChange={(e) => dispatch({type: getPriceActions.NAME, payload: e.target.value})} 
-                            placeholder={'Контактное лицо (ФИО)'}
+                            placeholder={t('form:placeholder_name')}
                             required={true}
                             img={{url: '/svgs/user-icon.svg', width: 27, height: 27}}
                             type={'text'}
@@ -61,7 +63,7 @@ const GetPriceForm = ({product}) => {
                             value={form.data.email}
                             error={form.error.email}
                             onChange={(e) => dispatch({type: getPriceActions.EMAIL, payload: e.target.value})} 
-                            placeholder={'Email'}
+                            placeholder={t('form:placeholder_email')}
                             required={true}
                             img={{url: '/svgs/email-no-bg-icon.svg', width: 27, height: 27}}
                             type={'email'}
@@ -70,7 +72,7 @@ const GetPriceForm = ({product}) => {
                             value={form.data.number}
                             error={form.error.number}
                             onChange={(e) => dispatch({type: getPriceActions.NUMBER, payload: e.target.value})} 
-                            placeholder={'Номер телефона'}
+                            placeholder={t('form:placeholder_number')}
                             required={true}
                             img={{url: '/svgs/phone-icon.svg', width: 27, height: 27}}
                             type={'tel'}
@@ -79,10 +81,10 @@ const GetPriceForm = ({product}) => {
                             value={form.data.comment}
                             error={form.error.comment}
                             onChange={(e) => dispatch({type: getPriceActions.COMMENT, payload: e.target.value})} 
-                            placeholder={'Напишите комментарий к заказу'}
+                            placeholder={t('form:placeholder_comment')}
                     />
                     <Button
-                            text={'Узнать цену'}
+                            text={t('catalog:get_price')}
                             action={() => {}}
                     />
                 </form>

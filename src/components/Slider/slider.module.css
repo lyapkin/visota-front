@@ -190,6 +190,10 @@
     border-radius: var(--main-radius);
 }
 
+.gov-clients-slide img {
+    max-width: 100%;
+}
+
 .gov-clients-slider__buttons {
     position: absolute;
     right: 0;
@@ -457,6 +461,7 @@
     min-width: 32%;
     transition: translate 500ms ease-in-out;
     max-height: 100%;
+    height: 100%;
 }
 
 .slide__text {
@@ -1013,6 +1018,7 @@ div.product-slider__cover-wrapper-single {
     .catalog-slider__buttons {
         left: 0;
         justify-content: center;
+        top: -100px;
     }
     .project-slider__buttons > button:first-child {
         left: 38%;

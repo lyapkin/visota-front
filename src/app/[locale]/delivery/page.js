@@ -7,28 +7,30 @@ import CarImage from "@/../public/images/bg/delivery-truck-bg-big.png";
 import i1 from "@/../public/images/delivery/i1.png";
 import i2 from "@/../public/images/delivery/i2.png";
 import i3 from "@/../public/images/delivery/i3.png";
+import initTranslations from "@/locales/i18n";
 
-export default function Delivery() {
+export default async function Delivery({params: {locale}}) {
+    const {t} = await initTranslations(locale, ['delivery_pay'])
     return (
         <div className={`first-screen ${s.delivery}`}>
             <div className="container">
                 <div className={s.wrap}>
                     <div>
-                        <h1 className={s.title}>
-                            Обеспечиваем доставку <br /> авто и ж/д способом
+                        <h1 className={s.title}
+                            dangerouslySetInnerHTML={{ __html: t('delivery_pay:d_title', { interpolation: { escapeValue: false } }) }}
+                        >
+                            {/* Обеспечиваем доставку <br /> авто и ж/д способом */}
                         </h1>
                         <div className={s.btns}>
                             <button className={`${s.btn} ${s.btn__active}`}>
-                                Доставка
+                                {t('delivery_pay:d_button')}
                             </button>
                             <Link href={"pay"}>
-                                <button className={`${s.btn}`}>Оплата</button>
+                                <button className={`${s.btn}`}>{t('delivery_pay:p_button')}</button>
                             </Link>
                         </div>
                         <p className={s.text}>
-                            Доставим товар в любую точку России и страны СНГ.
-                            Отработанная годами логистика позволяет
-                            оптимизировать расходы.
+                            {t('delivery_pay:d_text')}
                         </p>
 
                         <Image className={s.map} src={MapImage} />
@@ -41,7 +43,7 @@ export default function Delivery() {
                     <div className={s.item}>
                         <div className={s.item__number}>01</div>
                         <h4 className={s.item__title}>
-                            Доставляем ж/д <br /> транспортом
+                            {t('delivery_pay:d_method_1')}
                         </h4>
                         <Image className={s.item__img} src={i1} alt="" />
                         <div className={s.item__line}></div>
@@ -57,8 +59,7 @@ export default function Delivery() {
                     <div className={s.item}>
                         <div className={s.item__number}>02</div>
                         <h4 className={s.item__title}>
-                            Автотранспортом <br />
-                            <br />
+                            {t('delivery_pay:d_method_2')}
                         </h4>
                         <Image className={s.item__img} src={i2} alt="" />
                         <div className={s.item__line}></div>
@@ -74,8 +75,7 @@ export default function Delivery() {
                     <div className={s.item}>
                         <div className={s.item__number}>03</div>
                         <h4 className={s.item__title}>
-                            3 склада по России <br />
-                            <br />
+                            {t('delivery_pay:d_wherehouse')}
                         </h4>
                         <Image className={s.item__img} src={i3} alt="" />
                         <div className={s.item__line}></div>

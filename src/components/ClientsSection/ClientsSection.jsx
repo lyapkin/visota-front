@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import styles from '@/styles/home.module.css'
 import initTranslations from '@/locales/i18n'
@@ -20,7 +20,9 @@ const ClientsSection = async ({locale}) => {
                     <h2
                         dangerouslySetInnerHTML={{ __html: t('home:thank_letters.title', { interpolation: { escapeValue: false } }) }}
                     ></h2>
+                    <Suspense fallback={<div>...loading</div>}>
                     <ThanksSlider />
+                    </Suspense>
                 </div>
             </div>
         </section>

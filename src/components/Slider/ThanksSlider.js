@@ -1,16 +1,20 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Button from '../UI/Buttons/Button'
 
 import styles from './slider.module.css'
 import RightButton from '../UI/Buttons/RightButton'
 import LeftButton from '../UI/Buttons/LeftButton'
 import Popup from '../popup/Popup'
+import Slider from 'react-slick'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const ThanksSlider = () => {
     const [picIndex, setPicIndex] = useState(0)
     const [width, setWidth] = useState(null)
     const [showLetter, setShowLetter] = useState('')
+    const ref = useRef(null)
 
     useEffect(() => {
         const width = document.documentElement.clientWidth;
@@ -27,6 +31,7 @@ const ThanksSlider = () => {
                 if(curIndex <= 0) {
                     return 0
                 }
+                ref.current.slickPrev()
                 return curIndex - 1
             })
         } else if (target.dataset?.type == 'right-button') {
@@ -34,6 +39,7 @@ const ThanksSlider = () => {
                 if(curIndex >= letters.length - 1-(slidesCount - 1)) {
                     return letters.length - 1
                 }
+                ref.current.slickNext()
                 return curIndex + 1
             })
         }
@@ -48,20 +54,35 @@ const ThanksSlider = () => {
         // document.body.classList.remove('fixed')
     }
 
+    const settings = {
+        dots: false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: width ? slidesCount : 4,
+        slidesToScroll: 1,
+        arrows: false,
+        beforeChange: (c, n) => setPicIndex(n)
+    }
+
     return (
         <>
-            <div className={styles['thanks-letters-slider']}>
+            <div className={`${styles['thanks-letters-slider']} home-catalog-slider-slick`}>
                 <div className={styles['thanks-letters-slider-window']}>
-                    <div className={styles['thanks-letters-slider-block']}>
+                    {/* <div className={styles['thanks-letters-slider-block']}> */}
+                        <Slider {...settings} ref={ref}>
                         {letters.map((item, index) => (
-                            <div key={item.id} className={styles['thanks-letters-slide__wrapper']} style={{translate: `${-percent * picIndex}%`}}>
+                            <div key={item.id} 
+                                 className={styles['thanks-letters-slide__wrapper']}
+                                //  style={{translate: `${-percent * picIndex}%`}}
+                            >
                                 <div key={item.id} className={styles['thanks-letters-slide']}  >
                                     <img onClick={handleShowUp}
                                          className={styles['thanks-letters-slide__img']} src={item.img} />
                                 </div>
                             </div>
                         ))}
-                    </div>
+                        </Slider>
+                    {/* </div> */}
                     <div className={styles['thanks-letters-slider__buttons']}>
                         <LeftButton action={handleSlideSwitch} disabled={picIndex <= 0}/>
                         <RightButton action={handleSlideSwitch} disabled={picIndex >= letters.length-1-(slidesCount - 1)}/>

@@ -3,49 +3,51 @@ import s2 from "@/styles/delivery.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import PayImage from "@/../public/images/pay/img.png";
+import initTranslations from "@/locales/i18n";
 
-export default function Pay() {
+export default async function Pay({params: {locale}}) {
+    const {t} = await initTranslations(locale, ['delivery_pay'])
     return (
         <div className={`first-screen`}>
             <div className={`container ${s.pay}`}>
                 <div className={s.wrap}>
                     <div>
                         <h1 className={s2.title}>
-                            Принимаем любые способы оплаты
+                            {t('delivery_pay:p_title')}
                         </h1>
 
                         <div className={s2.btns}>
                             <Link href={"delivery"}>
                                 <button className={`${s2.btn} `}>
-                                    Доставка
+                                    {t('delivery_pay:d_button')}
                                 </button>
                             </Link>
                             <Link href={"pay"}>
                                 <button
                                     className={`${s2.btn} ${s2.btn__active}`}
                                 >
-                                    Оплата
+                                    {t('delivery_pay:p_button')}
                                 </button>
                             </Link>
                         </div>
                         <h4 className={s.subtitle}>
-                            Оплатить товар можно любым удобным для вас способом:
+                            {t('delivery_pay:p_text')}
                         </h4>
                         <ul className={s.list}>
                             <li className={s.list__item}>
-                                Безналичный расчет с юр. лицами
+                                {t('delivery_pay:p_list_1')}
                             </li>
                             <li className={s.list__item}>
-                                Работаем по 223-ФЗ и 44-ФЗ
+                                {t('delivery_pay:p_list_2')}
                             </li>
                             <li className={s.list__item}>
-                                Открываем спецсчета в банках
+                                {t('delivery_pay:p_list_3')}
                             </li>
                             <li className={s.list__item}>
-                                Отгружаем под банковские гарантии
+                                {t('delivery_pay:p_list_4')}
                             </li>
-                            <li className={s.list__item}>Отсрочки платежа и скидки постоянным клиентам</li>
-                            <li className={s.list__item}>Особые условия для строительных и производственных компаний</li>
+                            <li className={s.list__item}>{t('delivery_pay:p_list_5')}</li>
+                            <li className={s.list__item}>{t('delivery_pay:p_list_6')}</li>
                         </ul>
                     </div>
                     <div>

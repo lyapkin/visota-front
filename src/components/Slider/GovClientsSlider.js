@@ -1,13 +1,17 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import styles from "./slider.module.css";
 import LeftButton from "../UI/Buttons/LeftButton";
 import RightButton from "../UI/Buttons/RightButton";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const GovClientsSlider = () => {
     const [picIndex, setPicIndex] = useState(0);
     const [width, setWidth] = useState(null)
+    const ref = useRef(null)
 
 
     useEffect(() => {
@@ -25,16 +29,6 @@ const GovClientsSlider = () => {
             : width <= 1450
             ? 5
             : 6;
-    const percent =
-        width <= 768
-            ? 104.1
-            : width <= 992
-            ? 106.3
-            : width <= 1200
-            ? 108.5
-            : width <= 1450
-            ? 110.9
-            : 113.2;
 
     const handleSlideSwitch = (e) => {
         const target = e.currentTarget;
@@ -44,6 +38,7 @@ const GovClientsSlider = () => {
                 if (curIndex <= 0) {
                     return 0;
                 }
+                ref.current.slickPrev()
                 return curIndex - 1;
             });
         } else if (target.dataset?.type == "right-button") {
@@ -51,20 +46,32 @@ const GovClientsSlider = () => {
                 if (curIndex >= logos.length - 1 - (slidesCount - 1)) {
                     return logos.length - 1;
                 }
+                ref.current.slickNext()
                 return curIndex + 1;
             });
         }
     };
 
+    const settings = {
+        dots: false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: width ? slidesCount : 6,
+        slidesToScroll: 1,
+        arrows: false,
+        beforeChange: (c, n) => setPicIndex(n)
+    }
+
     return (
-        <div className={styles["gov-clients-slider"]}>
+        <div className={`${styles['gov-clients-slider']} home-catalog-slider-slick`}>
             <div className={styles["gov-clients-slider-window"]}>
-                <div className={styles["gov-clients-slider-block"]}>
+                {/* <div className={styles["gov-clients-slider-block"]}> */}
+                    <Slider {...settings} ref={ref}>
                     {logos.map((item, index) => (
                         <div
                             key={item.id}
                             className={styles["gov-clients-slide__wrapper"]}
-                            style={{ translate: `${-percent * picIndex}%` }}
+                            // style={{ translate: `${-percent * picIndex}%` }}
                         >
                             <div
                                 key={item.id}
@@ -77,7 +84,8 @@ const GovClientsSlider = () => {
                             </div>
                         </div>
                     ))}
-                </div>
+                    </Slider>
+                {/* </div> */}
                 <div className={styles["gov-clients-slider__buttons"]}>
                     <LeftButton
                         action={handleSlideSwitch}

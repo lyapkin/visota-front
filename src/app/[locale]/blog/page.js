@@ -1,16 +1,17 @@
+import initTranslations from "@/locales/i18n";
 import BlogService from "@/services/BlogService";
 import s from "@/styles/blog.module.css";
 import Link from "next/link";
 
-export default async function Blog() {
+export default async function Blog({params: {locale}}) {
     const articles = await BlogService.allArticles();
+    const {t} = await initTranslations(locale, ['blog'])
 
     return (
         <div className={`first-screen`}>
             <div className={`container`}>
                 <h1 className={s.title}>
-                    Читайте интересные статьи в нашем блоге и следите за
-                    новостями
+                    {t('blog:title')}
                 </h1>
                 {/* <p className={s.info}>
                     
@@ -40,7 +41,7 @@ export default async function Blog() {
                                               className={s.item__btnWrapper}>
                                             <button className={s.item__btn}>
                                                 <p className={s.item__btn_text}>
-                                                    Читать подробнее
+                                                    {t('blog:read')}
                                                 </p>
                                                 <div
                                                     className={

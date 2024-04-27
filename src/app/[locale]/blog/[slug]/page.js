@@ -1,4 +1,5 @@
 import PassBreadcrumbs from "@/components/Blog/PassBreadcrumbs";
+import initTranslations from "@/locales/i18n";
 import BlogService from "@/services/BlogService";
 
 import styles from '@/styles/blog.module.css'
@@ -6,6 +7,7 @@ import { Suspense } from "react";
 
 export default async function BlogPost({ params }) {
     const content = await BlogService.getArticleContent(params.slug);
+    const {t} = await initTranslations(params.locale, ['blog'])
 
     return (
         <div className={`first-screen ${styles['blog-inside']}`}>
@@ -18,7 +20,7 @@ export default async function BlogPost({ params }) {
                 ) : (
                     <>
                         <p style={{ margin: "60px 0", fontSize: 40 }}>
-                            Такой статьи нет
+                            {t('blog:no_posts')}
                         </p>
                     </>
                 )}

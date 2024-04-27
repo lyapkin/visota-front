@@ -14,5 +14,13 @@
   "confidential": "单击该按钮即表示您同意<span>数据处理条款</span>",
   "placeholder_entity": "法人实体",
   "placeholder_card": "合作伙伴卡",
-  "get_example": "获取样品"
+  "get_example": "获取样品",
+  "input_contacts": "输入您的联系信息",
+  "placeholder_delivery_address": "邮寄地址",
+  "palceholder_order_comment": "对订单的评论",
+  "success": {
+    "title": "感谢您的申请",
+    "text_1": "您已成功提交申请。",
+    "text_2": "我们会尽快与您联系。"
+  }
 }

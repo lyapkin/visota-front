@@ -3,9 +3,11 @@ import React from 'react'
 import styles from './Header.module.css'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
+import { useParams } from 'next/navigation'
 
 const NavLinks = () => {
     const {t} = useTranslation()
+    const locale = useParams().locale
     return (
         <ul className={styles["header-main__nav-list"]}>
             <li className={styles["header-main__about"]}>
@@ -22,11 +24,11 @@ const NavLinks = () => {
             {/* <li className={styles["header-main__faq"]}>
                 <Link href="/faq">{t('common:faq')}</Link>
             </li> */}
-            <li
+            {locale === 'ru' && <li
                 className={styles["header-main__vacancies"]}
             >
                 <Link href="/vacancies">{t('common:vacancies')}</Link>
-            </li>
+            </li>}
             <li
                 className={
                     styles["header-main__blog"]

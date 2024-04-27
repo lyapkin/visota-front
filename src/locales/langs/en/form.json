@@ -14,5 +14,13 @@
   "confidential": "By clicking the button you agree <span>to the terms of data processing</span>",
   "placeholder_entity": "Legal entity",
   "placeholder_card": "Partner card",
-  "get_example": "Get a sample"
+  "get_example": "Get a sample",
+  "input_contacts": "Enter your contact information",
+  "placeholder_delivery_address": "Delivery address",
+  "palceholder_order_comment": "Comments on the order",
+  "success": {
+    "title": "Thanks for your application",
+    "text_1": "You have successfully submitted your application.",
+    "text_2": "We will contact you shortly."
+  }
 }

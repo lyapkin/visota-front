@@ -5,7 +5,7 @@
     "button": "获得商业报价",
     "next": "下一个",
     "prev": "后退",
-    "block_first": "库存超过<span>50万件</span>",
+    "block_first": "库存超过<span>50万单位生物</span>",
     "block_second": "<span>在中国自己生产</span>"
   },
   "advantages": {

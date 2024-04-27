@@ -1,17 +1,153 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 import styles from './slider.module.css'
 import LeftButton from '../UI/Buttons/LeftButton'
 import RightButton from '../UI/Buttons/RightButton'
 import useCatalogData from '@/hooks/useCatalogData'
 import { useTranslation } from 'react-i18next'
+import Slider from 'react-slick';
+
+// const CatalogSlider = () => {
+//     const [page, setPage] = useState(1)
+//     const [width, setWidth] = useState(null)
+
+//     const swiperRef = useRef(null)
+    
+//     const catalog = useCatalogData()
+
+//     const {t} = useTranslation()
+
+
+//     useEffect(() => {
+//         const width = document.documentElement.clientWidth
+//         setWidth(width)
+//     }, [])
+//     const slidesCount = width <= 768 ? 1 : width <= 992 ? 2 : 3
+    
+//     const handleSlideSwitch = (e) => {
+//         if (e.currentTarget.dataset?.type == 'left-button') {
+//             setPage(page => {
+//                 if(page <= 1) {
+//                     return 1
+//                 }
+//                 swiperRef.current.slidePrev()
+//                 return page - 1
+//             })
+//         } else if (e.currentTarget.dataset?.type == 'right-button') {
+//             setPage(page => {
+//                 if(catalog.length/page <= slidesCount) {
+//                     return page
+//                 }
+//                 swiperRef.current.slideNext()
+//                 return page + 1
+//             })
+//         }
+//     }
+
+//     return (
+//         <div className={styles['caltalog-slider']}>
+//             <Swiper
+//                 onSwiper={swiper => {
+//                     swiperRef.current = swiper
+//                 }}
+//                 spaceBetween={20}
+//                 // slidesPerView={3}
+//                 // slidesPerGroup={3}
+//                 speed={500}
+//                 breakpoints={{
+//                     992: {
+//                       width: 992,
+//                       slidesPerView: 2,
+//                       slidesPerGroup: 2,
+//                     },
+//                     768: {
+//                       width: 768,
+//                       slidesPerView: 1,
+//                       slidesPerGroup: 1
+//                     },
+//                 }}
+//                 navigation
+//                 navigation-next-el=".catalog-swiper-slider-prev"
+//                 navigation-prev-el=".catalog-swiper-slider-next"
+//                 pagination-clickable="true"
+//                 pagination-dynamic-bullets="true"
+//             >
+//                 {catalog.map(item => (
+//                     <SwiperSlide key={item.id}>
+//                     <div className={styles['catalog-slider__slide']}
+//                         //  style={{translate: `-${106 * catalogIndex}%`}}
+//                     >
+//                         <div className={styles['slide__text']}>
+//                             <div>
+//                                 <h4>{item.title}</h4>
+//                                 <ul>
+//                                     {item.categories.map(cat => (
+//                                         <li key={cat}><Link href={cat.link}>{cat.name}</Link></li>
+//                                     ))}
+//                                 </ul>
+//                             </div>
+//                             <Link className={styles['catalog-slider__link']} href={item.link}>
+//                                 {t('home:catalog.button')}
+//                                 <span className={styles['catalog-slider__link-arrow']}></span>
+//                             </Link>
+//                         </div>
+//                         <div className={styles['catalog-slider__pic']}>
+//                             <img src={item.img} />
+//                         </div>
+//                     </div>
+//                     </SwiperSlide>
+//                 ))}
+//             </Swiper>
+//             <div className={styles['catalog-slider__buttons']}>
+//                 <LeftButton action={handleSlideSwitch} disabled={page <= 1} className={'catalog-swiper-slider-prev'} />
+//                 <RightButton action={handleSlideSwitch} disabled={catalog.length/page <= slidesCount} className={'catalog-swiper-slider-next'} />
+//             </div>
+//         </div>
+//         // <div className={styles['caltalog-slider']}>
+//         //     <div className={styles['catalog-slider__window']}>
+//         //         {catalog.map(item => (
+//         //             <div key={item.id} className={styles['catalog-slider__slide']}
+//         //                  style={{translate: `-${106 * catalogIndex}%`}}
+//         //             >
+//         //                 <div className={styles['slide__text']}>
+//         //                     <div>
+//         //                         <h4>{item.title}</h4>
+//         //                         <ul>
+//         //                             {item.categories.map(cat => (
+//         //                                 <li key={cat}><Link href={cat.link}>{cat.name}</Link></li>
+//         //                             ))}
+//         //                         </ul>
+//         //                     </div>
+//         //                     <Link className={styles['catalog-slider__link']} href={item.link}>
+//         //                         {t('home:catalog.button')}
+//         //                         <span className={styles['catalog-slider__link-arrow']}></span>
+//         //                     </Link>
+//         //                 </div>
+//         //                 <div className={styles['catalog-slider__pic']}>
+//         //                     <img src={item.img} />
+//         //                 </div>
+//         //             </div>
+//         //         ))}
+//         //     </div>
+//         //     <div className={styles['catalog-slider__buttons']}>
+//         //         <LeftButton action={handleSlideSwitch} disabled={catalogIndex <= 0}/>
+//         //         <RightButton action={handleSlideSwitch} disabled={catalogIndex >= catalog.length-1-(slidesCount - 1)}/>
+//         //     </div>
+//         // </div>
+//     )
+// }
 
 const CatalogSlider = () => {
     const [catalogIndex, setCatalogIndex] = useState(0)
     const [width, setWidth] = useState(null)
 
+    const ref = useRef(null);
+    
     const catalog = useCatalogData()
 
     const {t} = useTranslation()
@@ -22,7 +158,7 @@ const CatalogSlider = () => {
         setWidth(width)
     }, [])
     const slidesCount = width <= 768 ? 1 : width <= 992 ? 2 : 3
-
+    
     const handleSlideSwitch = (e) => {
         if (e.currentTarget.dataset?.type == 'dot') {
             setCatalogIndex(Number(e.currentTarget.dataset?.index))
@@ -31,6 +167,7 @@ const CatalogSlider = () => {
                 if(curIndex <= 0) {
                     return 0
                 }
+                ref.current.slickPrev()
                 return curIndex - 1
             })
         } else if (e.currentTarget.dataset?.type == 'right-button') {
@@ -38,17 +175,29 @@ const CatalogSlider = () => {
                 if(curIndex >= catalog.length - 1 - (slidesCount - 1)) {
                     return catalog.length - 1
                 }
+                ref.current.slickNext()
                 return curIndex + 1
             })
         }
     }
 
+
+    const settings = {
+        dots: false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: width ? slidesCount : 3,
+        slidesToScroll: 1,
+        arrows: false,
+        beforeChange: (c, n) => setCatalogIndex(n)
+    }
+
     return (
-        <div className={styles['caltalog-slider']}>
-            <div className={styles['catalog-slider__window']}>
+        <div className={`${styles['caltalog-slider']} home-catalog-slider-slick`}>
+            <Slider {...settings} ref={ref}>
                 {catalog.map(item => (
                     <div key={item.id} className={styles['catalog-slider__slide']}
-                         style={{translate: `-${106 * catalogIndex}%`}}
+                        //  style={{translate: `-${106 * catalogIndex}%`}}
                     >
                         <div className={styles['slide__text']}>
                             <div>
@@ -69,19 +218,11 @@ const CatalogSlider = () => {
                         </div>
                     </div>
                 ))}
-            </div>
+            </Slider>
             <div className={styles['catalog-slider__buttons']}>
                 <LeftButton action={handleSlideSwitch} disabled={catalogIndex <= 0}/>
                 <RightButton action={handleSlideSwitch} disabled={catalogIndex >= catalog.length-1-(slidesCount - 1)}/>
             </div>
-            {/* <div className={styles['catalog-slider__dots-controll']}>
-                {catalog.slice(0, Math.ceil(catalog.length/3)).map((_, index) => (
-                    <button key={index} className={`${styles['catalog-slider__dot']} ${index == catalogIndex && styles['current']}`}
-                            data-type='dot' 
-                            data-index={index}
-                            onClick={handleSlideSwitch}><span></span></button>
-                ))}
-            </div> */}
         </div>
     )
 }

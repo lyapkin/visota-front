@@ -2,10 +2,13 @@ import React, { Suspense } from 'react'
 
 import styles from '@/styles/catalog.module.css'
 import CatalogContent from '@/components/catalog/CatalogContent'
+import initTranslations from '@/locales/i18n'
 
 
 const getData = async (locale) => {
-    const response = await fetch(process.env.BACK_URL + `/${locale}/api/products/categories`, { cache: 'no-store' })
+    const response = await fetch(process.env.BACK_URL + `/${locale}/api/products/categories`, {
+        next: { revalidate: 60 },
+    })
 
     if (!response.ok) {
         throw new Error(response.status + ' запрос не удался')
@@ -15,14 +18,15 @@ const getData = async (locale) => {
 }
 
 const Catalog = async ({params: {locale}}) => {
+    const {t} = await initTranslations(locale, ['common'])
     const categories = await getData(locale)
 
     return (
         <div className={`${styles['catalog']} first-screen`}>
             <div className='container'>
-                <h2 className={styles['catalog__title']}>Каталог</h2>
+                <h2 className={styles['catalog__title']}>{t('common:catalog')}</h2>
                 <Suspense fallback={<div>...loading</div>}>
-                <CatalogContent categories={categories} />
+                    <CatalogContent categories={categories} />
                 </Suspense>
             </div>
         </div>

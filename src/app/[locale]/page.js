@@ -32,7 +32,7 @@ export default async function Home({ params: { locale } }) {
 					>
 					</p>
 					<div className={styles['home-main__actions']}>
-						<PopupForm text={t('main.button')} />
+						<PopupForm text={t('main.button')} type={'offer'} />
 					</div>
 					{/* <div className={`${styles['home-main__info']} ${styles['info']}`}>
 						<div className={styles['info__item']}>

@@ -10,9 +10,12 @@ import { CartContext } from '@/providers/CartProvider'
 import { MAX_PRICE } from './constant'
 import GetPriceForm from '../Form/GetPriceForm'
 import Popup from '../popup/Popup'
+import { useTranslation } from 'react-i18next'
 
 const CatalogContent = ({categories}) => {
     const locale = useParams().locale
+
+    const {t} = useTranslation()
     
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -130,7 +133,7 @@ const CatalogContent = ({categories}) => {
             <div className={`${styles['catalog__filters-popup']} ${isFiltersOpen && styles['open']}`} ref={filterWindowRef}>
                 <button className={styles['catalog__filters-popup-close']}
                         onClick={() => setIsFiltersOpen(false)}>
-                    Фильтры
+                    {t('catalog:filters')}
                     <img src='/svgs/close-icon.svg' alt='закрыть' />
                 </button>
                 <Filter categories={categories}
@@ -156,7 +159,7 @@ const CatalogContent = ({categories}) => {
                         onClick={() => setIsFiltersOpen(prev => !prev)}
                         >
                     <img src='/svgs/filters-toggle-icon.svg' />
-                    Фильтры
+                    {t('catalog:filters')}
                 </button>
             </div>
             <div className={styles['catalog__products']}>
@@ -166,7 +169,7 @@ const CatalogContent = ({categories}) => {
                         <div className={styles['products__card']}>
                             <div className={styles['card__cover']}>
                                 <Link href={`/catalog/${p.slug}`} >
-                                    <span className={styles['card__presence']}>{p.is_present ? 'В наличии' : 'Под заказ'}</span>
+                                    <span className={styles['card__presence']}>{p.is_present ? t('catalog:presence.on') : t('catalog:presence.off')}</span>
                                     <div className={styles['card__image']}>
                                         {p.img_urls.length > 0 && <img src={p.img_urls[0].img_url} height={214} width={200} alt='фото товара' />}
                                     </div>
@@ -196,7 +199,7 @@ const CatalogContent = ({categories}) => {
                                     <div className={styles['card__order']}>
                                         <div className={styles['order__price']}>
                                             <div className={styles['price__key']}>
-                                                <span>{p.current_price && 'Стоимость'}</span>
+                                                <span>{p.current_price && t('catalog:price')}</span>
                                             </div>
                                             <div className={styles['price__val']}>
                                                 <span>{p.current_price && (p.current_price + ' ₽')}</span>
@@ -205,15 +208,15 @@ const CatalogContent = ({categories}) => {
                                         <div className={styles['order__cart-button']}>
                                             {
                                                 !(p.id in cart) ? 
-                                                    <button onClick={() => addToCart(p.id)}>В корзину<img src='/svgs/catalog-cart-icon.svg' alt='иконка'/></button> :
-                                                    <button>В корзине <img src='/svgs/cart-check-icon.svg' alt='иконка'/></button>
+                                                    <button onClick={() => addToCart(p.id)}>{t('catalog:to_cart')}<img src='/svgs/catalog-cart-icon.svg' alt='иконка'/></button> :
+                                                    <button>{t('catalog:in_cart')} <img src='/svgs/cart-check-icon.svg' alt='иконка'/></button>
                                             }
                                         </div>
                                     </div>
                                 :
                                     <div className={styles['card__order']}>
                                         <div className={styles['order__get-price-button']}>
-                                            <button onClick={() => setGetPriceFormProduct(p)}>Узнать цену</button>
+                                            <button onClick={() => setGetPriceFormProduct(p)}>{t('catalog:get_price')}</button>
                                         </div>
                                     </div>
                                 }
@@ -223,7 +226,7 @@ const CatalogContent = ({categories}) => {
                     }
                 </main>
                 {isNextPage && products.length > 0 &&
-                    <button className={styles['catalog__show-more']} onClick={appendProducts} >Показать еще</button>}
+                    <button className={styles['catalog__show-more']} onClick={appendProducts} >{t('catalog:show_more')}</button>}
             </div>
             {getPriceFormProduct !== null && 
                 <Popup close={() => setGetPriceFormProduct(null)} >

@@ -14,5 +14,13 @@
   "confidential": "Düğmeyi tıklayarak <span>veri işleme şartlarını</span> kabul etmiş olursunuz",
   "placeholder_entity": "Tüzel kişilik",
   "placeholder_card": "Ortak kartı",
-  "get_example": "Bir örnek alın"
+  "get_example": "Bir örnek alın",
+  "input_contacts": "İletişim bilgilerinizi girin",
+  "placeholder_delivery_address": "Teslimat adresi",
+  "palceholder_order_comment": "Siparişle ilgili yorumlar",
+  "success": {
+    "title": "Başvurunuz için teşekkürler",
+    "text_1": "Başvurunuzu başarıyla gönderdiniz.",
+    "text_2": "Kısa süre içinde sizinle iletişime geçeceğiz."
+  }
 }

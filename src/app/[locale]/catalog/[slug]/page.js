@@ -11,10 +11,13 @@ import { LocationNameContext } from '@/providers/LocationNameProvider'
 import GetPriceForm from '@/components/Form/GetPriceForm'
 import Popup from '@/components/popup/Popup'
 import { useParams } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 const Product = ({params}) => {
     const locale = useParams().locale
     const [aboutBlock, setAboutBlock] = useState('char')
+
+    const {t} = useTranslation()
 
     const [cart, addToCart] = useContext(CartContext)
     const [_, setLocationName] = useContext(LocationNameContext)
@@ -52,7 +55,7 @@ const Product = ({params}) => {
                     <Search />
                     <Link href='/catalog' className={styles['product__catalog-button']}>
                         <Image src={'/svgs/horizontal-bars-icon.svg'} width={18} height={16}/>
-                        Каталог комплектующих
+                        {t('catalog:components_catalog')}
                     </Link>
                 </aside>
                 {product && <main className={styles['product__content']}>
@@ -64,7 +67,7 @@ const Product = ({params}) => {
                             <h2>{product.name}</h2>
                         </div>
                         <div className={styles['title__product-code']}>
-                            <span className={styles['product-code__key']}>Артикул: </span>
+                            <span className={styles['product-code__key']}>{t('catalog:part_number')}: </span>
                             <span className={styles['product-code__val']}>{product.code}</span>
                         </div>
                     </div>
@@ -72,24 +75,24 @@ const Product = ({params}) => {
                         <div className={styles['about__buttons']}>
                             <button className={styles[`${aboutBlock === 'char' && 'active'}`]}
                                     onClick={() => setAboutBlock('char')}>
-                                Характеристики
+                                {t('catalog:charachteristics')}
                             </button>
                             <button className={styles[`${aboutBlock === 'desc' && 'active'}`]}
                                     onClick={() => setAboutBlock('desc')}>
-                                Описание
+                                {t('catalog:description.title')}
                             </button>
                             <button className={styles[`${aboutBlock === 'doc' && 'active'}`]}
                                     onClick={() => setAboutBlock('doc')}>
-                                Документация
+                                {t('catalog:documentation')}
                             </button>
                         </div>
                         <div className={styles['about__prod-info']}>
                             <div className={styles['prod-info__characteristics']} hidden={aboutBlock !== 'char'}>
                                 <ul className={styles['characteristics__list']}>
                                     <li>
-                                        <span className={styles['characteristics__list-key']}>Наличие</span>
+                                        <span className={styles['characteristics__list-key']}>{t('catalog:presence.title')}</span>
                                         <span className={styles['characteristics__list-dots']}></span>
-                                        <span className={`${styles['characteristics__list-val']} ${product.is_present && styles['present']}`}>{product.is_present ? 'В наличии' : 'Под заказ'}</span>
+                                        <span className={`${styles['characteristics__list-val']} ${product.is_present && styles['present']}`}>{product.is_present ? t('catalog:presence.on') : t('catalog:presence.off')}</span>
                                     </li>
                                     {product?.charachteristics.length > 0 &&
                                         product.charachteristics.map(item => (
@@ -109,7 +112,7 @@ const Product = ({params}) => {
                                 {/* <p>{product.description}</p> */}
                             </div>
                             <div className={styles['prod-info__documentation']} hidden={aboutBlock !== 'doc'}>
-                                Сертификаты, паспорта продукции и протоколы испытаний по запросу
+                                {t('catalog:description.text')}
                                 {/* {product?.doc_urls.length > 0 &&
                                     <ul className={styles['prod-info__documentation-list']}>
                                        {product.doc_urls.map(d => (
@@ -143,21 +146,21 @@ const Product = ({params}) => {
                                     </div>
                                     <div className={styles['price__discount_text']}
                                         hidden={product.actual_price === product.current_price}>
-                                        Стоимость со скидкой
+                                        {t('catalog:price_discount')}
                                     </div>
                                 </div>
                                 <div className={`${styles['about__cart-button']} ${product.id in cart  && styles['delete']}`}>
                                     {
                                         !(product.id in cart) ?
-                                            <button onClick={() => addToCart(product.id)}>В корзину <Image src='/svgs/catalog-cart-icon.svg' width={36} height={36} alt='иконка' /></button> :
-                                            <button>В корзине <img src='/svgs/cart-check-icon.svg' alt='иконка'/></button>
+                                            <button onClick={() => addToCart(product.id)}>{t('catalog:to_cart')} <Image src='/svgs/catalog-cart-icon.svg' width={36} height={36} alt='иконка' /></button> :
+                                            <button>{t('catalog:in_cart')} <img src='/svgs/cart-check-icon.svg' alt='иконка'/></button>
                                     }
                                 </div>
                             </div>
                         :
                             <div className={styles['about__cart']}>
                                 <div className={styles['about__cart-get-price-button']}>
-                                    <button onClick={() => setIsGetPriceFormShown(true)}>Узнать цену</button>
+                                    <button onClick={() => setIsGetPriceFormShown(true)}>{t('catalog:get_price')}</button>
                                 </div>
                             </div>
                         }
@@ -165,20 +168,26 @@ const Product = ({params}) => {
                     <div className={styles['product__extra-info']}>
                         <div className={styles['extra-info']}>
                             <div>
-                                <div>
-                                    Пожизненный срок службы <span>на все Комплектующие</span>
+                                <div
+                                    dangerouslySetInnerHTML={{ __html: t('catalog:info_1', { interpolation: { escapeValue: false } }) }}
+                                >
+                                    {/* Пожизненный срок службы <span>на все Комплектующие</span> */}
                                 </div>
                                 <img src={'/images/product/papers.png'} width={100} height={100} style={{objectFit: 'cover', width: '100%'}} alt='картика с документам'/>
                             </div>
                             <div>
-                                <div>
-                                    Возникли вопросы? <span>проконсультируем</span>
+                                <div
+                                    dangerouslySetInnerHTML={{ __html: t('catalog:info_2', { interpolation: { escapeValue: false } }) }}
+                                >
+                                    {/* Возникли вопросы? <span>проконсультируем</span> */}
                                 </div>
                                 <img src={'/images/product/woman.png'} width={100} height={100} style={{objectFit: 'cover', width: '100%'}} alt='девушка'/>
                             </div>
                             <div>
-                                <div>
-                                    Купите комплектующие <span>в офисе продаж</span>
+                                <div
+                                    dangerouslySetInnerHTML={{ __html: t('catalog:info_3', { interpolation: { escapeValue: false } }) }}
+                                >
+                                    {/* Купите комплектующие <span>в офисе продаж</span> */}
                                 </div>
                                 <img src={'/images/product/map.png'} width={100} height={100} style={{objectFit: 'cover', width: '100%'}} alt='карта'/>
                             </div>
@@ -193,7 +202,7 @@ const Product = ({params}) => {
                                 <Image src={'/images/product-delivery-block/truck.png'} width={170} height={160} alt='фон' />
                             </div>
                             <div className={styles['delivery-block__text']}>
-                                <span className={styles['delivery-block__header']}>Сотрудничаем со всеми службами доставки</span>
+                                <span className={styles['delivery-block__header']}>{t('catalog:delivery_info_1')}</span>
                                 {/* <span className={styles['delivery-block__description']}>Полученные заказы до 16:00, будут отправлены в тот же день</span> */}
                             </div>
                         </div>
@@ -202,7 +211,7 @@ const Product = ({params}) => {
                                 <Image src={'/images/product-delivery-block/box.png'} width={170} height={160} alt='фон' />
                             </div>
                             <div className={styles['delivery-block__text']}>
-                                <span className={styles['delivery-block__header']}>Доставка товара без задержек</span>
+                                <span className={styles['delivery-block__header']}>{t('catalog:delivery_info_2')}</span>
                                 {/* <span className={styles['delivery-block__description']}>Полученные заказы до 16:00, будут отправлены в тот же день</span> */}
                             </div>
                         </div>
@@ -211,7 +220,7 @@ const Product = ({params}) => {
                                 <Image src={'/images/product-delivery-block/calendar.png'} width={170} height={160} alt='фон' />
                             </div>
                             <div className={styles['delivery-block__text']}>
-                                <span className={styles['delivery-block__header']}>И кратчайшие сроки доставки</span>
+                                <span className={styles['delivery-block__header']}>{t('catalog:delivery_info_3')}</span>
                                 {/* <span className={styles['delivery-block__description']}>Пн-Пт, с 08:00 до 18:00,</span>
                                 <span className={styles['delivery-block__description']}>Сб, с 10:00 до 15:00, вс выходной</span> */}
                             </div>

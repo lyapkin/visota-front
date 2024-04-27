@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import styles from '@/styles/catalog.module.css'
 import { MAX_PRICE, MIN_PRICE } from './constant'
 import { useParams, useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 const Filter = ({categories, searchParams, priceFilter, handleCatChange, reset}) => {
     const locale = useParams().locale
@@ -14,6 +15,8 @@ const Filter = ({categories, searchParams, priceFilter, handleCatChange, reset})
     const [isCategoriesItemClosed, setIsCategoriesItemClosed] = useState(
         categories.reduce((state, cat) => ({...state, [cat.id]: true}), {})
     )
+
+    const {t} = useTranslation()
 
     useEffect(() => {
         setIsCategoriesItemClosed(prev => {
@@ -60,7 +63,7 @@ const Filter = ({categories, searchParams, priceFilter, handleCatChange, reset})
         <aside className={`${styles['catalog__filters']} `}>
             <div className={styles['filters__categories']}>
                 <button onClick={() => setIsCategoriesClosed(prev => !prev)}>
-                    Категории
+                    {t('catalog:categories')}
                     <span className={isCategoriesClosed ? styles['filters__button-arrow_closed'] : styles['filters__button-arrow']}></span>
                 </button>
                 <div className={`${styles['categories__content']} ${isCategoriesClosed && styles['closed']}`}>
@@ -100,7 +103,7 @@ const Filter = ({categories, searchParams, priceFilter, handleCatChange, reset})
             </div>
             <div className={styles['filters__price']}>
                 <button onClick={() => setIsPriceClosed(prev => !prev)}>
-                    Стоимость
+                    {t('catalog:price')}
                     <span className={isPriceClosed ? styles['filters__button-arrow_closed'] : styles['filters__button-arrow']}></span>
                 </button>
                 <div className={`${styles['price__content']} ${isPriceClosed && styles['closed']}`}>
@@ -149,7 +152,7 @@ const Filter = ({categories, searchParams, priceFilter, handleCatChange, reset})
                 <button onClick={apply}>Применить</button>
             </div> */}
             <div className={styles['filters__reset']}>
-                <button onClick={reset}>Сбросить фильтры<img src='/svgs/trash-icon.svg' alt='иконка' /></button>
+                <button onClick={reset}>{t('catalog:reset_filters')}<img src='/svgs/trash-icon.svg' alt='иконка' /></button>
             </div>
         </aside>
     )

@@ -4,11 +4,14 @@ import React, { useEffect, useState } from "react";
 import styles from "./footer.module.css";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import { useParams } from "next/navigation";
 
 const FooterAbout = () => {
     const [activateToggle, setActivateToggle] = useState(null)
 
     const {t} = useTranslation()
+
+    const locale = useParams().locale
 
     useEffect(() => {
         const activateToggle = document.documentElement.clientWidth <= 576;
@@ -45,9 +48,9 @@ const FooterAbout = () => {
                 {/* <li>
                     <Link href={"/faq"}>{t('common:faq')}</Link>
                 </li> */}
-                <li>
+                {locale === 'ru' && <li>
                     <Link href={"/vacancies"}>{t('common:vacancies')}</Link>
-                </li>
+                </li>}
             </ul>
         </div>
     );

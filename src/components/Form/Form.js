@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/navigation'
 import getCookie from '@/utils/getCookie'
 
-const Form = ({main, popup, buttonText, closePopup}) => {
+const Form = ({main, popup, buttonText, closePopup, type}) => {
     const router = useRouter()
     const [form, dispatch] = useReducer(formReducer, formInitState)
 
@@ -20,7 +20,9 @@ const Form = ({main, popup, buttonText, closePopup}) => {
 
         const csrf = getCookie('csrftoken')
 
-        const url = new URL(process.env.BACK_URL + `/api/request/consultation/`)
+        const urlPath = type === 'offer' ? '/api/request/offer/' : '/api/request/consultation/'
+
+        const url = new URL(process.env.BACK_URL + urlPath)
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -77,7 +79,7 @@ const Form = ({main, popup, buttonText, closePopup}) => {
                            onChange={e => dispatch({type: formActions.ACTIVITY_TYPE, payload: e.target.value})}
                            value={form.data.activity_type}/>
                 </label>
-                {main && (<label className={`${styles['form__input']} ${form.error.company_name && 'input-form-error'}`}>
+                {(main || type === 'offer') && (<label className={`${styles['form__input']} ${form.error.company_name && 'input-form-error'}`}>
                     <div className={styles['form__icon']}>
                         <Image src='/svgs/building-icon.svg' width={27} height={27}/>
                     </div>
