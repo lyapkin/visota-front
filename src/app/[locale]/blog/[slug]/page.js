@@ -6,7 +6,7 @@ import styles from '@/styles/blog.module.css'
 import { Suspense } from "react";
 
 export default async function BlogPost({ params }) {
-    const content = await BlogService.getArticleContent(params.slug);
+    const content = await BlogService.getArticleContent(params.slug, params.locale);
     const {t} = await initTranslations(params.locale, ['blog'])
 
     return (

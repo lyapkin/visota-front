@@ -48,7 +48,7 @@ const PartnersForm = () => {
                 {/* <div className={styles['head']}>
                     <h5></h5>
                 </div> */}
-                <form className={styles['partners-form']} onSubmit={handleSubmit}>
+                <form className={`${styles['partners-form']}`} onSubmit={handleSubmit}>
                     <TextInput 
                             value={form.data.name}
                             error={form.error.name}

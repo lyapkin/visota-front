@@ -510,6 +510,35 @@
     background-color: #fff; 
 }
 
+.noresult {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+    grid-area: 1 / 1 / 2 / -1;
+    padding-top: 30px;
+}
+
+.catalog-get-spinner {
+    grid-area: 1 / 1 / 2 / -1;
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.catalog__show-more .catalog-get-spinner {
+    padding-top: 0;
+}
+
+form .catalog-get-spinner {
+    position: absolute;
+    padding-top: 0;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    grid-area: 1 / 1 / -1 / -1;
+}
+
 
 
 

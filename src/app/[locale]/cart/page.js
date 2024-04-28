@@ -9,6 +9,7 @@ import { CartContext } from '@/providers/CartProvider'
 import { useParams } from 'next/navigation'
 import OrderForm from '@/components/Form/OrderForm'
 import { useTranslation } from 'react-i18next'
+import Spinner from '@/components/Spinner/Spinner'
 
 
 
@@ -18,6 +19,8 @@ const Cart = () => {
     const [storageCart, _, deleteFromStorageCart, changeCountStorageCart, resetCart] = useContext(CartContext)
     const [count, setCount] = useState(storageCart)
     const {t} = useTranslation()
+    
+    const [loading, setLoading] = useState(Object.keys(storageCart).length > 0)
     
 
     const getCart = async (ids) => {
@@ -33,6 +36,7 @@ const Cart = () => {
         let cart = data.map(p => ({...p, storageCart: ids.get(p.id+'')}))
         
         setCart(cart)
+        setLoading(false)
     }
 
     useEffect(() => {
@@ -85,7 +89,7 @@ const Cart = () => {
         <div className={`${styles['cart']} first-screen`}>
             <div className='container'>
                 <h2 className={styles['cart__title']}>{t('common:cart')}</h2>
-                {
+                {loading ? <Spinner /> :
                 Object.keys(storageCart).length === 0 ? <EmptyCart /> :
                     <div className={styles['cart__content']}>
                         <div className={styles['cart__products']}>
@@ -119,9 +123,9 @@ const Cart = () => {
                                                         {p.actual_price && (p.actual_price + ' ₽')}
                                                     </span>
                                                 </div>
-                                                <div className={styles['product-info__code']}>
+                                                {p.code && <div className={styles['product-info__code']}>
                                                     <span>{t('catalog:part_number')}: {p.code}</span>
-                                                </div>
+                                                </div>}
                                             </div>
                                             <div className={styles['card__controls']}>
                                                 <div className={styles['controls__count']}>

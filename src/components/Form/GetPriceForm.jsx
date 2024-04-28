@@ -49,7 +49,7 @@ const GetPriceForm = ({product}) => {
                 <div className={styles['head']}>
                     <h5>{product.name}</h5>
                 </div>
-                <form className={styles['get-price-form']} onSubmit={handleSubmit}>
+                <form className={`${styles['get-price-form']}`} onSubmit={handleSubmit}>
                     <TextInput 
                             value={form.data.name}
                             error={form.error.name}

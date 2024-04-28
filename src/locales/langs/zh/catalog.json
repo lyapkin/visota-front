@@ -14,7 +14,7 @@
   "categories": "类别",
   "reset_filters": "重置过滤器",
   "search_placeholder": "搜索设备",
-  "components_catalog": "零件目录",
+  "components_catalog": "组件目录",
   "part_number": "供应商代码",
   "charachteristics": "特征",
   "description": {
@@ -26,5 +26,6 @@
   "info_3": "<span>在销售办事处</span>购买组件",
   "delivery_info_1": "我们与所有送货服务合作",
   "delivery_info_2": "货物交付无延误",
-  "delivery_info_3": "以及最短的交货时间"
+  "delivery_info_3": "以及最短的交货时间",
+  "no_result": "没有找到符合您要求的产品。尝试更改您的搜索参数。"
 }

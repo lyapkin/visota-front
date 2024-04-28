@@ -79,9 +79,9 @@ const Footer = async ({locale}) => {
 						<span>{t('footer:mail_commercial')}</span>
 						<a href='mailto:visota1300@mail.ru'>visota1300@mail.ru</a>
 					</div>
-					<div className={styles['mail__head']}>
+					{/* <div className={styles['mail__head']}>
 						<a href='mailto:visota1300@mail.ru'>{t('footer:mail_director')}</a>
-					</div>
+					</div> */}
 				</div>
 			</div>
 			<div className={styles['footer__bottom']}>

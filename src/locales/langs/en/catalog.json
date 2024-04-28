@@ -14,7 +14,7 @@
   "categories": "Categories",
   "reset_filters": "Reset filters",
   "search_placeholder": "Search for equipment",
-  "components_catalog": "Parts catalog",
+  "components_catalog": "Catalog of components",
   "part_number": "vendor code",
   "charachteristics": "Characteristics",
   "description": {
@@ -26,5 +26,6 @@
   "info_3": "Buy components <span>at the sales office</span>",
   "delivery_info_1": "We cooperate with all delivery services",
   "delivery_info_2": "Delivery of goods without delays",
-  "delivery_info_3": "And the shortest delivery times"
+  "delivery_info_3": "And the shortest delivery times",
+  "no_result": "No products were found matching your request. Try changing your search parameters."
 }

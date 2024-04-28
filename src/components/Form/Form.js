@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import React, { useReducer } from 'react'
+import React, { useReducer, useState } from 'react'
 
 import styles from './form.module.css'
 import Button from '../UI/Buttons/Button'
@@ -8,14 +8,18 @@ import formReducer, { formActions, formInitState } from '@/reducers/formReducer'
 import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/navigation'
 import getCookie from '@/utils/getCookie'
+import Spinner from '../Spinner/Spinner'
 
 const Form = ({main, popup, buttonText, closePopup, type}) => {
     const router = useRouter()
     const [form, dispatch] = useReducer(formReducer, formInitState)
 
+    const [loading, setLoading] = useState(false)
+
     const {t} = useTranslation()
 
     const handleSubmit = async (e) => {
+        setLoading(true)
         e.preventDefault()
 
         const csrf = getCookie('csrftoken')
@@ -40,6 +44,7 @@ const Form = ({main, popup, buttonText, closePopup, type}) => {
             dispatch({type: formActions.RESET})
             if (popup) closePopup()
         }
+        setLoading(false)
     }
 
     return (
@@ -52,7 +57,7 @@ const Form = ({main, popup, buttonText, closePopup, type}) => {
                 </h2>
                 <p>{t('form:text')}</p>
             </>}
-            <form className={styles['form']} onSubmit={handleSubmit}>
+            <form className={`${styles['form']}`} onSubmit={handleSubmit}>
                 <label className={`${styles['form__input']} ${form.error.name && 'input-form-error'}`}>
                     <div className={styles['form__icon']}>
                         <Image src='/svgs/user-icon.svg' width={27} height={27}/>
@@ -90,7 +95,7 @@ const Form = ({main, popup, buttonText, closePopup, type}) => {
                 <textarea className={`${styles['form__textarea']} ${form.error.comment && 'input-form-error'}`} placeholder={t('form:placeholder_comment')}
                           onChange={e => dispatch({type: formActions.COMMENT, payload: e.target.value})}
                           value={form.data.comment}/>
-                <Button text={buttonText || 'Заказать консультацию'}/>
+                <Button text={buttonText || 'Заказать консультацию'} />
                 {main && (<p className={styles['agreement']}
                              dangerouslySetInnerHTML={{ __html: t('form:confidential', { interpolation: { escapeValue: false } }) }}
                           ></p>)}

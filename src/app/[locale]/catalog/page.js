@@ -3,6 +3,7 @@ import React, { Suspense } from 'react'
 import styles from '@/styles/catalog.module.css'
 import CatalogContent from '@/components/catalog/CatalogContent'
 import initTranslations from '@/locales/i18n'
+import Spinner from '@/components/Spinner/Spinner'
 
 
 const getData = async (locale) => {
@@ -25,7 +26,7 @@ const Catalog = async ({params: {locale}}) => {
         <div className={`${styles['catalog']} first-screen`}>
             <div className='container'>
                 <h2 className={styles['catalog__title']}>{t('common:catalog')}</h2>
-                <Suspense fallback={<div>...loading</div>}>
+                <Suspense fallback={<Spinner />}>
                     <CatalogContent categories={categories} />
                 </Suspense>
             </div>

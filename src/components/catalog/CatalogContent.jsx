@@ -11,11 +11,16 @@ import { MAX_PRICE } from './constant'
 import GetPriceForm from '../Form/GetPriceForm'
 import Popup from '../popup/Popup'
 import { useTranslation } from 'react-i18next'
+import NoSearchResult from './NoSearchResult'
+import Spinner from '../Spinner/Spinner'
 
 const CatalogContent = ({categories}) => {
     const locale = useParams().locale
 
     const {t} = useTranslation()
+
+    const [addLoading, setAddLoading] = useState(false)
+    const [getLoading, setGetLoading] = useState(true)
     
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -42,6 +47,7 @@ const CatalogContent = ({categories}) => {
     
 
     const appendProducts = async () => {
+        setAddLoading(true)
         const urlSearchParams = new URLSearchParams(searchParams.toString())
         urlSearchParams.set('page', page+1)
 
@@ -68,9 +74,16 @@ const CatalogContent = ({categories}) => {
         setProducts(prev => {
             return page === 1 ? data.results : prev.concat(data.results)
         })
+        setAddLoading(false)
+        setGetLoading(false)
     }
     
     useEffect(() => {
+        const page = searchParams.get('page')
+        if (page == 1 || !page || page > 1 && products.length === 0) {
+            setGetLoading(true)
+        }
+
         const abortController = new AbortController()
         
         getProducts(abortController)
@@ -165,6 +178,8 @@ const CatalogContent = ({categories}) => {
             <div className={styles['catalog__products']}>
                 <main>
                     {
+                    getLoading ? <Spinner /> :
+                    products.length <= 0 ? <NoSearchResult /> :
                     products.map(p => (
                         <div className={styles['products__card']}>
                             <div className={styles['card__cover']}>
@@ -226,7 +241,7 @@ const CatalogContent = ({categories}) => {
                     }
                 </main>
                 {isNextPage && products.length > 0 &&
-                    <button className={styles['catalog__show-more']} onClick={appendProducts} >{t('catalog:show_more')}</button>}
+                    <button className={styles['catalog__show-more']} onClick={appendProducts} disabled={addLoading} >{addLoading ? <Spinner size={30}/> : t('catalog:show_more')}</button>}
             </div>
             {getPriceFormProduct !== null && 
                 <Popup close={() => setGetPriceFormProduct(null)} >

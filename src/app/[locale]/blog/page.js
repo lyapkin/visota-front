@@ -4,9 +4,9 @@ import s from "@/styles/blog.module.css";
 import Link from "next/link";
 
 export default async function Blog({params: {locale}}) {
-    const articles = await BlogService.allArticles();
+    const articles = await BlogService.allArticles(locale);
     const {t} = await initTranslations(locale, ['blog'])
-
+    
     return (
         <div className={`first-screen`}>
             <div className={`container`}>

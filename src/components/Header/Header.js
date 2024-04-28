@@ -8,11 +8,15 @@ import styles from './Header.module.css'
 import MobileNav from './MobileNav'
 
 const Header = () => {
+  const handleClose = () => {
+    console.log('here')
+    setMobileOpen(false)
+  }
   
   const [mobileOpen, setMobileOpen] = useState(false)
   return (
     <>
-    <MobileNav mobileOpen={mobileOpen} />
+    <MobileNav mobileOpen={mobileOpen} close={handleClose} />
     <header className={`${styles['header']} ${mobileOpen && styles['open']}`}>
       <HeaderMain mobileOpen={mobileOpen} setMobileOpen={setMobileOpen}/>
       <HeaderTabs />
