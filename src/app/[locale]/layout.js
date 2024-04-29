@@ -15,10 +15,20 @@ import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-	title: "ООО Уралснабресурс - официальный сайт. Производство и продажа строительного оборудования в Москве и РФ",
-	description: "Поставка строительного оборудования от производителя Уралснабресурс: хомуты для лесов, шпунты ларсена, пиломатериалы, лестницы, опалубка, вышки-туры. Выгодные цены. Быстрая поставка по Росиии и СНГ.",
-};
+
+export const generateMetadata = async ({params: {locale}}) => {
+	const {t} = await initTranslations(locale, ['meta'])
+
+	return {
+		title: t('meta:title'),
+		description: t('meta:description')
+	}
+}
+
+// export const metadata = {
+// 	title: "ООО Уралснабресурс - официальный сайт. Производство и продажа строительного оборудования в Москве и РФ",
+// 	description: "Поставка строительного оборудования от производителя Уралснабресурс: хомуты для лесов, шпунты ларсена, пиломатериалы, лестницы, опалубка, вышки-туры. Выгодные цены. Быстрая поставка по Росиии и СНГ.",
+// };
 
 
 export function generateStaticParams() {
