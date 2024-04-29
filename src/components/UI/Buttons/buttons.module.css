@@ -8,8 +8,10 @@
     color: rgba(255, 255, 255, 1);
     border-radius: 3px;
 }
-.button:hover {
-    background: rgba(50, 178, 228, 1);
+@media (hover: hover) {
+    .button:hover {
+        background: rgba(50, 178, 228, 1);
+    }
 }
 
 .button--small-font {

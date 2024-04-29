@@ -233,6 +233,10 @@
     column-gap: 16px;
 }
 
+.header-mode__location span {
+    white-space: nowrap;
+}
+
 .header-mode__location a:first-child {
     display: inline-flex;
     background-color: #d4e2e7;

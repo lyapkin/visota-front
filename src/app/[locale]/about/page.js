@@ -20,6 +20,7 @@ import Supplies from "@/components/Supplies/Supplies";
 import initTranslations from "@/locales/i18n";
 import ShowMore from "@/components/showMore/ShowMore";
 import ClientsSection from "@/components/ClientsSection/ClientsSection";
+import Link from "next/link";
 
 export default async function About({ params: { locale } }) {
     const { t } = await initTranslations(locale, ['about', 'about_section'])
@@ -52,10 +53,11 @@ export default async function About({ params: { locale } }) {
                             <Image src={i2} />
                         </div>
                     </div>
-                    <Button text={t('about:main.more_about')} />
+                    {/* <Button text={t('about:main.more_about')} /> */}
+                    <Link href='#about-anchor' className={s['about-link-anchor']} >{t('about:main.more_about')}</Link>
                 </div>
             </div>
-            <div className={s.cases}>
+            <div className={s.cases} id="about-anchor">
                 <div className="container">
                     <div className={s.cases__top}>
                         <h2 className={s.cases__title}>
