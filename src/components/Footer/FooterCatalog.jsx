@@ -14,7 +14,7 @@ const FooterCatalog = () => {
         setActivateToggle(activateToggle)
     }, []);
 
-    const [isOpen, setIsOpen] = useState(activateToggle ? false : true);
+    const [isOpen, setIsOpen] = useState(activateToggle ? true : false);
     const handleClick = activateToggle
         ? () => setIsOpen((prev) => !prev)
         : () => {};

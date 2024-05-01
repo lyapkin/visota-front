@@ -1,3 +1,7 @@
+.relative {
+    position: relative;
+}
+
 .form {
     width: 100%;
 }
@@ -36,6 +40,7 @@
 
 
 
+
 .form-block {
     display: grid;
     grid-template-columns: 33% 60%;
@@ -48,7 +53,7 @@
 }
 .form-block.form-popup {
     background-color: #f5f5f5;
-    padding: 15px;
+    padding: 20px 15px;
     position: fixed;
     max-height: 100%;
     overflow: auto;
@@ -81,6 +86,7 @@
     grid-area: form;
     display: grid;
     gap: 7px 14px;
+    grid-template-columns: 1fr 54.6%;
 }
 
 .form-block textarea {
@@ -159,6 +165,10 @@
 .form-main .agreement span {
     display: block;
     text-decoration: underline;
+}
+.form-main button {
+    min-width: 431px;
+    min-height: 64px;
 }
 
 
@@ -248,6 +258,9 @@
             'form form';
         row-gap: 25px;
     }
+    .form-block.form-popup {
+        padding-bottom: 50px;
+    }
 
     .form-main > p {
         padding-top: 0;
@@ -316,6 +329,9 @@
     }
     .form-main .form__textarea {
         min-height: 120px;
+    }
+    .form-main button {
+        min-width: 100%;
     }
 
     .partners-form {

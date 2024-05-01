@@ -4,7 +4,7 @@
   "placeholder_name": "联系人（全名）",
   "placeholder_number": "电话号码",
   "placeholder_activity": "活动种类",
-  "placeholder_comment": "对应用程序发表评论",
+  "placeholder_comment": "给应用程序写评论",
   "placeholder_email": "电子邮件",
   "placeholder_company_name": "企业名称",
   "consult_button": "订购咨询",
@@ -15,7 +15,7 @@
   "placeholder_entity": "法人实体",
   "placeholder_card": "合作伙伴卡",
   "get_example": "获取样品",
-  "input_contacts": "输入您的联系信息",
+  "input_contacts": "输入您的联系方式",
   "placeholder_delivery_address": "邮寄地址",
   "palceholder_order_comment": "对订单的评论",
   "success": {

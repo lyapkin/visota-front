@@ -9,21 +9,21 @@ common:delivery_payment	Доставка и оплата	Shipping and payment	Na
 common:vacancies	Вакансии	Vacancies	Boş pozisyonlar	职位空缺
 common:contacts	Контакты	Contacts	Kişiler	联系方式
 common:catalog	Каталог товаров	Catalog	Katalog	目录
-common:homuti	Хомуты	Clamps	Kelepçeler	夹子
+common:homuti	Хомуты	Scaffolding clamps	İskele kelepçeleri	脚手架夹
 common:nepovorot	Хомут неповоротный	Fixed clamp	Sabit kelepçe	固定夹
-common:povorot	Хомут поворотный	Rotary clamp	Döner kelepçe	旋转夹具
-common:stykov	Хомут стыковочный	Docking clamp	Yerleştirme kelepçesi	对接夹
-common:fix	Хомут фиксирующий	Fixing clamp	Sabitleme kelepçesi	固定夹
-common:bal	Хомут балочный	Beam clamp	Kiriş kelepçesi	梁夹
-common:dosk	Хомут к доске	Clamp to the board	Tahtaya kelepçeleyin	夹到板上
-common:bolt	Болт Т-образный	T-bolt	T-cıvata	T型螺栓
-common:lestnic	Хомут к лестнице	Clamp for stairs	Merdivenler için kelepçe	楼梯夹
+common:povorot	Хомут поворотный	Swivel clamp	Döner kelepçe	旋转夹
+common:stykov	Хомут стыковочный	Sleeve coupler	Kol bağlayıcı	套筒耦合器
+common:fix	Хомут фиксирующий	Putlog coupler	Putlog bağlayıcı	普特罗格耦合器
+common:bal	Хомут балочный	Beam coupler	Kiriş kuplörü	光束耦合器
+common:dosk	Хомут к доске	Board retain clamp	Kart tutma kelepçesi	板固定夹
+common:bolt	Болт Т-образный	Clip set (bolt, nut)	Klips seti (cıvata, somun)	夹子组（螺栓、螺母）
+common:lestnic	Хомут к лестнице	Ladder coupler	Merdiven bağlayıcı	梯形联轴器
 common:stroyles	Строительные леса	Scaffolding	İskele	脚手架
 common:homut	Хомутовые леса	Khomutovye scaffolding	Khomutovye iskele	霍穆托夫脚手架
 common:klin	Клиновые леса	Wedge forests	Kama ormanları	楔形森林
 common:chash	Чашечные леса	Cup forests	Fincan ormanları	杯林
-common:complect	Комплектующие к строительным лесам	Accessories for scaffolding	İskele aksesuarları	脚手架配件
-common:opalub_complect	Комлектующие к опалубке	Accessories for formwork	Kalıp aksesuarları	模板配件
+common:complect	Комплектующие к строительным лесам	Components for scaffolds	İskele bileşenleri	脚手架组件
+common:opalub_complect	Комлектующие к опалубке	Components for formwork	Kalıp bileşenleri	模板组件
 common:waterstop	Гайка ватерстоп	Waterstop nut	Su tutucu somun	止水螺母
 common:klin_zamok	Замок клиновой оцинкованный	Galvanized wedge lock	Galvanizli kama kilidi	镀锌楔锁
 common:bfd_zamok	Замок BFD оцинкованный	Lock BFD galvanized	Kilit BFD galvanizli	BFD 镀锌锁
@@ -31,7 +31,7 @@ common:gaika_vint_opor	Гайка для винтовой опоры	Nut for scr
 common:gaika_stayzh_treh	Гайка стяжная трехрожковая оцинкованная	Three-arm galvanized coupling nut	Üç kollu galvanizli bağlantı somunu	三臂镀锌连接螺母
 common:gaika_staych_dvuh	Гайка стяжная двухрожковая оцинкованная 90мм	Double-arm galvanized coupling nut 90mm	Çift kollu galvanizli bağlantı somunu 90mm	双臂镀锌连接螺母90mm
 common:gaika_sharnir	Гайка шарнирная	Swivel nut	Döner somun	旋转螺母
-common:vint_stayzh	Винт стяжной	Clamping screw	Sıkıştırma vidası	夹紧螺丝
+common:vint_stayzh	Винт стяжной	Pinch screw	Sıkıştırma vidası	夹紧螺丝
 common:gaika_malaya	Гайка малая барашковая/крыльчатая	Small wing/wing nut	Küçük kanat/kanat somunu	小翼形/翼形螺母
 common:fix_armatur	Фиксаторы арматуры	Reinforcement clamps	Takviye kelepçeleri	加固夹
 common:trubi_vgp	Трубы	Pipes	Borular	管道
@@ -68,7 +68,7 @@ form:placeholder_activity	Вид деятельности	Kind of activity	Etkin
 form:placeholder_comment	Напишите комментарий к заявке	Write a comment to the application	Uygulamaya yorum yazın	给应用程序写评论
 form:placeholder_email	E-mail	Email	E-posta	电子邮件
 form:placeholder_company_name	Наименование предприятия	Business name	İş adı	企业名称
-form:consult_button	Заказать консультацию	Order a consultation	Danışmanlık siparişi verin	预约咨询
+form:consult_button	Заказать консультацию	Order a consultation	Danışmanlık siparişi verin	订购咨询
 form:offer_button	Получить коммерческое предложение	Get a commercial offer	Ticari bir teklif alın	获得商业报价
 form:get_price	Уточнить цену	Check price	Fiyatı kontrol et	查看价格
 form:order_button	Оформить заказ	Checkout	Çıkış yapmak	查看
@@ -76,7 +76,7 @@ form:confidential	Нажимая кнопку вы соглашаетесь <spa
 form:placeholder_entity	Юр. лицо	Legal entity	Tüzel kişilik	法人实体
 form:placeholder_card	Карта партнера	Partner card	Ortak kartı	合作伙伴卡
 form:get_example	Получить образец	Get a sample	Bir örnek alın	获取样品
-form:input_contacts	Введите контактные данные	Enter your contact information	İletişim bilgilerinizi girin	输入您的联系信息
+form:input_contacts	Введите контактные данные	Enter your contact details	İletişim bilgilerinizi girin	输入您的联系方式
 form:placeholder_delivery_address	Адрес доставки	Delivery address	Teslimat adresi	邮寄地址
 form:palceholder_order_comment	Комментарий к заказу	Comments on the order	Siparişle ilgili yorumlar	对订单的评论
 form:success.title	Спасибо за заявку	Thanks for your application	Başvurunuz için teşekkürler	感谢您的申请
@@ -93,7 +93,7 @@ home:projects.project2_city	г. Тобольск	Tobolsk	Tobolsk	托博尔斯克
 home:projects.project2_text	Поставка хомутов и комплектующих к строительным лесам 20ХХ г.	Supply of clamps and components for scaffolding in 20XX.	20XX'te iskele için kelepçe ve bileşenlerin temini.	20XX年供应脚手架的夹具和组件。
 home:projects.project3_title	Строительство промышленного комплекса "Ямал СПГ"	Construction of the Yamal LNG industrial complex	Yamal LNG sanayi kompleksinin inşaatı	亚马尔液化天然气工业园区建设
 home:projects.project3_city	полуостров Ямал	Yamal Peninsula	Yamal Yarımadası	亚马尔半岛
-home:projects.project3_text	Поставка хомутов и комплектующих к строительным лесам 2018 г.	Supply of clamps and components for scaffolding in 2018.	2018 yılında iskele için kelepçe ve bileşen tedariği.	2018年供应脚手架夹具和组件。
+home:projects.project3_text	Поставка хомутов и комплектующих к строительным лесам 2018 г.	Supply of clamps and components for scaffolding in 2018.	2018 yılında iskele kelepçeleri ve bileşenlerinin temini.	2018年供应脚手架夹具和组件。
 home:projects.project4_title	Строительство комплекса "Арктитк СПГ-2"	Construction of the Arctic LNG-2 complex	Arktik LNG-2 kompleksinin inşaatı	北极 LNG-2 综合设施的建设
 home:projects.project4_city	г. Мурманск	Murmansk	Murmansk	摩尔曼斯克
 home:projects.project4_text	Поставка хомутов и комплектующих к строительным лесам 2019-2021 г.	Supply of clamps and components for scaffolding 2019-2021.	İskele için kelepçe ve bileşen temini 2019-2021.	2019-2021 年供应脚手架夹具和组件。
@@ -114,7 +114,7 @@ home:projects.project9_city	о. Сахалин	O. Sakhalin	O. Sakhalin	O·萨哈
 home:projects.project9_text	Поставка строительных лесов и комплектующих, 2019г.	Supply of scaffolding and components, 2019.	İskele ve bileşenlerinin temini, 2019.	脚手架和组件供应，2019 年。
 home:projects.project10_title	Строительство Амурского газохимического комплекса	Construction of the Amur gas chemical complex	Amur gaz kimyasal kompleksinin inşaatı	阿穆尔天然气化工联合体建设
 home:projects.project10_city	г. Свободный	Svobodny	Svobodnıy	斯沃博德内
-home:projects.project10_text	Поставка строительных лесов, труб, опалубки и комплектующих, 2021-2024г.	Supply of scaffolding, pipes, formwork and components, 2021-2024.	İskele, boru, kalıp ve bileşen temini, 2021-2024.	供应脚手架、管道、模板和部件，2021 年至 2024 年。
+home:projects.project10_text	Поставка строительных лесов, труб, опалубки и комплектующих, 2021-2024г.	Supply of scaffolding, pipes, formwork and components, 2021-2024.	İskele, boru, kalıp ve bileşen temini, 2021-2024.	供应脚手架、管道、模板和组件，2021 年至 2024 年。
 home:projects.project11_title	Строительство Иркутского завода полимеров	Construction of the Irkutsk Polymer Plant	Irkutsk Polimer Fabrikası İnşaatı	伊尔库茨克聚合物工厂建设
 home:projects.project11_city	г. Иркутск	Irkutsk	İrkutsk	伊尔库茨克
 home:projects.project11_text	Поставка строительных лесов, труб, опалубки и комплектующих, 2023г.	Supply of scaffolding, pipes, formwork and components, 2023.	İskele, boru, kalıp ve bileşenlerin temini, 2023.	供应脚手架、管道、模板和部件，2023 年。
@@ -166,7 +166,7 @@ common:address	г. Уфа ул. Рихарда Зорге, 15/1	Ufa st. Richard 
 common:schedule	<span>Пн-Пт, с 09:00 до 18:00,</span><span>Сб-Вс, Выходной</span>	<span>Mon-Fri, from 09:00 to 18:00,</span><span>Sat-Sun, Closed</span>	<span>Pzt-Cum, 09:00 - 18:00,</span><span>Cumartesi-Paz, Kapalı</span>	<span>周一至周五，09:00 至 18:00，</span><span>周六至周日，休息</span>
 common:city	г. Уфа	Ufa	Ufa	乌法
 common:office_ufa	Офис Уфа	Ufa office	Ufa ofisi	乌法办事处
-common:schedule_workweek	Пн-Пт, с 09:00 до 18:00	Mon-Fri, from 09:00 to 18:00	Pazartesi-Cuma, 09:00 - 18:00	周一至周五，09:00 至 18:00
+common:schedule_workweek	Пн-Пт, с 09:00 до 18:00	Mon-Fri, from 09:00 to 18:00	Pazartesi-Cuma, 09:00 - 18:00 arası	周一至周五，09:00 至 18:00
 common:schedule_weekend	Сб-Вс, Выходной	Sat-Sun, Closed	Cmt-Paz, Kapalı	周六至周日，休息
 common:tel	Телефон	Telephone	Telefon	电话
 common:show_more	Читать дальше	Read more	Devamını oku	阅读更多
@@ -185,10 +185,10 @@ about:company.block_2_text	Взаимодействие Компании с па
 about:company.block_3_title	Безопасность	Safety	Emniyet	安全
 about:company.block_3_text	Мы существуем, чтобы строительство было безопасным, быстрым и качественным. Мы ежедневно стремимся стать надежным партнером и предоставить наилучшее обслуживание своим заказчикам.	We exist to ensure that construction is safe, fast and of high quality. We strive every day to become a reliable partner and provide the best service to our customers.	İnşaatın güvenli, hızlı ve kaliteli olmasını sağlamak için varız. Güvenilir bir ortak olmak ve müşterilerimize en iyi hizmeti sunmak için her gün çabalıyoruz.	我们的存在是为了确保施工安全、快速和高质量。我们每天都努力成为值得信赖的合作伙伴，并为客户提供最好的服务。
 about:company.block_4_title	Проффесионализм	Professionalism	Profesyonellik	专业精神
-about:company.block_4_text	Знание своей специальности, ответственное и добросовестное отношение к обязанностям, качественное и своевременное выполнение поставленных задач, и совершенствование профессионального уровня.	Knowledge of one’s specialty, responsible and conscientious attitude to responsibilities, high-quality and timely completion of assigned tasks, and improvement of professional level.	Uzmanlık bilgisi, sorumluluklara karşı sorumlu ve vicdani tutum, verilen görevlerin yüksek kalitede ve zamanında tamamlanması ve mesleki seviyenin geliştirilmesi.	熟悉自己的专业知识，认真负责的工作态度，高质量、及时完成交给的任务，提高业务水平。
+about:company.block_4_text	Знание своей специальности, ответственное и добросовестное отношение к обязанностям, качественное и своевременное выполнение поставленных задач, и совершенствование профессионального уровня.	Knowledge of one’s specialty, responsible and conscientious attitude to responsibilities, high-quality and timely completion of assigned tasks, and improvement of professional level.	Uzmanlık bilgisi, sorumluluklara karşı sorumlu ve vicdani tutum, verilen görevlerin yüksek kalitede ve zamanında tamamlanması ve mesleki seviyenin geliştirilmesi.	熟悉专业知识，认真负责，认真负责，高质量、及时完成交给的任务，提高业务水平。
 about:director.title	Здравствуйте! Меня зовут Мамлиев Ильшат Римович, от себя могу сказать, что	Hello! My name is Mamliev Ilshat Rimovich, from myself I can say that	Merhaba! Benim adım Mamliev Ilshat Rimovich, kendi adıma şunu söyleyebilirim	你好！我的名字是马姆利耶夫·伊尔沙特·里莫维奇，我可以说
-about:director.text	Наша миссия - обеспечить строительную отрасль высококачественными комплектующими для строительных лесов и опалубки, способствуя безопасности, надежности и эффективности строительных проектов. Мы стремимся к постоянному совершенствованию наших продуктов, предоставляя клиентам инновационные решения, экономическую выгоду и высокий уровень сервиса.	Our mission is to provide the construction industry with high quality scaffolding and formwork components, contributing to the safety, reliability and efficiency of construction projects. We strive to continuously improve our products, providing customers with innovative solutions, economic benefits and a high level of service.	Misyonumuz inşaat sektörüne yüksek kaliteli iskele ve kalıp bileşenleri sağlayarak inşaat projelerinin güvenliğine, güvenilirliğine ve verimliliğine katkıda bulunmaktır. Müşterilerimize yenilikçi çözümler, ekonomik faydalar ve yüksek düzeyde hizmet sunarak ürünlerimizi sürekli geliştirmeye çalışıyoruz.	我们的使命是为建筑行业提供高品质的脚手架和模板组件，为建筑项目的安全、可靠和高效做出贡献。我们努力不断改进我们的产品，为客户提供创新的解决方案、经济效益和高水平的服务。
-about:director.goal	Наша цель - быть надежным партнером для наших клиентов, превосходя их ожидания и способствуя их успеху в строительной деятельности.	Our goal is to be a reliable partner for our clients, exceeding their expectations and contributing to their success in their construction activities.	Amacımız, müşterilerimiz için güvenilir bir ortak olmak, beklentilerini aşmak ve inşaat faaliyetlerindeki başarılarına katkıda bulunmaktır.	我们的目标是成为客户可靠的合作伙伴，超越他们的期望并为他们的建筑活动取得成功做出贡献。
+about:director.text	Наша миссия - обеспечить строительную отрасль высококачественными комплектующими для строительных лесов и опалубки, способствуя безопасности, надежности и эффективности строительных проектов. Мы стремимся к постоянному совершенствованию наших продуктов, предоставляя клиентам инновационные решения, экономическую выгоду и высокий уровень сервиса.	Our mission is to provide the construction industry with high quality scaffolding and formwork components, contributing to the safety, reliability and efficiency of construction projects. We strive to continuously improve our products, providing customers with innovative solutions, economic benefits and a high level of service.	Misyonumuz inşaat sektörüne yüksek kaliteli iskele ve kalıp bileşenleri sağlayarak inşaat projelerinin güvenliğine, güvenilirliğine ve verimliliğine katkıda bulunmaktır. Müşterilerimize yenilikçi çözümler, ekonomik faydalar ve yüksek düzeyde hizmet sunarak ürünlerimizi sürekli iyileştirmeye çalışıyoruz.	我们的使命是为建筑行业提供高品质的脚手架和模板组件，为建筑项目的安全、可靠和高效做出贡献。我们努力不断改进我们的产品，为客户提供创新的解决方案、经济效益和高水平的服务。
+about:director.goal	Наша цель - быть надежным партнером для наших клиентов, превосходя их ожидания и способствуя их успеху в строительной деятельности.	Our goal is to be a reliable partner for our clients, exceeding their expectations and contributing to their success in their construction activities.	Amacımız, müşterilerimiz için güvenilir bir ortak olmak, beklentilerini aşmak ve inşaat faaliyetlerindeki başarılarına katkıda bulunmaktır.	我们的目标是成为客户可靠的合作伙伴，超越他们的期望并为他们的建筑活动的成功做出贡献。
 about:director.name	Ильшат Римович	Ilshat Rimovich	İlşat Rimoviç	伊尔沙特·里莫维奇
 about:director.position	Директор компании	Director of the company	Firmanın yöneticisi	公司董事
 about:director.block_1_title	Крупный, надежный поставщик строительного оборудования	Large, reliable supplier of construction equipment	Büyük, güvenilir inşaat ekipmanı tedarikçisi	大型、可靠的建筑设备供应商
@@ -267,7 +267,7 @@ contacts:free_call	звонок по России бесплатный, отде
 contacts:mail	Почта	Mail	Posta	邮件
 contacts:spb_wh	Склад Санкт-Петербург	Warehouse St. Petersburg	Depo St.Petersburg	仓库 圣彼得堡
 contacts:spb_wh_address	г. Санкт-Петербург, пр. Обуховской обороны, д. 295, лит.АТ, логопарк «Троицкий»	St. Petersburg, Obukhovskaya Oborony Ave., 295, lit. AT, logopark "Troitsky"	St.Petersburg, Obukhovskaya Oborony Bulvarı, 295, yanıyor. AT, logopark "Troitsky"	圣彼得堡，Obukhovskaya Oborony Ave., 295, lit. AT，“特洛伊茨基”标志公园
-contacts:msk_wh	Склад Московская обл.	Warehouse Moscow region.	Depo Moskova bölgesi.	莫斯科地区仓库。
+contacts:msk_wh	Склад Московская обл.	Warehouse Moscow region	Depo Moskova bölgesi	莫斯科地区仓库
 contacts:msk_wh_address	Московская обл., Ногинский р-н, пгт. Обухово, Кудиновское ш., 4 корпус 27. ПСК "Атлант-Парк"	Moscow region, Noginsk district, town. Obukhovo, Kudinovskoe highway, 4 building 27. PSK "Atlant-Park"	Moskova bölgesi, Noginsk bölgesi, kasaba. Obukhovo, Kudinovskoe karayolu, 4 bina 27. PSK "Atlant-Park"	莫斯科州，诺金斯克区，镇。 Obukhovo，Kudinovskoe 高速公路，4 号楼 27. PSK“Atlant-Park”
 contacts:msk_sch_val	Круглосуточно	Around the clock	Saat	全天候
 contacts:details.title	Реквизиты	Requisites	Gereksinimler	必备条件
@@ -292,4 +292,4 @@ blog:no_posts	Такой статьи нет	There is no such article	Böyle bir
 blog:title	Читайте интересные статьи в нашем блоге и следите за новостями	Read interesting articles on our blog and follow the news	Blogumuzdaki ilginç makaleleri okuyun ve haberleri takip edin	在我们的博客上阅读有趣的文章并关注新闻
 blog:read	Читать подробнее	Read more	Devamını oku	阅读更多
 meta:title	ООО Уралснабресурс - официальный сайт. Производство и продажа строительного оборудования в Москве и РФ	LLC Uralsnabresurs - official website. Production and sale of construction equipment in Moscow and the Russian Federation	LLC Uralsnabresurs - resmi web sitesi. Moskova ve Rusya Federasyonu'nda inşaat ekipmanlarının üretimi ve satışı	LLC Uralsnabresurs - 官方网站。在莫斯科和俄罗斯联邦生产和销售建筑设备
-meta:description	Поставка строительного оборудования от производителя Уралснабресурс: хомуты для лесов, шпунты ларсена, пиломатериалы, лестницы, опалубка, вышки-туры. Выгодные цены. Быстрая поставка по Росиии и СНГ.	Supply of construction equipment from the manufacturer Uralsnabresurs: scaffolding clamps, Larsen sheet piles, lumber, ladders, formwork, scaffolding towers. Favorable prices. Fast delivery throughout Russia and the CIS.	Uralsnabresurs üreticisinden inşaat ekipmanı temini: iskele kelepçeleri, Larsen levha kazıklar, kereste, merdivenler, kalıp, iskele kuleleri. Uygun fiyatlar. Rusya ve BDT genelinde hızlı teslimat.	Uralsnabresurs 制造商供应建筑设备：脚手架夹、拉森板桩、木材、梯子、模板、脚手架塔。价格优惠。在整个俄罗斯和独联体国家快速交货。
+meta:description	Поставка строительного оборудования от производителя Уралснабресурс: хомуты для лесов, шпунты ларсена, пиломатериалы, лестницы, опалубка, вышки-туры. Выгодные цены. Быстрая поставка по Росиии и СНГ.	Supply of construction equipment from the manufacturer Uralsnabresurs: scaffolding clamps, Larsen sheet piles, lumber, ladders, formwork, scaffolding towers. Favorable prices. Fast delivery throughout Russia and the CIS.	Uralsnabresurs üreticisinden inşaat ekipmanı temini: iskele kelepçeleri, Larsen levha kazıklar, kereste, merdivenler, kalıplar, iskele kuleleri. Uygun fiyatlar. Rusya ve BDT genelinde hızlı teslimat.	Uralsnabresurs 制造商供应建筑设备：脚手架夹、拉森板桩、木材、梯子、模板、脚手架塔。价格优惠。在整个俄罗斯和独联体国家快速交货。

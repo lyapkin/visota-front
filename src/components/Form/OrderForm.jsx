@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useState } from 'react'
 import Image from 'next/image'
 
 import styles from '@/styles/cart.module.css'
@@ -7,13 +7,17 @@ import Button from '../UI/Buttons/Button'
 import { useRouter } from 'next/navigation'
 import getCookie from '@/utils/getCookie'
 import { useTranslation } from 'react-i18next'
+import Spinner from '../Spinner/Spinner'
 
 const OrderForm = ({cart, productsCount, resetCart}) => {
     const router = useRouter()
     const [order, dispatch] = useReducer(cartReducer, cartInitState)
     const {t} = useTranslation()
 
+    const [loading, setLoading] = useState(false)
+
     const handleSubmit = async (e) => {
+        setLoading(true)
         e.preventDefault()
 
         const csrf = getCookie('csrftoken')
@@ -24,28 +28,34 @@ const OrderForm = ({cart, productsCount, resetCart}) => {
         }
 
         const url = new URL(process.env.BACK_URL + `/api/request/order/`)
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrf
-            },
-            mode: 'same-origin',
-            body: JSON.stringify(data)
-        })
-        if (response.status === 400) {
-            const result = await response.json()
-            dispatch({type: cartActions.ERROR, payload: result})
-        } else if (response.ok) {
-            await response.json()
-            resetCart()
-            router.push('/success')
-            dispatch({type: cartActions.RESET})
+        try {
+
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrf
+                },
+                mode: 'same-origin',
+                body: JSON.stringify(data)
+            })
+            if (response.status === 400) {
+                const result = await response.json()
+                dispatch({type: cartActions.ERROR, payload: result})
+            } else if (response.ok) {
+                await response.json()
+                resetCart()
+                router.push('/success')
+                dispatch({type: cartActions.RESET})
+            }
+        } catch (e) {
+            console.log(e)
         }
+        setLoading(false)
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles['relative']}>
             <fieldset className={styles['form__contact-data']}>
                 <legend>{t('form:input_contacts')}</legend>
                 <label className={`${styles['form__input']} ${order.error.name && 'input-form-error'}`}>
@@ -54,7 +64,8 @@ const OrderForm = ({cart, productsCount, resetCart}) => {
                     </div>
                     <input placeholder={t('form:placeholder_name')}
                         onChange={(e) => dispatch({ type: cartActions.NAME, payload: e.target.value })}
-                        value={order.data.name} />
+                        value={order.data.name}
+                        disabled={loading} />
                 </label>
                 <label className={`${styles['form__input']} ${order.error.number && 'input-form-error'}`}>
                     <div className={styles['form__icon']}>
@@ -62,7 +73,8 @@ const OrderForm = ({cart, productsCount, resetCart}) => {
                     </div>
                     <input placeholder={t('form:placeholder_number')}
                         onChange={(e) => dispatch({ type: cartActions.NUMBER, payload: e.target.value })}
-                        value={order.data.number} />
+                        value={order.data.number}
+                        disabled={loading} />
                 </label>
                 <label className={`${styles['form__input']} ${order.error.email && 'input-form-error'}`}>
                     <div className={styles['form__icon']}>
@@ -70,7 +82,8 @@ const OrderForm = ({cart, productsCount, resetCart}) => {
                     </div>
                     <input type='email' placeholder={t('form:placeholder_email')}
                         onChange={(e) => dispatch({ type: cartActions.EMAIL, payload: e.target.value })}
-                        value={order.data.email} />
+                        value={order.data.email}
+                        disabled={loading} />
                 </label>
                 <label className={`${styles['form__input']} ${order.error.delivery_address && 'input-form-error'}`}>
                     <div className={styles['form__icon']}>
@@ -78,11 +91,13 @@ const OrderForm = ({cart, productsCount, resetCart}) => {
                     </div>
                     <input placeholder={t('form:placeholder_delivery_address')}
                         onChange={(e) => dispatch({ type: cartActions.ADDRESS, payload: e.target.value })}
-                        value={order.data.delivery_address} />
+                        value={order.data.delivery_address}
+                        disabled={loading} />
                 </label>
                 <textarea className={`${styles['form__textarea']} ${order.error.comment && 'input-form-error'}`} placeholder={t('form:palceholder_order_comment')}
                     onChange={(e) => dispatch({ type: cartActions.COMMENT, payload: e.target.value })}
-                    value={order.data.comment} />
+                    value={order.data.comment}
+                    disabled={loading} />
             </fieldset>
             {/* <fieldset className={`${styles['form__payment-method']}`}>
                 <legend>Выберите способ оплаты</legend>
@@ -104,7 +119,9 @@ const OrderForm = ({cart, productsCount, resetCart}) => {
                 </label>
             </fieldset> */}
 
-            <Button text={t('form:order_button')} smallFont={false} action={() => { }} />
+            <Button text={loading ? <Spinner size={20} color={'#fff'} /> : t('form:order_button')} smallFont={false} action={() => { }}
+                    disable={loading} />
+            {/* {loading && <Spinner />} */}
         </form>
     )
 }
