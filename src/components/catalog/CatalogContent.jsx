@@ -241,7 +241,7 @@ const CatalogContent = ({categories}) => {
                     }
                 </main>
                 {isNextPage && products.length > 0 &&
-                    <button className={styles['catalog__show-more']} onClick={appendProducts} disabled={addLoading} >{addLoading ? <Spinner size={30}/> : t('catalog:show_more')}</button>}
+                    !getLoading && <button className={styles['catalog__show-more']} onClick={appendProducts} disabled={addLoading} >{addLoading ? <Spinner size={30}/> : t('catalog:show_more')}</button>}
             </div>
             {getPriceFormProduct !== null && 
                 <Popup close={() => setGetPriceFormProduct(null)} >
