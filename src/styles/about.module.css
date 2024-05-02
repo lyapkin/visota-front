@@ -538,6 +538,11 @@
 }
 
 @media (max-width: 576px) {
+    .check__item {
+        max-width: 100%;
+        padding-right: 10px;
+    }
+
     .check__item img {
         display: none;
     }
