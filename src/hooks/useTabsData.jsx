@@ -179,7 +179,7 @@ const useTabsData = () => {
                     id: 2,
                     slug: 'chashechnye-lesa',
                     name: t('common:chash'),
-                    img: '/images/categories/chushech-les.png'
+                    img: '/images/categories/opalub-perkr.jpg'
                 },
             ]
         },
