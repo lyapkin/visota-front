@@ -18,11 +18,11 @@ const useCatalogData = () => {
                         name: t('common:klin'),
                         link: '/catalog?sub=klinovye-lesa'
                     },
-                    {
-                        id: 2,
-                        name: t('common:chash'),
-                        link: '/catalog?sub=chashechnye-lesa'
-                    },
+                    // {
+                    //     id: 2,
+                    //     name: t('common:chash'),
+                    //     link: '/catalog?sub=chashechnye-lesa'
+                    // },
                     {
                         id: 3,
                         name: t('common:homut'),
@@ -164,6 +164,11 @@ const useCatalogData = () => {
                         id: 1,
                         name: t('common:opalubka_perkrit'),
                         link: '/catalog?sub=opalubka-perekrytii'
+                    },
+                    {
+                        id: 2,
+                        name: t('common:chash'),
+                        link: '/catalog?sub=chashechnye-lesa'
                     },
                 ]
             },

@@ -70,12 +70,12 @@ const useTabsData = () => {
                     name: t('common:klin'),
                     img: '/images/categories/klinov-les.png'
                 },
-                {
-                    id: 2,
-                    slug: 'chashechnye-lesa',
-                    name: t('common:chash'),
-                    img: '/images/categories/chushech-les.png'
-                },
+                // {
+                //     id: 2,
+                //     slug: 'chashechnye-lesa',
+                //     name: t('common:chash'),
+                //     img: '/images/categories/chushech-les.png'
+                // },
                 {
                     id: 3,
                     slug: 'khomutovye-lesa',
@@ -174,7 +174,13 @@ const useTabsData = () => {
                     slug: 'opalubka-perekrytii',
                     name: t('common:opalubka_perkrit'),
                     img: '/images/catalog/opalub_perek.png'
-                }
+                },
+                {
+                    id: 2,
+                    slug: 'chashechnye-lesa',
+                    name: t('common:chash'),
+                    img: '/images/categories/opalub-perkr.jpg'
+                },
             ]
         },
     ])
