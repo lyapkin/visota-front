@@ -173,13 +173,13 @@ const useTabsData = () => {
                     id: 1,
                     slug: 'opalubka-perekrytii',
                     name: t('common:opalubka_perkrit'),
-                    img: '/images/catalog/opalub_perek.png'
+                    img: '/images/categories/opalub-perkr.jpg'
                 },
                 {
                     id: 2,
                     slug: 'chashechnye-lesa',
                     name: t('common:chash'),
-                    img: '/images/categories/opalub-perkr.jpg'
+                    img: '/images/categories/chushech-les.png'
                 },
             ]
         },
