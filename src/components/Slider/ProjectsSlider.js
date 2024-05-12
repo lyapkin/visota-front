@@ -20,18 +20,18 @@ const ProjectsSlider = () => {
 
         if (target.dataset?.type == 'left-button') {
             setPicIndex(curIndex => {
-                if(curIndex <= 0) {
-                    return 0
-                }
                 ref.current.slickPrev()
+                if(curIndex <= 0) {
+                    return projects.length - 1
+                }
                 return curIndex - 1
             })
         } else if (target.dataset?.type == 'right-button') {
             setPicIndex(curIndex => {
-                if(curIndex >= projects.length - 1) {
-                    return projects.length - 1
-                }
                 ref.current.slickNext()
+                if(curIndex >= projects.length - 1) {
+                    return 0
+                }
                 return curIndex + 1
             })
         }
@@ -39,11 +39,14 @@ const ProjectsSlider = () => {
 
     const settings = {
         dots: false,
-        infinite: false,
+        infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        pauseOnHover: true,
         beforeChange: (c, n) => setPicIndex(n)
     }
 
@@ -73,8 +76,8 @@ const ProjectsSlider = () => {
                     </Slider>
                 {/* </div> */}
                 <div className={styles['project-slider__buttons']}>
-                    <LeftButton action={handleSlideSwitch} disabled={picIndex <= 0}/>
-                    <RightButton action={handleSlideSwitch} disabled={picIndex >= projects.length - 1}/>
+                    <LeftButton action={handleSlideSwitch} />
+                    <RightButton action={handleSlideSwitch} />
                 </div>
             </div>
             <div className={styles['projects-slider__progress-bar']}>
