@@ -35,17 +35,17 @@ const GovClientsSlider = () => {
 
         if (target.dataset?.type == "left-button") {
             setPicIndex((curIndex) => {
-                if (curIndex <= 0) {
-                    return 0;
-                }
+                // if (curIndex <= 0) {
+                //     return 0;
+                // }
                 ref.current.slickPrev()
                 return curIndex - 1;
             });
         } else if (target.dataset?.type == "right-button") {
             setPicIndex((curIndex) => {
-                if (curIndex >= logos.length - 1 - (slidesCount - 1)) {
-                    return logos.length - 1;
-                }
+                // if (curIndex >= logos.length - 1 - (slidesCount - 1)) {
+                //     return logos.length - 1;
+                // }
                 ref.current.slickNext()
                 return curIndex + 1;
             });
@@ -54,11 +54,13 @@ const GovClientsSlider = () => {
 
     const settings = {
         dots: false,
-        infinite: false,
+        infinite: true,
         speed: 500,
         slidesToShow: width ? slidesCount : 6,
         slidesToScroll: 1,
         arrows: false,
+        autoplay: true,
+        autoplaySpeed: 2000,
         beforeChange: (c, n) => setPicIndex(n)
     }
 
@@ -89,13 +91,13 @@ const GovClientsSlider = () => {
                 <div className={styles["gov-clients-slider__buttons"]}>
                     <LeftButton
                         action={handleSlideSwitch}
-                        disabled={picIndex <= 0}
+                        // disabled={picIndex <= 0}
                     />
                     <RightButton
                         action={handleSlideSwitch}
-                        disabled={
-                            picIndex >= logos.length - 1 - (slidesCount - 1)
-                        }
+                        // disabled={
+                        //     picIndex >= logos.length - 1 - (slidesCount - 1)
+                        // }
                     />
                 </div>
             </div>
