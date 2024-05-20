@@ -186,7 +186,8 @@ const CatalogContent = ({categories}) => {
                                 <Link href={`/catalog/${p.slug}`} >
                                     <span className={styles['card__presence']}>{p.is_present ? t('catalog:presence.on') : t('catalog:presence.off')}</span>
                                     <div className={styles['card__image']}>
-                                        {p.img_urls.length > 0 && <img src={p.img_urls[0].img_url} height={214} width={200} alt='фото товара' />}
+                                        {p.img_urls.length > 0 ? <img src={p.img_urls[0].img_url} height={214} width={200} alt='фото товара' /> : 
+                                        <img src={'/images/noimage.jpg'} />}
                                     </div>
                                 </Link>
                             </div>

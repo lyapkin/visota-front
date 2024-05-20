@@ -42,13 +42,14 @@ const ProductSlider = ({imgs}) => {
                     style={{width: '183px'}}
                     arrows={false}
                 >
-                    {imgs.map((item, index) => (
+                    {imgs.length > 0 ? imgs.map((item, index) => (
                         <div key={item.id} className={styles['product-slider__cover-wrapper']}>
                             <div className={styles['product-slider__cover-wrapper-inner']}>
                             <img src={item.img_url} />  
                             </div> 
                         </div>
-                    ))}
+                    )) :
+                    <img src={'/images/noimage.jpg'} />}
                 </Slider>
             </div>
             <div className='slider-container' >
@@ -56,13 +57,14 @@ const ProductSlider = ({imgs}) => {
                     <Slider asNavFor={nav2} ref={slider => (sliderRef1 = slider)}
                             style={{height: '100%'}} adaptiveHeight={false}
                             arrows={false} >
-                        {imgs.map((item) => (
+                        {imgs.length > 0 ? imgs.map((item) => (
                             <div key={item.id}>
                                 <div  className={styles['product-slider__cover-wrapper-single']} >
                                     <img src={item.img_url} />
                                 </div>
                             </div>
-                        ))}
+                        )) :
+                        <img src={'/images/noimage.jpg'} />}
                     </Slider>
                     <button className={styles['product-slider__btn']}
                             onClick={handlePrevSlide}>

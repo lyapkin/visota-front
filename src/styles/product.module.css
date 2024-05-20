@@ -221,6 +221,11 @@
     /* object-fit: contain; */
 }
 
+.prod-info__description strong {
+    color: #000;
+    font-weight: 900;
+}
+
 
 .prod-info__documentation {
     font-family: 'Gilroy-500';
