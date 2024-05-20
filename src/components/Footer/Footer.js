@@ -65,22 +65,22 @@ const Footer = async ({locale}) => {
 						<span>{t('common:schedule_weekend')}</span>
 					</p>
 					<div className={styles['mail__main']}>
-						<a href='mailto:visota1300@mail.ru'>visota1300@mail.ru</a>
-						<a href='mailto:visota1300@mail.ru'>{t('footer:send_mail')}</a>
+						<a href='mailto:info@visota13.ru'>info@visota13.ru</a>
+						<a href='mailto:info@visota13.ru'>{t('footer:send_mail')}</a>
 					</div>
 				</div>
 				<div className={styles['footer__mail']}>
 					<h6>{t('footer:mail')}</h6>
 					<div className={styles['mail__main']}>
-						<a href='mailto:visota1300@mail.ru'>visota1300@mail.ru</a>
+						<a href='mailto:info@visota13.ru'>info@visota13.ru</a>
 						<span>{t('footer:mail_us')}</span>
 					</div>
 					<div className={styles['mail__commercial']}>
 						<span>{t('footer:mail_commercial')}</span>
-						<a href='mailto:visota1300@mail.ru'>visota1300@mail.ru</a>
+						<a href='mailto:info@visota13.ru'>info@visota13.ru</a>
 					</div>
 					{/* <div className={styles['mail__head']}>
-						<a href='mailto:visota1300@mail.ru'>{t('footer:mail_director')}</a>
+						<a href='mailto:info@visota13.ru'>{t('footer:mail_director')}</a>
 					</div> */}
 				</div>
 			</div>

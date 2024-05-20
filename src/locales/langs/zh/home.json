@@ -1,18 +1,18 @@
 {
   "main": {
     "title": "为建筑项目供应组件</span>",
-    "second": "我们将确保在最短的时间内<span>从莫斯科的仓库交付货物</span>，或者<span>我们将从我们的工厂直接从中国将整个集装箱交付给您的施工或生产地点",
+    "second": "我们将确保在最短的时间内<span>从莫斯科的仓库交付货物</span>，或者<span>我们将从我们的工厂直接从中国运送完整的集装箱</span>到您的施工或生产地点",
     "button": "获得商业报价",
     "next": "下一个",
     "prev": "后退",
     "block_first": "库存超过<span>50万件</span>",
-    "block_second": "<span>在中国自己生产</span>"
+    "block_second": "<span>在中国自行生产</span>"
   },
   "advantages": {
     "title": "<span>与VYSOTA公司合作您会得到什么好处？</span>",
-    "first_block_title": "我们拥有产品所需的所有<span>许可证和批准</span>",
+    "first_block_title": "我们拥有产品所需的所有<span>许可证和批准</span><br/>",
     "first_block_text": "我们的产品有证书和测试报告，质量标准EN74-1/BS1139",
-    "second_block_title": "我们直接<span>与值得信赖的外国制造商合作</span>",
+    "second_block_title": "我们直接<br/><span>与成熟的外国制造商合作</span>",
     "second_block_text": "Vysota 公司 (Uralsnabresurs LLC) 是中国 TYT CO 工厂的脚手架制造商。有限公司适用于建筑和工业领域的全系列脚手架、模板和安全产品。",
     "third_block_title": "<span>广泛</span>的产品和质量控制体系",
     "third_block_text": "由于与俄罗斯其他设备制造商的密切联系，我们能够以最低的成本为客户提供最佳的解决方案。",
@@ -75,7 +75,7 @@
     "block3_title": "广泛的产品和质量控制体系",
     "block3_text": "Gazprom、Tekfen Construction、INTER RAO、Yamata、SIBUR、Renaissance Construction、Velesstroy 等公司都信任我们来完成他们的建设项目。",
     "block4_title": "俄罗斯联邦3个仓库",
-    "block4_text": "我们在俄罗斯联邦拥有3个仓库，这有助于我们确保在最短的时间内交货"
+    "block4_text": "我们在俄罗斯联邦有3个仓库，这有助于我们确保在最短的时间内交货"
   },
   "gov_clients": {
     "title": "我们承接<span>世界最大公司的成套物品"

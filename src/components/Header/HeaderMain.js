@@ -38,9 +38,9 @@ const HeaderMain = ({mobileOpen, setMobileOpen}) => {
                     </nav>
                     
                     <div className={styles["header-main__tel"]}>
-                        <a href='mailto:visota1300@mail.ru'>
+                        <a href='mailto:info@visota13.ru'>
                             <img src='/svgs/email-icon.svg' alt="иконка" />
-                            <span>visota1300@mail.ru</span>
+                            <span>info@visota13.ru</span>
                         </a>
                         <a href="tel:+78007005413">
                             <img src="/svgs/phone-pic.svg" alt="иконка" />

@@ -4,7 +4,7 @@
   "placeholder_name": "Contact person (full name)",
   "placeholder_number": "Phone number",
   "placeholder_activity": "Kind of activity",
-  "placeholder_comment": "Write a comment to the application",
+  "placeholder_comment": "Write a comment on the application",
   "placeholder_email": "Email",
   "placeholder_company_name": "Business name",
   "consult_button": "Order a consultation",
@@ -15,7 +15,7 @@
   "placeholder_entity": "Legal entity",
   "placeholder_card": "Partner card",
   "get_example": "Get a sample",
-  "input_contacts": "Enter your contact details",
+  "input_contacts": "Enter your contact information",
   "placeholder_delivery_address": "Delivery address",
   "palceholder_order_comment": "Comments on the order",
   "success": {

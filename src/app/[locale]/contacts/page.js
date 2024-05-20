@@ -70,8 +70,8 @@ export default async function Contacts({params: {locale}}) {
                         <div className={s.email}>
                             <h4 className={`${s.subtitle}`}>{t('contacts:mail')}</h4>
                             <p className={s.email__text}>
-                                <a href="mailto:visota1300@mail.ru">
-                                    visota1300@mail.ru
+                                <a href="mailto:info@visota13.ru">
+                                    info@visota13.ru
                                 </a>
                             </p>
                         </div>
@@ -164,8 +164,8 @@ export default async function Contacts({params: {locale}}) {
                         <div className={s.email}>
                             <h4 className={`${s.subtitle}`}>Почта</h4>
                             <p className={s.email__text}>
-                                <a href="mailto:visota1300@mail.ru">
-                                    visota1300@mail.ru
+                                <a href="mailto:info@visota13.ru">
+                                    info@visota13.ru
                                 </a>
                             </p>
                         </div> */}
@@ -228,8 +228,8 @@ export default async function Contacts({params: {locale}}) {
                         <div className={s.email}>
                             <h4 className={`${s.subtitle}`}>Почта</h4>
                             <p className={s.email__text}>
-                                <a href="mailto:visota1300@mail.ru">
-                                    visota1300@mail.ru
+                                <a href="mailto:info@visota13.ru">
+                                    info@visota13.ru
                                 </a>
                             </p>
                         </div> */}
