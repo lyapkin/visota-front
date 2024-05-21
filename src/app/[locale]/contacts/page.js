@@ -97,10 +97,12 @@ export default async function Contacts({params: {locale}}) {
                             <br />
                             {t('contacts:details.kor_acc')}: 30101810200000000824
                             <br />
-                            {t('contacts:details.legal_address_key')}: {t('contacts:details.legal_address_key')}
+                            {t('contacts:details.legal_address_key')}:&nbsp;
+                            <span dangerouslySetInnerHTML={{__html: t('contacts:details.legal_address_val', {interpolation: {escapeValue: false}})}}></span>
                             
                             <br />
-                            {t('contacts:details.mail_address_key')}: {t('contacts:details.mail_address_val')}
+                            {t('contacts:details.mail_address_key')}:&nbsp;
+                            <span dangerouslySetInnerHTML={{__html: t('contacts:details.mail_address_val', {interpolation: {escapeValue: false}})}}></span>
                             <br />
                             {t('contacts:details.ceo_key')}: {t('contacts:details.ceo_val')}
                         </p>

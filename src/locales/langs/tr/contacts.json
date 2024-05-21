@@ -6,7 +6,7 @@
   "mail": "Posta",
   "spb_wh": "Depo St.Petersburg",
   "spb_wh_address": "St.Petersburg, Obukhovskaya Oborony Bulvarı, 295, yanıyor. AT, logopark \"Troitsky\"",
-  "msk_wh": "Depo Moskova bölgesi",
+  "msk_wh": "Depo Moskova bölgesi.",
   "msk_wh_address": "Moskova bölgesi, Noginsk bölgesi, kasaba. Obukhovo, Kudinovskoe karayolu, 4 bina 27. PSK \"Atlant-Park\"",
   "msk_sch_val": "Saat",
   "details": {
@@ -23,9 +23,9 @@
     "ras_acc": "Yerleşim hesabı",
     "kor_acc": "Muhabir hesap",
     "legal_address_key": "Yasal adres",
-    "legal_address_val": "Başkurdistan Cumhuriyeti, Ufa, 450059,<br />st. Richard Sorge, 15/1",
+    "legal_address_val": "Başkurdistan Cumhuriyeti, Ufa, 450059, <br />st. Richard Sorge, 15/1",
     "mail_address_key": "Posta adresi",
-    "mail_address_val": "Başkurdistan Cumhuriyeti, Ufa, 450059, st. Richard Sorge, 19/1",
+    "mail_address_val": "Başkurdistan Cumhuriyeti, Ufa, 450059, <br />st. Mendeleeva 132/1 ofis 5",
     "ceo_key": "Müdür",
     "ceo_val": "Mamliev Ilshat Rimovich (Şart'a göre)"
   }
