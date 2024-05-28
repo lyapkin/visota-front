@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useReducer, useRef, useState } from 'react'
 import Link from 'next/link'
 
 import styles from '@/styles/catalog.module.css'
@@ -7,12 +7,13 @@ import Filter from '@/components/catalog/Filter'
 import Search from '@/components/Search/Search'
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import { CartContext } from '@/providers/CartProvider'
-import { MAX_PRICE } from './constant'
+import { MAX_PRICE, methodsToLoad } from './constant'
 import GetPriceForm from '../Form/GetPriceForm'
 import Popup from '../popup/Popup'
 import { useTranslation } from 'react-i18next'
 import NoSearchResult from './NoSearchResult'
 import Spinner from '../Spinner/Spinner'
+import PagePagination from '../pagination/PagePagination'
 
 const CatalogContent = ({categories}) => {
     const locale = useParams().locale
@@ -37,6 +38,7 @@ const CatalogContent = ({categories}) => {
 
     const page = parseInt(searchParams.get('page')) || 1
     const [isNextPage, setIsNextPage] = useState(false)
+    const [pageCount, setPageCount] = useState(undefined)
 
     const [products, setProducts] = useState([])
 
@@ -44,14 +46,24 @@ const CatalogContent = ({categories}) => {
     const [isFiltersOpen, setIsFiltersOpen] = useState(searchParams.getAll('sub').length > 0 ? false : true)
 
     const [getPriceFormProduct, setGetPriceFormProduct] = useState(null)
+
+    const [methodToLoadProducts, setMethodToLoadProducts] = useState(methodsToLoad.UPDATE)
     
 
-    const appendProducts = async () => {
+    const changePage = async (method, page) => {
         setAddLoading(true)
+        setMethodToLoadProducts(method)
         const urlSearchParams = new URLSearchParams(searchParams.toString())
-        urlSearchParams.set('page', page+1)
+        urlSearchParams.set('page', page)
 
-        router.replace(`/catalog?${urlSearchParams.toString()}`, {scroll: false})
+        if (method === methodsToLoad.UPDATE) {
+            router.push(`/catalog?${urlSearchParams.toString()}`, {scroll: true})
+        } else if (method === methodsToLoad.APPEND) {
+            router.replace(`/catalog?${urlSearchParams.toString()}`, {scroll: false})
+        } else {
+            console.log('method is undefined', method)
+        }
+        
     }
     
     const getProducts = async (abortController) => {
@@ -70,12 +82,19 @@ const CatalogContent = ({categories}) => {
         } else {
             setIsNextPage(false)
         }
+
+        setPageCount(data['page_count'])
         
         setProducts(prev => {
-            return page === 1 ? data.results : prev.concat(data.results)
+            if (methodToLoadProducts === methodsToLoad.UPDATE) {
+                return data.results
+            } else if (methodToLoadProducts == methodsToLoad.APPEND) {
+                return prev.concat(data.results)
+            }
         })
         setAddLoading(false)
         setGetLoading(false)
+        setMethodToLoadProducts(methodsToLoad.UPDATE)
     }
     
     useEffect(() => {
@@ -241,8 +260,12 @@ const CatalogContent = ({categories}) => {
                     ))
                     }
                 </main>
-                {isNextPage && products.length > 0 &&
-                    !getLoading && <button className={styles['catalog__show-more']} onClick={appendProducts} disabled={addLoading} >{addLoading ? <Spinner size={30}/> : t('catalog:show_more')}</button>}
+                {products.length > 0 && !getLoading && 
+                    <div className={styles['catalog__pagination']}>
+                        {isNextPage && <button className={styles['catalog__show-more']} onClick={() => changePage(methodsToLoad.APPEND, page+1)} disabled={addLoading} >{addLoading ? <Spinner size={30}/> : t('catalog:show_more')}</button>}
+                        <PagePagination page={page} pageCount={pageCount} handleClick={(page) => changePage(methodsToLoad.UPDATE, page)} disabled={addLoading} />
+                    </div>
+                }
             </div>
             {getPriceFormProduct !== null && 
                 <Popup close={() => setGetPriceFormProduct(null)} >
