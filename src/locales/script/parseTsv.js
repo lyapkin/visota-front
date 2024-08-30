@@ -12,22 +12,22 @@ for (let i = 1; i < columns.length; i++) {
   const lang = columns[i];
   const data = {};
 
-  lines.forEach(line => {
-    const lineArr = line.split('\t')
-    const [namespace, ids] = lineArr[0].split(':')
+  lines.forEach((line) => {
+    const lineArr = line.split("\t");
+    const [namespace, ids] = lineArr[0].split(":");
 
-    const idsArr = ids.split('.')
+    const idsArr = ids.split(".");
 
-    if (!(namespace in data)) data[namespace] = {}
+    if (!(namespace in data)) data[namespace] = {};
 
     if (idsArr.length > 1) {
-      if (!(idsArr[0] in data[namespace])) data[namespace][idsArr[0]] = {}
-      data[namespace][idsArr[0]][idsArr[1]] = lineArr[i]
+      if (!(idsArr[0] in data[namespace])) data[namespace][idsArr[0]] = {};
+      data[namespace][idsArr[0]][idsArr[1]] = lineArr[i];
     } else {
-      data[namespace][idsArr[0]] = lineArr[i]
+      data[namespace][idsArr[0]] = lineArr[i];
     }
-  })
-  
+  });
+
   for (let ns in data) {
     fs.writeFileSync(
       `../langs/${lang}/${ns}.json`,

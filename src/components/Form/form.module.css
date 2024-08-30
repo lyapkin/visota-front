@@ -1,343 +1,356 @@
 .relative {
-    position: relative;
+  position: relative;
 }
 
 .form {
-    width: 100%;
+  width: 100%;
 }
 
 .form__input {
-    display: flex;
-    border-radius: var(--main-radius);
+  display: flex;
+  border-radius: var(--main-radius);
 }
 
 .form__icon {
-    padding: 22px;
-    background: var(--main-gradient);
-    display: inline-flex;
-    border-radius: var(--main-radius);
+  padding: 22px;
+  background: var(--main-gradient);
+  display: inline-flex;
+  border-radius: var(--main-radius);
 }
 
 .form__input input {
-    padding: 22px 18px;
-    display: block;
-    width: 100%;
-    border-radius: var(--main-radius);
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.04) inset;
+  padding: 22px 18px;
+  display: block;
+  width: 100%;
+  border-radius: var(--main-radius);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.04) inset;
 }
 
 .form__textarea {
-    padding: 22px;
-    resize: none;
-    border-radius: var(--main-radius);
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.04) inset;
+  padding: 22px;
+  resize: none;
+  border-radius: var(--main-radius);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.04) inset;
 }
-
-
-
-
-
-
-
-
 
 .form-block {
-    display: grid;
-    grid-template-columns: 33% 60%;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas: 
-        'header form'
-        'header form'
-        'text form';
-    column-gap: 7%;
+  display: grid;
+  grid-template-columns: 33% 60%;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    "header form"
+    "header form"
+    "text form";
+  column-gap: 7%;
 }
 .form-block.form-popup {
-    background-color: #f5f5f5;
-    padding: 20px 15px;
-    position: fixed;
-    max-height: 100%;
-    overflow: auto;
-    border-radius: 3px;
-    max-width: 85%;
+  background-color: #f5f5f5;
+  padding: 20px 15px;
+  position: fixed;
+  max-height: 100%;
+  overflow: auto;
+  border-radius: 3px;
+  max-width: 85%;
 }
 
 .form-block h2 {
-    grid-area: header;
-    font-family: 'Gilroy-300';
-    font-weight: 300;
-    font-size: 34px;
-    line-height: 46px;
+  grid-area: header;
+  font-family: "Gilroy-300";
+  font-weight: 300;
+  font-size: 34px;
+  line-height: 46px;
 }
 .form-block h2 span {
-    font-family: 'Gilroy-700';
-    font-weight: 700;
+  font-family: "Gilroy-700";
+  font-weight: 700;
 }
 
 .form-block p {
-    grid-area: text;
-    font-family: 'Gilroy-500';
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: rgba(123, 137, 144, 1);
+  grid-area: text;
+  font-family: "Gilroy-500";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(123, 137, 144, 1);
 }
 
 .form-block form {
-    grid-area: form;
-    display: grid;
-    gap: 7px 14px;
-    grid-template-columns: 1fr 54.6%;
+  grid-area: form;
+  display: grid;
+  gap: 7px 14px;
+  grid-template-columns: 1fr 54.6%;
+  grid-template-rows: auto auto auto auto;
 }
 
 .form-block textarea {
-    grid-column-start: 2;
-    grid-row-start: 1;
-    grid-row-end: 3;
+  grid-column-start: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
 }
 
+.form-block .agreement {
+  grid-area: 4 / 1 / 5 / -1;
 
+  font-family: "Gilroy-500";
+  font-weight: 500;
+  font-size: 14px;
+  color: rgba(123, 137, 144, 1);
+  line-height: 22px;
+}
 
+.agreement {
+  grid-column: 1 / -1;
+  grid-row: -1 / -1;
+  font-family: "Gilroy-500";
+  font-weight: 500;
+  font-size: 14px;
+  color: rgba(123, 137, 144, 1);
+  line-height: 22px;
+}
+
+.form-block .agreement a,
+.agreement a {
+  text-decoration: underline;
+}
 
 .form-main {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 739px;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 739px;
 }
 .form-main h2 {
-    font-family: 'Gilroy-200';
-    font-weight: 200;
-    font-size: 45px;
-    line-height: 60px;
-    text-transform: uppercase;
-    color: rgba(59, 64, 70, 1);
-    max-width: 637px;
-    padding-bottom: 8px;
+  font-family: "Gilroy-200";
+  font-weight: 200;
+  font-size: 45px;
+  line-height: 60px;
+  text-transform: uppercase;
+  color: rgba(59, 64, 70, 1);
+  max-width: 637px;
+  padding-bottom: 8px;
 }
 .form-main h2 span {
-    font-family: 'Gilroy-700';
-    font-weight: 700;
+  font-family: "Gilroy-700";
+  font-weight: 700;
 }
 .form-main p {
-    font-family: 'Gilroy-400';
-    font-weight: 400;
-    font-size: 18px;
-    color: rgba(0, 0, 0, 1);
-    line-height: 24px;
-    max-width: 410px;
-    text-align: left;
-    padding-bottom: 27px;
+  font-family: "Gilroy-400";
+  font-weight: 400;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 1);
+  line-height: 24px;
+  max-width: 410px;
+  text-align: left;
+  padding-bottom: 27px;
 }
 
 .form-main .form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 11px;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px;
+  align-items: center;
 }
 
 .form-main .form__input {
-    flex-basis: 40%;
-    flex-grow: 1;
+  flex-basis: 40%;
+  flex-grow: 1;
 }
 
 .form-main .form__input input {
-    flex-basis: 40%;
-    flex-grow: 1;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: none;
+  flex-basis: 40%;
+  flex-grow: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: none;
 }
 
 .form-main .form__textarea {
-    flex-basis: 100%;
-    height: 176px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: none;
+  flex-basis: 100%;
+  height: 176px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: none;
 }
 
 .form-main .agreement {
-    font-family: "Gilroy-500";
-    font-weight: 500;
-    font-size: 14px;
-    color: rgba(123, 137, 144, 1);
-    line-height: 22px;
-    margin-left: 47px;
+  font-family: "Gilroy-500";
+  font-weight: 500;
+  font-size: 14px;
+  color: rgba(123, 137, 144, 1);
+  line-height: 22px;
+  margin-left: 47px;
 }
-.form-main .agreement span {
-    display: block;
-    text-decoration: underline;
+.form-main .agreement a {
+  display: block;
+  text-decoration: underline;
 }
 .form-main button {
-    min-width: 431px;
-    min-height: 64px;
+  min-width: 431px;
+  min-height: 64px;
 }
-
-
-
 
 .get-price-form-wrapper {
-    background-color: #f5f5f5;
-    padding: 15px;
-    border-radius: 3px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
-    max-height: 100%;
-    overflow-y: auto;
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  max-height: 100%;
+  overflow-y: auto;
 }
 .get-price-form {
-    display: grid;
-    grid-template-columns: auto 400px;
-    grid-template-rows: auto auto auto;
-    gap: 10px;
+  display: grid;
+  grid-template-columns: auto 400px;
+  grid-template-rows: auto auto auto;
+  gap: 10px;
 }
 .get-price-form-wrapper > .head {
-    font-family: 'Gilroy-600';
-    font-weight: 600;
-    text-transform: uppercase;
+  font-family: "Gilroy-600";
+  font-weight: 600;
+  text-transform: uppercase;
 }
 .get-price-form > .form__input:first-of-type {
-    grid-area: 1 / 1 / 2 / 2;
+  grid-area: 1 / 1 / 2 / 2;
 }
 .get-price-form > .form__input:nth-of-type(2) {
-    grid-area: 2 / 1 / 3 / 2;
+  grid-area: 2 / 1 / 3 / 2;
 }
 .get-price-form > .form__input:nth-of-type(3) {
-    grid-area: 3 / 1 / 4 / 2;
+  grid-area: 3 / 1 / 4 / 2;
 }
 .get-price-form > .form__textarea {
-    grid-area: 1 / 2 / -2 / -1;
+  grid-area: 1 / 2 / -2 / -1;
 }
 .get-price-form > button {
-    grid-area: -2 / 2 / -1 / -1;
+  grid-area: -2 / 2 / -1 / -1;
 }
 
 .partners-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 10px;
 }
 
-
-
-
 @media only screen and (max-width: 1450px) {
-    .form-block {
-        grid-template-columns: 32% 66%;
-        column-gap: 2%;
-    }
-    .form-block h2 {
-        font-size: 28px;
-        line-height: 36px;
-    }
+  .form-block {
+    grid-template-columns: 32% 66%;
+    column-gap: 2%;
+  }
+  .form-block h2 {
+    font-size: 28px;
+    line-height: 36px;
+  }
 }
 
 @media only screen and (max-width: 1200px) {
-    .form-block {
-        grid-template-columns: 33% 60%;
-        column-gap: 7%;
-    }
-    .form-block h2 {
-        font-size: 22px;
-        line-height: 36px;
-    }
-    .form__icon {
-        padding: 16px;
-    }
-    .form-block p {
-        font-size: 14px;
-    }
+  .form-block {
+    grid-template-columns: 33% 60%;
+    column-gap: 7%;
+  }
+  .form-block h2 {
+    font-size: 22px;
+    line-height: 36px;
+  }
+  .form__icon {
+    padding: 16px;
+  }
+  .form-block p {
+    font-size: 14px;
+  }
 }
 
 @media only screen and (max-width: 992px) {
-    .form-block {
-        grid-template-rows: auto auto 1fr;
-        grid-template-areas:
-            'header header'
-            'text text'
-            'form form';
-        row-gap: 25px;
-    }
-    .form-block.form-popup {
-        padding-bottom: 50px;
-    }
+  .form-block {
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "header header"
+      "text text"
+      "form form";
+    row-gap: 25px;
+  }
+  .form-block.form-popup {
+    padding-bottom: 50px;
+  }
+  .form-main .agreement {
+    margin-left: 0;
+  }
 
-    .form-main > p {
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-    .form-main > h2 {
-        padding-bottom: 0;
-    }
+  .form-main > p {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .form-main > h2 {
+    padding-bottom: 0;
+  }
 }
 
 @media only screen and (max-width: 768px) {
-    .form-block form {
-        grid-template-rows: auto auto auto auto auto;
-        grid-template-columns: 1fr;
-    }
-    .form-block textarea{
-        grid-column-start: 1;
-        grid-row-start: 4;
-        grid-row-end: -2;
-        height: 120px;
-    }
-    .form__icon img {
-        height: 20px; width: 20px;
-    }
-    .form__input input {
-        padding: 18px;
-    }
-    .form-main .agreement {
-        margin-left: 0;
-    }
+  .form-block form {
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-columns: 1fr;
+  }
+  .form-block textarea {
+    grid-column-start: 1;
+    grid-row-start: 4;
+    grid-row-end: -2;
+    height: 120px;
+  }
+  .form__icon img {
+    height: 20px;
+    width: 20px;
+  }
+  .form__input input {
+    padding: 18px;
+  }
+  .form-block .agreement {
+    grid-area: -1 / 1 / -1 / -1;
+  }
 
-    .get-price-form-wrapper {
-        max-width: 85%;
-    }
-    .get-price-form {
-        grid-template-columns: auto;
-        grid-template-rows: auto auto auto auto auto;
-        row-gap: 10px;
-    }
-    .get-price-form > .form__input:first-of-type {
-        grid-area: 1 / 1 / 2 / 2;
-    }
-    .get-price-form > .form__input:nth-of-type(2) {
-        grid-area: 2 / 1 / 3 / 2;
-    }
-    .get-price-form > .form__input:nth-of-type(3) {
-        grid-area: 3 / 1 / 4 / 2;
-    }
-    .get-price-form > .form__textarea {
-        grid-area: 4 / 1 / 5 / 2;
-    }
-    .get-price-form > button {
-        grid-area: 5 / 1 / 6 / 2;
-    }
+  .get-price-form-wrapper {
+    max-width: 85%;
+  }
+  .get-price-form {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto auto;
+    row-gap: 10px;
+  }
+  .get-price-form > .form__input:first-of-type {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  .get-price-form > .form__input:nth-of-type(2) {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+  .get-price-form > .form__input:nth-of-type(3) {
+    grid-area: 3 / 1 / 4 / 2;
+  }
+  .get-price-form > .form__textarea {
+    grid-area: 4 / 1 / 5 / 2;
+  }
+  .get-price-form > button {
+    grid-area: 5 / 1 / 6 / 2;
+  }
 }
 
 @media only screen and (max-width: 576px) {
-    .form-main .form {
-        flex-wrap: nowrap;
-        flex-direction: column;
-    }
+  .form-main .form {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
 
-    .form-main .form__input,
-    .form-main .form__textarea {
-        width: 100%;
-    }
-    .form-main .form__textarea {
-        min-height: 120px;
-    }
-    .form-main button {
-        min-width: 100%;
-    }
+  .form-main .form__input,
+  .form-main .form__textarea {
+    width: 100%;
+  }
+  .form-main .form__textarea {
+    min-height: 120px;
+  }
+  .form-main button {
+    min-width: 100%;
+  }
 
-    .partners-form {
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-rows: auto auto auto auto auto auto;
-        gap: 10px;
-    }
+  .partners-form {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto auto auto auto auto;
+    gap: 10px;
+  }
 }

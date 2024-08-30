@@ -14,8 +14,8 @@
   "categories": "Categories",
   "reset_filters": "Reset filters",
   "search_placeholder": "Search for equipment",
-  "components_catalog": "Parts catalog",
-  "part_number": "vendor code",
+  "components_catalog": "Catalog of components",
+  "part_number": "Article",
   "charachteristics": "Characteristics",
   "description": {
     "title": "Description",

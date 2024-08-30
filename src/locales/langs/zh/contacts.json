@@ -1,6 +1,6 @@
 {
   "office_title": "销售办公室和陈列室",
-  "schedule_title": "工作时间",
+  "schedule_title": "开放时间",
   "msk_wharehouse_sch": "MSK 仓库：全天 24 小时",
   "free_call": "俄罗斯境内免费电话，销售部门",
   "mail": "邮件",
@@ -10,7 +10,7 @@
   "msk_wh_address": "莫斯科州，诺金斯克区，镇。 Obukhovo，Kudinovskoe 高速公路，4 号楼 27. PSK“Atlant-Park”",
   "msk_sch_val": "全天候",
   "details": {
-    "title": "必备条件",
+    "title": "细节",
     "company": "有限责任公司“Uralsnabresurs”",
     "inn": "锡",
     "kpp": "检查站",
@@ -22,9 +22,9 @@
     "bik": "商业银行",
     "ras_acc": "结算账户",
     "kor_acc": "代理账户",
-    "legal_address_key": "合法地址",
+    "legal_address_key": "法定地址",
     "legal_address_val": "巴什科尔托斯坦共和国，乌法，450059，<br />st。理查德·佐尔格，15/1",
-    "mail_address_key": "邮寄地址",
+    "mail_address_key": "邮政地址",
     "mail_address_val": "巴什科尔托斯坦共和国，乌法，450022，<br />st。门捷列娃 132/1 办公室 5",
     "ceo_key": "导演",
     "ceo_val": "马姆利耶夫·伊尔沙特·里莫维奇（根据宪章）"
