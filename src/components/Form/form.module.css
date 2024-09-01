@@ -106,6 +106,7 @@
   font-size: 14px;
   color: rgba(123, 137, 144, 1);
   line-height: 22px;
+  width: 100%;
 }
 
 .form-block .agreement a,
@@ -138,9 +139,7 @@
   font-size: 18px;
   color: rgba(0, 0, 0, 1);
   line-height: 24px;
-  max-width: 410px;
   text-align: left;
-  padding-bottom: 27px;
 }
 
 .form-main .form {
@@ -175,10 +174,8 @@
   font-size: 14px;
   color: rgba(123, 137, 144, 1);
   line-height: 22px;
-  margin-left: 47px;
 }
 .form-main .agreement a {
-  display: block;
   text-decoration: underline;
 }
 .form-main button {
@@ -269,9 +266,6 @@
   }
   .form-block.form-popup {
     padding-bottom: 50px;
-  }
-  .form-main .agreement {
-    margin-left: 0;
   }
 
   .form-main > p {
