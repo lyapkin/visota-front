@@ -27,7 +27,7 @@ const Cart = () => {
   const [loading, setLoading] = useState(Object.keys(storageCart).length > 0);
 
   const getCart = async (ids) => {
-    const url = new URL(`${process.env.BACK_URL}/${locale}/api/products/cart`);
+    const url = new URL(`${process.env.BACK_URL}/${locale}/api/products/cart/`);
 
     ids.keys().forEach((id) => url.searchParams.append("pk", id));
     const response = await fetch(url);

@@ -28,7 +28,7 @@ const Product = ({ params }) => {
 
   const getProduct = async () => {
     const response = await fetch(
-      `${process.env.BACK_URL}/${locale}/api/products/${params.slug}`
+      `${process.env.BACK_URL}/${locale}/api/products/${params.slug}/`
     );
     if (!response.ok) {
       throw new Error(

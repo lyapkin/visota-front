@@ -26,7 +26,7 @@ export default async function Blog({ params: { locale } }) {
                 <div className={s.item__content}>
                   <h4 className={s.item__title}>{title}</h4>
                   <p className={s.item__text}>{content_concise}</p>
-                  <Link href={"blog/" + slug} className={s.item__btnWrapper}>
+                  <Link href={slug + "/"} className={s.item__btnWrapper}>
                     <button className={s.item__btn}>
                       <p className={s.item__btn_text}>{t("blog:read")}</p>
                       <div className={s.item__btn_arrow}>
