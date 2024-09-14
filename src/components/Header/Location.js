@@ -25,7 +25,7 @@ const Location = () => {
       <Link href="/">{t("breadcrumbs:home")}</Link>
       {sections.map((s, i) => {
         const value =
-          i !== 0 && sections[i - 1] === "catalog"
+          i !== 0 && sections[i - 1] === "product"
             ? name.product || t("breadcrumbs:product")
             : i !== 0 && sections[i - 1] === "blog"
             ? name.post || t("breadcrumbs:post")
@@ -45,7 +45,7 @@ const Location = () => {
         return (
           <div key={s}>
             <span>/</span>
-            <Link href={`/${s}`}>{value}</Link>
+            <Link href={`/${s}/`}>{value}</Link>
           </div>
         );
       })}
