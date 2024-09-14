@@ -205,7 +205,7 @@ const OrderForm = ({ cart, productsCount, resetCart }) => {
             i18nKey={"form:confidential"}
             components={{
               // span: <span />,
-              a: <Link href="/policy" target="_blank" />,
+              a: <Link href="/policy/" target="_blank" />,
             }}
           />
         </p>

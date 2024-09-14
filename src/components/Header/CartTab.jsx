@@ -10,7 +10,7 @@ const CartTab = () => {
 
   return (
     <div className={styles["header-tabs__cart"]}>
-      <Link href="/cart" value={Object.keys(storageCart).length || ""}>
+      <Link href="/cart/" value={Object.keys(storageCart).length || ""}>
         <img src="/svgs/cart.svg" alt="иконка" />
       </Link>
     </div>

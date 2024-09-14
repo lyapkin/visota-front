@@ -15,12 +15,12 @@ export default async function Pay({ params: { locale } }) {
             <h1 className={s2.title}>{t("delivery_pay:p_title")}</h1>
 
             <div className={s2.btns}>
-              <Link href={"delivery"}>
+              <Link href={"delivery/"}>
                 <button className={`${s2.btn} `}>
                   {t("delivery_pay:d_button")}
                 </button>
               </Link>
-              <Link href={"pay"}>
+              <Link href={"pay/"}>
                 <button className={`${s2.btn} ${s2.btn__active}`}>
                   {t("delivery_pay:p_button")}
                 </button>

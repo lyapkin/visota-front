@@ -8,6 +8,7 @@ const nextConfig = {
     // API_URL: 'http://localhost:8000/api',
     // BACK_URL: 'http://localhost:8000',
   },
+  trailingSlash: true,
 };
 
 export default nextConfig;

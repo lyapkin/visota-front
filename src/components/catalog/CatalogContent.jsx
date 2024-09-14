@@ -230,7 +230,7 @@ const CatalogContent = ({ categories }) => {
             products.map((p) => (
               <div className={styles["products__card"]}>
                 <div className={styles["card__cover"]}>
-                  <Link href={`/product/${p.slug}`}>
+                  <Link href={`/product/${p.slug}/`}>
                     <span className={styles["card__presence"]}>
                       {p.is_present
                         ? t("catalog:presence.on")
@@ -252,7 +252,7 @@ const CatalogContent = ({ categories }) => {
                 </div>
                 <div className={styles["card__body"]}>
                   <div className={styles["card__name"]}>
-                    <Link href={`/product/${p.slug}`}>{p.name}</Link>
+                    <Link href={`/product/${p.slug}/`}>{p.name}</Link>
                   </div>
                   <div className={styles["card__caracteristics"]}>
                     <ul>

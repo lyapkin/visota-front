@@ -57,7 +57,7 @@ const Product = ({ params }) => {
       <div className="container">
         <aside className={styles["product__head"]}>
           <Search />
-          <Link href="/catalog" className={styles["product__catalog-button"]}>
+          <Link href="/catalog/" className={styles["product__catalog-button"]}>
             <Image
               src={"/svgs/horizontal-bars-icon.svg"}
               width={18}

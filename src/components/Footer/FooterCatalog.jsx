@@ -31,7 +31,7 @@ const FooterCatalog = () => {
         <li>
           <Link
             href={
-              "/catalog?sub=komplektuiushchie-k-stroitelnym-lesam&search=&price_min=&price_max="
+              "/catalog/?sub=komplektuiushchie-k-stroitelnym-lesam&search=&price_min=&price_max="
             }
           >
             {t("common:complect")}
@@ -40,7 +40,7 @@ const FooterCatalog = () => {
         <li>
           <Link
             href={
-              "/catalog?sub=khomut-nepovorotnyi&sub=khomut-povorotnyi&sub=khomut-stykovochnyj&sub=khomut-fiksiruiushchii&sub=khomut-balochnyi&sub=khomut-k-doske&sub=bolt-t-obraznyi&sub=khomut-k-lestnitse"
+              "/catalog/?sub=khomut-nepovorotnyi&sub=khomut-povorotnyi&sub=khomut-stykovochnyj&sub=khomut-fiksiruiushchii&sub=khomut-balochnyi&sub=khomut-k-doske&sub=bolt-t-obraznyi&sub=khomut-k-lestnitse"
             }
           >
             {t("common:homuti")}
@@ -49,28 +49,28 @@ const FooterCatalog = () => {
         <li>
           <Link
             href={
-              "/catalog?sub=gaika-vaterstop&sub=zamok-klinovoi-otsinkovannyi&sub=zamok-bfd-otsinkovannyi&sub=gajka-dlya-vintovoj-opory&sub=gaika-stiazhnaia-trekhrozhkovaia-otsinkovannaia&sub=gaika-stiazhnaia-dvukhrozhkovaia-otsinkovannaia&sub=gaika-sharnirnaia&sub=vint-stiazhnoi&sub=gaika-malaia-barashkovaiakrylchataia&sub=fiksatory-armatury"
+              "/catalog/?sub=gaika-vaterstop&sub=zamok-klinovoi-otsinkovannyi&sub=zamok-bfd-otsinkovannyi&sub=gajka-dlya-vintovoj-opory&sub=gaika-stiazhnaia-trekhrozhkovaia-otsinkovannaia&sub=gaika-stiazhnaia-dvukhrozhkovaia-otsinkovannaia&sub=gaika-sharnirnaia&sub=vint-stiazhnoi&sub=gaika-malaia-barashkovaiakrylchataia&sub=fiksatory-armatury"
             }
           >
             {t("common:opalub_complect")}
           </Link>
         </li>
         <li>
-          <Link href={"/catalog?sub=opalubka-perekrytii"}>
+          <Link href={"/catalog/?sub=opalubka-perekrytii"}>
             {t("common:opalubka_perkrit")}
           </Link>
         </li>
         <li>
           <Link
             href={
-              "/catalog?sub=klinovye-lesa&sub=chashechnye-lesa&sub=khomutovye-lesa"
+              "/catalog/?sub=klinovye-lesa&sub=chashechnye-lesa&sub=khomutovye-lesa"
             }
           >
             {t("common:stroyles")}
           </Link>
         </li>
         <li>
-          <Link href={"/catalog?sub=truby-dlia-stroitelnykh-lesov"}>
+          <Link href={"/catalog/?sub=truby-dlia-stroitelnykh-lesov"}>
             {t("common:trubi_vgp")}
           </Link>
         </li>

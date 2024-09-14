@@ -32,23 +32,23 @@ const FooterAbout = () => {
       </h6>
       <ul>
         <li>
-          <Link href={"/about"}>{t("common:about")}</Link>
+          <Link href={"/about/"}>{t("common:about")}</Link>
         </li>
         <li>
-          <Link href={"/contacts"}>{t("common:contacts")}</Link>
+          <Link href={"/contacts/"}>{t("common:contacts")}</Link>
         </li>
         <li>
-          <Link href={"/partners"}>{t("common:partners")}</Link>
+          <Link href={"/partners/"}>{t("common:partners")}</Link>
         </li>
         <li>
-          <Link href={"/blog"}>{t("common:blog")}</Link>
+          <Link href={"/blog/"}>{t("common:blog")}</Link>
         </li>
         {/* <li>
-                    <Link href={"/faq"}>{t('common:faq')}</Link>
+                    <Link href={"/faq/"}>{t('common:faq')}</Link>
                 </li> */}
         {locale === "ru" && (
           <li>
-            <Link href={"/vacancies"}>{t("common:vacancies")}</Link>
+            <Link href={"/vacancies/"}>{t("common:vacancies")}</Link>
           </li>
         )}
       </ul>

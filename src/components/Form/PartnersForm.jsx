@@ -147,7 +147,7 @@ const PartnersForm = () => {
               <Trans
                 i18nKey={"form:confidential"}
                 components={{
-                  a: <Link href="/policy" target="_blank" />,
+                  a: <Link href="/policy/" target="_blank" />,
                 }}
               />
             </p>

@@ -38,7 +38,7 @@ const HeaderMain = ({ mobileOpen, setMobileOpen }) => {
             <div className={styles["header-nav-container"]}>
               <NavLinks />
               <div className={styles["header-main__catalog"]}>
-                <Link href="/catalog">{t("common:catalog")}</Link>
+                <Link href="/catalog/">{t("common:catalog")}</Link>
               </div>
               <div className={styles["header-main__cart"]}>
                 <CartTab />

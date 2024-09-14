@@ -30,7 +30,7 @@ export default async function Delivery({ params: { locale } }) {
               <button className={`${s.btn} ${s.btn__active}`}>
                 {t("delivery_pay:d_button")}
               </button>
-              <Link href={"pay"}>
+              <Link href={"pay/"}>
                 <button className={`${s.btn}`}>
                   {t("delivery_pay:p_button")}
                 </button>
