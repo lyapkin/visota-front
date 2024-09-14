@@ -18,11 +18,14 @@
   "part_number": "Madde",
   "charachteristics": "Özellikler",
   "description": {
-    "title": "Tanım",
+    "title": "Tanım"
+  },
+  "documentation": {
+    "title": "Dokümantasyon",
     "text": "Talep üzerine sertifikalar, ürün veri sayfaları ve test raporları"
   },
   "info_1": "<span>Tüm Bileşenler</span> için ömür boyu hizmet ömrü",
-  "info_2": "Sorularınız mı var? <span>danışacağız</span>",
+  "info_2": "Sorularınız var mı? <span>danışacağız</span>",
   "info_3": "Bileşenleri <span>satış ofisinden</span> satın alın",
   "delivery_info_1": "Tüm teslimat hizmetleriyle işbirliği yapıyoruz",
   "delivery_info_2": "Malların gecikmeden teslimi",

@@ -18,10 +18,13 @@
   "part_number": "文章",
   "charachteristics": "特征",
   "description": {
-    "title": "描述",
+    "title": "描述"
+  },
+  "documentation": {
+    "title": "文档",
     "text": "根据要求提供证书、产品数据表和测试报告"
   },
-  "info_1": "<span>所有组件的终生使用寿命</span>",
+  "info_1": "<span>所有组件的终身使用寿命</span>",
   "info_2": "有疑问吗？ <span>我们会咨询</span>",
   "info_3": "<span>在销售办事处</span>购买组件",
   "delivery_info_1": "我们与所有送货服务合作",

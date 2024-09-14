@@ -18,7 +18,10 @@
   "part_number": "Article",
   "charachteristics": "Characteristics",
   "description": {
-    "title": "Description",
+    "title": "Description"
+  },
+  "documentation": {
+    "title": "Documentation",
     "text": "Certificates, product data sheets and test reports on request"
   },
   "info_1": "Lifetime service life <span>for all Components</span>",
