@@ -1,34 +1,33 @@
-'use client'
-import React, { useEffect, useRef, useState } from 'react'
-import Link from 'next/link'
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
+"use client";
+import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
 
-import styles from './slider.module.css'
-import LeftButton from '../UI/Buttons/LeftButton'
-import RightButton from '../UI/Buttons/RightButton'
-import useCatalogData from '@/hooks/useCatalogData'
-import { useTranslation } from 'react-i18next'
-import Slider from 'react-slick';
+import styles from "./slider.module.css";
+import LeftButton from "../UI/Buttons/LeftButton";
+import RightButton from "../UI/Buttons/RightButton";
+import useCatalogData from "@/hooks/useCatalogData";
+import { useTranslation } from "react-i18next";
+import Slider from "react-slick";
 
 // const CatalogSlider = () => {
 //     const [page, setPage] = useState(1)
 //     const [width, setWidth] = useState(null)
 
 //     const swiperRef = useRef(null)
-    
+
 //     const catalog = useCatalogData()
 
 //     const {t} = useTranslation()
-
 
 //     useEffect(() => {
 //         const width = document.documentElement.clientWidth
 //         setWidth(width)
 //     }, [])
 //     const slidesCount = width <= 768 ? 1 : width <= 992 ? 2 : 3
-    
+
 //     const handleSlideSwitch = (e) => {
 //         if (e.currentTarget.dataset?.type == 'left-button') {
 //             setPage(page => {
@@ -143,89 +142,94 @@ import Slider from 'react-slick';
 // }
 
 const CatalogSlider = () => {
-    const [catalogIndex, setCatalogIndex] = useState(0)
-    const [width, setWidth] = useState(null)
+  const [catalogIndex, setCatalogIndex] = useState(0);
+  const [width, setWidth] = useState(null);
 
-    const ref = useRef(null);
-    
-    const catalog = useCatalogData()
+  const ref = useRef(null);
 
-    const {t} = useTranslation()
+  const catalog = useCatalogData();
 
+  const { t } = useTranslation();
 
-    useEffect(() => {
-        const width = document.documentElement.clientWidth
-        setWidth(width)
-    }, [])
-    const slidesCount = width <= 768 ? 1 : width <= 992 ? 2 : 3
-    
-    const handleSlideSwitch = (e) => {
-        if (e.currentTarget.dataset?.type == 'dot') {
-            setCatalogIndex(Number(e.currentTarget.dataset?.index))
-        } else if (e.currentTarget.dataset?.type == 'left-button') {
-            setCatalogIndex(curIndex => {
-                if(curIndex <= 0) {
-                    return 0
-                }
-                ref.current.slickPrev()
-                return curIndex - 1
-            })
-        } else if (e.currentTarget.dataset?.type == 'right-button') {
-            setCatalogIndex(curIndex => {
-                if(curIndex >= catalog.length - 1 - (slidesCount - 1)) {
-                    return catalog.length - 1
-                }
-                ref.current.slickNext()
-                return curIndex + 1
-            })
+  useEffect(() => {
+    const width = document.documentElement.clientWidth;
+    setWidth(width);
+  }, []);
+  const slidesCount = width <= 768 ? 1 : width <= 992 ? 2 : 3;
+
+  const handleSlideSwitch = (e) => {
+    if (e.currentTarget.dataset?.type == "dot") {
+      setCatalogIndex(Number(e.currentTarget.dataset?.index));
+    } else if (e.currentTarget.dataset?.type == "left-button") {
+      setCatalogIndex((curIndex) => {
+        if (curIndex <= 0) {
+          return 0;
         }
+        ref.current.slickPrev();
+        return curIndex - 1;
+      });
+    } else if (e.currentTarget.dataset?.type == "right-button") {
+      setCatalogIndex((curIndex) => {
+        if (curIndex >= catalog.length - 1 - (slidesCount - 1)) {
+          return catalog.length - 1;
+        }
+        ref.current.slickNext();
+        return curIndex + 1;
+      });
     }
+  };
 
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: width ? slidesCount : 3,
+    slidesToScroll: 1,
+    arrows: false,
+    beforeChange: (c, n) => setCatalogIndex(n),
+  };
 
-    const settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: width ? slidesCount : 3,
-        slidesToScroll: 1,
-        arrows: false,
-        beforeChange: (c, n) => setCatalogIndex(n)
-    }
-
-    return (
-        <div className={`${styles['caltalog-slider']} home-catalog-slider-slick`}>
-            <Slider {...settings} ref={ref}>
-                {catalog.map(item => (
-                    <div key={item.id} className={styles['catalog-slider__slide']}
-                        //  style={{translate: `-${106 * catalogIndex}%`}}
-                    >
-                        <div className={styles['slide__text']}>
-                            <div>
-                                <h4>{item.title}</h4>
-                                <ul>
-                                    {item.categories.map(cat => (
-                                        <li key={cat}><Link href={cat.link}>{cat.name}</Link></li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <Link className={styles['catalog-slider__link']} href={item.link}>
-                                {t('home:catalog.button')}
-                                <span className={styles['catalog-slider__link-arrow']}></span>
-                            </Link>
-                        </div>
-                        <div className={styles['catalog-slider__pic']}>
-                            <img src={item.img} />
-                        </div>
-                    </div>
-                ))}
-            </Slider>
-            <div className={styles['catalog-slider__buttons']}>
-                <LeftButton action={handleSlideSwitch} disabled={catalogIndex <= 0}/>
-                <RightButton action={handleSlideSwitch} disabled={catalogIndex >= catalog.length-1-(slidesCount - 1)}/>
+  return (
+    <div className={`${styles["caltalog-slider"]} home-catalog-slider-slick`}>
+      <Slider {...settings} ref={ref}>
+        {catalog.map((item) => (
+          <div
+            key={item.id}
+            className={styles["catalog-slider__slide"]}
+            //  style={{translate: `-${106 * catalogIndex}%`}}
+          >
+            <div className={styles["slide__text"]}>
+              <div>
+                <h4>{item.title}</h4>
+                <ul>
+                  {item.categories.map((cat) => (
+                    <li key={cat}>
+                      <Link href={cat.link}>{cat.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <Link className={styles["catalog-slider__link"]} href={item.link}>
+                {t("home:catalog.button")}
+                <span className={styles["catalog-slider__link-arrow"]}></span>
+              </Link>
             </div>
-        </div>
-    )
-}
+            <div className={styles["catalog-slider__pic"]}>
+              <img src={item.img} />
+            </div>
+          </div>
+        ))}
+      </Slider>
+      <div className={styles["catalog-slider__buttons"]}>
+        <LeftButton action={handleSlideSwitch} disabled={catalogIndex <= 0} />
+        <RightButton
+          action={handleSlideSwitch}
+          disabled={catalogIndex >= catalog.length - 1 - (slidesCount - 1)}
+        />
+      </div>
+    </div>
+  );
+};
 
 // const catalog = [
 //     {
@@ -408,4 +412,4 @@ const CatalogSlider = () => {
 //     // },
 // ]
 
-export default CatalogSlider
+export default CatalogSlider;

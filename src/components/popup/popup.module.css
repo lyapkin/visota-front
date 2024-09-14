@@ -1,29 +1,30 @@
 .overlay {
-	position: fixed;
-    top: 0; left: 0;
-	width: 100vw;
-    min-height: 100vh;
-	overflow: auto;
-	z-index: 15;
-    background-color: rgba(0,0,0,0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: auto;
+  z-index: 15;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .overlay__content {
-    height: 100%;
-    max-width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-y: auto;
-    position: fixed;
+  height: 100%;
+  max-width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  position: fixed;
 }
 
 .popup__close {
-    position: fixed;
-    right: 0;
-    top: 0;
-    max-width: 30px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  max-width: 30px;
 }

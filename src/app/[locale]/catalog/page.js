@@ -1,40 +1,40 @@
-import React, { Suspense } from 'react'
+import React, { Suspense } from "react";
 
-import styles from '@/styles/catalog.module.css'
-import CatalogContent from '@/components/catalog/CatalogContent'
-import initTranslations from '@/locales/i18n'
-import Spinner from '@/components/Spinner/Spinner'
-
+import styles from "@/styles/catalog.module.css";
+import CatalogContent from "@/components/catalog/CatalogContent";
+import initTranslations from "@/locales/i18n";
+import Spinner from "@/components/Spinner/Spinner";
 
 const getData = async (locale) => {
-    const response = await fetch(process.env.BACK_URL + `/${locale}/api/products/categories`, {
-        next: { revalidate: 60 },
-    })
-
-    if (!response.ok) {
-        throw new Error(response.status + ' запрос не удался')
+  const response = await fetch(
+    process.env.BACK_URL + `/${locale}/api/products/categories`,
+    {
+      next: { revalidate: 60 },
     }
+  );
 
-    return await response.json()
-}
+  if (!response.ok) {
+    throw new Error(response.status + " запрос не удался");
+  }
 
-const Catalog = async ({params: {locale}}) => {
-    const {t} = await initTranslations(locale, ['common'])
-    const categories = await getData(locale)
+  return await response.json();
+};
 
-    return (
-        <div className={`${styles['catalog']} first-screen`}>
-            <div className='container'>
-                <h2 className={styles['catalog__title']}>{t('common:catalog')}</h2>
-                <Suspense fallback={<Spinner />}>
-                    <CatalogContent categories={categories} />
-                </Suspense>
-            </div>
-        </div>
-    )
-}
+const Catalog = async ({ params: { locale } }) => {
+  const { t } = await initTranslations(locale, ["common"]);
+  const categories = await getData(locale);
 
-
+  return (
+    <div className={`${styles["catalog"]} first-screen`}>
+      <div className="container">
+        <h2 className={styles["catalog__title"]}>{t("common:catalog")}</h2>
+        <Suspense fallback={<Spinner />}>
+          <CatalogContent categories={categories} />
+        </Suspense>
+      </div>
+    </div>
+  );
+};
 
 // const categories = [
 //     {
@@ -116,4 +116,4 @@ const Catalog = async ({params: {locale}}) => {
 //     },
 // ]
 
-export default Catalog
+export default Catalog;

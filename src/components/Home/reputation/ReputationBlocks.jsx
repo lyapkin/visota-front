@@ -1,20 +1,20 @@
-'use client'
-import React from 'react'
+"use client";
+import React from "react";
 
-import styles from '@/styles/home.module.css'
-import Block from './Block'
-import useReputationData from '@/hooks/useReputationData'
+import styles from "@/styles/home.module.css";
+import Block from "./Block";
+import useReputationData from "@/hooks/useReputationData";
 
 const ReputationBlocks = () => {
-    const data = useReputationData()
-    return (
-        <div className={styles['home-reputation__blocks']}>
-            {data.map(d => (
-                <Block key={d.id} data={d} />
-            ))}
-        </div>
-    )
-}
+  const data = useReputationData();
+  return (
+    <div className={styles["home-reputation__blocks"]}>
+      {data.map((d) => (
+        <Block key={d.id} data={d} />
+      ))}
+    </div>
+  );
+};
 
 // const data = [
 //     {
@@ -43,4 +43,4 @@ const ReputationBlocks = () => {
 //     },
 // ]
 
-export default ReputationBlocks
+export default ReputationBlocks;

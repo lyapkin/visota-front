@@ -1,8 +1,8 @@
-const setStorageCart = cart => {
-    localStorage.removeItem('cart')
-    localStorage.setItem('cart', JSON.stringify(cart))
+const setStorageCart = (cart) => {
+  localStorage.removeItem("cart");
+  localStorage.setItem("cart", JSON.stringify(cart));
 
-    window.dispatchEvent(new Event('cartChange'))
-}
+  window.dispatchEvent(new Event("cartChange"));
+};
 
-export default setStorageCart
+export default setStorageCart;

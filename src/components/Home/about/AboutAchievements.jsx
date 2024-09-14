@@ -1,20 +1,20 @@
-'use client'
-import React from 'react'
+"use client";
+import React from "react";
 
-import styles from '@/styles/home.module.css'
-import Achivement from './Achivement'
-import useAboutAchievementsData from '@/hooks/useAboutAchievementsData'
+import styles from "@/styles/home.module.css";
+import Achivement from "./Achivement";
+import useAboutAchievementsData from "@/hooks/useAboutAchievementsData";
 
 const AboutAchievements = () => {
-    const data = useAboutAchievementsData()
-    return (
-        <div className={styles['home-about__achivements']}>
-            {data.map(item => (
-                <Achivement data={item} key={item.id} />
-            ))}
-        </div>
-    )
-}
+  const data = useAboutAchievementsData();
+  return (
+    <div className={styles["home-about__achivements"]}>
+      {data.map((item) => (
+        <Achivement data={item} key={item.id} />
+      ))}
+    </div>
+  );
+};
 
 // const data = [
 //     {
@@ -43,4 +43,4 @@ const AboutAchievements = () => {
 //     }
 // ]
 
-export default AboutAchievements
+export default AboutAchievements;

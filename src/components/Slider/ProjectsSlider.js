@@ -1,91 +1,109 @@
-'use client'
-import React, { useRef, useState } from 'react'
-import Button from '../UI/Buttons/Button'
+"use client";
+import React, { useRef, useState } from "react";
+import Button from "../UI/Buttons/Button";
 
-import styles from './slider.module.css'
-import LeftButton from '../UI/Buttons/LeftButton'
-import RightButton from '../UI/Buttons/RightButton'
-import useProjectsData from '@/hooks/useProjectsData'
-import Slider from 'react-slick'
-
+import styles from "./slider.module.css";
+import LeftButton from "../UI/Buttons/LeftButton";
+import RightButton from "../UI/Buttons/RightButton";
+import useProjectsData from "@/hooks/useProjectsData";
+import Slider from "react-slick";
 
 const ProjectsSlider = () => {
-    const [picIndex, setPicIndex] = useState(0)
-    const ref = useRef(null)
+  const [picIndex, setPicIndex] = useState(0);
+  const ref = useRef(null);
 
-    const projects = useProjectsData()
+  const projects = useProjectsData();
 
-    const handleSlideSwitch = (e) => {
-        const target = e.currentTarget
+  const handleSlideSwitch = (e) => {
+    const target = e.currentTarget;
 
-        if (target.dataset?.type == 'left-button') {
-            setPicIndex(curIndex => {
-                ref.current.slickPrev()
-                if(curIndex <= 0) {
-                    return projects.length - 1
-                }
-                return curIndex - 1
-            })
-        } else if (target.dataset?.type == 'right-button') {
-            setPicIndex(curIndex => {
-                ref.current.slickNext()
-                if(curIndex >= projects.length - 1) {
-                    return 0
-                }
-                return curIndex + 1
-            })
+    if (target.dataset?.type == "left-button") {
+      setPicIndex((curIndex) => {
+        ref.current.slickPrev();
+        if (curIndex <= 0) {
+          return projects.length - 1;
         }
+        return curIndex - 1;
+      });
+    } else if (target.dataset?.type == "right-button") {
+      setPicIndex((curIndex) => {
+        ref.current.slickNext();
+        if (curIndex >= projects.length - 1) {
+          return 0;
+        }
+        return curIndex + 1;
+      });
     }
+  };
 
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        autoplay: true,
-        autoplaySpeed: 5000,
-        pauseOnHover: true,
-        beforeChange: (c, n) => setPicIndex(n)
-    }
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    pauseOnHover: true,
+    beforeChange: (c, n) => setPicIndex(n),
+  };
 
-    return (
-        <div className={styles['projects-slider']}>
-            <div className={styles['projects-slider-window']}>
-                {/* <div className={styles['projects-slider-block']}> */}
-                    <Slider {...settings} ref={ref}>
-                    {projects.map((item, index) => (
-                        <div key={item.id} className={styles['project-slide']} style={{translate: `${-100 * picIndex}%`}} >
-                            <div className={styles['project-slide__img']}>
-                                <img src={item.img} />
-                            </div>
-                            <div className={styles['project-slide__info']}>
-                                <h3 className={styles['project-slide__title']}>{item.title}</h3>
-                                <p className={styles['project-slide__location']}>{item.location}</p>
-                                <p className={styles['project-slide__description']}>{item.description}</p>
-                                {/* <span className={styles['project-slide__date']}>{item.date}</span> */}
-                                {item.logo ? <img className={styles['project-slide__logo']} src={item.logo} /> :
-                                             <span className={styles['project-slide__company-name']}>{item.company}</span>}
-                                {/* <div className={styles['project-slide__button']}>
+  return (
+    <div className={styles["projects-slider"]}>
+      <div className={styles["projects-slider-window"]}>
+        {/* <div className={styles['projects-slider-block']}> */}
+        <Slider {...settings} ref={ref}>
+          {projects.map((item, index) => (
+            <div
+              key={item.id}
+              className={styles["project-slide"]}
+              style={{ translate: `${-100 * picIndex}%` }}
+            >
+              <div className={styles["project-slide__img"]}>
+                <img src={item.img} />
+              </div>
+              <div className={styles["project-slide__info"]}>
+                <h3 className={styles["project-slide__title"]}>{item.title}</h3>
+                <p className={styles["project-slide__location"]}>
+                  {item.location}
+                </p>
+                <p className={styles["project-slide__description"]}>
+                  {item.description}
+                </p>
+                {/* <span className={styles['project-slide__date']}>{item.date}</span> */}
+                {item.logo ? (
+                  <img
+                    className={styles["project-slide__logo"]}
+                    src={item.logo}
+                  />
+                ) : (
+                  <span className={styles["project-slide__company-name"]}>
+                    {item.company}
+                  </span>
+                )}
+                {/* <div className={styles['project-slide__button']}>
                                     <Button text='Подробнее об объекте' smallFont={true} />
                                 </div> */}
-                            </div>
-                        </div>
-                    ))}
-                    </Slider>
-                {/* </div> */}
-                <div className={styles['project-slider__buttons']}>
-                    <LeftButton action={handleSlideSwitch} />
-                    <RightButton action={handleSlideSwitch} />
-                </div>
+              </div>
             </div>
-            <div className={styles['projects-slider__progress-bar']}>
-                <div className={styles['projects-slider__progress-filled']} style={{width: `${((picIndex+1) / projects.length) * 100}%`}}></div>
-            </div>
+          ))}
+        </Slider>
+        {/* </div> */}
+        <div className={styles["project-slider__buttons"]}>
+          <LeftButton action={handleSlideSwitch} />
+          <RightButton action={handleSlideSwitch} />
         </div>
-    )
-}
+      </div>
+      <div className={styles["projects-slider__progress-bar"]}>
+        <div
+          className={styles["projects-slider__progress-filled"]}
+          style={{ width: `${((picIndex + 1) / projects.length) * 100}%` }}
+        ></div>
+      </div>
+    </div>
+  );
+};
 
 // const ProjectsSlider = () => {
 //     const [picIndex, setPicIndex] = useState(0)
@@ -282,4 +300,4 @@ const ProjectsSlider = () => {
 //     },
 // ]
 
-export default ProjectsSlider
+export default ProjectsSlider;

@@ -1,54 +1,56 @@
-'use client'
-import React, { useRef, useState } from 'react'
+"use client";
+import React, { useRef, useState } from "react";
 
-import styles from './slider.module.css'
+import styles from "./slider.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from 'react-slick';
-import Image from 'next/image';
-import { useTranslation } from 'react-i18next';
-
+import Slider from "react-slick";
+import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 const HomeFrontSlider = () => {
-    const {t} = useTranslation()
-    const ref = useRef(null);
-    const [currentSlide, setCurrentSlide] = useState(0)
+  const { t } = useTranslation();
+  const ref = useRef(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-    const lastSlide = imgs.length-1
+  const lastSlide = imgs.length - 1;
 
-    const handleNextSlide = () => {
-        ref.current.slickNext()
-    }
+  const handleNextSlide = () => {
+    ref.current.slickNext();
+  };
 
-    const handlePrevSlide = () => {
-        ref.current.slickPrev()
-    }
-    
+  const handlePrevSlide = () => {
+    ref.current.slickPrev();
+  };
 
-    const settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true,
-        beforeChange: (c, n) => setCurrentSlide(n)
-    }
-    return (
-        <div className={styles['home-front-slider']}>
-            <div className={styles['home-front-slider__window']}>
-                <Slider {...settings} ref={ref}>
-                    {
-                        imgs.map(i => (
-                            <div className={styles['home-front-slider__slide']} key={i.id}>
-                                <Image src={i.img} width={700} height={700} alt='хомут' style={{objectFit: 'contain'}} />
-                            </div>
-                        ))
-                    }
-                </Slider>
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    beforeChange: (c, n) => setCurrentSlide(n),
+  };
+  return (
+    <div className={styles["home-front-slider"]}>
+      <div className={styles["home-front-slider__window"]}>
+        <Slider {...settings} ref={ref}>
+          {imgs.map((i) => (
+            <div className={styles["home-front-slider__slide"]} key={i.id}>
+              <Image
+                src={i.img}
+                width={700}
+                height={700}
+                alt="хомут"
+                style={{ objectFit: "contain" }}
+              />
             </div>
-            {/* <div className={styles['home-front-slider__buttons']}>
+          ))}
+        </Slider>
+      </div>
+      {/* <div className={styles['home-front-slider__buttons']}>
                 <button className={`${styles['home-front-slider__btn']} ${currentSlide === 0 && styles['disabled']}`}
                         onClick={handlePrevSlide}>
                     <svg width="52" height="10" viewBox="0 0 52 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,21 +66,19 @@ const HomeFrontSlider = () => {
                     </svg>
                 </button>
             </div> */}
-        </div>
-    )
-}
-
-
+    </div>
+  );
+};
 
 const imgs = [
-    {
-        id: 1,
-        img: '/images/front-slider/homut1.png'
-    },
-    // {
-    //     id: 2,
-    //     img: '/images/front-slider/homut1.png'
-    // }
-]
+  {
+    id: 1,
+    img: "/images/front-slider/homut1.png",
+  },
+  // {
+  //     id: 2,
+  //     img: '/images/front-slider/homut1.png'
+  // }
+];
 
-export default HomeFrontSlider
+export default HomeFrontSlider;

@@ -1,25 +1,23 @@
-'use client'
-import { LocationNameContext } from '@/providers/LocationNameProvider'
-import React, { useContext, useEffect } from 'react'
+"use client";
+import { LocationNameContext } from "@/providers/LocationNameProvider";
+import React, { useContext, useEffect } from "react";
 
-const PassBreadcrumbs = ({title}) => {
-    const [_, setLocationName] = useContext(LocationNameContext)
+const PassBreadcrumbs = ({ title }) => {
+  const [_, setLocationName] = useContext(LocationNameContext);
 
-    useEffect(() => {
-        setLocationName(prev => ({...prev, post: title}))
+  useEffect(() => {
+    setLocationName((prev) => ({ ...prev, post: title }));
 
-        return () => {
-            setLocationName(prev => {
-                const newState = {...prev}
-                delete newState.post
-                return newState
-            })
-        }
-    }, [])
+    return () => {
+      setLocationName((prev) => {
+        const newState = { ...prev };
+        delete newState.post;
+        return newState;
+      });
+    };
+  }, []);
 
-    return (
-        <></>
-    )
-}
+  return <></>;
+};
 
-export default PassBreadcrumbs
+export default PassBreadcrumbs;
