@@ -1,4 +1,4 @@
-.footer h6 {
+.footer .footer-header {
   font-family: "Gilroy-500";
   font-weight: 500;
   font-size: 14px;
@@ -312,7 +312,7 @@
     row-gap: 20px;
   }
 
-  .footer__contacts-small > h6 {
+  .footer__contacts-small > .footer-header {
     font-family: "Gilroy-300";
     font-weight: 300;
     font-size: 11px;
@@ -329,8 +329,8 @@
     grid-template-rows: auto auto auto auto;
   }
 
-  .footer__catalog > h6,
-  .footer__about > h6 {
+  .footer__catalog > .footer-header,
+  .footer__about > .footer-header {
     font-family: "Gilroy-500";
     font-weight: 500;
     font-size: 11px;

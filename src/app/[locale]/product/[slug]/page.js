@@ -73,7 +73,7 @@ const Product = ({ params }) => {
             </div>
             <div className={styles["product__title"]}>
               <div className={styles["title__name"]}>
-                <h2>{product.name}</h2>
+                <h1 className={styles["product-name"]}>{product.name}</h1>
               </div>
               <div className={styles["title__product-code"]}>
                 <span className={styles["product-code__key"]}>
@@ -102,7 +102,7 @@ const Product = ({ params }) => {
                   className={styles[`${aboutBlock === "doc" && "active"}`]}
                   onClick={() => setAboutBlock("doc")}
                 >
-                  {t("catalog:documentation")}
+                  {t("catalog:documentation.title")}
                 </button>
               </div>
               <div className={styles["about__prod-info"]}>
@@ -156,7 +156,7 @@ const Product = ({ params }) => {
                   className={styles["prod-info__documentation"]}
                   hidden={aboutBlock !== "doc"}
                 >
-                  {t("catalog:description.text")}
+                  {t("catalog:documentation.text")}
                   {/* {product?.doc_urls.length > 0 &&
                                     <ul className={styles['prod-info__documentation-list']}>
                                        {product.doc_urls.map(d => (

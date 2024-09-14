@@ -21,12 +21,12 @@ const FooterCatalog = () => {
 
   return (
     <div className={`${styles["footer__catalog"]} ${isOpen && styles["open"]}`}>
-      <h6 onClick={handleClick}>
+      <p className={styles["footer-header"]} onClick={handleClick}>
         {t("common:catalog")}{" "}
         {activateToggle && (
           <img src="/svgs/arrow-footer-icon.svg" alt="стрелка" />
         )}
-      </h6>
+      </p>
       <ul>
         <li>
           <Link

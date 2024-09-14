@@ -24,12 +24,12 @@ const FooterAbout = () => {
     : () => {};
   return (
     <div className={`${styles["footer__about"]} ${isOpen && styles["open"]}`}>
-      <h6 onClick={handleClick}>
+      <p className={styles["footer-header"]} onClick={handleClick}>
         {t("common:about")}{" "}
         {activateToggle && (
           <img src="/svgs/arrow-footer-icon.svg" alt="стрелка" />
         )}
-      </h6>
+      </p>
       <ul>
         <li>
           <Link href={"/about/"}>{t("common:about")}</Link>

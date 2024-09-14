@@ -64,13 +64,14 @@ const Form = ({ main, popup, buttonText, closePopup, type }) => {
     >
       {!popup && (
         <>
-          <h2
+          <p
+            className={styles["form-header"]}
             dangerouslySetInnerHTML={{
               __html: t("form:title", {
                 interpolation: { escapeValue: false },
               }),
             }}
-          ></h2>
+          ></p>
           <p>{t("form:text")}</p>
         </>
       )}

@@ -46,7 +46,7 @@
   grid-area: 2 / 2 / -1 / -1;
 }
 
-.title__name h2 {
+.title__name .product-name {
   font-family: "Gilroy-600";
   font-weight: 600;
   font-size: 24px;

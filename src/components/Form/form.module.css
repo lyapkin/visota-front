@@ -53,14 +53,14 @@
   max-width: 85%;
 }
 
-.form-block h2 {
+.form-block .form-header {
   grid-area: header;
   font-family: "Gilroy-300";
   font-weight: 300;
   font-size: 34px;
   line-height: 46px;
 }
-.form-block h2 span {
+.form-block .form-header span {
   font-family: "Gilroy-700";
   font-weight: 700;
 }
@@ -119,7 +119,7 @@
   flex-wrap: wrap;
   max-width: 739px;
 }
-.form-main h2 {
+.form-main .form-header {
   font-family: "Gilroy-200";
   font-weight: 200;
   font-size: 45px;
@@ -129,7 +129,7 @@
   max-width: 637px;
   padding-bottom: 8px;
 }
-.form-main h2 span {
+.form-main .form-header span {
   font-family: "Gilroy-700";
   font-weight: 700;
 }
@@ -232,7 +232,7 @@
     grid-template-columns: 32% 66%;
     column-gap: 2%;
   }
-  .form-block h2 {
+  .form-block .form-header {
     font-size: 28px;
     line-height: 36px;
   }
@@ -243,7 +243,7 @@
     grid-template-columns: 33% 60%;
     column-gap: 7%;
   }
-  .form-block h2 {
+  .form-block .form-header {
     font-size: 22px;
     line-height: 36px;
   }

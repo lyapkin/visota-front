@@ -40,7 +40,7 @@ const Footer = async ({ locale }) => {
         <FooterCatalog />
         <FooterAbout />
         <div className={styles["footer__contacts"]}>
-          <h6>{t("common:contacts")}</h6>
+          <p className={styles["footer-header"]}>{t("common:contacts")}</p>
           <span className={styles["footer__city"]}>{t("common:city")}</span>
           <ul className={styles["footer__numbers"]}>
             <li>
@@ -62,7 +62,7 @@ const Footer = async ({ locale }) => {
           </p>
         </div>
         <div className={styles["footer__contacts-small"]}>
-          <h6>{t("common:contacts")}</h6>
+          <p className={styles["footer-header"]}>{t("common:contacts")}</p>
           <a href="tel:+78007005413">+7 800 700 54 13</a>
           <p className={styles["footer__work-schedule"]}>
             <span>{t("common:schedule_workweek")},</span>
@@ -74,7 +74,7 @@ const Footer = async ({ locale }) => {
           </div>
         </div>
         <div className={styles["footer__mail"]}>
-          <h6>{t("footer:mail")}</h6>
+          <p className={styles["footer-header"]}>{t("footer:mail")}</p>
           <div className={styles["mail__main"]}>
             <a href="mailto:info@visota13.ru">info@visota13.ru</a>
             <span>{t("footer:mail_us")}</span>
