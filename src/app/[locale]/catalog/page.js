@@ -4,6 +4,47 @@ import styles from "@/styles/catalog.module.css";
 import CatalogContent from "@/components/catalog/CatalogContent";
 import initTranslations from "@/locales/i18n";
 import Spinner from "@/components/Spinner/Spinner";
+import i18nConfig from "../../../../i18nConfig";
+import { pages } from "../../../../settings";
+
+export const generateMetadata = async ({
+  params: { locale },
+  searchParams,
+}) => {
+  const { t } = await initTranslations(locale, ["meta"]);
+
+  const robots =
+    Object.keys(searchParams).length > 0
+      ? {
+          index: false,
+          follow: true,
+        }
+      : undefined;
+
+  const { CATALOG } = pages;
+
+  const languages = {
+    "x-default": `en${CATALOG}`,
+  };
+  i18nConfig.locales.forEach((lang) => {
+    if (lang === locale) return;
+    if (lang === i18nConfig.defaultLocale) {
+      languages[lang] = CATALOG;
+    } else {
+      languages[lang] = `${lang}${CATALOG}`;
+    }
+  });
+
+  return {
+    title: t("meta:title"),
+    description: t("meta:description"),
+    alternates: {
+      canonical: `${locale === "ru" ? "" : locale}${CATALOG}`,
+      languages,
+    },
+    robots,
+  };
+};
 
 const getData = async (locale) => {
   const response = await fetch(

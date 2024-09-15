@@ -4,6 +4,35 @@ import Link from "next/link";
 import Image from "next/image";
 import PayImage from "@/../public/images/pay/img.png";
 import initTranslations from "@/locales/i18n";
+import { pages } from "../../../../settings";
+import i18nConfig from "../../../../i18nConfig";
+
+export const generateMetadata = async ({ params: { locale } }) => {
+  const { t } = await initTranslations(locale, ["meta"]);
+
+  const { PAY } = pages;
+
+  const languages = {
+    "x-default": `en${PAY}`,
+  };
+  i18nConfig.locales.forEach((lang) => {
+    if (lang === locale) return;
+    if (lang === i18nConfig.defaultLocale) {
+      languages[lang] = PAY;
+    } else {
+      languages[lang] = `${lang}${PAY}`;
+    }
+  });
+
+  return {
+    title: t("meta:title"),
+    description: t("meta:description"),
+    alternates: {
+      canonical: `${locale === "ru" ? "" : locale}${PAY}`,
+      languages,
+    },
+  };
+};
 
 export default async function Pay({ params: { locale } }) {
   const { t } = await initTranslations(locale, ["delivery_pay"]);

@@ -1,4 +1,19 @@
 import s from "@/styles/vacancies.module.css";
+import { pages } from "../../../../settings";
+
+export const generateMetadata = async ({ params: { locale } }) => {
+  const { t } = await initTranslations(locale, ["meta"]);
+
+  const { VACANCIES } = pages;
+
+  return {
+    title: t("meta:title"),
+    description: t("meta:description"),
+    alternates: {
+      canonical: VACANCIES,
+    },
+  };
+};
 
 export default async function Vacancies() {
   const data = await getData();

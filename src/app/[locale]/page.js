@@ -1,4 +1,3 @@
-// 'use client'
 import Form from "@/components/Form/Form";
 import AboutAchievements from "@/components/Home/about/AboutAchievements";
 import SpecialOfferSlider from "@/components/Slider/SpecialOfferSlider";
@@ -16,6 +15,35 @@ import initTranslations from "@/locales/i18n";
 import AboutSection from "@/components/AboutSection/AboutSection";
 import ClientsSection from "@/components/ClientsSection/ClientsSection";
 import DeliverySection from "@/components/DeliverySection/DeliverySection";
+import { pages } from "../../../settings";
+import i18nConfig from "../../../i18nConfig";
+
+export const generateMetadata = async ({ params: { locale } }) => {
+  const { t } = await initTranslations(locale, ["meta"]);
+
+  const { HOME } = pages;
+
+  const languages = {
+    "x-default": `en${HOME}`,
+  };
+  i18nConfig.locales.forEach((lang) => {
+    if (lang === locale) return;
+    if (lang === i18nConfig.defaultLocale) {
+      languages[lang] = HOME;
+    } else {
+      languages[lang] = `${lang}${HOME}`;
+    }
+  });
+
+  return {
+    title: t("meta:title"),
+    description: t("meta:description"),
+    alternates: {
+      canonical: `${locale === "ru" ? "" : locale}${HOME}`,
+      languages,
+    },
+  };
+};
 
 export default async function Home({ params: { locale } }) {
   const { t, resources } = await initTranslations(locale, ["home", "common"]);

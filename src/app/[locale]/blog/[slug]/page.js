@@ -4,6 +4,35 @@ import BlogService from "@/services/BlogService";
 
 import styles from "@/styles/blog.module.css";
 import { Suspense } from "react";
+import { pages } from "../../../../../settings";
+import i18nConfig from "../../../../../i18nConfig";
+
+// export const generateMetadata = async ({ params: { locale } }) => {
+//   const { t } = await initTranslations(locale, ["meta"]);
+
+//   const { HOME } = pages;
+
+//   const languages = {
+//     "x-default": `en${HOME}`,
+//   };
+//   i18nConfig.locales.forEach((lang) => {
+//     if (lang === locale) return;
+//     if (lang === i18nConfig.defaultLocale) {
+//       languages[lang] = HOME;
+//     } else {
+//       languages[lang] = `${lang}${HOME}`;
+//     }
+//   });
+
+//   return {
+//     title: t("meta:title"),
+//     description: t("meta:description"),
+//     alternates: {
+//       canonical: `${locale === "ru" ? "" : locale}${HOME}`,
+//       languages,
+//     },
+//   };
+// };
 
 export default async function BlogPost({ params }) {
   const content = await BlogService.getArticleContent(

@@ -21,6 +21,7 @@ export const generateMetadata = async ({ params: { locale } }) => {
   return {
     title: t("meta:title"),
     description: t("meta:description"),
+    metadataBase: new URL(process.env.BACK_URL + "/"),
   };
 };
 

@@ -8,6 +8,35 @@ import i1 from "@/../public/images/delivery/i1.png";
 import i2 from "@/../public/images/delivery/i2.png";
 import i3 from "@/../public/images/delivery/i3.png";
 import initTranslations from "@/locales/i18n";
+import { pages } from "../../../../settings";
+import i18nConfig from "../../../../i18nConfig";
+
+export const generateMetadata = async ({ params: { locale } }) => {
+  const { t } = await initTranslations(locale, ["meta"]);
+
+  const { DELIVERY } = pages;
+
+  const languages = {
+    "x-default": `en${DELIVERY}`,
+  };
+  i18nConfig.locales.forEach((lang) => {
+    if (lang === locale) return;
+    if (lang === i18nConfig.defaultLocale) {
+      languages[lang] = DELIVERY;
+    } else {
+      languages[lang] = `${lang}${DELIVERY}`;
+    }
+  });
+
+  return {
+    title: t("meta:title"),
+    description: t("meta:description"),
+    alternates: {
+      canonical: `${locale === "ru" ? "" : locale}${DELIVERY}`,
+      languages,
+    },
+  };
+};
 
 export default async function Delivery({ params: { locale } }) {
   const { t } = await initTranslations(locale, ["delivery_pay"]);

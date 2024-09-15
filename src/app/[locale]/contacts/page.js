@@ -3,6 +3,35 @@ import flag from "@/../public/images/conctacts/flag.png";
 import call from "@/../public/images/conctacts/call.svg";
 import s from "@/styles/contacts.module.css";
 import initTranslations from "@/locales/i18n";
+import { pages } from "../../../../settings";
+import i18nConfig from "../../../../i18nConfig";
+
+export const generateMetadata = async ({ params: { locale } }) => {
+  const { t } = await initTranslations(locale, ["meta"]);
+
+  const { CONTACTS } = pages;
+
+  const languages = {
+    "x-default": `en${CONTACTS}`,
+  };
+  i18nConfig.locales.forEach((lang) => {
+    if (lang === locale) return;
+    if (lang === i18nConfig.defaultLocale) {
+      languages[lang] = CONTACTS;
+    } else {
+      languages[lang] = `${lang}${CONTACTS}`;
+    }
+  });
+
+  return {
+    title: t("meta:title"),
+    description: t("meta:description"),
+    alternates: {
+      canonical: `${locale === "ru" ? "" : locale}${CONTACTS}`,
+      languages,
+    },
+  };
+};
 
 export default async function Contacts({ params: { locale } }) {
   const { t } = await initTranslations(locale, ["contacts", "common"]);

@@ -2,6 +2,35 @@ import initTranslations from "@/locales/i18n";
 import BlogService from "@/services/BlogService";
 import s from "@/styles/blog.module.css";
 import Link from "next/link";
+import { pages } from "../../../../settings";
+import i18nConfig from "../../../../i18nConfig";
+
+export const generateMetadata = async ({ params: { locale } }) => {
+  const { t } = await initTranslations(locale, ["meta"]);
+
+  const { BLOG } = pages;
+
+  const languages = {
+    "x-default": `en${BLOG}`,
+  };
+  i18nConfig.locales.forEach((lang) => {
+    if (lang === locale) return;
+    if (lang === i18nConfig.defaultLocale) {
+      languages[lang] = BLOG;
+    } else {
+      languages[lang] = `${lang}${BLOG}`;
+    }
+  });
+
+  return {
+    title: t("meta:title"),
+    description: t("meta:description"),
+    alternates: {
+      canonical: `${locale === "ru" ? "" : locale}${BLOG}`,
+      languages,
+    },
+  };
+};
 
 export default async function Blog({ params: { locale } }) {
   const articles = await BlogService.allArticles(locale);

@@ -4,8 +4,37 @@ import Link from "next/link";
 import Image from "next/image";
 import ProductComponent from "@/components/Product/ProductComponent";
 import initTranslations from "@/locales/i18n";
+import { pages } from "../../../../../settings";
 
 import styles from "@/styles/product.module.css";
+import i18nConfig from "../../../../../i18nConfig";
+
+// export const generateMetadata = async ({ params: { locale } }) => {
+//   const { t } = await initTranslations(locale, ["meta"]);
+
+//   const { PARTNERS } = pages;
+
+//   const languages = {
+//     "x-default": `en${PARTNERS}`,
+//   };
+//   i18nConfig.locales.forEach((lang) => {
+//     if (lang === locale) return;
+//     if (lang === i18nConfig.defaultLocale) {
+//       languages[lang] = PARTNERS;
+//     } else {
+//       languages[lang] = `${lang}${PARTNERS}`;
+//     }
+//   });
+
+//   return {
+//     title: t("meta:title"),
+//     description: t("meta:description"),
+//     alternates: {
+//       canonical: `${locale === "ru" ? "" : locale}${PARTNERS}`,
+//       languages,
+//     },
+//   };
+// };
 
 const Product = async ({ params: { locale, slug } }) => {
   const { t } = await initTranslations(locale, ["catalog"]);

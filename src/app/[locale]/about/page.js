@@ -21,6 +21,35 @@ import initTranslations from "@/locales/i18n";
 import ShowMore from "@/components/showMore/ShowMore";
 import ClientsSection from "@/components/ClientsSection/ClientsSection";
 import Link from "next/link";
+import { pages } from "../../../../settings";
+import i18nConfig from "../../../../i18nConfig";
+
+export const generateMetadata = async ({ params: { locale } }) => {
+  const { t } = await initTranslations(locale, ["meta"]);
+
+  const { ABOUT } = pages;
+
+  const languages = {
+    "x-default": `en${ABOUT}`,
+  };
+  i18nConfig.locales.forEach((lang) => {
+    if (lang === locale) return;
+    if (lang === i18nConfig.defaultLocale) {
+      languages[lang] = ABOUT;
+    } else {
+      languages[lang] = `${lang}${ABOUT}`;
+    }
+  });
+
+  return {
+    title: t("meta:title"),
+    description: t("meta:description"),
+    alternates: {
+      canonical: `${locale === "ru" ? "" : locale}${ABOUT}`,
+      languages,
+    },
+  };
+};
 
 export default async function About({ params: { locale } }) {
   const { t } = await initTranslations(locale, ["about", "about_section"]);

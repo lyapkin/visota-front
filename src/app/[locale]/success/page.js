@@ -3,6 +3,35 @@ import Image from "next/image";
 
 import s from "@/styles/success.module.css";
 import initTranslations from "@/locales/i18n";
+import { pages } from "../../../../settings";
+import i18nConfig from "../../../../i18nConfig";
+
+export const generateMetadata = async ({ params: { locale } }) => {
+  const { t } = await initTranslations(locale, ["meta"]);
+
+  const { SUCCESS } = pages;
+
+  const languages = {
+    "x-default": `en${SUCCESS}`,
+  };
+  i18nConfig.locales.forEach((lang) => {
+    if (lang === locale) return;
+    if (lang === i18nConfig.defaultLocale) {
+      languages[lang] = SUCCESS;
+    } else {
+      languages[lang] = `${lang}${SUCCESS}`;
+    }
+  });
+
+  return {
+    title: t("meta:title"),
+    description: t("meta:description"),
+    alternates: {
+      canonical: `${locale === "ru" ? "" : locale}${SUCCESS}`,
+      languages,
+    },
+  };
+};
 
 const Success = async ({ params: { locale } }) => {
   const { t } = await initTranslations(locale, ["form"]);
