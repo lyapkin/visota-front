@@ -11,7 +11,7 @@ import Image from "next/image";
 import Popup from "../popup/Popup";
 import GetPriceForm from "../Form/GetPriceForm";
 
-const ProductComponent = ({ slug }) => {
+const ProductComponent = ({ product }) => {
   const locale = useParams().locale;
   const [aboutBlock, setAboutBlock] = useState("char");
 
@@ -20,26 +20,10 @@ const ProductComponent = ({ slug }) => {
   const [cart, addToCart] = useContext(CartContext);
   const [_, setLocationName] = useContext(LocationNameContext);
 
-  const [product, setProduct] = useState(null);
-
   const [isGetPriceFormShown, setIsGetPriceFormShown] = useState(false);
 
-  const getProduct = async () => {
-    const response = await fetch(
-      `${process.env.BACK_URL}/${locale}/api/products/${slug}/`
-    );
-    if (!response.ok) {
-      throw new Error(
-        response.status + " запрос отдельного продукта не удался"
-      );
-    }
-    const data = await response.json();
-    setLocationName((prev) => ({ ...prev, product: data.name }));
-    setProduct(data);
-  };
-
   useEffect(() => {
-    getProduct();
+    setLocationName((prev) => ({ ...prev, product: product.name }));
 
     return () => {
       setLocationName((prev) => {
@@ -48,7 +32,7 @@ const ProductComponent = ({ slug }) => {
         return newState;
       });
     };
-  }, []);
+  }, [product]);
 
   return (
     <>

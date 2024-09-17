@@ -1,11 +1,9 @@
-import React, { Suspense } from "react";
-
-import styles from "@/styles/catalog.module.css";
-import CatalogContent from "@/components/catalog/CatalogContent";
-import initTranslations from "@/locales/i18n";
+import Products from "@/components/catalog/Products";
 import Spinner from "@/components/Spinner/Spinner";
-import i18nConfig from "../../../../i18nConfig";
-import { pages } from "../../../../settings";
+import initTranslations from "@/locales/i18n";
+import { Suspense } from "react";
+import { pages } from "../../../../../settings";
+import i18nConfig from "../../../../../i18nConfig";
 
 export const generateMetadata = async ({
   params: { locale },
@@ -61,19 +59,11 @@ const getData = async (locale) => {
   return await response.json();
 };
 
-const Catalog = async ({ params: { locale } }) => {
-  const { t } = await initTranslations(locale, ["common"]);
-  const categories = await getData(locale);
-
+const Catalog = async ({ params: { locale, slug } }) => {
   return (
-    <div className={`${styles["catalog"]} first-screen`}>
-      <div className="container">
-        <h2 className={styles["catalog__title"]}>{t("common:catalog")}</h2>
-        <Suspense fallback={<Spinner />}>
-          <CatalogContent categories={categories} />
-        </Suspense>
-      </div>
-    </div>
+    <Suspense fallback={<Spinner />}>
+      <Products catSlug={slug ? slug[0] : null} />
+    </Suspense>
   );
 };
 

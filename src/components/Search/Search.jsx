@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
 import styles from "./search.module.css";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useTranslation } from "react-i18next";
 
 const Search = () => {
   const router = useRouter();
@@ -14,13 +14,16 @@ const Search = () => {
 
   const { t } = useTranslation();
 
+  const path = usePathname();
+
   useEffect(() => {
     setSearchLine(searchParams.get("search") || "");
   }, [searchParams]);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    router.replace(`/catalog?search=${searchLine}`, { scroll: false });
+    const queryParam = searchLine ? `?search=${searchLine}` : "";
+    router.replace(`${path}/${queryParam}`, { scroll: false });
   };
   return (
     <form className={styles["search"]} onSubmit={handleSearch}>

@@ -1,19 +1,17 @@
 "use client";
-import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 import styles from "./Header.module.css";
 import TabsContentBlock from "./TabsContentBlock";
 import CartTab from "./CartTab";
-import i18n from "i18next";
-import useTabsData from "@/hooks/useTabsData";
+import { CategoriesContext } from "@/providers/CategoriesProvider";
 
 const HeaderTabs = () => {
   const [activeTab, setActiveTab] = useState(null);
 
   const ref = useRef(null);
 
-  const data = useTabsData();
+  const categories = useContext(CategoriesContext);
 
   useEffect(() => {
     const handler = (e) => {
@@ -29,7 +27,7 @@ const HeaderTabs = () => {
     };
   });
 
-  const displayList = data.map((item) => (
+  const displayList = categories.map((item) => (
     <li
       key={item.id}
       className={
@@ -55,11 +53,11 @@ const HeaderTabs = () => {
 
         <CartTab />
       </div>
-      {data.map(
+      {categories.map(
         (c) =>
           activeTab === c.id && (
             <TabsContentBlock
-              data={c.subs}
+              data={c.subcategories}
               closeTab={() => setActiveTab(null)}
               key={c.id}
             />

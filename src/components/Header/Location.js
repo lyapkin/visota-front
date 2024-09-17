@@ -27,6 +27,8 @@ const Location = () => {
         const value =
           i !== 0 && sections[i - 1] === "product"
             ? name.product || t("breadcrumbs:product")
+            : i !== 0 && sections[i - 1] === "catalog"
+            ? name.category || t("breadcrumbs:category")
             : i !== 0 && sections[i - 1] === "blog"
             ? name.post || t("breadcrumbs:post")
             : paths[s];

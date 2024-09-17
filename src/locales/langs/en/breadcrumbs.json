@@ -4,5 +4,6 @@
   "delivery": "Delivery",
   "pay": "Payment",
   "product": "Product",
-  "post": "Article"
+  "post": "Article",
+  "category": "Category"
 }
