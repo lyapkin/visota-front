@@ -1,5 +1,6 @@
 import s from "@/styles/vacancies.module.css";
 import { pages } from "../../../../settings";
+import initTranslations from "@/locales/i18n";
 
 export const generateMetadata = async ({ params: { locale } }) => {
   const { t } = await initTranslations(locale, ["meta"]);
