@@ -210,7 +210,7 @@ export default async function RootLayout({ children, params: { locale } }) {
 
 const getCategories = async (locale) => {
   const response = await fetch(
-    process.env.BACK_URL + `/${locale}/api/products/categories/`,
+    process.env.BACK_URL + `/${locale}/api/catalog/categories/`,
     {
       next: { revalidate: 60 },
     }

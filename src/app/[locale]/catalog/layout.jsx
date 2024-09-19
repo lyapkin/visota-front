@@ -27,7 +27,7 @@ export default CatalogLayout;
 
 const getData = async (locale) => {
   const response = await fetch(
-    process.env.BACK_URL + `/${locale}/api/products/categories/`,
+    process.env.BACK_URL + `/${locale}/api/catalog/categories/`,
     {
       next: { revalidate: 60 },
     }

@@ -46,7 +46,7 @@ export const generateMetadata = async ({
 
 const getData = async (locale) => {
   const response = await fetch(
-    process.env.BACK_URL + `/${locale}/api/products/categories/`,
+    process.env.BACK_URL + `/${locale}/api/catalog/categories/`,
     {
       next: { revalidate: 60 },
     }
@@ -60,6 +60,7 @@ const getData = async (locale) => {
 };
 
 const Catalog = async ({ params: { locale, slug } }) => {
+  // Check if cat exists
   return (
     <Suspense fallback={<Spinner />}>
       <Products catSlug={slug ? slug[0] : null} />

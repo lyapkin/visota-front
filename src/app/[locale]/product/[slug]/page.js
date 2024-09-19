@@ -36,7 +36,7 @@ const Product = async ({ params: { locale, slug } }) => {
 
 const getProduct = async (slug, locale) => {
   const response = await fetch(
-    `${process.env.BACK_URL}/${locale}/api/products/${slug}/`
+    `${process.env.BACK_URL}/${locale}/api/catalog/products/${slug}/`
   );
   if (response.status === 404) {
     notFound();
