@@ -4,6 +4,7 @@ import initTranslations from "@/locales/i18n";
 import { Suspense } from "react";
 import { pages } from "../../../../../settings";
 import i18nConfig from "../../../../../i18nConfig";
+import { permanentRedirect, redirect } from "next/navigation";
 
 export const generateMetadata = async ({
   params: { locale },
@@ -60,12 +61,22 @@ const getData = async (locale) => {
 };
 
 const Catalog = async ({ params: { locale, slug } }) => {
-  // Check if cat exists
+  await isCategoryExists(slug);
   return (
     <Suspense fallback={<Spinner />}>
       <Products catSlug={slug ? slug[0] : null} />
     </Suspense>
   );
+};
+
+const isCategoryExists = async (slug) => {
+  if (!slug) return;
+  const response = await fetch(
+    process.env.BACK_URL + "/api/catalog/categories/" + slug + "/exists/"
+  );
+  if (response.status == 404) permanentRedirect("/");
+  if (response.ok) return;
+  throw new Error("problem with checking whether a category exists");
 };
 
 export default Catalog;
