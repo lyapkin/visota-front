@@ -4,6 +4,7 @@ import styles from "@/styles/cart.module.css";
 import CartComponent from "@/components/cart/CartComponent";
 import initTranslations from "@/locales/i18n";
 import i18nConfig from "../../../../i18nConfig";
+import { pages } from "../../../../settings";
 
 export const generateMetadata = async ({ params: { locale } }) => {
   const { t } = await initTranslations(locale, ["meta"]);
