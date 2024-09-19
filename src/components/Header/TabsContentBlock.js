@@ -14,7 +14,13 @@ const TabsContentBlock = ({ data, closeTab }) => {
             onClick={closeTab}
           >
             <p>{item?.translations[locale]?.name}</p>
-            <img src={item.img ? item?.img : "/images/noimage.jpg"} />
+            <img
+              src={
+                item.img
+                  ? process.env.BACK_URL + "/" + item?.img
+                  : "/images/noimage.jpg"
+              }
+            />
           </Link>
         ))}
       </div>

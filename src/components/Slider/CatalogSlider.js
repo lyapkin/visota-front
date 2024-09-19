@@ -93,7 +93,7 @@ const CatalogSlider = () => {
               </Link>
             </div>
             <div className={styles["catalog-slider__pic"]}>
-              {item.img && <img src={item.img} />}
+              {item.img && <img src={process.env.BACK_URL + "/" + item?.img} />}
             </div>
           </div>
         ))}
