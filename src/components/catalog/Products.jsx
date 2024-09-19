@@ -53,9 +53,9 @@ const Products = ({ catSlug }) => {
     urlSearchParams.set("page", page);
 
     if (method === methodsToLoad.UPDATE) {
-      router.push(`/${path}/?${urlSearchParams.toString()}`, { scroll: true });
+      router.push(`${path}?${urlSearchParams.toString()}`, { scroll: true });
     } else if (method === methodsToLoad.APPEND) {
-      router.replace(`/${path}/?${urlSearchParams.toString()}`, {
+      router.replace(`${path}?${urlSearchParams.toString()}`, {
         scroll: false,
       });
     } else {
@@ -64,15 +64,10 @@ const Products = ({ catSlug }) => {
   };
 
   const getProducts = async (abortController) => {
-    const url = new URL(
-      process.env.BACK_URL +
-        `/${locale}/api/products/?` +
-        searchParams.toString()
-    );
-
-    if (catSlug) {
-      url.searchParams.set("sub", catSlug);
-    }
+    const path = `/${locale}/api/catalog${
+      catSlug ? "/categories/" + catSlug : ""
+    }/products/?`;
+    const url = new URL(process.env.BACK_URL + path + searchParams.toString());
 
     const response = await fetch(url, { signal: abortController.signal });
 
