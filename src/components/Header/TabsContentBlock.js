@@ -17,7 +17,7 @@ const TabsContentBlock = ({ data, closeTab }) => {
             <img
               src={
                 item.img
-                  ? process.env.BACK_URL + "/" + item?.img
+                  ? process.env.BACK_URL + "/media/" + item?.img
                   : "/images/noimage.jpg"
               }
             />
