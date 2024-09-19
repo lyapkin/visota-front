@@ -1,6 +1,6 @@
 import React from "react";
 import ProductComponent from "@/components/Product/ProductComponent";
-import { notFound, permanentRedirect, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 
 // export const generateMetadata = async ({ params: { locale } }) => {
 //   const { t } = await initTranslations(locale, ["meta"]);
@@ -39,7 +39,7 @@ const getProduct = async (slug, locale) => {
     `${process.env.BACK_URL}/${locale}/api/catalog/products/${slug}/`
   );
   if (response.status === 404) {
-    permanentRedirect("/");
+    notFound();
   }
   if (!response.ok) {
     throw new Error(response.status + " запрос отдельного продукта не удался");
