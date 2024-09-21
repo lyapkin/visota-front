@@ -1,15 +1,8 @@
 import Form from "@/components/Form/Form";
-import AboutAchievements from "@/components/Home/about/AboutAchievements";
-import SpecialOfferSlider from "@/components/Slider/SpecialOfferSlider";
-import GovClientsSlider from "@/components/Slider/GovClientsSlider";
 import ProjectsSlider from "@/components/Slider/ProjectsSlider";
-import ThanksSlider from "@/components/Slider/ThanksSlider";
-import Button from "@/components/UI/Buttons/Button";
 import styles from "@/styles/home.module.css";
-import Image from "next/image";
 import CatalogSlider from "@/components/Slider/CatalogSlider";
 import HomeFrontSlider from "@/components/Slider/HomeFrontSlider";
-import ReputationBlocks from "@/components/Home/reputation/ReputationBlocks";
 import PopupForm from "@/components/Form/PopupForm";
 import initTranslations from "@/locales/i18n";
 import AboutSection from "@/components/AboutSection/AboutSection";
@@ -70,30 +63,10 @@ export default async function Home({ params: { locale } }) {
           <div className={styles["home-main__actions"]}>
             <PopupForm text={t("main.button")} type={"offer"} />
           </div>
-          {/* <div className={`${styles['home-main__info']} ${styles['info']}`}>
-						<div className={styles['info__item']}>
-							<p
-								dangerouslySetInnerHTML={{ __html: t('home:main.block_first', { interpolation: { escapeValue: false } }) }}
-							>
-							</p>
-							<div className={styles['info__img']}>
-								<img src="/images/home-main-info1.png" alt="" />
-							</div>
-						</div>
-						<div className={styles['info__item']}>
-							<p
-								dangerouslySetInnerHTML={{ __html: t('home:main.block_second', { interpolation: { escapeValue: false } }) }}
-							>
-							</p>
-							<div className={styles['info__img']}>
-								<img src="/images/home-main-info2.png" alt="city" />
-							</div>
-						</div>
-					</div> */}
+
           <div className={styles["home-main__slider"]}>
             <HomeFrontSlider />
           </div>
-          {/* <HomeFrontSlider /> */}
         </div>
       </section>
       <section className={styles["home-advantages"]}>
@@ -197,12 +170,6 @@ export default async function Home({ params: { locale } }) {
       <ClientsSection locale={locale} />
 
       <AboutSection locale={locale} />
-
-      {/* <section className={styles['home-special-offer']}>
-				<div className='container'>
-					<SpecialOfferSlider />
-				</div>
-			</section> */}
     </main>
   );
 }
