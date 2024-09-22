@@ -5,34 +5,19 @@ import BlogService from "@/services/BlogService";
 import styles from "@/styles/blog.module.css";
 import { Suspense } from "react";
 import { pages } from "../../../../../settings";
-import i18nConfig from "../../../../../i18nConfig";
+import {
+  generateMetadataDynamic,
+  getDynamicPageSEO,
+} from "@/utils/generateMetadataUtil";
 
-// export const generateMetadata = async ({ params: { locale } }) => {
-//   const { t } = await initTranslations(locale, ["meta"]);
+export const generateMetadata = async ({ params: { locale, slug } }) => {
+  const { BLOG: pathSegment } = pages;
 
-//   const { HOME } = pages;
+  const data = await getDynamicPageSEO("blog", slug, locale);
+  console.log(data);
 
-//   const languages = {
-//     "x-default": `en${HOME}`,
-//   };
-//   i18nConfig.locales.forEach((lang) => {
-//     if (lang === locale) return;
-//     if (lang === i18nConfig.defaultLocale) {
-//       languages[lang] = HOME;
-//     } else {
-//       languages[lang] = `${lang}${HOME}`;
-//     }
-//   });
-
-//   return {
-//     title: t("meta:title"),
-//     description: t("meta:description"),
-//     alternates: {
-//       canonical: `${locale === "ru" ? "" : locale}${HOME}`,
-//       languages,
-//     },
-//   };
-// };
+  return generateMetadataDynamic(pathSegment, slug, locale, data);
+};
 
 export default async function BlogPost({ params }) {
   const content = await BlogService.getArticleContent(

@@ -1,33 +1,18 @@
 import React from "react";
 import ProductComponent from "@/components/Product/ProductComponent";
 import { notFound } from "next/navigation";
+import {
+  generateMetadataDynamic,
+  getDynamicPageSEO,
+} from "@/utils/generateMetadataUtil";
 
-// export const generateMetadata = async ({ params: { locale } }) => {
-//   const { t } = await initTranslations(locale, ["meta"]);
+export const generateMetadata = async ({ params: { locale, slug } }) => {
+  const pathSegment = "/product/";
 
-//   const { PARTNERS } = pages;
+  const data = await getDynamicPageSEO("product", slug, locale);
 
-//   const languages = {
-//     "x-default": `en${PARTNERS}`,
-//   };
-//   i18nConfig.locales.forEach((lang) => {
-//     if (lang === locale) return;
-//     if (lang === i18nConfig.defaultLocale) {
-//       languages[lang] = PARTNERS;
-//     } else {
-//       languages[lang] = `${lang}${PARTNERS}`;
-//     }
-//   });
-
-//   return {
-//     title: t("meta:title"),
-//     description: t("meta:description"),
-//     alternates: {
-//       canonical: `${locale === "ru" ? "" : locale}${PARTNERS}`,
-//       languages,
-//     },
-//   };
-// };
+  return generateMetadataDynamic(pathSegment, slug, locale, data);
+};
 
 const Product = async ({ params: { locale, slug } }) => {
   const product = await getProduct(slug, locale);
