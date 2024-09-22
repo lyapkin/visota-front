@@ -2,14 +2,17 @@ import CatalogHeader from "@/components/catalog/CatalogHeader";
 import FilterBlock from "@/components/Filter/FilterBlock";
 import Search from "@/components/Search/Search";
 import styles from "@/styles/catalog.module.css";
+import { getStaticPageSEO } from "@/utils/generateMetadataUtil";
 
 const CatalogLayout = async ({ children, params: { locale } }) => {
   // const categories = await getData(locale);
 
+  const data = await getStaticPageSEO("catalog", locale);
+
   return (
     <div className={`${styles["catalog"]} first-screen`}>
       <div className="container">
-        <CatalogHeader />
+        <CatalogHeader data={data} />
         <aside className={styles["catalog__filter-block"]}>
           <FilterBlock />
         </aside>
