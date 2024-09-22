@@ -17,7 +17,7 @@ export const generateMetadata = async ({ params: { locale } }) => {
   };
 };
 
-export default async function Vacancies() {
+export default async function Vacancies({ params: { locale } }) {
   const data = await getData();
   const seo = await getStaticPageSEO("vacancies", locale);
 

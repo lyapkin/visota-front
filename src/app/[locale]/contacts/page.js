@@ -4,6 +4,10 @@ import call from "@/../public/images/conctacts/call.svg";
 import s from "@/styles/contacts.module.css";
 import initTranslations from "@/locales/i18n";
 import { pages } from "../../../../settings";
+import {
+  generateMetadataStatic,
+  getStaticPageSEO,
+} from "@/utils/generateMetadataUtil";
 
 export const generateMetadata = async ({ params: { locale } }) => {
   const data = await getStaticPageSEO("contacts", locale);
