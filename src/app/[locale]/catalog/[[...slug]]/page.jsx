@@ -49,7 +49,10 @@ const Catalog = async ({ params: { locale, slug } }) => {
 const categoryExists = async (slug) => {
   if (!slug) return;
   const response = await fetch(
-    process.env.BACK_URL + "/api/catalog/categories/" + slug + "/exists/"
+    process.env.BACK_URL + "/api/catalog/categories/" + slug + "/exists/",
+    {
+      next: { revalidate: 60 },
+    }
   );
   if (response.status == 404) notFound();
   if (response.ok) return;
