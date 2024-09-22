@@ -2,7 +2,10 @@ import i18nConfig from "../../i18nConfig";
 
 export const getStaticPageSEO = async (page, locale) => {
   const response = await fetch(
-    process.env.BACK_URL + `/${locale}/api/seo/meta/static/${page}/`
+    process.env.BACK_URL + `/${locale}/api/seo/meta/static/${page}/`,
+    {
+      next: { revalidate: 60 },
+    }
   );
   if (response.ok) {
     return await response.json();
@@ -15,7 +18,10 @@ export const getStaticPageSEO = async (page, locale) => {
 
 export const getDynamicPageSEO = async (type, slug, locale) => {
   const response = await fetch(
-    process.env.BACK_URL + `/${locale}/api/seo/meta/${type}/${slug}/`
+    process.env.BACK_URL + `/${locale}/api/seo/meta/${type}/${slug}/`,
+    {
+      next: { revalidate: 60 },
+    }
   );
   if (response.ok) {
     return await response.json();
