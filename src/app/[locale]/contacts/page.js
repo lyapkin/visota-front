@@ -4,41 +4,24 @@ import call from "@/../public/images/conctacts/call.svg";
 import s from "@/styles/contacts.module.css";
 import initTranslations from "@/locales/i18n";
 import { pages } from "../../../../settings";
-import i18nConfig from "../../../../i18nConfig";
 
 export const generateMetadata = async ({ params: { locale } }) => {
-  const { t } = await initTranslations(locale, ["meta"]);
+  const data = await getStaticPageSEO("contacts", locale);
 
-  const { CONTACTS } = pages;
+  const { CONTACTS: pathSegment } = pages;
 
-  const languages = {
-    "x-default": `en${CONTACTS}`,
-  };
-  i18nConfig.locales.forEach((lang) => {
-    if (lang === locale) return;
-    if (lang === i18nConfig.defaultLocale) {
-      languages[lang] = CONTACTS;
-    } else {
-      languages[lang] = `${lang}${CONTACTS}`;
-    }
-  });
-
-  return {
-    title: t("meta:title"),
-    description: t("meta:description"),
-    alternates: {
-      canonical: `${locale === "ru" ? "" : locale}${CONTACTS}`,
-      languages,
-    },
-  };
+  return generateMetadataStatic(pathSegment, locale, data);
 };
 
 export default async function Contacts({ params: { locale } }) {
   const { t } = await initTranslations(locale, ["contacts", "common"]);
+  const data = await getStaticPageSEO("contacts", locale);
   return (
     <div className={`first-screen`}>
       <div className="container">
-        <h1 className={s.title}>{t("common:contacts")}</h1>
+        <h1 className={s.title}>
+          {data.translated ? data.header : t("common:contacts")}
+        </h1>
         <div className={s.items}>
           <div className={s.item}>
             <h5 className={s.item__title}>{t("contacts:office_title")}</h5>

@@ -39,7 +39,8 @@
   z-index: 2;
   grid-area: 1 / 1 / 2 /2;
 }
-.home-main__header span {
+.home-main__header span,
+.home-main__header b {
   display: block;
   font-family: "Gilroy-700";
   font-weight: 700;

@@ -22,37 +22,22 @@ import ShowMore from "@/components/showMore/ShowMore";
 import ClientsSection from "@/components/ClientsSection/ClientsSection";
 import Link from "next/link";
 import { pages } from "../../../../settings";
-import i18nConfig from "../../../../i18nConfig";
+import {
+  generateMetadataStatic,
+  getStaticPageSEO,
+} from "@/utils/generateMetadataUtil";
 
 export const generateMetadata = async ({ params: { locale } }) => {
-  const { t } = await initTranslations(locale, ["meta"]);
+  const data = await getStaticPageSEO("about", locale);
 
-  const { ABOUT } = pages;
+  const { ABOUT: pathSegment } = pages;
 
-  const languages = {
-    "x-default": `en${ABOUT}`,
-  };
-  i18nConfig.locales.forEach((lang) => {
-    if (lang === locale) return;
-    if (lang === i18nConfig.defaultLocale) {
-      languages[lang] = ABOUT;
-    } else {
-      languages[lang] = `${lang}${ABOUT}`;
-    }
-  });
-
-  return {
-    title: t("meta:title"),
-    description: t("meta:description"),
-    alternates: {
-      canonical: `${locale === "ru" ? "" : locale}${ABOUT}`,
-      languages,
-    },
-  };
+  return generateMetadataStatic(pathSegment, locale, data);
 };
 
 export default async function About({ params: { locale } }) {
   const { t } = await initTranslations(locale, ["about", "about_section"]);
+  const data = await getStaticPageSEO("about", locale);
   return (
     <>
       <div className={`${s.about} first-screen`}>
@@ -72,7 +57,9 @@ export default async function About({ params: { locale } }) {
               />
             </video>
           </div>
-          <h1 className={s.title}>{t("about:main.title")}</h1>
+          <h1 className={s.title}>
+            {data.translated ? data.header : t("about:main.title")}
+          </h1>
           <p className={s.text}>{t("about:main.text")}</p>
           <div className={s.items}>
             <div className={s.item}>

@@ -9,36 +9,22 @@ import AboutSection from "@/components/AboutSection/AboutSection";
 import ClientsSection from "@/components/ClientsSection/ClientsSection";
 import DeliverySection from "@/components/DeliverySection/DeliverySection";
 import { pages } from "../../../settings";
-import i18nConfig from "../../../i18nConfig";
+import {
+  generateMetadataStatic,
+  getStaticPageSEO,
+} from "@/utils/generateMetadataUtil";
 
 export const generateMetadata = async ({ params: { locale } }) => {
-  const { t } = await initTranslations(locale, ["meta"]);
+  const data = await getStaticPageSEO("home", locale);
 
-  const { HOME } = pages;
+  const { HOME: pathSegment } = pages;
 
-  const languages = {
-    "x-default": `en${HOME}`,
-  };
-  i18nConfig.locales.forEach((lang) => {
-    if (lang === locale) return;
-    if (lang === i18nConfig.defaultLocale) {
-      languages[lang] = HOME;
-    } else {
-      languages[lang] = `${lang}${HOME}`;
-    }
-  });
-
-  return {
-    title: t("meta:title"),
-    description: t("meta:description"),
-    alternates: {
-      canonical: `${locale === "ru" ? "" : locale}${HOME}`,
-      languages,
-    },
-  };
+  return generateMetadataStatic(pathSegment, locale, data);
 };
 
 export default async function Home({ params: { locale } }) {
+  const data = await getStaticPageSEO("home", locale);
+
   const { t, resources } = await initTranslations(locale, ["home", "common"]);
   return (
     <main>
@@ -47,9 +33,11 @@ export default async function Home({ params: { locale } }) {
           <h1
             className={styles["home-main__header"]}
             dangerouslySetInnerHTML={{
-              __html: t("home:main.title", {
-                interpolation: { escapeValue: false },
-              }),
+              __html: data.translated
+                ? data.header
+                : t("home:main.title", {
+                    interpolation: { escapeValue: false },
+                  }),
             }}
           ></h1>
           <p

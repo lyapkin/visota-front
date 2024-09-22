@@ -1,15 +1,16 @@
 import s from "@/styles/vacancies.module.css";
 import { pages } from "../../../../settings";
-import initTranslations from "@/locales/i18n";
+import { getStaticPageSEO } from "@/utils/generateMetadataUtil";
 
 export const generateMetadata = async ({ params: { locale } }) => {
-  const { t } = await initTranslations(locale, ["meta"]);
+  const data = await getStaticPageSEO("vacancies", locale);
+
+  const meta = data.translated ? data.meta : {};
 
   const { VACANCIES } = pages;
 
   return {
-    title: t("meta:title"),
-    description: t("meta:description"),
+    ...meta,
     alternates: {
       canonical: VACANCIES,
     },
@@ -18,11 +19,12 @@ export const generateMetadata = async ({ params: { locale } }) => {
 
 export default async function Vacancies() {
   const data = await getData();
+  const seo = await getStaticPageSEO("vacancies", locale);
 
   return (
     <div className={`first-screen ${s.vacancies}`}>
       <div className="container">
-        <h1 className={s.title}>Вакансии</h1>
+        <h1 className={s.title}>{seo.translated ? seo.header : "Вакансии"}</h1>
         <h2 className={s.subtitle}>Открытые вакансии в Компании "Высота»</h2>
         <p className={s.text}>
           Компания «Высота» является ведущим поставщиком в России и странах СНГ

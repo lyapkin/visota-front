@@ -9,37 +9,22 @@ import i2 from "@/../public/images/delivery/i2.png";
 import i3 from "@/../public/images/delivery/i3.png";
 import initTranslations from "@/locales/i18n";
 import { pages } from "../../../../settings";
-import i18nConfig from "../../../../i18nConfig";
+import {
+  generateMetadataStatic,
+  getStaticPageSEO,
+} from "@/utils/generateMetadataUtil";
 
 export const generateMetadata = async ({ params: { locale } }) => {
-  const { t } = await initTranslations(locale, ["meta"]);
+  const data = await getStaticPageSEO("delivery", locale);
 
-  const { DELIVERY } = pages;
+  const { DELIVERY: pathSegment } = pages;
 
-  const languages = {
-    "x-default": `en${DELIVERY}`,
-  };
-  i18nConfig.locales.forEach((lang) => {
-    if (lang === locale) return;
-    if (lang === i18nConfig.defaultLocale) {
-      languages[lang] = DELIVERY;
-    } else {
-      languages[lang] = `${lang}${DELIVERY}`;
-    }
-  });
-
-  return {
-    title: t("meta:title"),
-    description: t("meta:description"),
-    alternates: {
-      canonical: `${locale === "ru" ? "" : locale}${DELIVERY}`,
-      languages,
-    },
-  };
+  return generateMetadataStatic(pathSegment, locale, data);
 };
 
 export default async function Delivery({ params: { locale } }) {
   const { t } = await initTranslations(locale, ["delivery_pay"]);
+  const data = await getStaticPageSEO("delivery", locale);
   return (
     <div className={`first-screen ${s.delivery}`}>
       <div className="container">
@@ -48,9 +33,11 @@ export default async function Delivery({ params: { locale } }) {
             <h1
               className={s.title}
               dangerouslySetInnerHTML={{
-                __html: t("delivery_pay:d_title", {
-                  interpolation: { escapeValue: false },
-                }),
+                __html: data.translated
+                  ? data.header
+                  : t("delivery_pay:d_title", {
+                      interpolation: { escapeValue: false },
+                    }),
               }}
             >
               {/* Обеспечиваем доставку <br /> авто и ж/д способом */}
@@ -59,7 +46,7 @@ export default async function Delivery({ params: { locale } }) {
               <button className={`${s.btn} ${s.btn__active}`}>
                 {t("delivery_pay:d_button")}
               </button>
-              <Link href={"pay/"}>
+              <Link href={"/pay/"}>
                 <button className={`${s.btn}`}>
                   {t("delivery_pay:p_button")}
                 </button>
