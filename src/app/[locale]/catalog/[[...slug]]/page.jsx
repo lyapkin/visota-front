@@ -38,7 +38,7 @@ export const generateMetadata = async ({
 };
 
 const Catalog = async ({ params: { locale, slug } }) => {
-  await categoryExists(slug);
+  // await categoryExists(slug);
   return (
     <Suspense fallback={<Spinner />}>
       <Products catSlug={slug ? slug[0] : null} />
