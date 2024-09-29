@@ -49,7 +49,7 @@ const ProductSlider = ({ imgs }) => {
                 className={styles["product-slider__cover-wrapper"]}
               >
                 <div className={styles["product-slider__cover-wrapper-inner"]}>
-                  <img src={item.img_url} />
+                  <img src={process.env.BACK_URL + "/media/" + item.img_url} />
                 </div>
               </div>
             ))
@@ -73,7 +73,9 @@ const ProductSlider = ({ imgs }) => {
                   <div
                     className={styles["product-slider__cover-wrapper-single"]}
                   >
-                    <img src={item.img_url} />
+                    <img
+                      src={process.env.BACK_URL + "/media/" + item.img_url}
+                    />
                   </div>
                 </div>
               ))

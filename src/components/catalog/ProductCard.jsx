@@ -25,7 +25,7 @@ const ProductCard = ({ p, setGetPriceFormProduct }) => {
           <div className={styles["card__image"]}>
             {p.img_urls.length > 0 ? (
               <img
-                src={p.img_urls[0].img_url}
+                src={process.env.BACK_URL + "/media/" + p.img_urls[0].img_url}
                 height={214}
                 width={200}
                 alt="фото товара"
