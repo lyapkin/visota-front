@@ -54,7 +54,7 @@ const Product = async ({ params: { locale, slug } }) => {
         name: product.name,
         item: `${process.env.BACK_URL}${
           locale === "ru" ? "" : "/" + locale
-        }/product/${slug}`,
+        }/product/${slug}/`,
       },
     ],
   };

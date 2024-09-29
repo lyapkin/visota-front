@@ -33,7 +33,7 @@ export const generateMetadata = async ({
 const Category = async ({ params: { locale, slug } }) => {
   const { t } = await initTranslations(locale, ["catalog"]);
   await categoryExists(slug, locale);
-  const data = await getStaticPageSEO("catalog", locale);
+  const data = await getDynamicPageSEO("category", slug, locale);
 
   const jsonLdBreadcrumbs = {
     "@context": "https://schema.org",
@@ -53,7 +53,7 @@ const Category = async ({ params: { locale, slug } }) => {
         name: data.header,
         item: `${process.env.BACK_URL}${
           locale === "ru" ? "" : "/" + locale
-        }/catalog/${slug}`,
+        }/catalog/${slug}/`,
       },
     ],
   };

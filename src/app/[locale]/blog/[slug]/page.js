@@ -43,7 +43,7 @@ export default async function BlogPost({ params }) {
         name: content.title,
         item: `${process.env.BACK_URL}${
           locale === "ru" ? "" : "/" + locale
-        }/blog/${params.slug}`,
+        }/blog/${params.slug}/`,
       },
     ],
   };
