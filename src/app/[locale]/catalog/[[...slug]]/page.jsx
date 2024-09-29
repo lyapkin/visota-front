@@ -43,16 +43,16 @@ const Catalog = async ({ params: { locale, slug } }) => {
   await categoryExists(slug, locale);
   const data = await getStaticPageSEO("catalog", locale);
 
-  const cat = data.translated
-    ? {
-        "@type": "ListItem",
-        position: 2,
-        name: data.header,
-        item: `${process.env.BACK_URL}${
-          locale === "ru" ? "" : "/" + locale
-        }/catalog/${slug[0]}`,
-      }
-    : undefined;
+  // const cat = data.translated
+  //   ? {
+  //       "@type": "ListItem",
+  //       position: 2,
+  //       name: data.header,
+  //       item: `${process.env.BACK_URL}${
+  //         locale === "ru" ? "" : "/" + locale
+  //       }/catalog/${slug[0]}`,
+  //     }
+  //   : undefined;
 
   const jsonLdBreadcrumbs = {
     "@context": "https://schema.org",
@@ -66,7 +66,7 @@ const Catalog = async ({ params: { locale, slug } }) => {
           locale === "ru" ? "" : "/" + locale
         }/catalog/`,
       },
-      cat,
+      // cat,
     ],
   };
 
