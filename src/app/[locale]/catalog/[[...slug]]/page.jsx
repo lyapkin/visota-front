@@ -58,16 +58,16 @@ const Catalog = async ({ params: { locale, slug } }) => {
     ],
   };
 
-  if (data.translated) {
-    jsonLdBreadcrumbs.itemListElement.push({
-      "@type": "ListItem",
-      position: 2,
-      name: data.header,
-      item: `${process.env.BACK_URL}${
-        locale === "ru" ? "" : "/" + locale
-      }/catalog/${slug[0]}`,
-    });
-  }
+  // if (data.translated) {
+  //   jsonLdBreadcrumbs.itemListElement.push({
+  //     "@type": "ListItem",
+  //     position: 2,
+  //     name: data.header,
+  //     item: `${process.env.BACK_URL}${
+  //       locale === "ru" ? "" : "/" + locale
+  //     }/catalog/${slug[0]}`,
+  //   });
+  // }
 
   return (
     <>
