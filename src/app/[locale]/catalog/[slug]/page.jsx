@@ -32,8 +32,7 @@ export const generateMetadata = async ({
 
 const Category = async ({ params: { locale, slug } }) => {
   const { t } = await initTranslations(locale, ["catalog"]);
-  await categoryExists(slug, locale);
-  const data = await getDynamicPageSEO("category", slug, locale);
+  const data = await categoryExists(slug, locale);
 
   const jsonLdBreadcrumbs = {
     "@context": "https://schema.org",
@@ -50,7 +49,7 @@ const Category = async ({ params: { locale, slug } }) => {
       {
         "@type": "ListItem",
         position: 2,
-        name: data.header,
+        name: data.name,
         item: `${process.env.BACK_URL}${
           locale === "ru" ? "" : "/" + locale
         }/catalog/${slug}/`,
@@ -80,7 +79,7 @@ const categoryExists = async (slug, locale) => {
   });
   if (response.status === 301)
     permanentRedirect(`/${locale}/catalog${response.headers.get("Location")}`);
-  if (response.ok) return;
+  if (response.ok) return await response.json();
   throw new Error("problem with checking whether a category exists");
 };
 
