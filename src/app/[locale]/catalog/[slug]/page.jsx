@@ -17,15 +17,8 @@ export const generateMetadata = async ({
 }) => {
   const { CATALOG: pathSegment } = pages;
 
-  let meta;
-
-  if (slug) {
-    const data = await getDynamicPageSEO("category", slug[0], locale);
-    meta = generateMetadataDynamic(pathSegment, slug[0], locale, data);
-  } else {
-    const data = await getStaticPageSEO("catalog", locale);
-    meta = generateMetadataStatic(pathSegment, locale, data);
-  }
+  const data = await getDynamicPageSEO("category", slug, locale);
+  const meta = generateMetadataDynamic(pathSegment, slug, locale, data);
 
   meta.robots =
     Object.keys(searchParams).length > 0
@@ -43,17 +36,6 @@ const Catalog = async ({ params: { locale, slug } }) => {
   await categoryExists(slug, locale);
   const data = await getStaticPageSEO("catalog", locale);
 
-  // const cat = data.translated
-  //   ? {
-  //       "@type": "ListItem",
-  //       position: 2,
-  //       name: data.header,
-  //       item: `${process.env.BACK_URL}${
-  //         locale === "ru" ? "" : "/" + locale
-  //       }/catalog/${slug[0]}`,
-  //     }
-  //   : undefined;
-
   const jsonLdBreadcrumbs = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -66,25 +48,21 @@ const Catalog = async ({ params: { locale, slug } }) => {
           locale === "ru" ? "" : "/" + locale
         }/catalog/`,
       },
-      // cat,
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: data.header,
+        item: `${process.env.BACK_URL}${
+          locale === "ru" ? "" : "/" + locale
+        }/catalog/${slug}`,
+      },
     ],
   };
-
-  // if (data.translated) {
-  //   jsonLdBreadcrumbs.itemListElement.push({
-  //     "@type": "ListItem",
-  //     position: 2,
-  //     name: data.header,
-  //     item: `${process.env.BACK_URL}${
-  //       locale === "ru" ? "" : "/" + locale
-  //     }/catalog/${slug[0]}`,
-  //   });
-  // }
 
   return (
     <>
       <Suspense fallback={<Spinner />}>
-        <Products catSlug={slug ? slug[0] : null} />
+        <Products catSlug={slug} />
       </Suspense>
       <script
         type="application/ld+json"
