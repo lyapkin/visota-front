@@ -21,6 +21,19 @@ export default async function Vacancies({ params: { locale } }) {
   const data = await getData();
   const seo = await getStaticPageSEO("vacancies", locale);
 
+  const jsonLdBreadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Вакансии",
+        item: `${process.env.BACK_URL}/vacancies/`,
+      },
+    ],
+  };
+
   return (
     <div className={`first-screen ${s.vacancies}`}>
       <div className="container">
@@ -46,6 +59,10 @@ export default async function Vacancies({ params: { locale } }) {
           </div>
         ))}
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumbs) }}
+      />
     </div>
   );
 }

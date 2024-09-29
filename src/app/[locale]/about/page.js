@@ -36,8 +36,38 @@ export const generateMetadata = async ({ params: { locale } }) => {
 };
 
 export default async function About({ params: { locale } }) {
-  const { t } = await initTranslations(locale, ["about", "about_section"]);
+  const { t } = await initTranslations(locale, [
+    "about",
+    "about_section",
+    "common",
+  ]);
   const data = await getStaticPageSEO("about", locale);
+
+  const jsonLdBreadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: t("common:about"),
+        item: `${process.env.BACK_URL}${
+          locale === "ru" ? "/" : "/" + locale
+        }/about/`,
+      },
+      // {
+      //   "@type": "ListItem",
+      //   "position": 2,
+      //   "name": "Science Fiction",
+      //   "item": "https://example.com/books/sciencefiction"
+      // },
+      // {
+      //   "@type": "ListItem",
+      //   "position": 3,
+      //   "name": "Award Winners"
+      // }
+    ],
+  };
   return (
     <>
       <div className={`${s.about} first-screen`}>
@@ -285,6 +315,10 @@ export default async function About({ params: { locale } }) {
         </div>
       </section>
       <ClientsSection locale={locale} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumbs) }}
+      />
     </>
   );
 }

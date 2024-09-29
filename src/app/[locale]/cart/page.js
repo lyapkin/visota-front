@@ -21,6 +21,21 @@ const Cart = async ({ params: { locale } }) => {
   const { t } = await initTranslations(locale, ["common"]);
   const data = await getStaticPageSEO("cart", locale);
 
+  const jsonLdBreadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: t("common:cart"),
+        item: `${process.env.BACK_URL}${
+          locale === "ru" ? "/" : "/" + locale
+        }/cart/`,
+      },
+    ],
+  };
+
   return (
     <div className={`${styles["cart"]} first-screen`}>
       <div className="container">
@@ -29,6 +44,10 @@ const Cart = async ({ params: { locale } }) => {
         </h1>
         <CartComponent />
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumbs) }}
+      />
     </div>
   );
 };

@@ -20,6 +20,22 @@ export const generateMetadata = async ({ params: { locale } }) => {
 export default async function Contacts({ params: { locale } }) {
   const { t } = await initTranslations(locale, ["contacts", "common"]);
   const data = await getStaticPageSEO("contacts", locale);
+
+  const jsonLdBreadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: t("common:contacts"),
+        item: `${process.env.BACK_URL}${
+          locale === "ru" ? "/" : "/" + locale
+        }/contacts/`,
+      },
+    ],
+  };
+
   return (
     <div className={`first-screen`}>
       <div className="container">
@@ -252,6 +268,10 @@ export default async function Contacts({ params: { locale } }) {
           </div>
         </div>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumbs) }}
+      />
     </div>
   );
 }

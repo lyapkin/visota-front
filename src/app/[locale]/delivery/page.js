@@ -25,6 +25,22 @@ export const generateMetadata = async ({ params: { locale } }) => {
 export default async function Delivery({ params: { locale } }) {
   const { t } = await initTranslations(locale, ["delivery_pay"]);
   const data = await getStaticPageSEO("delivery", locale);
+
+  const jsonLdBreadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: t("delivery_pay:d_button"),
+        item: `${process.env.BACK_URL}${
+          locale === "ru" ? "/" : "/" + locale
+        }/delivery/`,
+      },
+    ],
+  };
+
   return (
     <div className={`first-screen ${s.delivery}`}>
       <div className="container">
@@ -105,6 +121,10 @@ export default async function Delivery({ params: { locale } }) {
           </div>
         </div>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumbs) }}
+      />
     </div>
   );
 }

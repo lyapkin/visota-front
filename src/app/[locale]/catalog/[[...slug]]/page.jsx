@@ -9,6 +9,7 @@ import {
   getDynamicPageSEO,
   getStaticPageSEO,
 } from "@/utils/generateMetadataUtil";
+import initTranslations from "@/locales/i18n";
 
 export const generateMetadata = async ({
   params: { locale, slug },
@@ -38,11 +39,46 @@ export const generateMetadata = async ({
 };
 
 const Catalog = async ({ params: { locale, slug } }) => {
+  const { t } = await initTranslations(locale, ["common"]);
   await categoryExists(slug, locale);
+  const data = await getStaticPageSEO("catalog", locale);
+
+  const jsonLdBreadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: t("common:catalog"),
+        item: `${process.env.BACK_URL}${
+          locale === "ru" ? "/" : "/" + locale
+        }/cart/`,
+      },
+    ],
+  };
+
+  if (data.translated) {
+    jsonLdBreadcrumbs.itemListElement.push({
+      "@type": "ListItem",
+      position: 2,
+      name: data.header,
+      item: `${process.env.BACK_URL}${
+        locale === "ru" ? "/" : "/" + locale
+      }/catalog/${slug[0]}`,
+    });
+  }
+
   return (
-    <Suspense fallback={<Spinner />}>
-      <Products catSlug={slug ? slug[0] : null} />
-    </Suspense>
+    <>
+      <Suspense fallback={<Spinner />}>
+        <Products catSlug={slug ? slug[0] : null} />
+      </Suspense>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumbs) }}
+      />
+    </>
   );
 };
 

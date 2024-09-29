@@ -18,8 +18,23 @@ export const generateMetadata = async ({ params: { locale } }) => {
 
 export default async function Blog({ params: { locale } }) {
   const articles = await BlogService.allArticles(locale);
-  const { t } = await initTranslations(locale, ["blog"]);
+  const { t } = await initTranslations(locale, ["blog", "common"]);
   const data = await getStaticPageSEO("blog", locale);
+
+  const jsonLdBreadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: t("common:blog"),
+        item: `${process.env.BACK_URL}${
+          locale === "ru" ? "/" : "/" + locale
+        }/blog/`,
+      },
+    ],
+  };
 
   return (
     <div className={`first-screen`}>
@@ -56,6 +71,10 @@ export default async function Blog({ params: { locale } }) {
           })}
         </div>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumbs) }}
+      />
     </div>
   );
 }

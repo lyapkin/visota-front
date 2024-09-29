@@ -23,7 +23,30 @@ export default async function BlogPost({ params }) {
     params.slug,
     params.locale
   );
-  const { t } = await initTranslations(params.locale, ["blog"]);
+  const { t } = await initTranslations(params.locale, ["blog", "common"]);
+
+  const jsonLdBreadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: t("common:blog"),
+        item: `${process.env.BACK_URL}${
+          locale === "ru" ? "/" : "/" + locale
+        }/blog/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: content.title,
+        item: `${process.env.BACK_URL}${
+          locale === "ru" ? "/" : "/" + locale
+        }/blog/${params.slug}`,
+      },
+    ],
+  };
 
   return (
     <div className={`first-screen ${styles["blog-inside"]}`}>
@@ -44,6 +67,10 @@ export default async function BlogPost({ params }) {
       <Suspense fallback={<></>}>
         <PassBreadcrumbs title={content.title} />
       </Suspense>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumbs) }}
+      />
     </div>
   );
 }
