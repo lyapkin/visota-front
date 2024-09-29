@@ -30,7 +30,7 @@ export default async function Blog({ params: { locale } }) {
         position: 1,
         name: t("common:blog"),
         item: `${process.env.BACK_URL}${
-          locale === "ru" ? "/" : "/" + locale
+          locale === "ru" ? "" : "/" + locale
         }/blog/`,
       },
     ],

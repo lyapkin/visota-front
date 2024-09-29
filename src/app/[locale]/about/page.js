@@ -52,7 +52,7 @@ export default async function About({ params: { locale } }) {
         position: 1,
         name: t("common:about"),
         item: `${process.env.BACK_URL}${
-          locale === "ru" ? "/" : "/" + locale
+          locale === "ru" ? "" : "/" + locale
         }/about/`,
       },
       // {

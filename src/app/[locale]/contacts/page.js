@@ -30,7 +30,7 @@ export default async function Contacts({ params: { locale } }) {
         position: 1,
         name: t("common:contacts"),
         item: `${process.env.BACK_URL}${
-          locale === "ru" ? "/" : "/" + locale
+          locale === "ru" ? "" : "/" + locale
         }/contacts/`,
       },
     ],

@@ -30,7 +30,7 @@ const Cart = async ({ params: { locale } }) => {
         position: 1,
         name: t("common:cart"),
         item: `${process.env.BACK_URL}${
-          locale === "ru" ? "/" : "/" + locale
+          locale === "ru" ? "" : "/" + locale
         }/cart/`,
       },
     ],

@@ -31,7 +31,7 @@ export default async function Pay({ params: { locale } }) {
         position: 1,
         name: t("delivery_pay:p_button"),
         item: `${process.env.BACK_URL}${
-          locale === "ru" ? "/" : "/" + locale
+          locale === "ru" ? "" : "/" + locale
         }/pay/`,
       },
     ],

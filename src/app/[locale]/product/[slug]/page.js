@@ -43,7 +43,7 @@ const Product = async ({ params: { locale, slug } }) => {
         position: 1,
         name: t("common:catalog"),
         item: `${process.env.BACK_URL}${
-          locale === "ru" ? "/" : "/" + locale
+          locale === "ru" ? "" : "/" + locale
         }/catalog/`,
       },
       {
@@ -51,7 +51,7 @@ const Product = async ({ params: { locale, slug } }) => {
         position: 2,
         name: product.name,
         item: `${process.env.BACK_URL}${
-          locale === "ru" ? "/" : "/" + locale
+          locale === "ru" ? "" : "/" + locale
         }/product/${params.slug}`,
       },
     ],

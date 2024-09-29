@@ -52,7 +52,7 @@ const Catalog = async ({ params: { locale, slug } }) => {
         position: 1,
         name: t("common:catalog"),
         item: `${process.env.BACK_URL}${
-          locale === "ru" ? "/" : "/" + locale
+          locale === "ru" ? "" : "/" + locale
         }/cart/`,
       },
     ],
@@ -64,7 +64,7 @@ const Catalog = async ({ params: { locale, slug } }) => {
       position: 2,
       name: data.header,
       item: `${process.env.BACK_URL}${
-        locale === "ru" ? "/" : "/" + locale
+        locale === "ru" ? "" : "/" + locale
       }/catalog/${slug[0]}`,
     });
   }

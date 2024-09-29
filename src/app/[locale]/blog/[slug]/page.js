@@ -34,7 +34,7 @@ export default async function BlogPost({ params }) {
         position: 1,
         name: t("common:blog"),
         item: `${process.env.BACK_URL}${
-          locale === "ru" ? "/" : "/" + locale
+          locale === "ru" ? "" : "/" + locale
         }/blog/`,
       },
       {
@@ -42,7 +42,7 @@ export default async function BlogPost({ params }) {
         position: 2,
         name: content.title,
         item: `${process.env.BACK_URL}${
-          locale === "ru" ? "/" : "/" + locale
+          locale === "ru" ? "" : "/" + locale
         }/blog/${params.slug}`,
       },
     ],

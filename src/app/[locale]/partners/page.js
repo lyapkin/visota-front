@@ -28,7 +28,7 @@ export default async function Partners({ params: { locale } }) {
         position: 1,
         name: t("common:partners"),
         item: `${process.env.BACK_URL}${
-          locale === "ru" ? "/" : "/" + locale
+          locale === "ru" ? "" : "/" + locale
         }/partners/`,
       },
     ],
