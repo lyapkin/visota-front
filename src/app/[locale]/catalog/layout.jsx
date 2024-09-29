@@ -1,8 +1,10 @@
 import CatalogHeader from "@/components/catalog/CatalogHeader";
 import FilterBlock from "@/components/Filter/FilterBlock";
 import Search from "@/components/Search/Search";
+import Spinner from "@/components/Spinner/Spinner";
 import styles from "@/styles/catalog.module.css";
 import { getStaticPageSEO } from "@/utils/generateMetadataUtil";
+import { Suspense } from "react";
 
 const CatalogLayout = async ({ children, params: { locale } }) => {
   // const categories = await getData(locale);
@@ -14,10 +16,14 @@ const CatalogLayout = async ({ children, params: { locale } }) => {
       <div className="container">
         <CatalogHeader data={data} />
         <aside className={styles["catalog__filter-block"]}>
-          <FilterBlock />
+          <Suspense fallback={<Spinner />}>
+            <FilterBlock />
+          </Suspense>
         </aside>
         <aside className={styles["catalog__search"]}>
-          <Search />
+          <Suspense fallback={<Spinner />}>
+            <Search />
+          </Suspense>
         </aside>
 
         <main className={styles["catalog__products"]}>{children}</main>

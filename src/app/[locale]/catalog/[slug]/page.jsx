@@ -2,10 +2,9 @@ import Products from "@/components/catalog/Products";
 import Spinner from "@/components/Spinner/Spinner";
 import { Suspense } from "react";
 import { pages } from "../../../../../settings";
-import { notFound, permanentRedirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 import {
   generateMetadataDynamic,
-  generateMetadataStatic,
   getDynamicPageSEO,
   getStaticPageSEO,
 } from "@/utils/generateMetadataUtil";
@@ -31,7 +30,7 @@ export const generateMetadata = async ({
   return meta;
 };
 
-const Catalog = async ({ params: { locale, slug } }) => {
+const Category = async ({ params: { locale, slug } }) => {
   const { t } = await initTranslations(locale, ["catalog"]);
   await categoryExists(slug, locale);
   const data = await getStaticPageSEO("catalog", locale);
@@ -85,4 +84,4 @@ const categoryExists = async (slug, locale) => {
   throw new Error("problem with checking whether a category exists");
 };
 
-export default Catalog;
+export default Category;

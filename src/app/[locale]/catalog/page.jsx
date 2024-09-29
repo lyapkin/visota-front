@@ -28,7 +28,7 @@ export const generateMetadata = async ({
   return meta;
 };
 
-const Catalog = async ({ params: { locale, slug } }) => {
+const Catalog = async ({ params: { locale } }) => {
   const { t } = await initTranslations(locale, ["catalog"]);
 
   const jsonLdBreadcrumbs = {
@@ -49,7 +49,7 @@ const Catalog = async ({ params: { locale, slug } }) => {
   return (
     <>
       <Suspense fallback={<Spinner />}>
-        <Products />
+        <Products catSlug={null} />
       </Suspense>
       <script
         type="application/ld+json"
