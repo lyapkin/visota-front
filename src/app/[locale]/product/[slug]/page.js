@@ -5,6 +5,7 @@ import {
   generateMetadataDynamic,
   getDynamicPageSEO,
 } from "@/utils/generateMetadataUtil";
+import initTranslations from "@/locales/i18n";
 
 export const generateMetadata = async ({ params: { locale, slug } }) => {
   const pathSegment = "/product/";
