@@ -64,7 +64,7 @@ const Catalog = async ({ params: { locale, slug } }) => {
         name: t("catalog:catalog"),
         item: `${process.env.BACK_URL}${
           locale === "ru" ? "" : "/" + locale
-        }/cart/`,
+        }/catalog/`,
       },
       cat,
     ],
