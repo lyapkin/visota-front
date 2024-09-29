@@ -15,6 +15,7 @@ export const generateMetadata = async ({ params: { locale, slug } }) => {
 };
 
 const Product = async ({ params: { locale, slug } }) => {
+  const { t } = await initTranslations(locale, ["catalog"]);
   const product = await getProduct(slug, locale);
   const offers =
     product.current_price || product.actual_price
@@ -41,7 +42,7 @@ const Product = async ({ params: { locale, slug } }) => {
       {
         "@type": "ListItem",
         position: 1,
-        name: t("common:catalog"),
+        name: t("catalog:catalog"),
         item: `${process.env.BACK_URL}${
           locale === "ru" ? "" : "/" + locale
         }/catalog/`,
