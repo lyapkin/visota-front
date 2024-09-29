@@ -2,7 +2,7 @@ import Products from "@/components/catalog/Products";
 import Spinner from "@/components/Spinner/Spinner";
 import { Suspense } from "react";
 import { pages } from "../../../../../settings";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import {
   generateMetadataDynamic,
   generateMetadataStatic,
@@ -38,7 +38,7 @@ export const generateMetadata = async ({
 };
 
 const Catalog = async ({ params: { locale, slug } }) => {
-  // await categoryExists(slug);
+  await categoryExists(slug, locale);
   return (
     <Suspense fallback={<Spinner />}>
       <Products catSlug={slug ? slug[0] : null} />
@@ -46,15 +46,15 @@ const Catalog = async ({ params: { locale, slug } }) => {
   );
 };
 
-const categoryExists = async (slug) => {
+const categoryExists = async (slug, locale) => {
   if (!slug) return;
-  const response = await fetch(
-    process.env.BACK_URL + "/api/catalog/categories/" + slug + "/exists/",
-    {
-      next: { revalidate: 60 },
-    }
-  );
-  if (response.status == 404) notFound();
+  const url = `${process.env.BACK_URL}/${locale}/api/catalog/categories/${slug}/exists/`;
+  const response = await fetch(url, {
+    next: { revalidate: 60 },
+    redirect: "manual",
+  });
+  if (response.status === 301)
+    permanentRedirect(`/${locale}/catalog${response.headers.get("Location")}`);
   if (response.ok) return;
   throw new Error("problem with checking whether a category exists");
 };

@@ -14,7 +14,6 @@ export const generateMetadata = async ({ params: { locale, slug } }) => {
   const { BLOG: pathSegment } = pages;
 
   const data = await getDynamicPageSEO("blog", slug, locale);
-  console.log(data);
 
   return generateMetadataDynamic(pathSegment, slug, locale, data);
 };

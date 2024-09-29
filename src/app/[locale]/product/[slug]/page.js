@@ -1,6 +1,6 @@
 import React from "react";
 import ProductComponent from "@/components/Product/ProductComponent";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import {
   generateMetadataDynamic,
   getDynamicPageSEO,
@@ -24,10 +24,11 @@ const getProduct = async (slug, locale) => {
     `${process.env.BACK_URL}/${locale}/api/catalog/products/${slug}/`,
     {
       next: { revalidate: 60 },
+      redirect: "manual",
     }
   );
-  if (response.status === 404) {
-    notFound();
+  if (response.status === 301) {
+    permanentRedirect(`/${locale}/product${response.headers.get("Location")}`);
   }
   if (!response.ok) {
     throw new Error(response.status + " запрос отдельного продукта не удался");
