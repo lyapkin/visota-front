@@ -16,7 +16,32 @@ export const generateMetadata = async ({ params: { locale, slug } }) => {
 
 const Product = async ({ params: { locale, slug } }) => {
   const product = await getProduct(slug, locale);
-  return <ProductComponent product={product} />;
+  const offers =
+    product.current_price || product.actual_price
+      ? {
+          "@type": "Offer",
+          price: product.current_price || product.actual_price,
+          priceCurrency: "RUB",
+        }
+      : undefined;
+  const image =
+    product.img_urls.length > 0 ? product.img_urls[0].img_url : undefined;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    image,
+    offers,
+  };
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ProductComponent product={product} />
+    </>
+  );
 };
 
 const getProduct = async (slug, locale) => {
