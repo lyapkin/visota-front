@@ -55,13 +55,13 @@ export default async function RootLayout({ children, params: { locale } }) {
   return (
     <html lang={locale}>
       <body className={inter.className}>
-        <Script
-          src="/static/hack/inject-custom-css.js"
-          strategy="beforeInteractive"
-        />
         <Script src="/static/seo/js/custom-body.js" />
         <Script
           src="/static/seo/js/custom-head.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="/static/hack/inject-custom-css.js"
           strategy="beforeInteractive"
         />
         <Script src="//code.jivo.ru/widget/b6tVDylH8Y" strategy="lazyOnload" />
