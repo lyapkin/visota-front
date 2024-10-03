@@ -6,9 +6,12 @@ import { permanentRedirect } from "next/navigation";
 import {
   generateMetadataDynamic,
   getDynamicPageSEO,
-  getStaticPageSEO,
 } from "@/utils/generateMetadataUtil";
 import initTranslations from "@/locales/i18n";
+import CategoryDescription from "@/components/catalog/CategoryDescription";
+import CatalogHeader from "@/components/catalog/CatalogHeader";
+import styles from "@/styles/catalog.module.css";
+import PassDynamicBreadcrumb from "@/components/Header/PassDynamicBreadcrumb";
 
 export const generateMetadata = async ({
   params: { locale, slug },
@@ -32,7 +35,7 @@ export const generateMetadata = async ({
 
 const Category = async ({ params: { locale, slug } }) => {
   const { t } = await initTranslations(locale, ["catalog"]);
-  const data = await categoryExists(slug, locale);
+  const data = await getCategory(slug, locale);
 
   const jsonLdBreadcrumbs = {
     "@context": "https://schema.org",
@@ -59,20 +62,29 @@ const Category = async ({ params: { locale, slug } }) => {
 
   return (
     <>
-      <Suspense fallback={<Spinner />}>
-        <Products catSlug={slug} />
-      </Suspense>
+      <CatalogHeader header={data.name} />
+      <main className={styles["catalog__products"]}>
+        <Suspense fallback={<Spinner />}>
+          <Products catSlug={slug} />
+        </Suspense>
+      </main>
+      <CategoryDescription description={data.description} />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumbs) }}
       />
+
+      <Suspense>
+        <PassDynamicBreadcrumb page={"category"} name={data.name} />
+      </Suspense>
     </>
   );
 };
 
-const categoryExists = async (slug, locale) => {
+const getCategory = async (slug, locale) => {
   if (!slug) return;
-  const url = `${process.env.BACK_URL}/${locale}/api/catalog/categories/${slug}/exists/`;
+  const url = `${process.env.BACK_URL}/${locale}/api/catalog/categories/${slug}/`;
   const response = await fetch(url, {
     next: { revalidate: 60 },
     redirect: "manual",

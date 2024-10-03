@@ -2,16 +2,16 @@
 import { LocationNameContext } from "@/providers/LocationNameProvider";
 import React, { useContext, useEffect } from "react";
 
-const PassBreadcrumbs = ({ title }) => {
+const PassDynamicBreadcrumb = ({ page, name }) => {
   const [_, setLocationName] = useContext(LocationNameContext);
 
   useEffect(() => {
-    setLocationName((prev) => ({ ...prev, post: title }));
+    setLocationName((prev) => ({ ...prev, [page]: name }));
 
     return () => {
       setLocationName((prev) => {
         const newState = { ...prev };
-        delete newState.post;
+        delete newState[page];
         return newState;
       });
     };
@@ -20,4 +20,4 @@ const PassBreadcrumbs = ({ title }) => {
   return <></>;
 };
 
-export default PassBreadcrumbs;
+export default PassDynamicBreadcrumb;

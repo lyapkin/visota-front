@@ -7,6 +7,8 @@ import {
   getStaticPageSEO,
 } from "@/utils/generateMetadataUtil";
 import initTranslations from "@/locales/i18n";
+import CatalogHeader from "@/components/catalog/CatalogHeader";
+import styles from "@/styles/catalog.module.css";
 
 export const generateMetadata = async ({
   params: { locale },
@@ -28,7 +30,7 @@ export const generateMetadata = async ({
   return meta;
 };
 
-const Catalog = async ({ params: { locale } }) => {
+const Page = async ({ params: { locale } }) => {
   const { t } = await initTranslations(locale, ["catalog"]);
 
   const jsonLdBreadcrumbs = {
@@ -48,9 +50,13 @@ const Catalog = async ({ params: { locale } }) => {
 
   return (
     <>
-      <Suspense fallback={<Spinner />}>
-        <Products catSlug={null} />
-      </Suspense>
+      <CatalogHeader />
+      <main className={styles["catalog__products"]}>
+        <Suspense fallback={<Spinner />}>
+          <Products />
+        </Suspense>
+      </main>
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumbs) }}
@@ -59,4 +65,4 @@ const Catalog = async ({ params: { locale } }) => {
   );
 };
 
-export default Catalog;
+export default Page;

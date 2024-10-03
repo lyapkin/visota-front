@@ -1,4 +1,3 @@
-import PassBreadcrumbs from "@/components/Blog/PassBreadcrumbs";
 import initTranslations from "@/locales/i18n";
 import BlogService from "@/services/BlogService";
 
@@ -9,6 +8,7 @@ import {
   generateMetadataDynamic,
   getDynamicPageSEO,
 } from "@/utils/generateMetadataUtil";
+import PassDynamicBreadcrumb from "@/components/Header/PassDynamicBreadcrumb";
 
 export const generateMetadata = async ({ params: { locale, slug } }) => {
   const { BLOG: pathSegment } = pages;
@@ -23,6 +23,7 @@ export default async function BlogPost({ params }) {
     params.slug,
     params.locale
   );
+  const locale = params.locale;
   const { t } = await initTranslations(params.locale, ["blog", "common"]);
 
   const jsonLdBreadcrumbs = {
@@ -64,8 +65,8 @@ export default async function BlogPost({ params }) {
           </>
         )}
       </div>
-      <Suspense fallback={<></>}>
-        <PassBreadcrumbs title={content.title} />
+      <Suspense>
+        <PassDynamicBreadcrumb page={"post"} name={content.title} />
       </Suspense>
       <script
         type="application/ld+json"

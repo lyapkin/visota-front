@@ -1,11 +1,12 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ProductComponent from "@/components/Product/ProductComponent";
-import { notFound, permanentRedirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 import {
   generateMetadataDynamic,
   getDynamicPageSEO,
 } from "@/utils/generateMetadataUtil";
 import initTranslations from "@/locales/i18n";
+import PassDynamicBreadcrumb from "@/components/Header/PassDynamicBreadcrumb";
 
 export const generateMetadata = async ({ params: { locale, slug } }) => {
   const pathSegment = "/product/";
@@ -69,6 +70,10 @@ const Product = async ({ params: { locale, slug } }) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumbs) }}
       />
+
+      <Suspense>
+        <PassDynamicBreadcrumb page={"product"} name={product.name} />
+      </Suspense>
     </>
   );
 };

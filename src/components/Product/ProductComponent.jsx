@@ -18,21 +18,8 @@ const ProductComponent = ({ product }) => {
   const { t } = useTranslation();
 
   const [cart, addToCart] = useContext(CartContext);
-  const [_, setLocationName] = useContext(LocationNameContext);
 
   const [isGetPriceFormShown, setIsGetPriceFormShown] = useState(false);
-
-  useEffect(() => {
-    setLocationName((prev) => ({ ...prev, product: product.name }));
-
-    return () => {
-      setLocationName((prev) => {
-        const newState = { ...prev };
-        delete newState.product;
-        return newState;
-      });
-    };
-  }, [product]);
 
   return (
     <>

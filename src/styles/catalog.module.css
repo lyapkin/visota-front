@@ -1,8 +1,8 @@
-.catalog {
+.catalog-page {
   background-color: #f5f5f5;
   padding-bottom: 50px;
 }
-.catalog > div {
+.catalog {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto 1fr;
@@ -41,6 +41,16 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px 6px;
+}
+
+.catalog__description {
+  grid-column: 1 / -1;
+  padding-top: 24px;
+  font-family: Gilroy-400;
+  font-weight: 400;
+  color: #50595e;
+  line-height: 30px;
+  font-size: 16px;
 }
 
 .catalog__content {
