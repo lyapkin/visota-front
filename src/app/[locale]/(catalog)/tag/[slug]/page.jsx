@@ -1,7 +1,7 @@
 import Products from "@/components/catalog/Products";
 import Spinner from "@/components/Spinner/Spinner";
 import { Suspense } from "react";
-import { pages } from "../../../../../settings";
+import { pages } from "../../../../../../settings";
 import { permanentRedirect } from "next/navigation";
 import {
   generateMetadataDynamic,
@@ -17,9 +17,9 @@ export const generateMetadata = async ({
   params: { locale, slug },
   searchParams,
 }) => {
-  const { CATALOG: pathSegment } = pages;
+  const { TAG: pathSegment } = pages;
 
-  const data = await getDynamicPageSEO("category", slug, locale);
+  const data = await getDynamicPageSEO("tag", slug, locale);
   const meta = generateMetadataDynamic(pathSegment, slug, locale, data);
 
   meta.robots =
@@ -33,9 +33,9 @@ export const generateMetadata = async ({
   return meta;
 };
 
-const Category = async ({ params: { locale, slug } }) => {
+const Tag = async ({ params: { locale, slug } }) => {
   const { t } = await initTranslations(locale, ["catalog"]);
-  const data = await getCategory(slug, locale);
+  const data = await getTag(slug, locale);
 
   const jsonLdBreadcrumbs = {
     "@context": "https://schema.org",
@@ -55,7 +55,7 @@ const Category = async ({ params: { locale, slug } }) => {
         name: data.name,
         item: `${process.env.BACK_URL}${
           locale === "ru" ? "" : "/" + locale
-        }/catalog/${slug}/`,
+        }/tag/${slug}/`,
       },
     ],
   };
@@ -65,10 +65,9 @@ const Category = async ({ params: { locale, slug } }) => {
       <CatalogHeader header={data.name} />
       <main className={styles["catalog__products"]}>
         <Suspense fallback={<Spinner />}>
-          <Products catSlug={slug} />
+          <Products pathSegment={`/tags/${slug}/`} />
         </Suspense>
       </main>
-      <CategoryDescription description={data.description} />
 
       <script
         type="application/ld+json"
@@ -76,23 +75,23 @@ const Category = async ({ params: { locale, slug } }) => {
       />
 
       <Suspense>
-        <PassDynamicBreadcrumb page={"category"} name={data.name} />
+        <PassDynamicBreadcrumb page={"tag"} name={data.name} />
       </Suspense>
     </>
   );
 };
 
-const getCategory = async (slug, locale) => {
+const getTag = async (slug, locale) => {
   if (!slug) return;
-  const url = `${process.env.BACK_URL}/${locale}/api/catalog/categories/${slug}/`;
+  const url = `${process.env.BACK_URL}/${locale}/api/catalog/tags/${slug}/`;
   const response = await fetch(url, {
     next: { revalidate: 60 },
     redirect: "manual",
   });
   if (response.status === 301)
-    permanentRedirect(`/${locale}/catalog${response.headers.get("Location")}`);
+    permanentRedirect(`/${locale}/tag${response.headers.get("Location")}`);
   if (response.ok) return await response.json();
   throw new Error("problem with checking whether a category exists");
 };
 
-export default Category;
+export default Tag;

@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { useParams, useSelectedLayoutSegment } from "next/navigation";
+import { useParams, useSelectedLayoutSegments } from "next/navigation";
 
 import styles from "./filter.module.css";
 
 const SubCategory = ({ catSlug, sub, setIsFiltersOpen }) => {
   const locale = useParams().locale;
-  const currentCat = useSelectedLayoutSegment();
+  const currentCat = useSelectedLayoutSegments()[1];
 
   return (
     <div key={sub.id} className={styles["subcategories__item"]}>

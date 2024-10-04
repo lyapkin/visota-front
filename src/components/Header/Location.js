@@ -31,6 +31,10 @@ const Location = () => {
             ? name.category || t("breadcrumbs:category")
             : i !== 0 && sections[i - 1] === "blog"
             ? name.post || t("breadcrumbs:post")
+            : i !== 0 && sections[i - 1] === "tag"
+            ? name.tag || t("breadcrumbs:tag")
+            : s === "tag"
+            ? paths["catalog"]
             : paths[s];
 
         if (value === undefined) return null;

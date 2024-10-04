@@ -5,7 +5,7 @@ const CatalogLayout = async ({ children, params: { locale } }) => {
   return (
     <div className={`${styles["catalog-page"]} first-screen`}>
       <div className="container">
-        <Catalog>{children}</Catalog>
+        <Catalog locale={locale}>{children}</Catalog>
       </div>
     </div>
   );

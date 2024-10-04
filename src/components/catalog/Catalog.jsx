@@ -3,8 +3,9 @@ import { Suspense } from "react";
 import Spinner from "../Spinner/Spinner";
 import FilterBlock from "../Filter/FilterBlock";
 import Search from "../Search/Search";
+import Tags from "./Tags";
 
-const Catalog = ({ children }) => {
+const Catalog = ({ children, locale }) => {
   return (
     <div className={styles["catalog"]}>
       <aside className={styles["catalog__filter-block"]}>
@@ -18,6 +19,9 @@ const Catalog = ({ children }) => {
         </Suspense>
       </aside>
       {children}
+      <aside className={styles["catalog__tags"]}>
+        <Tags locale={locale} />
+      </aside>
     </div>
   );
 };

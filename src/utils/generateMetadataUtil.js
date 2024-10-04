@@ -61,26 +61,30 @@ export const generateMetadataStatic = (pathSegment, locale, data) => {
 };
 
 export const generateMetadataDynamic = (pathSegment, slug, locale, data) => {
-  const path = `${pathSegment}${slug}/`;
-  const canonical = `${locale === "ru" ? "" : locale}${path}`;
+  const canonical = `${locale === "ru" ? "" : locale}${pathSegment}${slug}/`;
+
+  if (!data.translated)
+    return {
+      canonical,
+    };
+
+  const slugs = data.slug;
 
   const languages = {
     // "x-default": `en${pathSegment}`,
     "x-default": canonical,
   };
-  i18nConfig.locales.forEach((lang) => {
-    if (lang === locale) return;
+  for (let lang in slugs) {
+    if (lang === locale) continue;
     if (lang === i18nConfig.defaultLocale) {
-      languages[lang] = path;
+      languages[lang] = `${pathSegment}${slugs[lang]}/`;
     } else {
-      languages[lang] = `${lang}${path}`;
+      languages[lang] = `${lang}${pathSegment}${slugs[lang]}/`;
     }
-  });
-
-  const meta = data.translated ? data.meta : {};
+  }
 
   return {
-    ...meta,
+    ...data.meta,
     alternates: {
       canonical,
       languages,

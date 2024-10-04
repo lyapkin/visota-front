@@ -332,6 +332,23 @@ export default async function sitemap() {
       });
     }
   });
+  data.tags.forEach((elem) => {
+    const languages = {};
+    for (let key in elem) {
+      languages[key] = `${langsUrl[key]}/tag/${elem[key]["slug"]}/`;
+      result.push({
+        url: languages[key],
+        lastModified: elem[key]["lastModified"],
+        priority: elem[key]["priority"]
+          ? Number(elem[key]["priority"])
+          : undefined,
+        changeFrequency: elem[key]["changeFrequency"],
+        alternates: {
+          languages,
+        },
+      });
+    }
+  });
   data.products.forEach((elem) => {
     const languages = {};
     for (let key in elem) {

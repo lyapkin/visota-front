@@ -17,7 +17,7 @@ import PagePagination from "../pagination/PagePagination";
 import styles from "@/styles/catalog.module.css";
 import ProductCard from "./ProductCard";
 
-const Products = ({ catSlug }) => {
+const Products = ({ pathSegment }) => {
   const locale = useParams().locale;
 
   const { t } = useTranslation();
@@ -64,9 +64,7 @@ const Products = ({ catSlug }) => {
   };
 
   const getProducts = async (abortController) => {
-    const path = `/${locale}/api/catalog${
-      catSlug ? "/categories/" + catSlug : ""
-    }/products/?`;
+    const path = `/${locale}/api/catalog${pathSegment}products/?`;
     const url = new URL(process.env.BACK_URL + path + searchParams.toString());
 
     const response = await fetch(url, { signal: abortController.signal });

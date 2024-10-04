@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Filter from "./Filter";
-import { useSelectedLayoutSegment } from "next/navigation";
+import { useSelectedLayoutSegments } from "next/navigation";
 import { useTranslation } from "react-i18next";
 
 import styles from "../Filter/filter.module.css";
@@ -13,7 +13,7 @@ const FilterBlock = () => {
   const filterButtonRef = useRef(null);
 
   const [isFiltersOpen, setIsFiltersOpen] = useState(
-    useSelectedLayoutSegment() ? false : true
+    useSelectedLayoutSegments()[1] ? false : true
   );
 
   useEffect(() => {

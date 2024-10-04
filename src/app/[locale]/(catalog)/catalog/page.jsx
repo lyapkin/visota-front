@@ -1,7 +1,7 @@
 import Products from "@/components/catalog/Products";
 import Spinner from "@/components/Spinner/Spinner";
 import { Suspense } from "react";
-import { pages } from "../../../../settings";
+import { pages } from "../../../../../settings";
 import {
   generateMetadataStatic,
   getStaticPageSEO,
@@ -53,7 +53,7 @@ const Page = async ({ params: { locale } }) => {
       <CatalogHeader />
       <main className={styles["catalog__products"]}>
         <Suspense fallback={<Spinner />}>
-          <Products />
+          <Products pathSegment={"/"} />
         </Suspense>
       </main>
 

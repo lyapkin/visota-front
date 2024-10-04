@@ -8,6 +8,7 @@ export const pages = {
   BLOG: "/blog/",
   CONTACTS: "/contacts/",
   CATALOG: "/catalog/",
+  TAG: "/tag/",
   CART: "/cart/",
   POLICY: "/policy/",
   SUCCESS: "/success/",

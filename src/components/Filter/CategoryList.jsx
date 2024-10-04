@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 import {
   useParams,
   useSearchParams,
-  useSelectedLayoutSegment,
+  useSelectedLayoutSegments,
 } from "next/navigation";
 import HideCategoryListButton from "./HideCategoryListButton";
 import SubCategory from "./SubCategory";
@@ -23,7 +22,7 @@ const CategoryList = ({ setIsFiltersOpen }) => {
 
   const searchParams = useSearchParams();
 
-  const currentCat = useSelectedLayoutSegment();
+  const currentCat = useSelectedLayoutSegments()[1];
 
   useEffect(() => {
     setIsCategoriesItemClosed((prev) => {
