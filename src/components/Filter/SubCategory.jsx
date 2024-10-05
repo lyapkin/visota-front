@@ -3,31 +3,27 @@ import { useParams, useSelectedLayoutSegments } from "next/navigation";
 
 import styles from "./filter.module.css";
 
-const SubCategory = ({ catSlug, sub, setIsFiltersOpen }) => {
+const SubCategory = ({ catSlug, sub }) => {
   const locale = useParams().locale;
   const currentCat = useSelectedLayoutSegments()[1];
 
   return (
     <div key={sub.id} className={styles["subcategories__item"]}>
-      <Link
-        href={"/catalog/" + sub.slug}
-        scroll={false}
-        onClick={() => setIsFiltersOpen(false)}
-      >
+      <Link href={"/catalog/" + sub.slug} scroll={true}>
         <label>
           <input
             name={catSlug}
-            type="checkbox"
+            type="radio"
             value={sub.slug}
             checked={sub.slug == currentCat}
             readOnly
           />
           <div
-            className={`${styles["filters__checkbox"]} ${
+            className={`${styles["filters__radio"]} ${
               sub.slug === currentCat && styles["checked"]
             }`}
           >
-            <img src="/svgs/check-icon.svg" alt="иконка" />
+            <span></span>
           </div>
           <span>{sub.translations[locale].name}</span>
         </label>

@@ -12,8 +12,10 @@ const FilterBlock = () => {
   const filterWindowRef = useRef(null);
   const filterButtonRef = useRef(null);
 
+  const segments = useSelectedLayoutSegments();
+
   const [isFiltersOpen, setIsFiltersOpen] = useState(
-    useSelectedLayoutSegments()[1] ? false : true
+    segments[1] ? false : true
   );
 
   useEffect(() => {
@@ -33,6 +35,10 @@ const FilterBlock = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (segments[1]) setIsFiltersOpen(false);
+  }, [segments[1]]);
+
   return (
     <>
       <div
@@ -48,7 +54,7 @@ const FilterBlock = () => {
           {t("catalog:filters")}
           <img src="/svgs/close-icon.svg" alt="закрыть" />
         </button>
-        <Filter setIsFiltersOpen={setIsFiltersOpen} />
+        <Filter />
       </div>
       <div className={styles["filters-sort-buttons"]} ref={filterButtonRef}>
         <button

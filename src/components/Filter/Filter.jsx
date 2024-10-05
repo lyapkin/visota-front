@@ -1,12 +1,11 @@
-"use client";
-import CategoryList from "./CategoryList";
+import FilterCategories from "./FilterCategories";
 import PriceFilter from "./PriceFilter";
 import ResetFilter from "./ResetFilter";
 
-const Filter = ({ setIsFiltersOpen }) => {
+const Filter = () => {
   return (
     <>
-      <CategoryList setIsFiltersOpen={setIsFiltersOpen} />
+      <FilterCategories />
       <PriceFilter />
       <ResetFilter />
     </>

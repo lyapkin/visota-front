@@ -1,9 +1,11 @@
+"use client";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MAX_PRICE, MIN_PRICE } from "./constant";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import styles from "./filter.module.css";
+import FilterSection from "./FilterSection";
 
 const PriceFilter = () => {
   const { t } = useTranslation();
@@ -13,7 +15,6 @@ const PriceFilter = () => {
   const searchParams = useSearchParams();
 
   const router = useRouter();
-  const [isPriceClosed, setIsPriceClosed] = useState(false);
 
   const [priceFilter, setPriceFilter] = useState({
     min: searchParams.get("price_min") || "",
@@ -78,22 +79,8 @@ const PriceFilter = () => {
   };
 
   return (
-    <div className={styles["filters__price"]}>
-      <button onClick={() => setIsPriceClosed((prev) => !prev)}>
-        {t("catalog:price")}
-        <span
-          className={
-            isPriceClosed
-              ? styles["filters__button-arrow_closed"]
-              : styles["filters__button-arrow"]
-          }
-        ></span>
-      </button>
-      <div
-        className={`${styles["price__content"]} ${
-          isPriceClosed && styles["closed"]
-        }`}
-      >
+    <FilterSection name={t("catalog:price")}>
+      <div className={styles["price"]}>
         <div className={styles["price__range"]}>
           <div className={styles["price__input"]}>
             <input
@@ -145,7 +132,7 @@ const PriceFilter = () => {
           </div>
         </div>
       </div>
-    </div>
+    </FilterSection>
   );
 };
 

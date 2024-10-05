@@ -39,9 +39,11 @@ const Location = () => {
 
         if (value === undefined) return null;
 
+        const section = s === "tag" ? "catalog" : s;
+
         if (i === sections.length - 1) {
           return (
-            <div key={s}>
+            <div key={section}>
               <span>/</span>
               <span className={styles["breadcrumbs-end"]}>{value}</span>
             </div>
@@ -49,9 +51,9 @@ const Location = () => {
         }
 
         return (
-          <div key={s}>
+          <div key={section}>
             <span>/</span>
-            <Link href={`/${s}/`}>{value}</Link>
+            <Link href={`/${section}/`}>{value}</Link>
           </div>
         );
       })}
