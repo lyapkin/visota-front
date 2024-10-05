@@ -21,8 +21,6 @@ const Location = () => {
       <Link href="/">
         <Image src="/svgs/home-icon1.svg" width={32} height={32} />
       </Link>
-      <span>/</span>
-      <Link href="/">{t("breadcrumbs:home")}</Link>
       {sections.map((s, i) => {
         const value =
           i !== 0 && sections[i - 1] === "product"

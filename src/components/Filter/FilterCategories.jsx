@@ -10,16 +10,17 @@ const FilterCategories = () => {
   const { t } = useTranslation();
   const categories = useContext(CategoriesContext);
   const currentCatSlug = useSelectedLayoutSegments()[1];
+  console.log(categories);
   const currentCat = categories
     .reduce((result, c) => [...result, ...c.subcategories], [])
     .find((c) => c.slug === currentCatSlug);
-
+  console.log(currentCat);
   return (
     <>
       <FilterSection name={t("catalog:categories")}>
         <CategoryList categories={categories} currentCat={currentCatSlug} />
       </FilterSection>
-      {currentCat.filters.length > 0 && (
+      {currentCat?.filters.length > 0 && (
         <FilterSection name={t("catalog:catprops")}>
           <CategoryProperties properties={currentCat.filters} />
         </FilterSection>
