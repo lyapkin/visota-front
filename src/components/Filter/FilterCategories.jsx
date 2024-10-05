@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import FilterSection from "./FIlterSection";
+import FilterSection from "./FilterSection";
 import CategoryList from "./CategoryList";
 import CategoryProperties from "./CategoryProperties";
 import { useTranslation } from "react-i18next";
@@ -10,11 +10,11 @@ const FilterCategories = () => {
   const { t } = useTranslation();
   const categories = useContext(CategoriesContext);
   const currentCatSlug = useSelectedLayoutSegments()[1];
-  console.log(categories);
+
   const currentCat = categories
     .reduce((result, c) => [...result, ...c.subcategories], [])
     .find((c) => c.slug === currentCatSlug);
-  console.log(currentCat);
+
   return (
     <>
       <FilterSection name={t("catalog:categories")}>

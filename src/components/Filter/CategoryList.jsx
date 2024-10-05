@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useParams, useSelectedLayoutSegments } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import SubCategory from "./SubCategory";
 import HideCategoryItemButton from "./HideCategoryItemButton";
 
 import styles from "./filter.module.css";
-import { CategoriesContext } from "@/providers/CategoriesProvider";
 
 const CategoryList = ({ categories, currentCat }) => {
   const locale = useParams().locale;
