@@ -31,13 +31,13 @@ const Location = () => {
             ? name.post || t("breadcrumbs:post")
             : i !== 0 && sections[i - 1] === "tag"
             ? name.tag || t("breadcrumbs:tag")
-            : s === "tag"
+            : s === "tag" || s === "product"
             ? paths["catalog"]
             : paths[s];
 
         if (value === undefined) return null;
 
-        const section = s === "tag" ? "catalog" : s;
+        const section = s === "tag" || s === "product" ? "catalog" : s;
 
         if (i === sections.length - 1) {
           return (

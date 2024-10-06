@@ -13,9 +13,10 @@
   "get_price": "查看价格",
   "show_more": "显示更多",
   "categories": "类别",
+  "catprops": "特性",
   "reset_filters": "重置过滤器",
   "search_placeholder": "搜索设备",
-  "components_catalog": "零件目录",
+  "components_catalog": "组件目录",
   "part_number": "文章",
   "charachteristics": "特征",
   "description": {
@@ -26,7 +27,7 @@
     "text": "根据要求提供证书、产品数据表和测试报告"
   },
   "info_1": "<span>所有组件的终生使用寿命</span>",
-  "info_2": "有疑问吗？ <span>我们会咨询</span>",
+  "info_2": "有什么问题吗？ <span>我们会咨询</span>",
   "info_3": "<span>在销售办事处</span>购买组件",
   "delivery_info_1": "我们与所有送货服务合作",
   "delivery_info_2": "货物交付无延误",

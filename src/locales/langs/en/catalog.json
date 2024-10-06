@@ -13,9 +13,10 @@
   "get_price": "Check price",
   "show_more": "Show more",
   "categories": "Categories",
+  "catprops": "Properties",
   "reset_filters": "Reset filters",
   "search_placeholder": "Search for equipment",
-  "components_catalog": "Parts catalog",
+  "components_catalog": "Catalog of components",
   "part_number": "Article",
   "charachteristics": "Characteristics",
   "description": {

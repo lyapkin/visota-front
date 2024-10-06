@@ -50,6 +50,7 @@ export default async function RootLayout({ children, params: { locale } }) {
     "cart",
     "contacts",
     "blog",
+    "sort",
   ]);
 
   const categories = await getCategories(locale);
