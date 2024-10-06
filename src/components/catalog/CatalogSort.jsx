@@ -1,7 +1,8 @@
 "use client";
+import useCloseByClickOutside from "@/hooks/useCloseByClickOutside";
 import styles from "@/styles/catalog.module.css";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const CatalogSort = () => {
@@ -48,6 +49,12 @@ const CatalogSort = () => {
     router.replace(`${path}?${newSearchParams.toString()}`, { scroll: false });
   };
 
+  useEffect(() => {
+    setCurrentValue(values[searchParams.get("sort") || "default"]);
+  }, [searchParams]);
+
+  const refToClose = useCloseByClickOutside(setIsOpen);
+
   return (
     <div className={styles["sort"]}>
       <span className={styles["sort__title"]}>{t("sort:title")}:</span>
@@ -55,7 +62,7 @@ const CatalogSort = () => {
         <span className={styles["sort__selected-value"]}>{currentValue}</span>
         <span className={`${styles["sort__arrow"]} ${open}`}></span>
       </button>
-      <ul className={`${styles["sort__dropdown"]} ${open}`}>
+      <ul className={`${styles["sort__dropdown"]} ${open}`} ref={refToClose}>
         {Object.entries(values).map(([key, value]) => (
           <li key={key} onClick={() => handleSelect(key, value)}>
             {value}
