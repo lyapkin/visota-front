@@ -85,20 +85,19 @@ const ProductComponent = ({ product }) => {
                         : t("catalog:presence.off")}
                     </span>
                   </li>
-                  {product?.charachteristics.length > 0 &&
-                    product.charachteristics.map((item) => (
-                      <li key={item.id}>
-                        <span className={styles["characteristics__list-key"]}>
-                          {item.translations[locale]?.key}
-                        </span>
-                        <span
-                          className={styles["characteristics__list-dots"]}
-                        ></span>
-                        <span className={styles["characteristics__list-val"]}>
-                          {item.translations[locale]?.value}
-                        </span>
-                      </li>
-                    ))}
+                  {product.characteristics.map((item) => (
+                    <li key={item.id}>
+                      <span className={styles["characteristics__list-key"]}>
+                        {item.characteristic.name}
+                      </span>
+                      <span
+                        className={styles["characteristics__list-dots"]}
+                      ></span>
+                      <span className={styles["characteristics__list-val"]}>
+                        {item.characteristic_value.name}
+                      </span>
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div

@@ -42,14 +42,9 @@ const ProductCard = ({ p, setGetPriceFormProduct }) => {
         </div>
         <div className={styles["card__caracteristics"]}>
           <ul>
-            {p.charachteristics &&
-              p.charachteristics
-                .map((c) =>
-                  c.translations[locale] ? (
-                    <ProductCharachteristic c={c} />
-                  ) : null
-                )
-                .slice(0, 3)}
+            {p.characteristics
+              .map((c) => <ProductCharachteristic key={c.id} c={c} />)
+              .slice(0, 3)}
           </ul>
         </div>
         {p.current_price ? (

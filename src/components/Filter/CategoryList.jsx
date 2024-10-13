@@ -44,7 +44,7 @@ const CategoryList = ({ categories, currentCat }) => {
             {cat.subcategories.map(
               (sub) =>
                 locale in sub.translations && (
-                  <SubCategory catSlug={cat.slug} sub={sub} key={cat.id} />
+                  <SubCategory catSlug={cat.slug} sub={sub} key={sub.id} />
                 )
             )}
           </div>

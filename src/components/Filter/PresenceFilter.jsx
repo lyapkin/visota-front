@@ -1,7 +1,16 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import styles from "./filter.module.css";
+import { useTranslation } from "react-i18next";
 
-const CategoryProperties = ({ filter }) => {
+const PresenceFilter = () => {
+  const { t } = useTranslation();
+  const filter = {
+    slug: "presence",
+    values: [
+      { id: 1, slug: "order", name: t("catalog:presence.off") },
+      { id: 2, slug: "stock", name: t("catalog:presence.on") },
+    ],
+  };
   const searchParams = useSearchParams();
 
   const path = usePathname();
@@ -10,14 +19,12 @@ const CategoryProperties = ({ filter }) => {
 
   const handleChange = (value) => {
     const urlSearchParams = new URLSearchParams(searchParams.toString());
-    const filters = new Set(urlSearchParams.getAll(filter.slug));
-    if (filters.has(value)) {
-      filters.delete(value);
+    const presence = urlSearchParams.get(filter.slug);
+    if (presence === value) {
+      urlSearchParams.delete(filter.slug);
     } else {
-      filters.add(value);
+      urlSearchParams.set(filter.slug, value);
     }
-    urlSearchParams.delete(filter.slug);
-    filters.forEach((prop) => urlSearchParams.append(filter.slug, prop));
     urlSearchParams.delete("page");
     router.replace(path + "?" + urlSearchParams.toString(), { scroll: false });
   };
@@ -29,19 +36,18 @@ const CategoryProperties = ({ filter }) => {
           <label>
             <input
               name={p.slug}
-              type="checkbox"
+              type="input"
               value={p.name}
-              checked={searchParams.getAll(filter.slug).includes(p.slug)}
-              onChange={() => handleChange(p.slug)}
+              checked={searchParams.get(filter.slug) === p.slug}
+              onClick={() => handleChange(p.slug)}
               readOnly
             />
             <div
-              className={`${styles["filters__checkbox"]} ${
-                searchParams.getAll(filter.slug).includes(p.slug) &&
-                styles["checked"]
+              className={`${styles["filters__radio"]} ${
+                searchParams.get(filter.slug) === p.slug && styles["checked"]
               }`}
             >
-              <img src="/svgs/check-icon.svg" alt="иконка" />
+              <span></span>
             </div>
             <span>{p.name}</span>
           </label>
@@ -51,4 +57,4 @@ const CategoryProperties = ({ filter }) => {
   );
 };
 
-export default CategoryProperties;
+export default PresenceFilter;

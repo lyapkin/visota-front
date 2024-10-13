@@ -128,17 +128,16 @@ const CartComponent = () => {
                         : t("catalog:presence.off")}
                     </span>
                   </li>
-                  {p?.charachteristics.length > 0 &&
-                    p.charachteristics.map((c) => (
-                      <li key={c.id}>
-                        <span className={styles["characteristics__key"]}>
-                          {c.translations[locale]?.key}
-                        </span>
-                        <span className={styles["characteristics__val"]}>
-                          {c.translations[locale]?.value}
-                        </span>
-                      </li>
-                    ))}
+                  {p.characteristics.map((c) => (
+                    <li key={c.id}>
+                      <span className={styles["characteristics__key"]}>
+                        {c.characteristic.name}
+                      </span>
+                      <span className={styles["characteristics__val"]}>
+                        {c.characteristic_value.name}
+                      </span>
+                    </li>
+                  ))}
                 </ul>
                 <div className={styles["product-info__price"]}>
                   <span className={styles["product-info__price-current"]}>

@@ -6,7 +6,7 @@ const useGetPaginationPages = ({ page, pageCount, handleClick, disabled }) => {
   if (pageCount <= 7) {
     pages = pagesArr.map((i) => (
       <PageNumber
-        kei={i}
+        key={i}
         active={page === i}
         pageNum={i}
         disabled={disabled}
@@ -16,7 +16,7 @@ const useGetPaginationPages = ({ page, pageCount, handleClick, disabled }) => {
   } else if (page === 1 || page === 2 || page === 3) {
     pages = [1, 2, 3, 4, 5, "...", pageCount].map((i, index) => (
       <PageNumber
-        kei={String(i) + index}
+        key={String(i) + index}
         active={page === i}
         pageNum={i}
         disabled={i === "..." ? true : disabled}
@@ -38,7 +38,7 @@ const useGetPaginationPages = ({ page, pageCount, handleClick, disabled }) => {
       pageCount,
     ].map((i, index) => (
       <PageNumber
-        kei={String(i) + index}
+        key={String(i) + index}
         active={page === i}
         pageNum={i}
         disabled={i === "..." ? true : disabled}
@@ -49,7 +49,7 @@ const useGetPaginationPages = ({ page, pageCount, handleClick, disabled }) => {
     pages = [1, "...", page - 1, page, page + 1, "...", pageCount].map(
       (i, index) => (
         <PageNumber
-          kei={String(i) + index}
+          key={String(i) + index}
           active={page === i}
           pageNum={i}
           disabled={i === "..." ? true : disabled}
