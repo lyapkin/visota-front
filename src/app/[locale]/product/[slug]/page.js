@@ -79,7 +79,7 @@ const getProduct = async (slug, locale) => {
   const response = await fetch(
     `${process.env.BACK_URL}/${locale}/api/catalog/products/${slug}/`,
     {
-      next: { revalidate: 60 },
+      next: { revalidate: 0 },
       redirect: "manual",
     }
   );
