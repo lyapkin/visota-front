@@ -16,6 +16,9 @@ export const generateMetadata = async ({ params: { locale, slug } }) => {
 const Product = async ({ params: { locale, slug } }) => {
   const { t } = await initTranslations(locale, ["catalog"]);
   const product = await getProduct(slug, locale);
+  if (product.redirect) {
+    permanentRedirect(product.redirect);
+  }
   const offers =
     product.current_price || product.actual_price
       ? {
@@ -83,13 +86,19 @@ const getProduct = async (slug, locale) => {
       redirect: "manual",
     }
   );
+  console.log(response.headers.get("Location"));
   if (response.status === 301) {
-    permanentRedirect(`/${locale}/product${response.headers.get("Location")}`);
+    // permanentRedirect(`/${locale}/product${response.headers.get("Location")}`);
+    return {
+      seo: {
+        translated: false,
+      },
+      redirect: response.headers.get("Location"),
+    };
   }
-  if (!response.ok) {
-    throw new Error(response.status + " запрос отдельного продукта не удался");
-  }
-  return await response.json();
+
+  if (response.ok) return await response.json();
+  throw new Error(response.status + " запрос отдельного продукта не удался");
 };
 
 export default Product;
