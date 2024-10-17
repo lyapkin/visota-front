@@ -19,8 +19,8 @@ export const generateMetadata = async ({
 }) => {
   const { CATALOG: pathSegment } = pages;
 
-  const data = await getCategory(slug, locale);
-  const meta = generateMetadataDynamic(pathSegment, slug, locale, data.seo);
+  const data = await getDynamicPageSEO("category", slug, locale);
+  const meta = generateMetadataDynamic(pathSegment, slug, locale, data);
 
   meta.robots =
     Object.keys(searchParams).length > 0
