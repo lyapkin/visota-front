@@ -18,19 +18,23 @@ export const getStaticPageSEO = async (page, locale) => {
 };
 
 export const getDynamicPageSEO = async (type, slug, locale) => {
-  const response = await fetch(
-    process.env.BACK_URL + `/${locale}/api/seo/meta/${type}/${slug}/`,
-    {
-      next: { revalidate: 60 },
+  try {
+    const response = await fetch(
+      process.env.BACK_URL + `/${locale}/api/seo/meta/${type}/${slug}/`,
+      {
+        next: { revalidate: 60 },
+      }
+    );
+    if (response.ok) {
+      return await response.json();
     }
-  );
-  if (response.ok) {
-    return await response.json();
-  }
-  if (response.status === 404) {
+    if (response.status === 404) {
+      return { translated: false };
+    }
+    throw new Error("problem with getting metadata fro page: " + page);
+  } catch (err) {
     return { translated: false };
   }
-  throw new Error("problem with getting metadata fro page: " + page);
 };
 
 export const generateMetadataStatic = (pathSegment, locale, data) => {
