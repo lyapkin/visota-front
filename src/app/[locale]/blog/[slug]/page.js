@@ -13,7 +13,7 @@ import PassDynamicBreadcrumb from "@/components/Header/PassDynamicBreadcrumb";
 export const generateMetadata = async ({ params: { locale, slug } }) => {
   const { BLOG: pathSegment } = pages;
 
-  const data = await getDynamicPageSEO("blog", slug, locale);
+  const data = await BlogService.getArticleContent(slug, locale);
 
   return generateMetadataDynamic(pathSegment, slug, locale, data);
 };

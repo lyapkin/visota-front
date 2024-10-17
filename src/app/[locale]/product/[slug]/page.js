@@ -1,19 +1,16 @@
 import React, { Suspense } from "react";
 import ProductComponent from "@/components/Product/ProductComponent";
 import { permanentRedirect } from "next/navigation";
-import {
-  generateMetadataDynamic,
-  getDynamicPageSEO,
-} from "@/utils/generateMetadataUtil";
+import { generateMetadataDynamic } from "@/utils/generateMetadataUtil";
 import initTranslations from "@/locales/i18n";
 import PassDynamicBreadcrumb from "@/components/Header/PassDynamicBreadcrumb";
 
 export const generateMetadata = async ({ params: { locale, slug } }) => {
   const pathSegment = "/product/";
 
-  const data = await getDynamicPageSEO("product", slug, locale);
+  const data = await getProduct(slug, locale);
 
-  return generateMetadataDynamic(pathSegment, slug, locale, data);
+  return generateMetadataDynamic(pathSegment, slug, locale, data.seo);
 };
 
 const Product = async ({ params: { locale, slug } }) => {

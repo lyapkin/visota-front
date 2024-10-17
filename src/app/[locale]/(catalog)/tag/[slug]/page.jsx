@@ -19,7 +19,7 @@ export const generateMetadata = async ({
 }) => {
   const { TAG: pathSegment } = pages;
 
-  const data = await getDynamicPageSEO("tag", slug, locale);
+  const data = await getTag(slug, locale);
   const meta = generateMetadataDynamic(pathSegment, slug, locale, data);
 
   meta.robots =
