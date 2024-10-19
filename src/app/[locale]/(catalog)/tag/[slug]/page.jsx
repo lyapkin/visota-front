@@ -82,7 +82,7 @@ const getTag = async (slug, locale) => {
   if (!slug) return;
   const url = `${process.env.BACK_URL}/${locale}/api/catalog/tags/${slug}/`;
   const response = await fetch(url, {
-    next: { revalidate: 60 },
+    next: { revalidate: 0 },
     redirect: "manual",
   });
   if (response.status === 301)

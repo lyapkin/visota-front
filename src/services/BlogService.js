@@ -20,7 +20,7 @@ export default class BlogService {
     const response = await fetch(
       `${BASE_URL}/${locale}/api/articles/${slug}/`,
       {
-        next: { revalidate: 60 },
+        next: { revalidate: 0 },
         redirect: "manual",
       }
     );
