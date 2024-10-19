@@ -3,10 +3,7 @@ import Spinner from "@/components/Spinner/Spinner";
 import { Suspense } from "react";
 import { pages } from "../../../../../../settings";
 import { permanentRedirect } from "next/navigation";
-import {
-  generateMetadataDynamic,
-  getDynamicPageSEO,
-} from "@/utils/generateMetadataUtil";
+import { generateMetadataDynamic } from "@/utils/generateMetadataUtil";
 import initTranslations from "@/locales/i18n";
 import CategoryDescription from "@/components/catalog/CategoryDescription";
 import CatalogHeader from "@/components/catalog/CatalogHeader";
@@ -20,8 +17,8 @@ export const generateMetadata = async ({
 }) => {
   const { CATALOG: pathSegment } = pages;
 
-  const data = await getDynamicPageSEO("category", slug, locale);
-  const meta = generateMetadataDynamic(pathSegment, slug, locale, data);
+  const data = await getCategory(slug, locale);
+  const meta = generateMetadataDynamic(pathSegment, slug, locale, data.seo);
 
   meta.robots =
     Object.keys(searchParams).length > 0
@@ -94,6 +91,9 @@ const getCategory = async (slug, locale) => {
     permanentRedirect(
       getRedirectUrl(response.headers.get("Location"), locale, "/catalog")
     );
+  if (response.status === 404) {
+    permanentRedirect("/");
+  }
   if (response.ok) return await response.json();
   throw new Error("problem with checking whether a category exists");
 };

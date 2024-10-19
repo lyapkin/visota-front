@@ -30,6 +30,9 @@ export default class BlogService {
         getRedirectUrl(response.headers.get("Location"), locale, "/blog")
       );
     }
+    if (response.status === 404) {
+      permanentRedirect("/");
+    }
     if (!response.ok) {
       throw new Error("problem fetching an article");
     }

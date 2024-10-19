@@ -4,10 +4,7 @@ import BlogService from "@/services/BlogService";
 import styles from "@/styles/blog.module.css";
 import { Suspense } from "react";
 import { pages } from "../../../../../settings";
-import {
-  generateMetadataDynamic,
-  getDynamicPageSEO,
-} from "@/utils/generateMetadataUtil";
+import { generateMetadataDynamic } from "@/utils/generateMetadataUtil";
 import PassDynamicBreadcrumb from "@/components/Header/PassDynamicBreadcrumb";
 
 export const generateMetadata = async ({ params: { locale, slug } }) => {
@@ -15,7 +12,7 @@ export const generateMetadata = async ({ params: { locale, slug } }) => {
 
   const data = await BlogService.getArticleContent(slug, locale);
 
-  return generateMetadataDynamic(pathSegment, slug, locale, data);
+  return generateMetadataDynamic(pathSegment, slug, locale, data.seo);
 };
 
 export default async function BlogPost({ params }) {

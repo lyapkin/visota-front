@@ -89,7 +89,9 @@ const getProduct = async (slug, locale) => {
       getRedirectUrl(response.headers.get("Location"), locale, "/product")
     );
   }
-
+  if (response.status === 404) {
+    permanentRedirect("/");
+  }
   if (response.ok) return await response.json();
   throw new Error(response.status + " запрос отдельного продукта не удался");
 };
