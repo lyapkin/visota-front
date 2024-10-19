@@ -4,6 +4,7 @@ import { permanentRedirect } from "next/navigation";
 import { generateMetadataDynamic } from "@/utils/generateMetadataUtil";
 import initTranslations from "@/locales/i18n";
 import PassDynamicBreadcrumb from "@/components/Header/PassDynamicBreadcrumb";
+import getRedirectUrl from "@/utils/getRedirectUrl";
 
 export const generateMetadata = async ({ params: { locale, slug } }) => {
   const pathSegment = "/product/";
@@ -84,7 +85,9 @@ const getProduct = async (slug, locale) => {
     }
   );
   if (response.status === 301) {
-    permanentRedirect(`/${locale}/product${response.headers.get("Location")}`);
+    permanentRedirect(
+      getRedirectUrl(response.headers.get("Location"), locale, "/product")
+    );
   }
 
   if (response.ok) return await response.json();

@@ -12,6 +12,7 @@ import CategoryDescription from "@/components/catalog/CategoryDescription";
 import CatalogHeader from "@/components/catalog/CatalogHeader";
 import styles from "@/styles/catalog.module.css";
 import PassDynamicBreadcrumb from "@/components/Header/PassDynamicBreadcrumb";
+import getRedirectUrl from "@/utils/getRedirectUrl";
 
 export const generateMetadata = async ({
   params: { locale, slug },
@@ -90,7 +91,9 @@ const getCategory = async (slug, locale) => {
     redirect: "manual",
   });
   if (response.status === 301)
-    permanentRedirect(`/${locale}/catalog${response.headers.get("Location")}`);
+    permanentRedirect(
+      getRedirectUrl(response.headers.get("Location"), locale, "/catalog")
+    );
   if (response.ok) return await response.json();
   throw new Error("problem with checking whether a category exists");
 };

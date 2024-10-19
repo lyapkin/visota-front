@@ -1,3 +1,4 @@
+import getRedirectUrl from "@/utils/getRedirectUrl";
 import { permanentRedirect } from "next/navigation";
 
 export const BASE_URL = process.env.BACK_URL;
@@ -25,7 +26,9 @@ export default class BlogService {
     );
 
     if (response.status === 301) {
-      permanentRedirect(`/${locale}/blog${response.headers.get("Location")}`);
+      permanentRedirect(
+        getRedirectUrl(response.headers.get("Location"), locale, "/blog")
+      );
     }
     if (!response.ok) {
       throw new Error("problem fetching an article");
