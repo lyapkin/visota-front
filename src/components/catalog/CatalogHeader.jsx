@@ -5,7 +5,7 @@ const CatalogHeader = async ({ header, params: locale }) => {
   const { t } = await initTranslations(locale, ["catalog"]);
   return (
     <h1 className={styles["catalog__title"]}>
-      {header ? `${t("catalog:catalog")} - ${header}` : t("catalog:catalog")}
+      {header || t("catalog:catalog")}
     </h1>
   );
 };
