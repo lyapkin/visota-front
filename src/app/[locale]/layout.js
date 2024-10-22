@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
@@ -54,10 +55,20 @@ export default async function RootLayout({ children, params: { locale } }) {
   ]);
 
   const categories = await getCategories(locale);
+  const gtmId = "GTM-TPWV5B9R";
 
   return (
     <html lang={locale}>
+      <GoogleTagManager gtmId={gtmId} />
       <body className={inter.className}>
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
         <Script src="/static/seo/js/custom-body.js" />
         <Script
           src="/static/seo/js/custom-head.js"
