@@ -86,13 +86,13 @@ const ProductComponent = ({ product }) => {
                   {product.characteristics.map((item) => (
                     <li key={item.id}>
                       <span className={styles["characteristics__list-key"]}>
-                        {item.characteristic.name}
+                        {item.name}
                       </span>
                       <span
                         className={styles["characteristics__list-dots"]}
                       ></span>
                       <span className={styles["characteristics__list-val"]}>
-                        {item.characteristic_value.name}
+                        {item.values.map((v) => v.name).join(", ")}
                       </span>
                     </li>
                   ))}

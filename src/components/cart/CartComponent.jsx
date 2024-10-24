@@ -131,10 +131,10 @@ const CartComponent = () => {
                   {p.characteristics.map((c) => (
                     <li key={c.id}>
                       <span className={styles["characteristics__key"]}>
-                        {c.characteristic.name}
+                        {c.name}
                       </span>
                       <span className={styles["characteristics__val"]}>
-                        {c.characteristic_value.name}
+                        {c.values.map((v) => v.name).join(", ")}
                       </span>
                     </li>
                   ))}
