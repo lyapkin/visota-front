@@ -55,7 +55,7 @@ const Product = async ({ params: { locale, slug } }) => {
               name: product.categories[0].name,
               item: `${process.env.BACK_URL}${
                 locale === "ru" ? "" : "/" + locale
-              }/catalog/${product.categories[0].slug}`,
+              }/catalog/${product.categories[0].slug}/`,
             },
             {
               "@type": "ListItem",
