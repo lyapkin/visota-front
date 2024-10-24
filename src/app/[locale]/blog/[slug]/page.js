@@ -63,7 +63,12 @@ export default async function BlogPost({ params }) {
         )}
       </div>
       <Suspense>
-        <PassDynamicBreadcrumb page={"post"} name={content.title} />
+        <PassDynamicBreadcrumb
+          breadCrumbs={[
+            { segment: "blog", name: t("common:blog") },
+            { segment: params.slug, name: content.title },
+          ]}
+        />
       </Suspense>
       <script
         type="application/ld+json"

@@ -7,7 +7,7 @@ import Footer from "@/components/Footer/Footer";
 import styles from "@/styles/layout.module.css";
 import Form from "@/components/Form/Form";
 import CartProvider from "@/providers/CartProvider";
-import LocationNameProvider from "@/providers/LocationNameProvider";
+import BreadCrumbsProvider from "@/providers/BreadCrumbsProvider";
 import ShowFormProvider from "@/providers/ShowFormProvider";
 import initTranslations from "../../locales/i18n";
 import TranslationsProvider from "@/providers/TranslationsProvider";
@@ -81,7 +81,7 @@ export default async function RootLayout({ children, params: { locale } }) {
         <Script src="//code.jivo.ru/widget/b6tVDylH8Y" strategy="lazyOnload" />
 
         <CategoriesProvider categories={categories}>
-          <LocationNameProvider>
+          <BreadCrumbsProvider>
             <ShowFormProvider>
               <CartProvider>
                 <TranslationsProvider
@@ -224,7 +224,7 @@ export default async function RootLayout({ children, params: { locale } }) {
                 </TranslationsProvider>
               </CartProvider>
             </ShowFormProvider>
-          </LocationNameProvider>
+          </BreadCrumbsProvider>
         </CategoriesProvider>
 
         <Script id="metrika-counter" strategy="afterInteractive">

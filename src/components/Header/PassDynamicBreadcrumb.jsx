@@ -1,19 +1,15 @@
 "use client";
-import { LocationNameContext } from "@/providers/LocationNameProvider";
+import { BreadCrumbsContext } from "@/providers/BreadCrumbsProvider";
 import React, { useContext, useEffect } from "react";
 
-const PassDynamicBreadcrumb = ({ page, name }) => {
-  const [_, setLocationName] = useContext(LocationNameContext);
+const PassDynamicBreadcrumb = ({ breadCrumbs }) => {
+  const [_, setBreadCrumbs] = useContext(BreadCrumbsContext);
 
   useEffect(() => {
-    setLocationName((prev) => ({ ...prev, [page]: name }));
+    setBreadCrumbs(breadCrumbs);
 
     return () => {
-      setLocationName((prev) => {
-        const newState = { ...prev };
-        delete newState[page];
-        return newState;
-      });
+      setBreadCrumbs([]);
     };
   }, []);
 

@@ -74,7 +74,12 @@ const Category = async ({ params: { locale, slug } }) => {
       />
 
       <Suspense>
-        <PassDynamicBreadcrumb page={"category"} name={data.name} />
+        <PassDynamicBreadcrumb
+          breadCrumbs={[
+            { segment: "catalog", name: t("catalog:catalog") },
+            { segment: slug, name: data.name },
+          ]}
+        />
       </Suspense>
     </>
   );

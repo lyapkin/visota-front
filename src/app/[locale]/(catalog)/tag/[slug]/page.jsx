@@ -72,7 +72,12 @@ const Tag = async ({ params: { locale, slug } }) => {
       />
 
       <Suspense>
-        <PassDynamicBreadcrumb page={"tag"} name={data.name} />
+        <PassDynamicBreadcrumb
+          breadCrumbs={[
+            { segment: "catalog", name: t("catalog:catalog") },
+            { segment: slug, name: data.name },
+          ]}
+        />
       </Suspense>
     </>
   );

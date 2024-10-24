@@ -1,6 +1,5 @@
 "use client";
 import { CartContext } from "@/providers/CartProvider";
-import { LocationNameContext } from "@/providers/LocationNameProvider";
 import { useParams } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -12,7 +11,6 @@ import Popup from "../popup/Popup";
 import GetPriceForm from "../Form/GetPriceForm";
 
 const ProductComponent = ({ product }) => {
-  const locale = useParams().locale;
   const [aboutBlock, setAboutBlock] = useState("char");
 
   const { t } = useTranslation();

@@ -35,28 +35,61 @@ const Product = async ({ params: { locale, slug } }) => {
     offers,
   };
 
-  const jsonLdBreadcrumbs = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: t("catalog:catalog"),
-        item: `${process.env.BACK_URL}${
-          locale === "ru" ? "" : "/" + locale
-        }/catalog/`,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: product.name,
-        item: `${process.env.BACK_URL}${
-          locale === "ru" ? "" : "/" + locale
-        }/product/${slug}/`,
-      },
-    ],
-  };
+  const jsonLdBreadcrumbs =
+    product.categories.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: t("catalog:catalog"),
+              item: `${process.env.BACK_URL}${
+                locale === "ru" ? "" : "/" + locale
+              }/catalog/`,
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: product.categories[0].name,
+              item: `${process.env.BACK_URL}${
+                locale === "ru" ? "" : "/" + locale
+              }/catalog/${product.categories[0].slug}`,
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
+              name: product.name,
+              item: `${process.env.BACK_URL}${
+                locale === "ru" ? "" : "/" + locale
+              }/product/${slug}/`,
+            },
+          ],
+        }
+      : {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: t("catalog:catalog"),
+              item: `${process.env.BACK_URL}${
+                locale === "ru" ? "" : "/" + locale
+              }/catalog/`,
+            },
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: product.name,
+              item: `${process.env.BACK_URL}${
+                locale === "ru" ? "" : "/" + locale
+              }/product/${slug}/`,
+            },
+          ],
+        };
+
   return (
     <>
       <ProductComponent product={product} />
@@ -70,7 +103,23 @@ const Product = async ({ params: { locale, slug } }) => {
       />
 
       <Suspense>
-        <PassDynamicBreadcrumb page={"product"} name={product.name} />
+        <PassDynamicBreadcrumb
+          breadCrumbs={
+            product.categories.length > 0
+              ? [
+                  { segment: "catalog", name: t("catalog:catalog") },
+                  {
+                    segment: `catalog/${product.categories[0].slug}`,
+                    name: product.categories[0].name,
+                  },
+                  { segment: slug, name: product.name },
+                ]
+              : [
+                  { segment: "catalog", name: t("catalog:catalog") },
+                  { segment: slug, name: product.name },
+                ]
+          }
+        />
       </Suspense>
     </>
   );
